@@ -7,17 +7,6 @@ export const PACKAGE_DIR = path.join(
   '..',
 );
 
-export const PROMPTS_DIR = path.join(PACKAGE_DIR, 'prompts');
-export const PROMPT_PATH = path.join(PROMPTS_DIR, 'profile.md');
-export const WRITER_AGENT_PATH = path.join(
-  PACKAGE_DIR,
-  '..',
-  '..',
-  '.claude',
-  'agents',
-  'profile-writer.md',
-);
-
 export const RAW_PROFILES_DIR = path.join(
   PACKAGE_DIR,
   'data',
@@ -25,10 +14,9 @@ export const RAW_PROFILES_DIR = path.join(
   'profiles',
 );
 
-// Where the profile-writer agents leave their output, one `<QID>.json` each.
-// Gitignored: finalize turns these into committed records.
-export const INCOMING_DIR = path.join(RAW_PROFILES_DIR, 'incoming');
-export const TASKS_DIR = path.join(RAW_PROFILES_DIR, 'tasks');
+// Gitignored working directory at the root of packages/data-pipeline.
+export const WORK_DIR = path.join(PACKAGE_DIR, '.work');
+export const SOURCES_DIR = path.join(WORK_DIR, 'sources');
 
 export const SUBJECTS_CACHE_FILENAME = 'profile-subjects.cache.json';
 export const SUBJECTS_CACHE_PATH = path.join(
@@ -37,3 +25,15 @@ export const SUBJECTS_CACHE_PATH = path.join(
   'output',
   SUBJECTS_CACHE_FILENAME,
 );
+
+export function workQidDir(qid: string, workDir = WORK_DIR): string {
+  return path.join(workDir, qid);
+}
+
+export function workFile(
+  qid: string,
+  fileName: string,
+  workDir = WORK_DIR,
+): string {
+  return path.join(workQidDir(qid, workDir), fileName);
+}

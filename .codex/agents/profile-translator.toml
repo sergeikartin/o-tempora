@@ -1,11 +1,4 @@
 name = "profile-translator"
-description = "Translates an approved English Profile into Russian."
-model = "gpt-6.2-sol"
-model_reasoning_effort = "medium"
-developer_instructions = "Read and follow `packages/data-pipeline/docs/profile-roles/profile-translator.md`. If local file tools are unavailable, ask the coordinator to supply the role instructions and complete task, and return the exact reply JSON for the coordinator to save."
-
-[features]
-shell_tool = false
-apps = false
-plugins = false
-request_permissions_tool = false
+description = "Translates an approved English Profile into natural Russian in .work/<QID>/."
+model_reasoning_effort = "low"
+developer_instructions = "Read and follow `packages/data-pipeline/prompts/profile-translator.md`."

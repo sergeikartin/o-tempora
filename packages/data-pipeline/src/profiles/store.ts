@@ -1,27 +1,37 @@
-import { randomUUID } from 'node:crypto';
-import { mkdir, readdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { PROFILE_LANES } from '@o-tempora/shared-types';
-import { asRecord, asString } from './values.ts';
+import { PROFILE_LANES, type ProfileLane } from '@o-tempora/shared-types';
+import { RAW_PROFILES_DIR } from './paths.ts';
+import {
+  formatZodIssues,
+  type ProfileLocale,
+  type StoredProfile,
+  StoredProfileSchema,
+} from './schemas.ts';
 
-export interface StoredProfile {
-  qid: string;
+export interface CommittedProfileRecord {
   filePath: string;
-  status: string;
+  fileName: string;
+  lane: ProfileLane;
+  profile: StoredProfile;
 }
 
-const RECORD_FILE = /^(Q\d+)-.+\.en\.json$/;
+export function committedProfilePath(
+  lane: ProfileLane,
+  qid: string,
+  slug: string,
+  locale: ProfileLocale,
+  rawProfilesDir = RAW_PROFILES_DIR,
+): string {
+  return path.join(rawProfilesDir, lane, `${qid}-${slug}.${locale}.json`);
+}
 
-// Every English record under `<dir>/<lane>/`, keyed by QID. The file name is
-// frozen when a record is first created, so the QID prefix is the identity;
-// `*.verification.json` reports and the `incoming/` staging folder sit
-// beside the records and do not match.
-export async function readStoredProfiles(
-  dir: string,
-): Promise<Map<string, StoredProfile>> {
-  const stored = new Map<string, StoredProfile>();
+export async function readCommittedProfiles(
+  rawProfilesDir = RAW_PROFILES_DIR,
+): Promise<CommittedProfileRecord[]> {
+  const records: CommittedProfileRecord[] = [];
   for (const lane of PROFILE_LANES) {
-    const laneDir = path.join(dir, lane);
+    const laneDir = path.join(rawProfilesDir, lane);
     let fileNames: string[];
     try {
       fileNames = await readdir(laneDir);
@@ -30,29 +40,54 @@ export async function readStoredProfiles(
       throw error;
     }
     for (const fileName of fileNames.sort()) {
-      const qid = RECORD_FILE.exec(fileName)?.[1];
-      if (!qid) continue;
+      if (!fileName.endsWith('.en.json') && !fileName.endsWith('.ru.json'))
+        continue;
       const filePath = path.join(laneDir, fileName);
-      const where = `${lane}/${fileName}`;
-      const root = asRecord(
-        JSON.parse(await readFile(filePath, 'utf8')),
-        where,
-      );
-      const meta = asRecord(root.meta, `${where}: meta`);
-      const review = asRecord(meta.review, `${where}: meta.review`);
-      stored.set(qid, {
-        qid,
+      const raw: unknown = JSON.parse(await readFile(filePath, 'utf8'));
+      const parsed = StoredProfileSchema.safeParse(raw);
+      if (!parsed.success) {
+        throw new Error(
+          `${lane}/${fileName}: ${formatZodIssues(parsed.error).join('; ')}`,
+        );
+      }
+      records.push({
         filePath,
-        status: asString(review.status, `${where}: meta.review.status`),
+        fileName: `${lane}/${fileName}`,
+        lane,
+        profile: parsed.data,
       });
     }
   }
-  return stored;
+  return records;
 }
 
-export async function writeJson(file: string, value: unknown): Promise<void> {
-  await mkdir(path.dirname(file), { recursive: true });
-  const temporary = `${file}.${randomUUID()}.tmp`;
-  await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`);
-  await rename(temporary, file);
+export async function findCommittedProfile(
+  qid: string,
+  locale: ProfileLocale,
+  rawProfilesDir = RAW_PROFILES_DIR,
+): Promise<CommittedProfileRecord | undefined> {
+  const records = await readCommittedProfiles(rawProfilesDir);
+  return records.find(
+    (record) =>
+      record.profile.meta.qid === qid && record.profile.meta.locale === locale,
+  );
+}
+
+export async function writeJsonFile(
+  filePath: string,
+  value: unknown,
+): Promise<void> {
+  await mkdir(path.dirname(filePath), { recursive: true });
+  await writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, 'utf8');
+}
+
+export async function readJsonIfExists(
+  filePath: string,
+): Promise<unknown | undefined> {
+  try {
+    return JSON.parse(await readFile(filePath, 'utf8'));
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return undefined;
+    throw error;
+  }
 }

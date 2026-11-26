@@ -5,183 +5,41 @@ import {
   PROFILE_LANES,
   type Profile,
   type ProfileConnection,
-  type ProfileDeepFact,
-  type ProfileKeyMoment,
   type ProfileLane,
 } from '@o-tempora/shared-types';
 import { assertBoldOnlyMarkup } from '../profiles/markup.ts';
-import { mapPassages } from '../profiles/passages.ts';
 import {
-  approvedTranslation,
-  readTranslation,
-  type TranslationFields,
-} from '../profiles/translation.ts';
-import { asArray, asRecord, asString } from '../profiles/values.ts';
+  computeEnglishSourceHash,
+  type ProfileLocale,
+  type StoredProfile,
+  StoredProfileSchema,
+} from '../profiles/schemas.ts';
 import {
-  type ProfileApproval,
-  readProfileApproval,
-} from '../profiles/verification/approval.ts';
-
+  type CommittedProfileRecord,
+  readCommittedProfiles,
+} from '../profiles/store.ts';
 import { detailLevelOf } from './write-datasets.ts';
 
-// The slice of a raw Profile file (prompts/profile.md's JSON plus the `meta`
-// the profiles script adds, docs/adr/0022-...) that Output reads. Claims,
-// confidence, importance and the Deep Fact type are review material
-// and never ship.
-export interface RawProfile {
-  fileName: string;
-  qid: string;
-  locale: string;
-  status: string;
-  approval?: ProfileApproval;
-  russian?: TranslationFields;
-  overview: string;
-  key_moments: ProfileKeyMoment[];
-  deep_facts: ProfileDeepFact[];
-  // `qid` is the target's Wikidata ID, resolved from its Wikipedia URL by the
-  // profiles script; a Connection without one cannot be resolved.
-  connections: { qid?: string; connection: string }[];
-}
+export type RawProfileRecord = CommittedProfileRecord;
 
-// Older Profiles can lack a source, and `not_on_wikipedia` is a review
-// sentinel. Neither should become a link, nor should malformed/unsafe URLs.
-function parseSource(value: unknown): { sourceUrl?: string } {
-  if (typeof value !== 'string') return {};
-  try {
-    const url = new URL(value);
-    if (
-      (url.protocol === 'https:' || url.protocol === 'http:') &&
-      !url.username &&
-      !url.password
-    ) {
-      return { sourceUrl: url.href };
-    }
-  } catch {}
-  return {};
+export async function readRawProfiles(
+  dir: string,
+): Promise<RawProfileRecord[]> {
+  return readCommittedProfiles(dir);
 }
 
 export function parseRawProfile(
   json: unknown,
   fileName: string,
-  report?: unknown,
-): RawProfile {
-  const root = asRecord(json, fileName);
-  const meta = asRecord(root.meta, `${fileName}: meta`);
-  const source = asRecord(meta.source, `${fileName}: meta.source`);
-  const review = asRecord(meta.review, `${fileName}: meta.review`);
-
-  const parsed: RawProfile = {
-    fileName,
-    qid: asString(source.wikidata_qid, `${fileName}: meta.source.wikidata_qid`),
-    locale: asString(meta.locale, `${fileName}: meta.locale`),
-    status: asString(review.status, `${fileName}: meta.review.status`),
-    overview: asString(root.overview, `${fileName}: overview`),
-    key_moments: asArray(root.key_moments, `${fileName}: key_moments`).map(
-      (item, index) => {
-        const moment = asRecord(item, `${fileName}: key_moments[${index}]`);
-        return {
-          date: asString(
-            moment.date,
-            `${fileName}: key_moments[${index}].date`,
-          ),
-          title: asString(
-            moment.title,
-            `${fileName}: key_moments[${index}].title`,
-          ),
-          text: asString(
-            moment.text,
-            `${fileName}: key_moments[${index}].text`,
-          ),
-          ...parseSource(moment.source),
-        };
-      },
-    ),
-    deep_facts: asArray(root.deep_facts, `${fileName}: deep_facts`).map(
-      (item, index) => {
-        const fact = asRecord(item, `${fileName}: deep_facts[${index}]`);
-        if (typeof fact.is_legend !== 'boolean') {
-          throw new Error(
-            `${fileName}: deep_facts[${index}].is_legend: expected a boolean`,
-          );
-        }
-        return {
-          text: asString(fact.text, `${fileName}: deep_facts[${index}].text`),
-          isLegend: fact.is_legend,
-          ...parseSource(fact.source),
-        };
-      },
-    ),
-    connections: asArray(root.connections, `${fileName}: connections`).map(
-      (item, index) => {
-        const connection = asRecord(item, `${fileName}: connections[${index}]`);
-        return {
-          qid: typeof connection.qid === 'string' ? connection.qid : undefined,
-          connection: asString(
-            connection.connection,
-            `${fileName}: connections[${index}].connection`,
-          ),
-        };
-      },
-    ),
-  };
-  const approval = readProfileApproval(json, report);
-  if (approval) parsed.approval = approval;
-  return parsed;
-}
-
-// Reads every `<lane>/*.json` Profile under `dir`. The staging folder and the
-// verifier's `*.verification.json` reports sit beside them and are not
-// Profiles.
-export async function readRawProfiles(dir: string): Promise<RawProfile[]> {
-  const profiles: RawProfile[] = [];
-  for (const lane of PROFILE_LANES) {
-    const laneDir = path.join(dir, lane);
-    let fileNames: string[];
-    try {
-      fileNames = await readdir(laneDir);
-    } catch (error) {
-      if ((error as NodeJS.ErrnoException).code === 'ENOENT') continue;
-      throw error;
-    }
-    for (const fileName of fileNames.sort()) {
-      if (
-        !fileName.endsWith('.json') ||
-        fileName.endsWith('.verification.json') ||
-        fileName.includes('.translation.')
-      )
-        continue;
-      const json: unknown = JSON.parse(
-        await readFile(path.join(laneDir, fileName), 'utf8'),
-      );
-      let report: unknown;
-      try {
-        report = JSON.parse(
-          await readFile(
-            path.join(
-              laneDir,
-              fileName.replace(/\.json$/, '.verification.json'),
-            ),
-            'utf8',
-          ),
-        );
-      } catch (error) {
-        if (
-          (error as NodeJS.ErrnoException).code !== 'ENOENT' &&
-          !(error instanceof SyntaxError)
-        )
-          throw error;
-      }
-      const raw = parseRawProfile(json, `${lane}/${fileName}`, report);
-      if (raw.approval && fileName.endsWith('.en.json')) {
-        raw.russian = approvedTranslation(
-          await readTranslation(path.join(laneDir, fileName)),
-          json,
-        );
-      }
-      profiles.push(raw);
-    }
+): StoredProfile {
+  const parsed = StoredProfileSchema.safeParse(json);
+  if (!parsed.success) {
+    const details = parsed.error.issues
+      .map((issue) => `${issue.path.join('.')}: ${issue.message}`)
+      .join('; ');
+    throw new Error(`${fileName}: ${details}`);
   }
-  return profiles;
+  return parsed.data;
 }
 
 export interface ProfileTarget {
@@ -196,19 +54,20 @@ export interface ProfileTarget {
 }
 
 function resolveConnections(
-  raw: RawProfile,
+  qid: string,
+  connections: readonly { qid: string; reason: string }[],
   targetByQid: ReadonlyMap<string, ProfileTarget>,
-  locale: 'en' | 'ru',
+  locale: ProfileLocale,
 ): ProfileConnection[] {
-  const connections: ProfileConnection[] = [];
+  const resolved: ProfileConnection[] = [];
   const seen = new Set<string>();
-  for (const { qid, connection } of raw.connections) {
-    const target = qid === undefined ? undefined : targetByQid.get(qid);
-    if (!target || target.qid === raw.qid || seen.has(target.qid)) continue;
+  for (const { qid: targetQid, reason } of connections) {
+    const target = targetByQid.get(targetQid);
+    if (!target || target.qid === qid || seen.has(target.qid)) continue;
     seen.add(target.qid);
-    connections.push({
+    resolved.push({
       slug: target.slug,
-      reason: connection,
+      reason,
       name: locale === 'ru' ? (target.nameRu ?? target.name) : target.name,
       lane: target.lane,
       detailLevel: detailLevelOf(
@@ -217,48 +76,135 @@ function resolveConnections(
       ),
     });
   }
-  return connections;
+  return resolved;
 }
 
-// The Profiles to ship, keyed by the entity's slug. Only approved `reviewed`
-// and `edited` English Profiles ship. Russian output additionally requires a
-// current translation approval; absent/stale translations leave Description.
+function assertProfileMarkup(profile: StoredProfile, fileName: string): void {
+  assertBoldOnlyMarkup(profile.overview, `${fileName}: overview`);
+  profile.keyMoments.forEach((moment, i) => {
+    assertBoldOnlyMarkup(moment.date, `${fileName}: keyMoments[${i}].date`);
+    assertBoldOnlyMarkup(moment.title, `${fileName}: keyMoments[${i}].title`);
+    assertBoldOnlyMarkup(moment.text, `${fileName}: keyMoments[${i}].text`);
+  });
+  profile.deepFacts.forEach((fact, i) => {
+    assertBoldOnlyMarkup(fact.text, `${fileName}: deepFacts[${i}].text`);
+  });
+  profile.connections.forEach((conn, i) => {
+    assertBoldOnlyMarkup(conn.reason, `${fileName}: connections[${i}].reason`);
+  });
+}
+
+// Committed files under `data/raw/profiles/` are the publication truth.
+// Output enforces deterministic invariants: dataset membership, bold-only
+// markup, and warn-and-skip freshness for `meta.subjectDates` and Russian
+// `meta.sourceHash`. English owns `sourceUrl` and `isLegend` authoritatively.
 export function shipProfiles(
-  rawProfiles: readonly RawProfile[],
+  records: readonly RawProfileRecord[],
   targets: readonly ProfileTarget[],
-  locale: 'en' | 'ru' = 'en',
+  locale: ProfileLocale = 'en',
+  { warn = console.warn }: { warn?: (message: string) => void } = {},
 ): Map<string, Profile> {
   const targetByQid = new Map(targets.map((target) => [target.qid, target]));
-  const shipped = new Map<string, Profile>();
+  const enByQid = new Map<string, RawProfileRecord>();
 
-  for (const raw of rawProfiles) {
-    if (raw.locale !== 'en' || !raw.approval) continue;
-
-    const subject = targetByQid.get(raw.qid);
-    if (!subject)
+  for (const record of records) {
+    if (record.profile.meta.locale !== 'en') continue;
+    const { qid } = record.profile.meta;
+    if (enByQid.has(qid)) {
       throw new Error(
-        `${raw.fileName}: ${raw.qid} is not an entity in the dataset`,
+        `${record.fileName}: a second English Profile for ${qid}`,
       );
-    if (!raw.approval.isCurrentFor(subject.dates)) continue;
-    const translation = raw.russian;
-    if (locale === 'ru' && !translation) continue;
-    if (shipped.has(subject.slug))
-      throw new Error(`${raw.fileName}: a second Profile for ${raw.qid}`);
+    }
+    enByQid.set(qid, record);
+  }
 
-    const localized = mapPassages(raw, (path, english) => {
-      const text =
-        locale === 'ru'
-          ? asString(translation?.[path], `${raw.fileName}: Russian ${path}`)
-          : english;
-      const field = path.replace(/\.(\d+)(?=\.)/g, '[$1]');
-      assertBoldOnlyMarkup(text, `${raw.fileName}: ${field}`);
-      return text;
+  const shipped = new Map<string, Profile>();
+  for (const record of records) {
+    const { profile, fileName } = record;
+    if (profile.meta.locale !== locale) continue;
+
+    const subject = targetByQid.get(profile.meta.qid);
+    if (!subject) {
+      throw new Error(
+        `${fileName}: ${profile.meta.qid} is not an entity in the dataset`,
+      );
+    }
+    if (shipped.has(subject.slug)) {
+      throw new Error(
+        `${fileName}: a second ${locale} Profile for ${profile.meta.qid}`,
+      );
+    }
+
+    if (profile.meta.subjectDates !== subject.dates) {
+      warn(
+        `Skipping stale ${locale} Profile ${fileName}: subjectDates "${profile.meta.subjectDates}" != dataset "${subject.dates}"`,
+      );
+      continue;
+    }
+
+    let authoritativeEn: StoredProfile | undefined;
+    if (locale === 'ru') {
+      const enRecord = enByQid.get(profile.meta.qid);
+      if (!enRecord || enRecord.profile.meta.subjectDates !== subject.dates) {
+        warn(
+          `Skipping Russian Profile ${fileName}: no current English Profile for ${profile.meta.qid}`,
+        );
+        continue;
+      }
+      authoritativeEn = enRecord.profile;
+      const expectedHash = computeEnglishSourceHash(authoritativeEn);
+      if (profile.meta.sourceHash !== expectedHash) {
+        warn(
+          `Skipping stale Russian Profile ${fileName}: sourceHash "${profile.meta.sourceHash ?? ''}" != English "${expectedHash}"`,
+        );
+        continue;
+      }
+      if (
+        profile.keyMoments.length !== authoritativeEn.keyMoments.length ||
+        profile.deepFacts.length !== authoritativeEn.deepFacts.length ||
+        profile.connections.length !== authoritativeEn.connections.length
+      ) {
+        warn(
+          `Skipping Russian Profile ${fileName}: structure length does not match English`,
+        );
+        continue;
+      }
+    }
+
+    assertProfileMarkup(profile, fileName);
+
+    const keyMoments = profile.keyMoments.map((moment, i) => {
+      const sourceUrl = authoritativeEn
+        ? authoritativeEn.keyMoments[i]?.sourceUrl
+        : moment.sourceUrl;
+      return {
+        date: moment.date,
+        title: moment.title,
+        text: moment.text,
+        ...(sourceUrl ? { sourceUrl } : {}),
+      };
     });
+
+    const deepFacts = profile.deepFacts.map((fact, i) => {
+      const enFact = authoritativeEn?.deepFacts[i];
+      const sourceUrl = enFact ? enFact.sourceUrl : fact.sourceUrl;
+      return {
+        text: fact.text,
+        isLegend: enFact ? enFact.isLegend : fact.isLegend,
+        ...(sourceUrl ? { sourceUrl } : {}),
+      };
+    });
+
     shipped.set(subject.slug, {
-      overview: localized.overview,
-      keyMoments: localized.key_moments,
-      deepFacts: localized.deep_facts,
-      connections: resolveConnections(localized, targetByQid, locale),
+      overview: profile.overview,
+      keyMoments,
+      deepFacts,
+      connections: resolveConnections(
+        profile.meta.qid,
+        profile.connections,
+        targetByQid,
+        locale,
+      ),
     });
   }
 
@@ -303,7 +249,24 @@ type BuiltTarget = Pick<ProfileConnection, 'slug' | 'lane' | 'detailLevel'> & {
   hasProfile?: boolean;
 };
 
-async function readBuiltTargets(outputDir: string, locale: 'en' | 'ru') {
+function asRecord(value: unknown, where: string): Record<string, unknown> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new Error(`${where}: expected an object`);
+  }
+  return value as Record<string, unknown>;
+}
+
+function asArray(value: unknown, where: string): unknown[] {
+  if (!Array.isArray(value)) throw new Error(`${where}: expected an array`);
+  return value;
+}
+
+function asString(value: unknown, where: string): string {
+  if (typeof value !== 'string') throw new Error(`${where}: expected a string`);
+  return value;
+}
+
+async function readBuiltTargets(outputDir: string, locale: ProfileLocale) {
   const targets: BuiltTarget[] = [];
   for (const lane of PROFILE_LANES) {
     for (const detailLevel of [1, 2, 3, 4] as const) {
@@ -328,7 +291,7 @@ async function readBuiltTargets(outputDir: string, locale: 'en' | 'ru') {
 
 export async function verifyBuiltProfiles(
   outputDir: string,
-  datasets?: Record<'en' | 'ru', readonly BuiltTarget[]>,
+  datasets?: Record<ProfileLocale, readonly BuiltTarget[]>,
 ): Promise<void> {
   for (const locale of PROFILE_LOCALES) {
     const targets = new Map<string, BuiltTarget>();

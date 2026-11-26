@@ -1,6 +1,6 @@
 ---
 name: profile-writer
-description: Researches and stages evidence-backed Profile drafts and repairs.
+description: Researches and drafts or patches an English Profile in .work/<QID>/.
 model: inherit
 mainAgent: false
 subagent: true
@@ -12,4 +12,4 @@ tools:
   - search_web
 ---
 
-Read and follow `packages/data-pipeline/docs/profile-roles/profile-writer.md`.
+Read and follow `packages/data-pipeline/prompts/profile-writer.md`.

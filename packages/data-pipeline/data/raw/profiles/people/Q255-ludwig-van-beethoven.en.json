@@ -1,150 +1,71 @@
 {
-  "subject": "Ludwig van Beethoven",
-  "type": "person",
-  "wikipedia_url": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven",
   "overview": "Ludwig van Beethoven was a composer and pianist from Bonn who made his career in Vienna, where he earned an early reputation as a pianist and improviser. As his hearing deteriorated, he kept composing, writing piano sonatas, string quartets and symphonies that stretched the musical forms he had inherited.",
-  "key_moments": [
+  "keyMoments": [
     {
       "date": "1792",
       "title": "From Bonn to Vienna",
       "text": "Beethoven moved from Bonn to Vienna, where he studied composition with **Joseph Haydn**. He gained an early reputation there for playing and improvising at the piano.",
-      "claims": [
-        "Ludwig van Beethoven moved from Bonn to Vienna in 1792.",
-        "Ludwig van Beethoven studied composition with Joseph Haydn in Vienna.",
-        "Ludwig van Beethoven gained an early reputation in Vienna as a pianist and improviser."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Ludwig_van_Beethoven"
     },
     {
       "date": "1802",
       "title": "A letter kept private",
       "text": "At **Heiligenstadt** outside Vienna, Beethoven wrote a letter intended for his brothers. In it he described his despair over his worsening hearing. He described suicidal thoughts and a renewed resolve to keep composing. The letter stayed among his papers and was discovered after his death.",
-      "claims": [
-        "Ludwig van Beethoven wrote the Heiligenstadt Testament, a letter intended for his brothers, in 1802 while staying in Heiligenstadt outside Vienna.",
-        "Ludwig van Beethoven described his despair over his worsening hearing in the Heiligenstadt Testament.",
-        "The Heiligenstadt Testament describes Ludwig van Beethoven’s suicidal thoughts and his renewed resolve to keep composing.",
-        "The Heiligenstadt Testament was found among Ludwig van Beethoven's papers after his death."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Heiligenstadt_Testament"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Heiligenstadt_Testament"
     },
     {
       "date": "1805",
       "title": "The Eroica at the Theater an der Wien",
       "text": "Vienna's **Theater an der Wien** hosted a public performance of Beethoven's **Third Symphony**. The work was unusually long for a symphony of its time. Its second movement is a funeral march, and the symphony is known as the Eroica, or heroic symphony.",
-      "claims": [
-        "Ludwig van Beethoven's Third Symphony was performed publicly at the Theater an der Wien in 1805.",
-        "Ludwig van Beethoven's Third Symphony was unusually long for a symphony of its time.",
-        "Ludwig van Beethoven's Third Symphony is known as the Eroica, meaning heroic.",
-        "The second movement of Ludwig van Beethoven's Third Symphony is a funeral march."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Symphony_No._3_(Beethoven)"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Symphony_No._3_(Beethoven)"
     },
     {
       "date": "1824",
       "title": "Voices enter the Ninth",
       "text": "An orchestra performed Beethoven's **Ninth Symphony** in Vienna. The first three movements were entirely instrumental. Then solo singers and a choir joined the orchestra for the finale, singing words from **Friedrich Schiller's** poem Ode to Joy.",
-      "claims": [
-        "An orchestra performed Ludwig van Beethoven’s Ninth Symphony in Vienna in 1824.",
-        "The first three movements of Ludwig van Beethoven's Ninth Symphony are instrumental.",
-        "The finale of Ludwig van Beethoven's Ninth Symphony features vocal soloists and a choir singing words from Friedrich Schiller's Ode to Joy."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Symphony_No._9_(Beethoven)"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Symphony_No._9_(Beethoven)"
     }
   ],
-  "deep_facts": [
+  "deepFacts": [
     {
       "text": "As Beethoven's hearing declined, visitors could talk to him by writing their remarks in notebooks. Some of these conversation books survive.",
-      "type": "unique_detail",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Ludwig van Beethoven's visitors wrote their remarks in conversation books because of Ludwig van Beethoven's hearing loss.",
-        "Some of Ludwig van Beethoven's conversation books survive."
-      ],
-      "source": "https://www.beethoven.de/en/media/view/5119968429473792/"
+      "isLegend": false,
+      "sourceUrl": "https://www.beethoven.de/en/media/view/5119968429473792/"
     },
     {
       "text": "Beethoven wrote 33 piano variations on a single waltz by the publisher Anton Diabelli. The complete set is known as the **Diabelli Variations**.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Anton Diabelli was a music publisher and composed the waltz on which Ludwig van Beethoven based his Diabelli Variations.",
-        "Ludwig van Beethoven's Diabelli Variations consist of 33 piano variations on Anton Diabelli's waltz."
-      ],
-      "source": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICAnMbgrQoM/33%20Ver%C3%A4nderungen%20%C3%BCber%20einen%20Walzer%20von%20Anton%20Diabelli%20%26%2340%3BC-Dur%26%2341%3B%20f%C3%BCr%20Klavier%20op.%20120"
+      "isLegend": false,
+      "sourceUrl": "https://www.beethoven.de/en/work/view/ag9iZWV0aG92ZW4tdml1cjNyEQsSBHdvcmsYgICAnMbgrQoM/33%20Ver%C3%A4nderungen%20%C3%BCber%20einen%20Walzer%20von%20Anton%20Diabelli%20%26%2340%3BC-Dur%26%2341%3B%20f%C3%BCr%20Klavier%20op.%20120"
     }
   ],
   "connections": [
     {
-      "name": "Joseph Haydn",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Joseph_Haydn",
-      "connection": "Taught Beethoven composition after Beethoven moved to Vienna in 1792.",
-      "importance": "high",
-      "qid": "Q7349"
+      "qid": "Q7349",
+      "reason": "Taught Beethoven composition after Beethoven moved to Vienna in 1792."
     },
     {
-      "name": "Friedrich Schiller",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Friedrich_Schiller",
-      "connection": "Wrote Ode to Joy, whose words Beethoven used in the finale of his Ninth Symphony.",
-      "importance": "high",
-      "qid": "Q22670"
+      "qid": "Q22670",
+      "reason": "Wrote Ode to Joy, whose words Beethoven used in the finale of his Ninth Symphony."
     },
     {
-      "name": "Napoleon",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Napoleon",
-      "connection": "Beethoven originally associated the Eroica symphony with Napoleon Bonaparte.",
-      "importance": "medium",
-      "qid": "Q517"
+      "qid": "Q517",
+      "reason": "Beethoven originally associated the Eroica symphony with Napoleon Bonaparte."
     },
     {
-      "name": "Johann Wolfgang von Goethe",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Johann_Wolfgang_von_Goethe",
-      "connection": "Wrote Egmont, for which Beethoven composed incidental music.",
-      "importance": "medium",
-      "qid": "Q5879"
+      "qid": "Q5879",
+      "reason": "Wrote Egmont, for which Beethoven composed incidental music."
     },
     {
-      "name": "Congress of Vienna",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Congress_of_Vienna",
-      "connection": "Beethoven's cantata Der glorreiche Augenblick was performed during the congress.",
-      "importance": "medium",
-      "qid": "Q46362"
+      "qid": "Q46362",
+      "reason": "Beethoven's cantata Der glorreiche Augenblick was performed during the congress."
     }
   ],
   "meta": {
-    "generated_at": "2026-11-22T16:27:26.781Z",
-    "prompt_version": "2.2.0",
-    "prompt_hash": "246b7e0afd6f",
-    "schema_version": 3,
-    "model": "gpt-6.2-sol",
-    "reasoning_effort": "medium",
-    "temperature": null,
-    "run_id": "2026-11-22-fresh-profile-pilot",
+    "qid": "Q255",
     "locale": "en",
-    "source": {
-      "wikidata_qid": "Q255"
-    },
-    "tokens": {
-      "input": 169561,
-      "output": 2937
-    },
-    "validation": {
-      "schema_valid": true,
-      "connections_returned": 6,
-      "connections_matched_people": 4,
-      "connections_matched_events": 1,
-      "connections_unresolved": 0
-    },
-    "review": {
-      "status": "edited",
-      "reviewed_at": "2026-11-23T09:27:23.900Z",
-      "approval": {
-        "policy_version": "3",
-        "profile_hash": "4d8257dd064dcc2b3ca99346a9b38977d2ac949eb69a82843ad545a1b5192990",
-        "report_hash": "976968f13763b79049ade7269a5efcfd9283053de72ec78030544cd5de7364c0",
-        "method": "automatic"
-      }
-    }
+    "subjectDates": "1770–1827",
+    "approvedAt": "2026-11-23T09:27:23.900Z",
+    "writerModel": "gpt-6.2-sol",
+    "checkerModel": "gpt-6.2-sol"
   }
 }

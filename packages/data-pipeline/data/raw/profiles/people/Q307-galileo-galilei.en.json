@@ -1,146 +1,67 @@
 {
-  "subject": "Galileo Galilei",
-  "type": "person",
-  "wikipedia_url": "https://en.wikipedia.org/wiki/Galileo_Galilei",
   "overview": "Galileo Galilei taught mathematics in Padua and worked at the Medici court in Florence. He used the telescope to investigate how the heavens were arranged, and he described the motion of falling bodies in mathematical terms.",
-  "key_moments": [
+  "keyMoments": [
     {
       "date": "1609–1610",
       "title": "A telescope turns skyward",
       "text": "After hearing about a spyglass, Galileo built a more powerful telescope and trained it on the sky. In **Starry Messenger**, he reported mountains and valleys on the Moon. He also identified **four moons circling Jupiter** itself.",
-      "claims": [
-        "In 1609, Galileo Galilei heard about a newly invented spyglass, built an improved telescope and used it to study the sky.",
-        "Galileo Galilei reported mountains and valleys on the Moon in Starry Messenger, published in 1610.",
-        "Galileo Galilei identified four satellites of Jupiter."
-      ],
-      "source": "https://catalogue.museogalileo.it/multimedia/GalileosAstronomyBis.html"
+      "sourceUrl": "https://catalogue.museogalileo.it/multimedia/GalileosAstronomyBis.html"
     },
     {
       "date": "1615–1616",
       "title": "A warning in Rome",
       "text": "Galileo went to **Rome** to argue against condemning the theory that Earth moves around the Sun. Cardinal Robert Bellarmine warned him against holding or defending that theory. The **Congregation of the Index** suspended Nicolaus Copernicus’s book pending corrections.",
-      "claims": [
-        "Galileo Galilei traveled to Rome in late 1615 as part of his effort to avert condemnation of Copernican heliocentrism.",
-        "In 1616, Cardinal Robert Bellarmine warned Galileo Galilei against holding or defending Copernican theory.",
-        "In 1616, the Congregation of the Index suspended Nicolaus Copernicus’s book pending correction."
-      ],
-      "source": "https://plato.stanford.edu/entries/galileo/"
+      "sourceUrl": "https://plato.stanford.edu/entries/galileo/"
     },
     {
       "date": "1632–1633",
       "title": "The Inquisition puts Galileo on trial",
       "text": "Galileo’s **Dialogue Concerning the Two Chief World Systems** favored the view that Earth moves around the Sun. The Roman Inquisition ordered him to Rome, judged him vehemently suspect of heresy, and made him recant. His prison sentence was commuted to **house arrest**, which he eventually served at his villa in Arcetri.",
-      "claims": [
-        "Galileo Galilei’s Dialogue Concerning the Two Chief World Systems, published in 1632, favored Copernican heliocentrism.",
-        "The Roman Inquisition summoned Galileo Galilei to Rome after the publication of the Dialogue.",
-        "In 1633, the Roman Inquisition declared Galileo Galilei vehemently suspect of heresy and required Galileo Galilei to recant.",
-        "Galileo Galilei’s sentence of imprisonment was commuted to house arrest, which Galileo Galilei eventually served at his villa in Arcetri."
-      ],
-      "source": "https://plato.stanford.edu/entries/galileo/"
+      "sourceUrl": "https://plato.stanford.edu/entries/galileo/"
     },
     {
       "date": "1638",
       "title": "Weighing time",
       "text": "Galileo’s **Two New Sciences** appeared in Leiden. In the book’s account, a ball took half as long to roll a quarter of the way down a sloping board as it took to roll the whole length. The account describes collecting water as the ball rolled and **weighing it after each run** to compare the times.",
-      "claims": [
-        "Galileo Galilei’s Two New Sciences was published in Leiden in 1638.",
-        "Galileo Galilei’s Two New Sciences describes a ball taking half as long to roll one quarter of the way down a sloping board as it took to roll the whole length.",
-        "Galileo Galilei’s Two New Sciences describes comparing the ball’s travel times by collecting water during each run and weighing it afterward."
-      ],
-      "source": "https://galileoandeinstein.phys.virginia.edu/tns_draft/tns_160to243.html"
+      "sourceUrl": "https://galileoandeinstein.phys.virginia.edu/tns_draft/tns_160to243.html"
     }
   ],
-  "deep_facts": [
+  "deepFacts": [
     {
       "text": "Galileo’s **geometric and military compass** was a calculating tool with scales along two legs. The same instrument could help calculate a cube root or measure the tilt of a cannon. Galileo sold the compasses and taught people how to use them.",
-      "type": "unique_detail",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Galileo Galilei’s geometric and military compass had scales marked on its two legs.",
-        "Galileo Galilei’s geometric and military compass could help calculate cube roots.",
-        "Galileo Galilei’s geometric and military compass could measure cannon elevation.",
-        "Galileo Galilei sold his geometric and military compasses and taught people how to use them."
-      ],
-      "source": "https://brunelleschi.imss.fi.it/esplora/compasso/dswmedia/storia/estoria1_st.html"
+      "isLegend": false,
+      "sourceUrl": "https://brunelleschi.imss.fi.it/esplora/compasso/dswmedia/storia/estoria1_st.html"
     },
     {
       "text": "Galileo wanted sailors to use **Jupiter’s moons as a clock**. In his proposal, sailors would compare the local time when a moon vanished into Jupiter’s shadow with the time predicted for a reference location to find their longitude. Galileo designed a helmet with a small telescope to help keep Jupiter in sight on a moving deck. The Rice University Galileo Project describes trials aboard ships at anchor and reports that the helmet worked only at lower magnification than the moons required.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Galileo Galilei proposed using Jupiter’s moons as a clock to determine longitude at sea.",
-        "Galileo Galilei proposed finding longitude by comparing the local time when a moon of Jupiter disappeared into the planet’s shadow with the predicted time of the eclipse at a reference location.",
-        "Galileo Galilei designed a helmet fitted with a small telescope to help observers keep Jupiter in sight on a moving deck.",
-        "The Rice University Galileo Project describes Galileo Galilei’s helmet trials aboard ships at anchor and reports that the helmet worked only at lower magnification than observing Jupiter’s moons required."
-      ],
-      "source": "https://catalogue.museogalileo.it/indepth/Celatone.html"
+      "isLegend": false,
+      "sourceUrl": "https://catalogue.museogalileo.it/indepth/Celatone.html"
     }
   ],
   "connections": [
     {
-      "name": "Copernican heliocentrism",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Copernican_heliocentrism",
-      "connection": "Galileo openly backed this model in his 1613 Letters on Sunspots.",
-      "importance": "high",
-      "qid": "Q3984081"
+      "qid": "Q3984081",
+      "reason": "Galileo openly backed this model in his 1613 Letters on Sunspots."
     },
     {
-      "name": "Johannes Kepler",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Johannes_Kepler",
-      "connection": "He welcomed Galileo’s telescopic findings in a published response to Starry Messenger.",
-      "importance": "high",
-      "qid": "Q8963"
+      "qid": "Q8963",
+      "reason": "He welcomed Galileo’s telescopic findings in a published response to Starry Messenger."
     },
     {
-      "name": "Urban VIII",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Pope_Urban_VIII",
-      "connection": "Galileo came away from meetings with Urban VIII believing he could discuss Copernicus’s theory as a hypothesis, and the pope later ordered the Holy Office to question him.",
-      "importance": "high",
-      "qid": "Q131579"
+      "qid": "Q131579",
+      "reason": "Galileo came away from meetings with Urban VIII believing he could discuss Copernicus’s theory as a hypothesis, and the pope later ordered the Holy Office to question him."
     },
     {
-      "name": "Evangelista Torricelli",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Evangelista_Torricelli",
-      "connection": "He extended Galileo’s work on the paths of projectiles and later joined him as an assistant at Arcetri.",
-      "importance": "medium",
-      "qid": "Q102490"
+      "qid": "Q102490",
+      "reason": "He extended Galileo’s work on the paths of projectiles and later joined him as an assistant at Arcetri."
     }
   ],
   "meta": {
-    "generated_at": "2026-11-24T04:55:58Z",
-    "prompt_version": "2.5.0",
-    "prompt_hash": "66724b53079e",
-    "schema_version": 3,
-    "model": "gpt-6.2-sol",
-    "reasoning_effort": "medium",
-    "temperature": null,
-    "run_id": "2026-11-24-galileo-passage-trial",
+    "qid": "Q307",
     "locale": "en",
-    "source": {
-      "wikidata_qid": "Q307"
-    },
-    "tokens": {
-      "input": 2884742,
-      "output": 16443
-    },
-    "validation": {
-      "schema_valid": true,
-      "connections_returned": 4,
-      "connections_matched_people": 3,
-      "connections_matched_events": 1,
-      "connections_unresolved": 0
-    },
-    "review": {
-      "status": "reviewed",
-      "reviewed_at": "2026-11-24T05:07:41.446Z",
-      "approval": {
-        "policy_version": "4",
-        "profile_hash": "334f6b23e7120e83178857c2c6c86705edaa906c0c6957fe8d9897bbe700fbd0",
-        "report_hash": "a052301b8439d233d1cf6f4a06a95c8e8a9964f81ea09ffe1a1fa109f1e20ddc",
-        "method": "automatic"
-      }
-    }
+    "subjectDates": "1564–1642",
+    "approvedAt": "2026-11-24T05:07:41.446Z",
+    "writerModel": "gpt-6.2-sol",
+    "checkerModel": "gpt-6.2-sol"
   }
 }

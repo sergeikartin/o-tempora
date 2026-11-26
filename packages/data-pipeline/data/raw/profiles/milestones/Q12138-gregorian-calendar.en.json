@@ -1,168 +1,80 @@
 {
-  "subject": "Gregorian calendar",
-  "type": "milestone",
-  "wikipedia_url": "https://en.wikipedia.org/wiki/Gregorian_calendar",
   "overview": "By the 1500s the Julian calendar, in use since Julius Caesar, ran about 11 minutes a year too long, and the spring equinox had drifted roughly ten days away from the date the Church used to work out Easter. In 1582 Pope Gregory XIII fixed it: he deleted ten days from the calendar and changed the leap-year rule so that most century years are no longer leap years. Several Catholic states adopted it in 1582, while other countries followed over the next several centuries, and it is now the civil calendar of most of the world.",
-  "key_moments": [
+  "keyMoments": [
     {
       "date": "24 February 1582",
       "title": "A papal bull rewrites time",
       "text": "Pope **Gregory XIII** issued the bull **Inter gravissimas**, putting into force a reform worked out by a papal commission. Its core plan came from the Calabrian physician **Aloysius Lilius**, and the Jesuit mathematician **Christopher Clavius** refined it and later wrote its long defence. The new rule kept a leap day every four years but **skipped it in century years not divisible by 400**, so 1600 and 2000 stay leap years while 1700, 1800 and 1900 do not. Lilius did not live to see the reform; his brother **Antonio** presented his proposal to the Church.",
-      "claims": [
-        "Pope Gregory XIII issued the papal bull Inter gravissimas on 24 February 1582.",
-        "The Gregorian reform was based mainly on a proposal by Aloysius Lilius.",
-        "Christopher Clavius was a Jesuit mathematician who helped refine and defend the Gregorian calendar.",
-        "Under the Gregorian calendar, century years are leap years only if they are divisible by 400.",
-        "Antonio Lilius presented his deceased brother Aloysius’s calendar proposal to the Church."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Gregorian_calendar#Gregorian_reform"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gregorian_calendar#Gregorian_reform"
     },
     {
       "date": "October 1582",
       "title": "Ten days vanish",
       "text": "In **Spain, Portugal, the Papal States and Poland–Lithuania**, people went to bed on **Thursday 4 October 1582** and woke up on **Friday 15 October**. The days of the week ran on unbroken; only the dates jumped. The jump pulled the spring equinox back to around 21 March, the equinox date the reformers associated with the **Council of Nicaea** and sought to restore for calculating Easter.",
-      "claims": [
-        "In the first countries to adopt the Gregorian calendar, Thursday 4 October 1582 was followed by Friday 15 October 1582.",
-        "Spain, Portugal, the Papal States and Poland–Lithuania adopted the Gregorian calendar in October 1582.",
-        "The Gregorian reform restored the spring equinox to around 21 March for the purpose of calculating Easter."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar"
     },
     {
       "date": "September 1752",
       "title": "Britain finally switches",
       "text": "**Great Britain** and its American colonies adopted the Gregorian calendar in 1752, 170 years after the initial reform, under the **Calendar (New Style) Act 1750**. By then the gap had grown to **eleven days**, so **Wednesday 2 September 1752** was followed by **Thursday 14 September**. The act also moved the start of the legal year in England and its colonies from 25 March to 1 January; Scotland already began its year on 1 January.",
-      "claims": [
-        "Great Britain and its colonies adopted the Gregorian calendar under the Calendar (New Style) Act 1750.",
-        "In Great Britain, Wednesday 2 September 1752 was followed by Thursday 14 September 1752.",
-        "The Calendar (New Style) Act 1750 moved the start of the legal year in England from 25 March to 1 January.",
-        "Scotland had already moved the beginning of its legal year to 1 January before 1752."
-      ],
-      "source": "https://en.wikisource.org/wiki/Calendar_(New_Style)_Act_1750"
+      "sourceUrl": "https://en.wikisource.org/wiki/Calendar_(New_Style)_Act_1750"
     },
     {
       "date": "February 1918",
       "title": "Russia jumps thirteen days",
       "text": "Imperial Russia kept the Julian calendar, which the **Russian Orthodox Church** also used, so by the 20th century the country was **thirteen days** behind most of Europe. Soon after taking power, the **Bolshevik** government decreed the switch: **31 January 1918** was followed by **14 February 1918**. The change left a lasting oddity. The **October Revolution** happened on 25 October by the old calendar, which is 7 November by the new one, so the Soviet Union celebrated its October anniversary every November.",
-      "claims": [
-        "Soviet Russia adopted the Gregorian calendar in 1918.",
-        "In Soviet Russia, 31 January 1918 was followed by 14 February 1918.",
-        "The October Revolution took place on 25 October 1917 Julian, which is 7 November 1917 Gregorian.",
-        "The anniversary of the October Revolution was celebrated in the Soviet Union on 7 November."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar#Adoption_in_Eastern_Europe"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar#Adoption_in_Eastern_Europe"
     }
   ],
-  "deep_facts": [
+  "deepFacts": [
     {
       "text": "Sweden tried to change gently. Instead of dropping eleven days at once, it planned in 1700 to skip every leap day for forty years and slide into the Gregorian calendar a little at a time. It skipped 1700's leap day, then kept the ones in 1704 and 1708, so the country was now on a calendar that matched nobody's. In 1712 Sweden gave up and returned to the Julian calendar by adding an extra day to February, which produced a real, officially dated **30 February 1712**. Sweden finally made the full switch in 1753.",
-      "type": "unique_detail",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Sweden planned from 1700 to move to the Gregorian calendar gradually by omitting leap days.",
-        "Sweden omitted the leap day in 1700 but not in 1704 or 1708.",
-        "Sweden returned to the Julian calendar in 1712 by adding a 30 February 1712.",
-        "Sweden adopted the Gregorian calendar in 1753."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Swedish_calendar"
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Swedish_calendar"
     },
     {
       "text": "**Shakespeare** and **Cervantes** are often linked with 23 April 1616, but the dates conceal two differences. Cervantes died on **22 April** and was buried on **23 April** in Spain’s Gregorian calendar. Shakespeare’s monument records his death as **23 April** in England’s Julian calendar, equivalent to **3 May Gregorian**—eleven days after Cervantes. England and Spain were using calendars ten days apart.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Cervantes died on 22 April 1616 and was buried on 23 April.",
-        "Shakespeare’s monument records his death as 23 April 1616 Julian, equivalent to 3 May Gregorian.",
-        "England and Spain used calendars ten days apart in 1616; the recorded deaths were eleven days apart."
-      ],
-      "source": "https://www.college-de-france.fr/en/agenda/lecture/1616-cervantes-and-shakespeare-encounters"
+      "isLegend": false,
+      "sourceUrl": "https://www.college-de-france.fr/en/agenda/lecture/1616-cervantes-and-shakespeare-encounters"
     },
     {
       "text": "A story about English crowds demanding their lost calendar days outlived the reform itself. In his study of the calendar controversy, historian **Robert Poole** quotes an **1820 account** that claimed people had clamoured for the return of the days and connected the story with a picture by **William Hogarth**. The later retelling is evidence that the story circulated; it does not by itself establish that calendar riots happened in 1752.",
-      "type": "hidden_story",
-      "is_legend": true,
-      "confidence": "medium",
-      "claims": [
-        "Robert Poole’s study quotes an 1820 retelling of English crowds demanding the days removed by calendar reform, connecting it with a picture by William Hogarth."
-      ],
-      "source": "https://research.cumbria.ac.uk/en/publications/give-us-our-eleven-days-calendar-reform-in-eighteenth-century-eng/"
+      "isLegend": true,
+      "sourceUrl": "https://research.cumbria.ac.uk/en/publications/give-us-our-eleven-days-calendar-reform-in-eighteenth-century-eng/"
     }
   ],
   "connections": [
     {
-      "name": "Pope Gregory XIII",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Pope_Gregory_XIII",
-      "connection": "Promulgated the reform in the bull Inter gravissimas in February 1582, and the calendar bears his name.",
-      "importance": "high",
-      "qid": "Q83029"
+      "qid": "Q83029",
+      "reason": "Promulgated the reform in the bull Inter gravissimas in February 1582, and the calendar bears his name."
     },
     {
-      "name": "Julian calendar",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Julian_calendar",
-      "connection": "The calendar it replaced, whose year ran about 11 minutes too long and caused the drift the reform corrected.",
-      "importance": "high",
-      "qid": "Q11184"
+      "qid": "Q11184",
+      "reason": "The calendar it replaced, whose year ran about 11 minutes too long and caused the drift the reform corrected."
     },
     {
-      "name": "Julius Caesar",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Julius_Caesar",
-      "connection": "Caesar’s Julian calendar, which took effect in 45 BC, was the system the Gregorian reform corrected.",
-      "importance": "medium",
-      "qid": "Q1048"
+      "qid": "Q1048",
+      "reason": "Caesar’s Julian calendar, which took effect in 45 BC, was the system the Gregorian reform corrected."
     },
     {
-      "name": "First Council of Nicaea",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/First_Council_of_Nicaea",
-      "connection": "The reformers aimed to restore the equinox date they associated with Nicaea for calculating Easter.",
-      "importance": "medium",
-      "qid": "Q133331"
+      "qid": "Q133331",
+      "reason": "The reformers aimed to restore the equinox date they associated with Nicaea for calculating Easter."
     },
     {
-      "name": "Council of Trent",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Council_of_Trent",
-      "connection": "Left calendar and liturgical reform to the pope, opening the way for Gregory XIII's commission.",
-      "importance": "medium",
-      "qid": "Q172991"
+      "qid": "Q172991",
+      "reason": "Left calendar and liturgical reform to the pope, opening the way for Gregory XIII's commission."
     },
     {
-      "name": "October Revolution",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/October_Revolution",
-      "connection": "Took place on 7 November by the Gregorian calendar, which the Bolshevik government then adopted in 1918.",
-      "importance": "medium",
-      "qid": "Q42976"
+      "qid": "Q42976",
+      "reason": "Took place on 7 November by the Gregorian calendar, which the Bolshevik government then adopted in 1918."
     }
   ],
   "meta": {
-    "generated_at": "2026-10-25T13:05:08.317Z",
-    "prompt_version": "2.1.0",
-    "prompt_hash": "49a617acf74e",
-    "schema_version": 3,
-    "model": "opus",
-    "temperature": null,
-    "run_id": "2026-10-25",
+    "qid": "Q12138",
     "locale": "en",
-    "source": {
-      "wikidata_qid": "Q12138"
-    },
-    "tokens": null,
-    "validation": {
-      "schema_valid": true,
-      "connections_returned": 11,
-      "connections_matched_people": 3,
-      "connections_matched_events": 4,
-      "connections_unresolved": 0
-    },
-    "review": {
-      "status": "reviewed",
-      "reviewed_at": "2026-11-16T17:11:06.340Z",
-      "approval": {
-        "policy_version": "2",
-        "profile_hash": "e64f813cdc9875a6bf3c052cdd7d925281a5be714642c954b901bc8207fe0ccb",
-        "report_hash": "5c6833edd06e54d729c18ee7c4533694d9789f9c212c210a7a57cb0a1e28fe74",
-        "method": "automatic"
-      }
-    }
+    "subjectDates": "1582",
+    "approvedAt": "2026-11-16T17:11:06.340Z",
+    "writerModel": "opus",
+    "checkerModel": "gpt-6.1-sol"
   }
 }

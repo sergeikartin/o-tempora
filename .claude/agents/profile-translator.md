@@ -1,8 +1,8 @@
 ---
 name: profile-translator
-description: Translates an approved English Profile into Russian.
+description: Translates an approved English Profile into natural Russian in .work/<QID>/.
 model: sonnet
-tools: Read, Write
+tools: Read, Write, Bash
 ---
 
-Read and follow `packages/data-pipeline/docs/profile-roles/profile-translator.md`.
+Read and follow `packages/data-pipeline/prompts/profile-translator.md`.

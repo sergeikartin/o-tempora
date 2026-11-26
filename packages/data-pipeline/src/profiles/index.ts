@@ -1,98 +1,400 @@
-import type { FinalizeOptions } from './finalize.ts';
+import { fileURLToPath } from 'node:url';
+import { applyProfilePatch } from './patch.ts';
+import { RAW_PROFILES_DIR, SOURCES_DIR, WORK_DIR, workFile } from './paths.ts';
+import {
+  formatZodIssues,
+  ProfileDraftSchema,
+  type ProfileLocale,
+  ProfileLocaleSchema,
+} from './schemas.ts';
+import { fetchSource, readSourceIndex } from './sources.ts';
+import {
+  findCommittedProfile,
+  readJsonIfExists,
+  writeJsonFile,
+} from './store.ts';
+import { findEntities, loadSubjects } from './subjects.ts';
+import { validateCheck, validateDraft, validatePatch } from './validate.ts';
+import {
+  getProfileStatus,
+  type ProfileStage,
+  prepareProfiles,
+  promoteProfile,
+  type StatusScope,
+} from './workflow.ts';
 
-const USAGE = `Usage: profiles <finalize|status|validate|prefetch|evidence|english-audit|english-repair|translation-status|russian-translation|russian-audit> [flags]
-  finalize  [--qids=Q1,Q2,...] [--run-id=<id>] [--model=<id>]
-  status [--qids=Q1,Q2,... | --scope=legendary|mainstream|all] [--stage=<stage1,stage2,...>] [--limit=<n>]
-  validate --qid=Q1 [--file=<path>]
-  prefetch --qids=Q1,Q2,... [--max-sources=5 | --manifest=<file> | --urls=<url1,url2,...>] [--concurrency=<1..3>] [--refresh]
-  evidence (--url=<https URL> [--outline | [--query=<text>] [--offset=<number>] [--length=<chars>]] | --batch=<json|@file>) [--refresh]
-  english-audit --qid=Q1 [--out=<file> | --result=<file>]
-  english-repair --qid=Q1 [--out=<file> | --result=<file>]
-  translation-status [--qids=Q1,Q2,... | --scope=legendary|mainstream|all] [--stage=<stage1,stage2,...>] [--limit=<n>]
-  russian-translation --qid=Q1 [--out=<file>]
-  russian-audit --qid=Q1 --candidate=<file> [--out=<file> | --result=<file>]`;
-
-async function defaultFinalizeOptions(): Promise<
-  Omit<FinalizeOptions, 'model' | 'qids' | 'runId'>
-> {
-  const [
-    { INCOMING_DIR, RAW_PROFILES_DIR },
-    { loadSubjects },
-    { cachedArticleQidResolver },
-  ] = await Promise.all([
-    import('./paths.ts'),
-    import('./subjects.ts'),
-    import('./wikipedia-qids.ts'),
-  ]);
-  return {
-    incomingDir: INCOMING_DIR,
-    profilesDir: RAW_PROFILES_DIR,
-    subjects: loadSubjects(),
-    resolveArticleQids: cachedArticleQidResolver(RAW_PROFILES_DIR),
-  };
+interface ParsedArgs {
+  positional: string[];
+  flags: Record<string, string | true>;
 }
 
-export async function runFinalizeCommand(
-  argv: readonly string[],
-  loadOptions?: () => Omit<FinalizeOptions, 'model' | 'qids' | 'runId'>,
-) {
-  const unknown = argv.find(
-    (arg) =>
-      !arg.startsWith('--qids=') &&
-      !arg.startsWith('--run-id=') &&
-      !arg.startsWith('--model='),
-  );
-  if (unknown) throw new Error(`Unknown finalize flag: ${unknown}\n${USAGE}`);
-  const models = argv.filter((arg) => arg.startsWith('--model='));
-  const model = models[0]?.slice('--model='.length).trim();
-  if (models.length > 1 || model === '')
-    throw new Error('--model takes one non-empty model ID');
-  const [{ parseQidsFlag }, { finalizeProfiles }, { loadWriterModel }] =
-    await Promise.all([
-      import('../fetch/qid-filter.ts'),
-      import('./finalize.ts'),
-      import('./prompt.ts'),
-    ]);
-  const options = loadOptions ? loadOptions() : await defaultFinalizeOptions();
-  const now = new Date();
-  return finalizeProfiles({
-    ...options,
-    model: model ?? (await loadWriterModel()),
-    qids: parseQidsFlag(argv) ?? undefined,
-    runId:
-      argv
-        .find((arg) => arg.startsWith('--run-id='))
-        ?.slice('--run-id='.length) ?? now.toISOString().slice(0, 10),
-  });
-}
-
-async function finalize(argv: readonly string[]): Promise<void> {
-  const result = await runFinalizeCommand(argv);
-  for (const file of result.written) console.log(`wrote ${file}`);
-  for (const file of result.skippedEdited) {
-    console.log(`kept ${file}: edited records are never overwritten`);
+function parseArgs(argv: string[]): ParsedArgs {
+  const positional: string[] = [];
+  const flags: Record<string, string | true> = {};
+  for (const arg of argv) {
+    if (arg.startsWith('--')) {
+      const eq = arg.indexOf('=');
+      if (eq === -1) {
+        flags[arg.slice(2)] = true;
+      } else {
+        flags[arg.slice(2, eq)] = arg.slice(eq + 1);
+      }
+    } else {
+      positional.push(arg);
+    }
   }
-  for (const { file, error } of result.failed) {
-    console.error(`failed ${file}: ${error}`);
-  }
-  console.log(
-    `${result.written.length} written, ${result.skippedEdited.length} kept, ${result.failed.length} failed`,
-  );
-  if (result.failed.length > 0) process.exitCode = 1;
+  return { positional, flags };
 }
 
-async function main(): Promise<void> {
-  const [command, ...argv] = process.argv.slice(2);
-  if (command === 'finalize') {
-    await finalize(argv);
+function flagString(
+  flags: Record<string, string | true>,
+  name: string,
+): string | undefined {
+  const value = flags[name];
+  return typeof value === 'string' ? value : undefined;
+}
+
+function parseLocale(flags: Record<string, string | true>): ProfileLocale {
+  const raw = flagString(flags, 'locale') ?? 'en';
+  const parsed = ProfileLocaleSchema.safeParse(raw);
+  if (!parsed.success) {
+    throw new Error(`Invalid --locale="${raw}" (expected "en" or "ru")`);
+  }
+  return parsed.data;
+}
+
+function parseQidList(raw: string | undefined): string[] {
+  if (!raw) return [];
+  return raw
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+const HELP = `Usage: npm run profiles --workspace packages/data-pipeline -- <command> [options]
+
+Commands:
+  status [--locale=en|ru] [--scope=legendary|mainstream|all] [--stage=...] [--qids=Q1,Q2] [--limit=N]
+  prepare --qids=Q1,Q2 [--locale=en|ru] [--refresh]
+  fetch-source <url> [--refresh]
+  find-entity <query...> [--limit=N]
+  validate <qid> [--locale=en|ru] [--kind=draft|patch|check|recheck] [--file=<path>]
+  apply-patch <qid> [--locale=en|ru]
+  promote <qid> [--locale=en|ru] [--force] [--human-approved]`;
+
+async function main(argv: string[]): Promise<void> {
+  const [command, ...rest] = argv;
+  if (!command || command === '--help' || command === '-h') {
+    console.log(HELP);
     return;
   }
-  const { runCoordinatorCommand } = await import('./coordinator.ts');
-  if (!(await runCoordinatorCommand(command, argv))) throw new Error(USAGE);
+
+  const { positional, flags } = parseArgs(rest);
+
+  switch (command) {
+    case 'status': {
+      const locale = parseLocale(flags);
+      const scopeRaw = flagString(flags, 'scope') ?? 'mainstream';
+      if (
+        scopeRaw !== 'legendary' &&
+        scopeRaw !== 'mainstream' &&
+        scopeRaw !== 'all'
+      ) {
+        throw new Error(`Invalid --scope="${scopeRaw}"`);
+      }
+      const qids = parseQidList(flagString(flags, 'qids'));
+      const stageRaw = flagString(flags, 'stage');
+      const stages = stageRaw
+        ? (stageRaw
+            .split(',')
+            .map((s) => s.trim())
+            .filter(Boolean) as ProfileStage[])
+        : undefined;
+      const limitRaw = flagString(flags, 'limit');
+      const limit = limitRaw !== undefined ? Number(limitRaw) : undefined;
+      if (limit !== undefined && (!Number.isInteger(limit) || limit < 1)) {
+        throw new Error(`Invalid --limit="${limitRaw}"`);
+      }
+      const subjects = loadSubjects({ readOnly: true });
+      const result = await getProfileStatus({
+        locale,
+        scope: scopeRaw as StatusScope,
+        qids: qids.length > 0 ? qids : undefined,
+        stages,
+        limit,
+        subjects,
+      });
+      console.log(JSON.stringify(result, null, 2));
+      return;
+    }
+
+    case 'prepare': {
+      const locale = parseLocale(flags);
+      const qids = [...parseQidList(flagString(flags, 'qids')), ...positional];
+      if (qids.length === 0) {
+        throw new Error('prepare requires --qids=Q1,Q2 or positional QIDs');
+      }
+      const subjects = loadSubjects();
+      const result = await prepareProfiles({
+        qids,
+        locale,
+        subjects,
+        refresh: flags.refresh === true,
+      });
+      console.log(JSON.stringify({ locale, prepared: result }, null, 2));
+      return;
+    }
+
+    case 'fetch-source': {
+      const url = positional[0] ?? flagString(flags, 'url');
+      if (!url) throw new Error('fetch-source requires a URL');
+      const summary = await fetchSource(url, {
+        sourcesDir: SOURCES_DIR,
+        refresh: flags.refresh === true,
+      });
+      console.log(JSON.stringify(summary, null, 2));
+      return;
+    }
+
+    case 'find-entity': {
+      if (positional.length === 0) {
+        throw new Error('find-entity requires one or more search queries');
+      }
+      const limitRaw = flagString(flags, 'limit');
+      const limit = limitRaw !== undefined ? Number(limitRaw) : 5;
+      const subjects = loadSubjects();
+      const results = Object.fromEntries(
+        positional.map((query) => [
+          query,
+          findEntities(subjects, query, limit),
+        ]),
+      );
+      console.log(JSON.stringify(results, null, 2));
+      return;
+    }
+
+    case 'validate': {
+      const qid = positional[0] ?? flagString(flags, 'qid');
+      const locale = parseLocale(flags);
+      const kind = flagString(flags, 'kind') ?? 'draft';
+      const explicitFile = flagString(flags, 'file');
+      if (!qid && !explicitFile) {
+        throw new Error('validate requires <qid> or --file=<path>');
+      }
+      const filePath =
+        explicitFile ??
+        workFile(
+          qid as string,
+          kind === 'draft'
+            ? `${locale}.draft.json`
+            : kind === 'patch'
+              ? `${locale}.patch.json`
+              : kind === 'recheck'
+                ? `${locale}.recheck.json`
+                : `${locale}.check.json`,
+          WORK_DIR,
+        );
+      const raw = await readJsonIfExists(filePath);
+      if (raw === undefined) {
+        throw new Error(`File not found: ${filePath}`);
+      }
+
+      if (kind === 'patch') {
+        const result = validatePatch(raw);
+        console.log(
+          JSON.stringify(
+            { ok: result.ok, kind, filePath, issues: result.issues },
+            null,
+            2,
+          ),
+        );
+        if (!result.ok) process.exitCode = 1;
+        return;
+      }
+
+      if (kind === 'check' || kind === 'recheck') {
+        const result = validateCheck(raw, qid ? { qid, locale } : undefined);
+        console.log(
+          JSON.stringify(
+            { ok: result.ok, kind, filePath, issues: result.issues },
+            null,
+            2,
+          ),
+        );
+        if (!result.ok) process.exitCode = 1;
+        return;
+      }
+
+      if (kind !== 'draft') {
+        throw new Error(
+          `Unknown --kind="${kind}" (expected draft|patch|check|recheck)`,
+        );
+      }
+
+      const subjects = loadSubjects();
+      const subjectByQid = new Map(subjects.map((s) => [s.qid, s]));
+      const targetQid =
+        qid ??
+        (raw &&
+        typeof raw === 'object' &&
+        'qid' in raw &&
+        typeof raw.qid === 'string'
+          ? raw.qid
+          : undefined);
+      const subject = targetQid ? subjectByQid.get(targetQid) : undefined;
+      if (!subject) {
+        throw new Error(`Unknown dataset QID: ${targetQid ?? '(missing)'}`);
+      }
+      const sourceIndex =
+        locale === 'en' ? await readSourceIndex(SOURCES_DIR) : undefined;
+      const englishProfile =
+        locale === 'ru'
+          ? (await findCommittedProfile(subject.qid, 'en', RAW_PROFILES_DIR))
+              ?.profile
+          : undefined;
+      const result = validateDraft(raw, {
+        locale,
+        subject,
+        subjectByQid,
+        sourceIndex,
+        englishProfile,
+      });
+      console.log(
+        JSON.stringify(
+          {
+            ok: result.ok,
+            kind,
+            qid: subject.qid,
+            locale,
+            filePath,
+            issues: result.issues,
+          },
+          null,
+          2,
+        ),
+      );
+      if (!result.ok) process.exitCode = 1;
+      return;
+    }
+
+    case 'apply-patch': {
+      const qid = positional[0] ?? flagString(flags, 'qid');
+      if (!qid) throw new Error('apply-patch requires <qid>');
+      const locale = parseLocale(flags);
+      const draftPath = workFile(qid, `${locale}.draft.json`, WORK_DIR);
+      const checkPath = workFile(qid, `${locale}.check.json`, WORK_DIR);
+      const patchPath = workFile(qid, `${locale}.patch.json`, WORK_DIR);
+
+      const [draftRaw, checkRaw, patchRaw] = await Promise.all([
+        readJsonIfExists(draftPath),
+        readJsonIfExists(checkPath),
+        readJsonIfExists(patchPath),
+      ]);
+      if (draftRaw === undefined)
+        throw new Error(`Missing draft: ${draftPath}`);
+      if (checkRaw === undefined)
+        throw new Error(`Missing check: ${checkPath}`);
+      if (patchRaw === undefined)
+        throw new Error(`Missing patch: ${patchPath}`);
+
+      const checkResult = validateCheck(checkRaw, { qid, locale });
+      if (!checkResult.ok || !checkResult.data) {
+        throw new Error(
+          `Invalid check verdict: ${checkResult.issues.join('; ')}`,
+        );
+      }
+      const patchResult = validatePatch(patchRaw);
+      if (!patchResult.ok || !patchResult.data) {
+        throw new Error(`Invalid patch: ${patchResult.issues.join('; ')}`);
+      }
+
+      const subjects = loadSubjects();
+      const subjectByQid = new Map(subjects.map((s) => [s.qid, s]));
+      const subject = subjectByQid.get(qid);
+      if (!subject) throw new Error(`Unknown dataset QID: ${qid}`);
+
+      const initialDraft = ProfileDraftSchema.safeParse(draftRaw);
+      if (!initialDraft.success) {
+        throw new Error(
+          `Invalid base draft: ${formatZodIssues(initialDraft.error).join('; ')}`,
+        );
+      }
+
+      const { draft: merged, patchedPaths } = applyProfilePatch(
+        initialDraft.data,
+        checkResult.data,
+        patchResult.data,
+      );
+
+      const sourceIndex =
+        locale === 'en' ? await readSourceIndex(SOURCES_DIR) : undefined;
+      const englishProfile =
+        locale === 'ru'
+          ? (await findCommittedProfile(qid, 'en', RAW_PROFILES_DIR))?.profile
+          : undefined;
+
+      const postValidation = validateDraft(merged, {
+        locale,
+        subject,
+        subjectByQid,
+        sourceIndex,
+        englishProfile,
+      });
+      if (!postValidation.ok) {
+        console.log(
+          JSON.stringify(
+            {
+              ok: false,
+              qid,
+              locale,
+              patchedPaths,
+              issues: postValidation.issues,
+            },
+            null,
+            2,
+          ),
+        );
+        process.exitCode = 1;
+        return;
+      }
+
+      await writeJsonFile(draftPath, merged);
+      console.log(
+        JSON.stringify(
+          { ok: true, qid, locale, patchedPaths, draftPath },
+          null,
+          2,
+        ),
+      );
+      return;
+    }
+
+    case 'promote': {
+      const qid = positional[0] ?? flagString(flags, 'qid');
+      if (!qid) throw new Error('promote requires <qid>');
+      const locale = parseLocale(flags);
+      const subjects = loadSubjects();
+      const result = await promoteProfile({
+        qid,
+        locale,
+        subjects,
+        force: flags.force === true,
+        humanApproved: flags['human-approved'] === true,
+      });
+      console.log(JSON.stringify(result, null, 2));
+      return;
+    }
+
+    default:
+      throw new Error(
+        `Unknown command "${command}". Run with --help for usage.`,
+      );
+  }
 }
 
-if (import.meta.main)
-  main().catch((error: unknown) => {
-    console.error(error instanceof Error ? error.message : error);
+if (fileURLToPath(import.meta.url) === process.argv[1]) {
+  main(process.argv.slice(2)).catch((error: unknown) => {
+    console.error(error instanceof Error ? error.message : String(error));
     process.exitCode = 1;
   });
+}

@@ -1,0 +1,78 @@
+{
+  "overview": "Michelangelo was an Italian sculptor, painter, architect and poet who worked chiefly in Florence and Rome. He drew from living models and studied dissected bodies to understand how muscles change the outline of a figure in motion.",
+  "keyMoments": [
+    {
+      "date": "Late 1490s",
+      "title": "A Pietà for a cardinal’s tomb",
+      "text": "In Rome, a French cardinal commissioned a sculpture for his tomb in the old St Peter’s Basilica. From **a single block of Carrara marble**, Michelangelo carved the Virgin Mary holding the dead Christ in her arms.",
+      "sourceUrl": "https://www.basilicasanpietro.va/en/san-pietro/the-pieta-of-saint-peter-s"
+    },
+    {
+      "date": "1501–1504",
+      "title": "David by the town hall",
+      "text": "Michelangelo carved **David** from a block of marble that another sculptor had already begun to shape. According to the Victoria and Albert Museum, the statue was originally intended for the roof of Florence Cathedral. The city later chose a site outside its town hall, in the Piazza della Signoria.",
+      "sourceUrl": "https://www.vam.ac.uk/articles/the-story-of-michelangelos-david"
+    },
+    {
+      "date": "1508–1512",
+      "title": "A new plan for the Sistine ceiling",
+      "text": "The contract with Pope Julius II called for twelve apostles and ornamental painting. Michelangelo asked for a different commission, and Julius let him plan the ceiling. Down its center, **nine scenes from Genesis** unfold inside a framework of painted architecture.",
+      "sourceUrl": "https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/cappella-sistina/volta.html"
+    },
+    {
+      "date": "1564",
+      "title": "An unfinished dome",
+      "text": "Pope Paul III had put Michelangelo in charge of building the new **St Peter’s Basilica**. He tested ideas for its dome with drawings and models. By the time he died, construction had reached the drum on which the dome would stand.",
+      "sourceUrl": "https://www.getty.edu/art/exhibitions/michelangelo_drawings/explore.html"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "A sheet at the Casa Buonarroti in Florence preserves one of Michelangelo’s shopping lists. He illustrated the groceries as well as naming them. Among the items on the page are bread, herring and wine.",
+      "isLegend": false,
+      "sourceUrl": "https://courtauld.ac.uk/research/research-resources/publications/immeditations-postgraduate-journal/immediations-online/2018-2/peter-crack-a-renaissance-menu-word-and-image-in-a-sixteenth-century-italian-drawing/"
+    },
+    {
+      "text": "In Florence, Michelangelo designed a chapel to hold the Medici family’s tombs. He also served the Florentine republic after the Medici lost power. The hand that sketched a figure for one of the tombs drew plans for the city’s defenses.",
+      "isLegend": false,
+      "sourceUrl": "https://www.casabuonarroti.it/en/museum/collections/michelangelos-drawings/study-of-fortification-for-the-porta-al-prato-of-ognissanti/"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "julius-ii",
+      "reason": "Julius commissioned his own tomb from Michelangelo, a project that produced the statue of Moses.",
+      "name": "Julius II",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "lorenzo-de-medici",
+      "reason": "Lorenzo took the young sculptor into his household in Florence.",
+      "name": "Lorenzo de' Medici",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "sistine-chapel-ceiling",
+      "reason": "Michelangelo returned to the chapel years after painting its ceiling to paint the Last Judgment above the altar.",
+      "name": "Sistine Chapel ceiling",
+      "lane": "milestones",
+      "detailLevel": 4
+    },
+    {
+      "slug": "leonardo-da-vinci",
+      "reason": "Florence commissioned Leonardo and Michelangelo to paint battle scenes on opposite walls of its council chamber.",
+      "name": "Leonardo da Vinci",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "domenico-ghirlandaio",
+      "reason": "Michelangelo trained in Florence under the painter Domenico Ghirlandaio.",
+      "name": "Domenico Ghirlandaio",
+      "lane": "people",
+      "detailLevel": 4
+    }
+  ]
+}

@@ -1,174 +1,80 @@
 {
-  "subject": "Vincent van Gogh",
-  "type": "person",
-  "wikipedia_url": "https://en.wikipedia.org/wiki/Vincent_van_Gogh",
   "overview": "Vincent van Gogh was a Dutch painter who went from painting farm workers in dark earth colours in the Netherlands to experimenting with bright colours and short brushstrokes in France. He used colour to convey how he felt about what he saw, an approach that made his work a touchstone for later painters.",
-  "key_moments": [
+  "keyMoments": [
     {
       "date": "1885",
       "title": "The Potato Eaters",
       "text": "In Nuenen, in the Netherlands, Van Gogh set himself a test as a figure painter. In **The Potato Eaters**, he used dark earth colours and gave the farm workers bony hands. He wanted the hands reaching toward the dish to show that these people had worked the soil for the food they were about to eat.",
-      "claims": [
-        "Vincent van Gogh painted The Potato Eaters in Nuenen in the Netherlands in 1885.",
-        "Vincent van Gogh deliberately chose a difficult composition for The Potato Eaters to test his skill as a figure painter.",
-        "Vincent van Gogh painted the farm workers in The Potato Eaters in earth colours and gave them bony hands.",
-        "Vincent van Gogh intended the hands reaching toward the dish in The Potato Eaters to show that the people had worked the soil for their meal."
-      ],
-      "source": "https://www.vangoghmuseum.nl/en/collection/s0005V1962"
+      "sourceUrl": "https://www.vangoghmuseum.nl/en/collection/s0005V1962"
     },
     {
       "date": "1886–1888",
       "title": "A brighter palette in Paris",
       "text": "His brother Theo introduced him to modern painters’ work, including **Claude Monet’s**. Van Gogh began using brighter colours and short strokes, taking up subjects such as cafés and boulevards. He and Theo also collected Japanese woodcuts, whose bold outlines and abrupt cropping gave him more ways to compose a picture.",
-      "claims": [
-        "Vincent van Gogh lived in Paris from 1886 to 1888.",
-        "Theo van Gogh introduced Vincent van Gogh to the work of Claude Monet.",
-        "In Paris Vincent van Gogh took up brighter colours, short strokes and subjects such as cafés and boulevards.",
-        "Vincent and Theo van Gogh collected Japanese woodcuts, whose outlines and cropping influenced Vincent van Gogh’s own work."
-      ],
-      "source": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/from-dark-to-light"
+      "sourceUrl": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/from-dark-to-light"
     },
     {
       "date": "1888",
       "title": "The Yellow House",
       "text": "Van Gogh rented rooms in Arles for a painters’ colony he called the **Studio of the South**. Paul Gauguin came to live and work with him. In December, Van Gogh was hospitalised after injuring his ear, and Gauguin left, ending the experiment. The project gave Van Gogh a reason to paint the flowers now so closely associated with him. In August 1888, he painted a series of **Sunflowers** to decorate the house for Gauguin’s arrival.",
-      "claims": [
-        "Vincent van Gogh rented rooms in the Yellow House in Arles in 1888 for a project called the Studio of the South.",
-        "Paul Gauguin lived and worked with Vincent van Gogh in Arles in 1888.",
-        "Vincent van Gogh was hospitalised after injuring his ear in December 1888, and Paul Gauguin’s departure ended their shared studio experiment.",
-        "In August 1888, Vincent van Gogh painted a series of Sunflowers to decorate the Yellow House in Arles for Paul Gauguin’s arrival."
-      ],
-      "source": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/south-of-france"
+      "sourceUrl": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/south-of-france"
     },
     {
       "date": "1889–1890",
       "title": "From Saint-Rémy to Auvers",
       "text": "Van Gogh admitted himself to the psychiatric hospital at Saint-Rémy and soon returned to painting. There he made **The Starry Night**, setting a cypress and a village he imagined beneath a sky alive with stars. He left the clinic for **Auvers-sur-Oise**, where he painted in the surrounding countryside until shortly before his death in July 1890.",
-      "claims": [
-        "Vincent van Gogh voluntarily entered the psychiatric hospital at Saint-Rémy in 1889 and soon resumed painting.",
-        "Vincent van Gogh painted The Starry Night at Saint-Rémy in 1889, depicting a cypress and an imagined village beneath a star-filled sky.",
-        "Vincent van Gogh moved from the clinic at Saint-Rémy to Auvers-sur-Oise and painted in the surrounding countryside.",
-        "Vincent van Gogh died in Auvers-sur-Oise in July 1890."
-      ],
-      "source": "https://www.musee-estrine.fr/en/vincent-van-gogh-en/"
+      "sourceUrl": "https://www.musee-estrine.fr/en/vincent-van-gogh-en/"
     }
   ],
-  "deep_facts": [
+  "deepFacts": [
     {
       "text": "A pipe and tobacco sit on a plain wooden chair in daylight. A candle and novels rest on a carved armchair at night. Van Gogh painted the chairs as a pair. The objects and the light make the paintings a double portrait of himself and Paul Gauguin without showing either man.",
-      "type": "unique_detail",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Van Gogh’s Chair depicts a plain wooden chair with a pipe and tobacco in daylight.",
-        "Gauguin’s Chair depicts a carved armchair with a lit candle and novels at night.",
-        "Vincent van Gogh painted Van Gogh’s Chair and Gauguin’s Chair as paired stand-ins for portraits of himself and Paul Gauguin."
-      ],
-      "source": "https://www.nationalgallery.org.uk/paintings/vincent-van-gogh-van-gogh-s-chair"
+      "isLegend": false,
+      "sourceUrl": "https://www.nationalgallery.org.uk/paintings/vincent-van-gogh-van-gogh-s-chair"
     },
     {
       "text": "Van Gogh sometimes reused a canvas by painting straight over an earlier picture. X-rays can reveal the hidden picture. Beneath Ravine, the Museum of Fine Arts in Boston found a composition that researchers linked to a drawing Van Gogh had sent his brother Theo. Beneath a basket of apples, a different study found a pot of flowers.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Vincent van Gogh sometimes painted over earlier works on the same canvas.",
-        "Meta Chavannes, a conservator at the Museum of Fine Arts in Boston, spotted an earlier painting beneath Vincent van Gogh’s Ravine while examining X-rays.",
-        "Researchers linked the composition beneath Ravine to a drawing Vincent van Gogh sent to Theo van Gogh.",
-        "An X-ray examination of Vincent van Gogh’s Basket of Apples showed a flower arrangement beneath the visible painting."
-      ],
-      "source": "https://www.mfa.org/collections/europe/missing-van-gogh-discovered"
+      "isLegend": false,
+      "sourceUrl": "https://www.mfa.org/collections/europe/missing-van-gogh-discovered"
     },
     {
       "text": "Van Gogh had an audience during his lifetime. In early 1890, a group exhibition in Brussels showed several of his canvases, and the critic Albert Aurier published a favourable article about his work. The Red Vineyard, one of the paintings on display, also found a buyer.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Several of Vincent van Gogh’s paintings were shown at a group exhibition in Brussels in early 1890.",
-        "Albert Aurier published a favourable article on Vincent van Gogh’s work in 1890.",
-        "Vincent van Gogh’s The Red Vineyard was shown in Brussels and was sold."
-      ],
-      "source": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/hospitalization"
+      "isLegend": false,
+      "sourceUrl": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890/hospitalization"
     }
   ],
   "connections": [
     {
-      "name": "Paul Gauguin",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Paul_Gauguin",
-      "connection": "Lived and painted with Van Gogh in the Yellow House in Arles.",
-      "importance": "high",
-      "qid": "Q37693"
+      "qid": "Q37693",
+      "reason": "Lived and painted with Van Gogh in the Yellow House in Arles."
     },
     {
-      "name": "The Starry Night",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/The_Starry_Night",
-      "connection": "Van Gogh painted this night landscape while staying at the clinic in Saint-Rémy.",
-      "importance": "high",
-      "qid": "Q45585"
+      "qid": "Q45585",
+      "reason": "Van Gogh painted this night landscape while staying at the clinic in Saint-Rémy."
     },
     {
-      "name": "Jean-François Millet",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Jean-François_Millet",
-      "connection": "Van Gogh used a wood engraving after Millet’s work as the model for his own painting The Thresher.",
-      "importance": "medium",
-      "qid": "Q148458"
+      "qid": "Q148458",
+      "reason": "Van Gogh used a wood engraving after Millet’s work as the model for his own painting The Thresher."
     },
     {
-      "name": "Claude Monet",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Claude_Monet",
-      "connection": "His paintings were among the modern works Theo van Gogh introduced to Vincent in Paris.",
-      "importance": "medium",
-      "qid": "Q296"
+      "qid": "Q296",
+      "reason": "His paintings were among the modern works Theo van Gogh introduced to Vincent in Paris."
     },
     {
-      "name": "Henri de Toulouse-Lautrec",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Henri_de_Toulouse-Lautrec",
-      "connection": "Met Van Gogh at Fernand Cormon’s studio and made a pastel portrait of him with a glass of absinthe on the table.",
-      "importance": "medium",
-      "qid": "Q82445"
+      "qid": "Q82445",
+      "reason": "Met Van Gogh at Fernand Cormon’s studio and made a pastel portrait of him with a glass of absinthe on the table."
     },
     {
-      "name": "Eugène Delacroix",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Eugène_Delacroix",
-      "connection": "Van Gogh made his own colour version of Delacroix’s The Good Samaritan from a black-and-white reproduction.",
-      "importance": "medium",
-      "qid": "Q33477"
+      "qid": "Q33477",
+      "reason": "Van Gogh made his own colour version of Delacroix’s The Good Samaritan from a black-and-white reproduction."
     }
   ],
   "meta": {
-    "generated_at": "2026-11-24T03:56:04.820Z",
-    "prompt_version": "2.4.0",
-    "prompt_hash": "d1e011c13521",
-    "schema_version": 3,
-    "model": "gpt-6.2-sol",
-    "reasoning_effort": "medium",
-    "temperature": null,
-    "run_id": "2026-11-24-van-gogh-trial",
+    "qid": "Q5582",
     "locale": "en",
-    "source": {
-      "wikidata_qid": "Q5582"
-    },
-    "tokens": {
-      "input": 3669885,
-      "output": 17529
-    },
-    "validation": {
-      "schema_valid": true,
-      "connections_returned": 6,
-      "connections_matched_people": 5,
-      "connections_matched_events": 1,
-      "connections_unresolved": 0
-    },
-    "review": {
-      "status": "reviewed",
-      "reviewed_at": "2026-11-24T04:05:58.181Z",
-      "approval": {
-        "policy_version": "3",
-        "profile_hash": "a40dc8bac555471e8669d0aea007dae058eefeb39d1a45ad4d4b72977e1d7a77",
-        "report_hash": "ec77a2872e4ba95e08cb1286353552aee474ce3afe7fdf79eb001ad70a7fb735",
-        "method": "automatic"
-      }
-    }
+    "subjectDates": "1853–1890",
+    "approvedAt": "2026-11-24T04:05:58.181Z",
+    "writerModel": "gpt-6.2-sol",
+    "checkerModel": "gpt-6.2-sol"
   }
 }

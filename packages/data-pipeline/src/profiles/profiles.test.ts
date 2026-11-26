@@ -1,0 +1,609 @@
+import assert from 'node:assert/strict';
+import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { test } from 'node:test';
+import { applyProfilePatch } from './patch.ts';
+import { workFile } from './paths.ts';
+import {
+  type CheckVerdict,
+  CheckVerdictSchema,
+  computeEnglishSourceHash,
+  type ProfileDraft,
+  ProfilePatchSchema,
+  type StoredProfile,
+  StoredProfileSchema,
+} from './schemas.ts';
+import {
+  extractMarkdownHeadings,
+  fetchSource,
+  htmlToCleanMarkdown,
+  readSourceIndex,
+} from './sources.ts';
+import { writeJsonFile } from './store.ts';
+import { findEntities, formatDates, type ProfileSubject } from './subjects.ts';
+import { validateCheck, validateDraft } from './validate.ts';
+import {
+  getProfileStatus,
+  prepareProfiles,
+  promoteProfile,
+} from './workflow.ts';
+
+const EINSTEIN: ProfileSubject = {
+  qid: 'Q937',
+  lane: 'people',
+  slug: 'albert-einstein',
+  name: 'Albert Einstein',
+  tagline: 'German-born theoretical physicist',
+  dateSpan: { startYear: 1879, endYear: 1955 },
+  wikipediaUrl: 'https://en.wikipedia.org/wiki/Albert_Einstein',
+  fameScore: 98,
+  detailLevel: 1,
+  ru: { name: 'Альберт Эйнштейн' },
+};
+
+const SUBJECTS: ProfileSubject[] = [
+  EINSTEIN,
+  {
+    qid: 'Q9021',
+    lane: 'people',
+    slug: 'max-planck',
+    name: 'Max Planck',
+    tagline: 'German theoretical physicist',
+    dateSpan: { startYear: 1858, endYear: 1947 },
+    wikipediaUrl: 'https://en.wikipedia.org/wiki/Max_Planck',
+    fameScore: 86,
+    detailLevel: 3,
+    ru: { name: 'Макс Планк' },
+  },
+  {
+    qid: 'Q11452',
+    lane: 'milestones',
+    slug: 'general-relativity',
+    name: 'general relativity',
+    tagline: 'theory of gravitation',
+    dateSpan: { startYear: 1915 },
+    wikipediaUrl: 'https://en.wikipedia.org/wiki/General_relativity',
+    fameScore: 84,
+    detailLevel: 2,
+    ru: { name: 'общая теория относительности' },
+  },
+];
+
+const SUBJECT_BY_QID = new Map(SUBJECTS.map((s) => [s.qid, s]));
+
+function sampleEnDraft(overrides: Partial<ProfileDraft> = {}): ProfileDraft {
+  return {
+    qid: 'Q937',
+    subjectDates: '1879–1955',
+    writerModel: 'test-writer',
+    overview: 'Albert Einstein reshaped **modern physics**.',
+    keyMoments: [
+      {
+        date: '1905',
+        title: 'Miracle year',
+        text: 'He published **special relativity** in Bern.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Albert_Einstein#1905',
+      },
+      {
+        date: '1915–1919',
+        title: 'Eclipse confirmation',
+        text: 'General relativity passed its **1919 eclipse** test.',
+        sourceUrl: 'https://example.org/eclipse',
+      },
+    ],
+    deepFacts: [
+      {
+        text: 'He co-patented a **1930** refrigerator with Leó Szilárd.',
+        isLegend: false,
+        sourceUrl: 'https://example.org/fridge',
+      },
+    ],
+    connections: [
+      {
+        qid: 'Q9021',
+        reason: 'Planck persuaded Einstein to move to Berlin.',
+      },
+    ],
+    ...overrides,
+  };
+}
+
+function sampleStoredEn(overrides: Partial<StoredProfile> = {}): StoredProfile {
+  const draft = sampleEnDraft();
+  return {
+    overview: draft.overview,
+    keyMoments: draft.keyMoments,
+    deepFacts: draft.deepFacts,
+    connections: draft.connections,
+    meta: {
+      qid: 'Q937',
+      locale: 'en',
+      subjectDates: '1879–1955',
+      approvedAt: '2026-11-26T00:00:00.000Z',
+    },
+    ...overrides,
+  };
+}
+
+function sampleCheck(overrides: Partial<CheckVerdict> = {}): CheckVerdict {
+  return {
+    qid: 'Q937',
+    locale: 'en',
+    verdict: 'pass',
+    checkerModel: 'test-checker',
+    checks: [{ path: 'overview', status: 'pass', note: 'Verified.' }],
+    blockers: [],
+    suggestions: [],
+    ...overrides,
+  };
+}
+
+test('CheckVerdictSchema enforces blocker consistency for pass and revise', () => {
+  assert.equal(CheckVerdictSchema.safeParse(sampleCheck()).success, true);
+  assert.equal(
+    CheckVerdictSchema.safeParse(
+      sampleCheck({
+        verdict: 'pass',
+        blockers: [{ path: 'overview', issue: 'x', fix: 'y' }],
+      }),
+    ).success,
+    false,
+  );
+  assert.equal(
+    CheckVerdictSchema.safeParse(
+      sampleCheck({ verdict: 'revise', blockers: [] }),
+    ).success,
+    false,
+  );
+});
+
+test('computeEnglishSourceHash ignores sourceUrl edits but detects prose changes', () => {
+  const base = sampleStoredEn();
+  const [firstMoment, secondMoment] = base.keyMoments;
+  assert.ok(firstMoment && secondMoment);
+  const urlChanged = sampleStoredEn({
+    keyMoments: [
+      {
+        ...firstMoment,
+        sourceUrl: 'https://example.org/different-source',
+      },
+      secondMoment,
+    ],
+  });
+  const proseChanged = sampleStoredEn({
+    overview: 'Albert Einstein transformed **physics**.',
+  });
+
+  assert.equal(
+    computeEnglishSourceHash(base),
+    computeEnglishSourceHash(urlChanged),
+  );
+  assert.notEqual(
+    computeEnglishSourceHash(base),
+    computeEnglishSourceHash(proseChanged),
+  );
+});
+
+test('findEntities matches by name, Russian name, QID, and Wikipedia URL offline', () => {
+  assert.equal(findEntities(SUBJECTS, 'Planck')[0]?.qid, 'Q9021');
+  assert.equal(findEntities(SUBJECTS, 'Q11452')[0]?.slug, 'general-relativity');
+  assert.equal(findEntities(SUBJECTS, 'Альберт Эйнштейн')[0]?.qid, 'Q937');
+  assert.equal(
+    findEntities(SUBJECTS, 'https://en.wikipedia.org/wiki/Max_Planck')[0]?.qid,
+    'Q9021',
+  );
+  assert.deepEqual(findEntities(SUBJECTS, 'Nonexistent Person'), []);
+});
+
+test('formatDates handles BC/AD, approximate, and ongoing spans', () => {
+  assert.equal(formatDates({ startYear: 1879, endYear: 1955 }), '1879–1955');
+  assert.equal(formatDates({ startYear: -550, endYear: -478 }), '551–479 BC');
+  assert.equal(formatDates({ startYear: -43, endYear: 14 }), '44 BC–AD 14');
+  assert.equal(formatDates({ startYear: 1950, ongoing: true }), '1950–present');
+});
+
+test('htmlToCleanMarkdown strips scripts/nav and preserves headings for line indexing', () => {
+  const html = `
+    <html><head><title>Test Page</title></head>
+    <body>
+      <nav><a href="/">Skip nav</a></nav>
+      <script>alert(1)</script>
+      <h1>Main Title</h1>
+      <p>Hello <b>world</b>.</p>
+      <h2>Early life<span class="mw-editsection">[edit]</span></h2>
+      <p>Born in 1879.</p>
+    </body></html>
+  `;
+  const md = htmlToCleanMarkdown(html);
+  assert.ok(!md.includes('Skip nav'));
+  assert.ok(!md.includes('alert(1)'));
+  assert.ok(!md.includes('[edit]'));
+  assert.ok(md.includes('# Main Title'));
+  assert.ok(md.includes('## Early life'));
+  const headings = extractMarkdownHeadings(md);
+  assert.deepEqual(
+    headings.map((h) => ({ level: h.level, heading: h.heading })),
+    [
+      { level: 1, heading: 'Main Title' },
+      { level: 2, heading: 'Early life' },
+    ],
+  );
+});
+
+test('fetchSource caches clean markdown, indexes redirects, and rejects bot walls / PDFs', async (t) => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'profiles-sources-'));
+  t.after(() => rm(dir, { recursive: true, force: true }));
+
+  const longBody = 'Historical fact paragraph. '.repeat(20);
+  const mockFetch = (async (input: string | URL | Request) => {
+    const url = String(input);
+    if (url.includes('redirect')) {
+      return new Response(
+        `<html><head><title>Target</title></head><body><h1>Heading</h1><p>${longBody}</p></body></html>`,
+        {
+          status: 200,
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+        },
+      );
+    }
+    if (url.includes('botwall')) {
+      return new Response(
+        `<html><head><title>Just a moment...</title></head><body><p>Verify you are human ${longBody}</p></body></html>`,
+        { status: 200, headers: { 'content-type': 'text/html' } },
+      );
+    }
+    if (url.includes('paper.pdf')) {
+      return new Response('%PDF-1.7', {
+        status: 200,
+        headers: { 'content-type': 'application/pdf' },
+      });
+    }
+    return new Response('Not found', { status: 404 });
+  }) as unknown as typeof fetch;
+
+  const first = await fetchSource('https://example.org/redirect', {
+    sourcesDir: dir,
+    fetchImpl: mockFetch,
+  });
+  assert.equal(first.cached, false);
+  assert.equal(first.title, 'Target');
+  assert.ok(first.headings.some((h) => h.heading === 'Heading'));
+
+  const second = await fetchSource('https://example.org/redirect#Heading', {
+    sourcesDir: dir,
+    fetchImpl: mockFetch,
+  });
+  assert.equal(second.cached, true);
+  assert.equal(second.path, first.path);
+
+  const index = await readSourceIndex(dir);
+  assert.ok(index['https://example.org/redirect']);
+
+  await assert.rejects(
+    fetchSource('https://example.org/botwall', {
+      sourcesDir: dir,
+      fetchImpl: mockFetch,
+    }),
+    /bot challenge/i,
+  );
+  await assert.rejects(
+    fetchSource('https://example.org/paper.pdf', {
+      sourcesDir: dir,
+      fetchImpl: mockFetch,
+    }),
+    /Unsupported content-type/i,
+  );
+});
+
+test('validateDraft checks English cached URLs, dates, markup, and Connections', () => {
+  const sourceIndex = {
+    'https://en.wikipedia.org/wiki/Albert_Einstein': {
+      hash: 'a',
+      file: 'a.md',
+      requestedUrl: 'https://en.wikipedia.org/wiki/Albert_Einstein',
+      finalUrl: 'https://en.wikipedia.org/wiki/Albert_Einstein',
+      title: 'Albert Einstein',
+      fetchedAt: '2026-11-26T00:00:00Z',
+      lineCount: 100,
+    },
+    'https://example.org/eclipse': {
+      hash: 'b',
+      file: 'b.md',
+      requestedUrl: 'https://example.org/eclipse',
+      finalUrl: 'https://example.org/eclipse',
+      title: 'Eclipse',
+      fetchedAt: '2026-11-26T00:00:00Z',
+      lineCount: 40,
+    },
+    'https://example.org/fridge': {
+      hash: 'c',
+      file: 'c.md',
+      requestedUrl: 'https://example.org/fridge',
+      finalUrl: 'https://example.org/fridge',
+      title: 'Fridge',
+      fetchedAt: '2026-11-26T00:00:00Z',
+      lineCount: 40,
+    },
+  };
+
+  const valid = validateDraft(sampleEnDraft(), {
+    locale: 'en',
+    subject: EINSTEIN,
+    subjectByQid: SUBJECT_BY_QID,
+    sourceIndex,
+  });
+  assert.equal(valid.ok, true);
+
+  const invalid = validateDraft(
+    sampleEnDraft({
+      overview: 'Unpaired **bold',
+      keyMoments: [
+        {
+          date: '1950–1910',
+          title: 'Bad range',
+          text: 'Text',
+          sourceUrl: 'https://uncached.example/page',
+        },
+      ],
+      connections: [
+        { qid: 'Q937', reason: 'Self.' },
+        { qid: 'Q999999', reason: 'Missing.' },
+      ],
+    }),
+    {
+      locale: 'en',
+      subject: EINSTEIN,
+      subjectByQid: SUBJECT_BY_QID,
+      sourceIndex,
+    },
+  );
+  assert.equal(invalid.ok, false);
+  assert.ok(invalid.issues.some((i) => i.includes('unpaired "**"')));
+  assert.ok(invalid.issues.some((i) => i.includes('reversed year range')));
+  assert.ok(invalid.issues.some((i) => i.includes('not been fetched')));
+  assert.ok(
+    invalid.issues.some((i) => i.includes('connect subject to itself')),
+  );
+  assert.ok(invalid.issues.some((i) => i.includes('Q999999')));
+});
+
+test('validateDraft checks Russian alignment, bold, Cyrillic, and Roman numerals', () => {
+  const en = sampleStoredEn({
+    overview: 'A **19th**-century pioneer.',
+  });
+  const sourceHash = computeEnglishSourceHash(en);
+
+  const ruOk = validateDraft(
+    {
+      qid: 'Q937',
+      subjectDates: '1879–1955',
+      sourceHash,
+      overview: 'Новатор **XIX** века.',
+      keyMoments: [
+        {
+          date: '1905',
+          title: 'Год чудес',
+          text: 'Он опубликовал **специальную теорию относительности** в Берне.',
+          sourceUrl: en.keyMoments[0]?.sourceUrl,
+        },
+        {
+          date: '1915–1919',
+          title: 'Затмение',
+          text: 'Общая теория прошла проверку во время **затмения 1919 года**.',
+          sourceUrl: en.keyMoments[1]?.sourceUrl,
+        },
+      ],
+      deepFacts: [
+        {
+          text: 'В **1930** году он запатентовал холодильник с Лео Силардом.',
+          isLegend: false,
+          sourceUrl: en.deepFacts[0]?.sourceUrl,
+        },
+      ],
+      connections: [
+        { qid: 'Q9021', reason: 'Планк убедил Эйнштейна переехать в Берлин.' },
+      ],
+    },
+    {
+      locale: 'ru',
+      subject: EINSTEIN,
+      subjectByQid: SUBJECT_BY_QID,
+      englishProfile: en,
+    },
+  );
+  assert.equal(ruOk.ok, true, ruOk.issues.join('; '));
+
+  const ruBad = validateDraft(
+    {
+      qid: 'Q937',
+      subjectDates: '1879–1955',
+      sourceHash: 'wrong-hash',
+      overview: 'Still in English without bold.',
+      keyMoments: [],
+      deepFacts: [],
+      connections: [],
+    },
+    {
+      locale: 'ru',
+      subject: EINSTEIN,
+      subjectByQid: SUBJECT_BY_QID,
+      englishProfile: en,
+    },
+  );
+  assert.equal(ruBad.ok, false);
+});
+
+test('applyProfilePatch enforces blocker paths and preserves untouched passages verbatim', () => {
+  const draft = sampleEnDraft();
+  const check = sampleCheck({
+    verdict: 'revise',
+    blockers: [
+      {
+        path: 'deepFacts.0.text',
+        issue: 'Check refrigerator claim.',
+        fix: 'Drop or clarify.',
+      },
+    ],
+  });
+
+  const disallowedPatch = ProfilePatchSchema.parse({
+    overview: 'Changed overview sneakily.',
+  });
+  assert.throws(
+    () => applyProfilePatch(draft, check, disallowedPatch),
+    /unflagged path\(s\): overview/,
+  );
+
+  const dropPatch = ProfilePatchSchema.parse({
+    deepFacts: { '0': null },
+  });
+  const { draft: merged, patchedPaths } = applyProfilePatch(
+    draft,
+    check,
+    dropPatch,
+  );
+  assert.deepEqual(patchedPaths, ['deepFacts.0']);
+  assert.equal(merged.overview, draft.overview);
+  assert.deepEqual(merged.keyMoments, draft.keyMoments);
+  assert.deepEqual(merged.deepFacts, []);
+});
+
+test('prepare, promote, and status work end-to-end across EN and RU', async (t) => {
+  const root = await mkdtemp(path.join(tmpdir(), 'profiles-flow-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const rawProfilesDir = path.join(root, 'raw');
+  const workDir = path.join(root, '.work');
+  const sourcesDir = path.join(workDir, 'sources');
+
+  const longPage =
+    'Einstein biography details and historical milestones. '.repeat(15);
+  const mockFetch = (async (input: string | URL | Request) => {
+    const url = String(input);
+    if (url.includes('wikidata.org')) {
+      return new Response(
+        JSON.stringify({
+          entities: {
+            Q937: { sitelinks: { ruwiki: { title: 'Эйнштейн, Альберт' } } },
+          },
+        }),
+        { status: 200, headers: { 'content-type': 'application/json' } },
+      );
+    }
+    return new Response(
+      `<html><head><title>Page</title></head><body><h1>Section</h1><p>${longPage}</p></body></html>`,
+      { status: 200, headers: { 'content-type': 'text/html' } },
+    );
+  }) as unknown as typeof fetch;
+
+  // 1. Prepare EN
+  const enPrepared = await prepareProfiles({
+    qids: ['Q937'],
+    locale: 'en',
+    subjects: SUBJECTS,
+    rawProfilesDir,
+    workDir,
+    sourcesDir,
+    fetchImpl: mockFetch,
+  });
+  assert.equal(enPrepared.length, 1);
+  assert.ok(enPrepared[0]?.wikipediaPath);
+
+  // Cache additional cited sources used by sampleEnDraft
+  await fetchSource('https://example.org/eclipse', {
+    sourcesDir,
+    fetchImpl: mockFetch,
+  });
+  await fetchSource('https://example.org/fridge', {
+    sourcesDir,
+    fetchImpl: mockFetch,
+  });
+
+  // 2. Write EN draft & escalated check -> status shows needs-review
+  await writeJsonFile(
+    workFile('Q937', 'en.draft.json', workDir),
+    sampleEnDraft(),
+  );
+  await writeJsonFile(
+    workFile('Q937', 'en.check.json', workDir),
+    sampleCheck({
+      verdict: 'escalate',
+      blockers: [{ path: 'overview', issue: 'Disputed', fix: 'Human review' }],
+    }),
+  );
+
+  const needsReviewStatus = await getProfileStatus({
+    locale: 'en',
+    qids: ['Q937'],
+    subjects: SUBJECTS,
+    rawProfilesDir,
+    workDir,
+  });
+  assert.equal(needsReviewStatus.items[0]?.stage, 'needs-review');
+
+  // Cannot promote without --human-approved while escalated
+  await assert.rejects(
+    promoteProfile({
+      qid: 'Q937',
+      locale: 'en',
+      subjects: SUBJECTS,
+      rawProfilesDir,
+      workDir,
+      sourcesDir,
+    }),
+    /latest verdict is "escalate"/,
+  );
+
+  // Pass check and promote
+  await writeJsonFile(
+    workFile('Q937', 'en.check.json', workDir),
+    sampleCheck(),
+  );
+  const promoted = await promoteProfile({
+    qid: 'Q937',
+    locale: 'en',
+    subjects: SUBJECTS,
+    rawProfilesDir,
+    workDir,
+    sourcesDir,
+  });
+  const storedRaw = JSON.parse(await readFile(promoted.filePath, 'utf8'));
+  const stored = StoredProfileSchema.parse(storedRaw);
+  assert.equal(stored.meta.qid, 'Q937');
+  assert.equal(stored.meta.subjectDates, '1879–1955');
+
+  // Overwrite guard without --force
+  await assert.rejects(
+    promoteProfile({
+      qid: 'Q937',
+      locale: 'en',
+      subjects: SUBJECTS,
+      rawProfilesDir,
+      workDir,
+      sourcesDir,
+    }),
+    /Pass --force to overwrite/,
+  );
+
+  // 3. Prepare RU fetches Russian Wikipedia + includes connectionNamesRu
+  const ruPrepared = await prepareProfiles({
+    qids: ['Q937'],
+    locale: 'ru',
+    subjects: SUBJECTS,
+    rawProfilesDir,
+    workDir,
+    sourcesDir,
+    fetchImpl: mockFetch,
+  });
+  const ruFirst = ruPrepared[0];
+  assert.ok(ruFirst?.wikipediaPath);
+  const ruBrief = JSON.parse(await readFile(ruFirst.briefPath, 'utf8'));
+  assert.equal(ruBrief.connectionNamesRu.Q9021, 'Макс Планк');
+  assert.equal(ruBrief.sourceHash, computeEnglishSourceHash(stored));
+
+  // 4. Validate check helper
+  assert.equal(
+    validateCheck(sampleCheck(), { qid: 'Q937', locale: 'en' }).ok,
+    true,
+  );
+});

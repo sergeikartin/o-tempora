@@ -1,5 +1,4 @@
 name = "profile-writer"
-description = "Researches and stages evidence-backed Profile drafts and repairs."
-model = "gpt-6.2-astra"
+description = "Researches and drafts or patches an English Profile in .work/<QID>/."
 model_reasoning_effort = "high"
-developer_instructions = "Read and follow `packages/data-pipeline/docs/profile-roles/profile-writer.md`."
+developer_instructions = "Read and follow `packages/data-pipeline/prompts/profile-writer.md`."

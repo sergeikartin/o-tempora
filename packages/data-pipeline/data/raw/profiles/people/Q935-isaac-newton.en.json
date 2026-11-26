@@ -1,191 +1,92 @@
 {
-  "subject": "Isaac Newton",
-  "type": "person",
-  "wikipedia_url": "https://en.wikipedia.org/wiki/Isaac_Newton",
   "overview": "Isaac Newton was an English mathematician and physicist, a farmer's son from Lincolnshire who became a Cambridge professor and worked out the laws of motion and universal gravitation. His book the Principia showed that the same force pulling an apple to the ground keeps the Moon in orbit, and he also invented a form of calculus, split white light into colours with prisms and built the first practical reflecting telescope. Later in life he moved to London, where he ran the Royal Mint and presided over the Royal Society.",
-  "key_moments": [
+  "keyMoments": [
     {
       "date": "1665–1667",
       "title": "Plague years at Woolsthorpe",
       "text": "During the plague years, Newton worked at his family home at **Woolsthorpe** in Lincolnshire. During his time there, he developed early ideas on **calculus**, experimented with light and explored gravitation. Decades later, **William Stukeley** recorded Newton’s recollection that watching an apple fall had prompted him to think about gravity. Stukeley preserved one of the accounts behind the famous apple story.",
-      "claims": [
-        "Newton worked at Woolsthorpe during the plague years.",
-        "Newton’s family home was at Woolsthorpe in Lincolnshire.",
-        "Isaac Newton developed early ideas on calculus, optics and gravitation during the plague years of 1665 and 1666.",
-        "William Stukeley recorded that Isaac Newton linked the idea of gravitation to watching an apple fall."
-      ],
-      "source": "https://royalsociety.org/news/2010/apple-tree-gravity/"
+      "sourceUrl": "https://royalsociety.org/news/2010/apple-tree-gravity/"
     },
     {
       "date": "1668–1672",
       "title": "A new telescope and a theory of colour",
       "text": "Newton built a small **reflecting telescope** that used a mirror instead of a lens, which avoided the coloured fringes that spoiled the images of ordinary refracting telescopes. His telescope attracted attention at the **Royal Society**. He was elected a Fellow in 1672, and that year he published his theory that **white light is a mixture of colours**, shown by splitting sunlight with a prism. The paper drew sharp criticism from **Robert Hooke**, and the disputes made Newton reluctant to publish further work on optics.",
-      "claims": [
-        "Isaac Newton built a reflecting telescope in 1668.",
-        "Isaac Newton was elected a Fellow of the Royal Society in 1672.",
-        "Isaac Newton argued that white light is made up of a spectrum of colours, using experiments with prisms.",
-        "Robert Hooke criticised Isaac Newton's theory of light."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Isaac_Newton#Optics"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Isaac_Newton#Optics"
     },
     {
       "date": "1684–1687",
       "title": "Halley's question and the Principia",
       "text": "In 1684 the astronomer **Edmond Halley** visited Newton in Cambridge to discuss planetary motion under an **inverse-square force**. Their discussion helped spur the work that became the **Philosophiæ Naturalis Principia Mathematica**, published in 1687. It set out the **three laws of motion** and **universal gravitation**, giving a mathematical account of motion on Earth and in the heavens. With the **Royal Society** short of funds after publishing a lavish book about fish, **Halley financed publication**.",
-      "claims": [
-        "Edmond Halley visited Isaac Newton in Cambridge in 1684 to ask about planetary orbits under an inverse-square force.",
-        "Isaac Newton's Philosophiæ Naturalis Principia Mathematica was published in 1687.",
-        "The Principia set out Isaac Newton's laws of motion and his law of universal gravitation.",
-        "The Royal Society was short of publishing funds after De Historia Piscium, and Halley financed publication of the Principia."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica"
     },
     {
       "date": "1696–1705",
       "title": "From professor to master of the Mint",
       "text": "Newton left Cambridge to become **Warden of the Royal Mint** in 1696, during the **Great Recoinage**, and became **Master of the Mint** in 1699, holding the post for the rest of his life. He investigated counterfeiting, gathering evidence and questioning witnesses. In 1705 **Queen Anne** knighted him at Cambridge.",
-      "claims": [
-        "Isaac Newton became Warden of the Royal Mint in 1696.",
-        "Isaac Newton became Master of the Royal Mint in 1699 and held the post until his death.",
-        "Newton personally investigated counterfeiting and questioned witnesses.",
-        "Queen Anne knighted Newton at Cambridge in 1705."
-      ],
-      "source": "https://www.royalmintmuseum.org.uk/journal/people/isaac-newton/"
+      "sourceUrl": "https://www.royalmintmuseum.org.uk/journal/people/isaac-newton/"
     }
   ],
-  "deep_facts": [
+  "deepFacts": [
     {
       "text": "Newton left extensive writings on **alchemy** and **biblical prophecy**, much of them unpublished during his lifetime. The **1936 sale** of his private papers brought a large body of this work into new hands. **John Maynard Keynes** acquired many alchemical manuscripts in and after the sale. Reading the papers led Keynes to describe Newton as **the last of the magicians**, challenging the familiar image of Newton as a purely rational scientist.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Newton wrote extensively on alchemy and biblical prophecy; much of that work was unpublished in his lifetime.",
-        "Many of Newton’s private papers were auctioned in 1936.",
-        "Keynes acquired many alchemical manuscripts in and after the 1936 sale.",
-        "Keynes described Newton as the last of the magicians."
-      ],
-      "source": "https://newtonproject.ox.ac.uk/view/contexts/CNTX00001"
+      "isLegend": false,
+      "sourceUrl": "https://newtonproject.ox.ac.uk/view/contexts/CNTX00001"
     },
     {
       "text": "Newton’s notebook describes an experiment in which he put a **bodkin** between his eye and the surrounding bone and pressed on the eyeball. His accompanying drawing records the **coloured circles** he saw. The experiment formed part of his investigation of colour and vision.",
-      "type": "unique_detail",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Newton’s notebook records pressing on his eyeball with a bodkin placed between the eye and bone.",
-        "The accompanying drawing records the coloured circles Newton saw.",
-        "The experiment investigated colour and vision."
-      ],
-      "source": "https://newtonproject.ox.ac.uk/catalogue/record/ALCH00110"
+      "isLegend": false,
+      "sourceUrl": "https://newtonproject.ox.ac.uk/catalogue/record/ALCH00110"
     },
     {
       "text": "In 1717 Newton recommended reducing the official valuation of the gold **guinea**. **George I’s proclamation** set its maximum exchange value at **21 shillings**. The proclamation explained that gold was overvalued relative to silver compared with neighbouring countries, helping drive silver coins out of Britain. Newton’s work on coin values put his calculations at the centre of a practical monetary problem.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "medium",
-      "claims": [
-        "Newton’s 1717 report recommended reducing the guinea’s valuation.",
-        "George I’s proclamation of 22 December 1717 prohibited exchanging a guinea for more than 21 shillings.",
-        "The proclamation identified gold’s overvaluation relative to silver as a cause of silver coins leaving Britain."
-      ],
-      "source": "https://newtonproject.ox.ac.uk/view/texts/normalized/MINT00334"
+      "isLegend": false,
+      "sourceUrl": "https://newtonproject.ox.ac.uk/view/texts/normalized/MINT00334"
     }
   ],
   "connections": [
     {
-      "name": "Gottfried Wilhelm Leibniz",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
-      "connection": "Developed calculus independently, sparking a bitter priority dispute in which a Royal Society report of 1712 sided with Newton.",
-      "importance": "high",
-      "qid": "Q9047"
+      "qid": "Q9047",
+      "reason": "Developed calculus independently, sparking a bitter priority dispute in which a Royal Society report of 1712 sided with Newton."
     },
     {
-      "name": "Edmond Halley",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Edmond_Halley",
-      "connection": "Prompted Newton to write the Principia after a 1684 visit and paid for its printing.",
-      "importance": "high",
-      "qid": "Q47434"
+      "qid": "Q47434",
+      "reason": "Prompted Newton to write the Principia after a 1684 visit and paid for its printing."
     },
     {
-      "name": "Robert Hooke",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Robert_Hooke",
-      "connection": "Rival who attacked Newton's 1672 theory of light and later claimed credit for the inverse-square law.",
-      "importance": "high",
-      "qid": "Q46830"
+      "qid": "Q46830",
+      "reason": "Rival who attacked Newton's 1672 theory of light and later claimed credit for the inverse-square law."
     },
     {
-      "name": "Philosophiæ Naturalis Principia Mathematica",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica",
-      "connection": "Newton's 1687 book setting out the laws of motion and universal gravitation.",
-      "importance": "high",
-      "qid": "Q205921"
+      "qid": "Q205921",
+      "reason": "Newton's 1687 book setting out the laws of motion and universal gravitation."
     },
     {
-      "name": "Scientific Revolution",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Scientific_Revolution",
-      "connection": "Newton’s mathematical account of motion and gravity became a foundation for later mechanics.",
-      "importance": "high",
-      "qid": "Q214078"
+      "qid": "Q214078",
+      "reason": "Newton’s mathematical account of motion and gravity became a foundation for later mechanics."
     },
     {
-      "name": "Johannes Kepler",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Johannes_Kepler",
-      "connection": "Newton linked Kepler’s idealized planetary laws to inverse-square gravitation.",
-      "importance": "medium",
-      "qid": "Q8963"
+      "qid": "Q8963",
+      "reason": "Newton linked Kepler’s idealized planetary laws to inverse-square gravitation."
     },
     {
-      "name": "Anne, Queen of Great Britain",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Anne,_Queen_of_Great_Britain",
-      "connection": "Knighted Newton at Trinity College, Cambridge, in 1705.",
-      "importance": "medium",
-      "qid": "Q119702"
+      "qid": "Q119702",
+      "reason": "Knighted Newton at Trinity College, Cambridge, in 1705."
     },
     {
-      "name": "John Maynard Keynes",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/John_Maynard_Keynes",
-      "connection": "Acquired many of Newton’s alchemical papers in and after the 1936 sale and called him the last of the magicians.",
-      "importance": "medium",
-      "qid": "Q9317"
+      "qid": "Q9317",
+      "reason": "Acquired many of Newton’s alchemical papers in and after the 1936 sale and called him the last of the magicians."
     },
     {
-      "name": "Voltaire",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Voltaire",
-      "connection": "Printed an early version of the apple story in 1727.",
-      "importance": "medium",
-      "qid": "Q9068"
+      "qid": "Q9068",
+      "reason": "Printed an early version of the apple story in 1727."
     }
   ],
   "meta": {
-    "generated_at": "2026-10-25T13:05:08.317Z",
-    "prompt_version": "2.1.0",
-    "prompt_hash": "49a617acf74e",
-    "schema_version": 3,
-    "model": "opus",
-    "temperature": null,
-    "run_id": "2026-10-25",
+    "qid": "Q935",
     "locale": "en",
-    "source": {
-      "wikidata_qid": "Q935"
-    },
-    "tokens": null,
-    "validation": {
-      "schema_valid": true,
-      "connections_returned": 15,
-      "connections_matched_people": 7,
-      "connections_matched_events": 2,
-      "connections_unresolved": 0
-    },
-    "review": {
-      "status": "reviewed",
-      "reviewed_at": "2026-11-17T08:39:12.076Z",
-      "approval": {
-        "policy_version": "2",
-        "profile_hash": "f62ca0cfa09428f1d6d55014d499b98c4c95c04be27b4481e8dd1cc45cfc1c33",
-        "report_hash": "94f1fb3c3f41e1ec2d14462e0637ea06164199cbee84b6642e09690a01698e41",
-        "method": "automatic"
-      }
-    }
+    "subjectDates": "1643–1727",
+    "approvedAt": "2026-11-17T08:39:12.076Z",
+    "writerModel": "opus",
+    "checkerModel": "gpt-6.1-sol"
   }
 }

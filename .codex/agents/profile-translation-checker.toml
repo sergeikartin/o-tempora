@@ -1,0 +1,4 @@
+name = "profile-translation-checker"
+description = "Independently audits Russian Profile translation fidelity against its English source."
+model_reasoning_effort = "low"
+developer_instructions = "Read and follow `packages/data-pipeline/prompts/profile-translation-checker.md`."

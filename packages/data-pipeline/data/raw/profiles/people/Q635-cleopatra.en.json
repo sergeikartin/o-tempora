@@ -1,181 +1,88 @@
 {
-  "subject": "Cleopatra",
-  "type": "person",
-  "wikipedia_url": "https://en.wikipedia.org/wiki/Cleopatra",
   "overview": "Cleopatra VII ruled Egypt at a time when Roman armies and politicians increasingly decided the fate of the Mediterranean. Through alliances with Julius Caesar and Mark Antony, she tried to preserve her kingdom, but her defeat and death in 30 BC brought Egypt under Roman rule.",
-  "key_moments": [
+  "keyMoments": [
     {
       "date": "51 BC",
       "title": "A throne shared with a brother",
       "text": "When her father **Ptolemy XII** died, **Cleopatra** inherited the Egyptian throne alongside her younger brother **Ptolemy XIII**. Their joint reign became a struggle for power: the queen who had inherited a kingdom was eventually driven out of it.",
-      "claims": [
-        "Cleopatra and Ptolemy XIII succeeded Ptolemy XII as rulers of Egypt in 51 BC.",
-        "Cleopatra and Ptolemy XIII became rivals for control of Egypt.",
-        "Cleopatra was driven from Egypt during the struggle with Ptolemy XIII."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Cleopatra"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra"
     },
     {
       "date": "48–47 BC",
       "title": "Caesar restores her rule",
       "text": "**Julius Caesar** arrived in Egypt during Cleopatra’s struggle with her brother and backed her claim to power. Fighting in and around Alexandria ended with **Ptolemy XIII’s defeat and death**, and Cleopatra returned to the throne. Her new fellow ruler was another younger brother, **Ptolemy XIV**.",
-      "claims": [
-        "Julius Caesar arrived in Egypt in 48 BC and supported Cleopatra in the dispute with Ptolemy XIII.",
-        "The Alexandrian war ended in 47 BC with the defeat and death of Ptolemy XIII.",
-        "Cleopatra subsequently ruled Egypt jointly with the younger brother Ptolemy XIV."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Cleopatra"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra"
     },
     {
       "date": "41–34 BC",
       "title": "A partnership with Antony",
       "text": "Cleopatra met **Mark Antony** at Tarsus, beginning a political and personal partnership with a Roman commander. At the **Donations of Alexandria**, Antony publicly assigned territories and royal titles to Cleopatra and their children. He also recognized **Caesarion**, Cleopatra’s son, as Julius Caesar’s son—a challenge to **Octavian**, Caesar’s adopted heir.",
-      "claims": [
-        "Cleopatra met the Roman commander Mark Antony at Tarsus in 41 BC and became Antony’s political ally and partner.",
-        "At the Donations of Alexandria in 34 BC, Mark Antony assigned territories and royal titles to Cleopatra and the children of Cleopatra and Mark Antony.",
-        "At the Donations of Alexandria, Mark Antony recognized Caesarion as Julius Caesar’s son.",
-        "Recognition of Caesarion as Julius Caesar’s son challenged the position of Octavian as Julius Caesar’s adopted heir."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Cleopatra"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra"
     },
     {
       "date": "31–30 BC",
       "title": "Defeat ends the kingdom",
       "text": "The forces of **Octavian** defeated Antony and Cleopatra at the naval **Battle of Actium**. The following year, Octavian invaded Egypt; Antony and Cleopatra both died, and **Egypt became a Roman province**. Cleopatra’s attempt to keep her dynasty in power ended with Rome taking control of the kingdom itself.",
-      "claims": [
-        "Octavian’s forces defeated the forces of Mark Antony and Cleopatra at the Battle of Actium in 31 BC.",
-        "Octavian invaded Egypt in 30 BC.",
-        "Mark Antony and Cleopatra died in 30 BC after Octavian invaded Egypt.",
-        "Following Cleopatra’s defeat and death, Egypt became a Roman province and Ptolemaic rule ended."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Cleopatra"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra"
     }
   ],
-  "deep_facts": [
+  "deepFacts": [
     {
       "text": "Cleopatra belonged to a dynasty whose court language was Greek, yet she could also speak Egyptian. Plutarch describes her moving between languages when speaking with foreign peoples, often without an interpreter. The ruler so often remembered through Roman stories was also someone who could address her Egyptian subjects in their own language.",
-      "type": "unique_detail",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Greek was the court language of the Ptolemaic dynasty to which Cleopatra belonged.",
-        "Cleopatra spoke Egyptian.",
-        "Plutarch describes Cleopatra speaking several languages and communicating with many foreign peoples without an interpreter."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Cleopatra"
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra"
     },
     {
       "text": "On an outer wall of the temple of Hathor at Dendera, a relief depicts Cleopatra with her son Caesarion. Cleopatra belonged to the Greek-speaking Ptolemaic dynasty.",
-      "type": "unique_detail",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "A relief on an outer wall of the temple of Hathor at Dendera depicts Cleopatra and Caesarion.",
-        "Cleopatra belonged to the Greek-speaking Ptolemaic dynasty."
-      ],
-      "source": "https://whc.unesco.org/en/tentativelists/1824/"
+      "isLegend": false,
+      "sourceUrl": "https://whc.unesco.org/en/tentativelists/1824/"
     },
     {
       "text": "Cleopatra’s daughter Cleopatra Selene II, whose father was Mark Antony, survived the fall of her mother’s kingdom. Selene later married Juba II and became queen of Mauretania in North Africa.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Cleopatra Selene II was the daughter of Cleopatra and Mark Antony.",
-        "Cleopatra Selene II survived the fall of Cleopatra’s kingdom.",
-        "Cleopatra Selene II married Juba II and became queen of Mauretania in North Africa."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Cleopatra_Selene_II"
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Cleopatra_Selene_II"
     }
   ],
   "connections": [
     {
-      "name": "Julius Caesar",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Julius_Caesar",
-      "connection": "Supported Cleopatra against Ptolemy XIII and helped restore her rule in Egypt.",
-      "importance": "high",
-      "qid": "Q1048"
+      "qid": "Q1048",
+      "reason": "Supported Cleopatra against Ptolemy XIII and helped restore her rule in Egypt."
     },
     {
-      "name": "Mark Antony",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Mark_Antony",
-      "connection": "Became Cleopatra’s political ally and partner, sharing defeat at Actium in 31 BC.",
-      "importance": "high",
-      "qid": "Q51673"
+      "qid": "Q51673",
+      "reason": "Became Cleopatra’s political ally and partner, sharing defeat at Actium in 31 BC."
     },
     {
-      "name": "Augustus",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Augustus",
-      "connection": "As Octavian, defeated Cleopatra and Antony and annexed Egypt in 30 BC.",
-      "importance": "high",
-      "qid": "Q1405"
+      "qid": "Q1405",
+      "reason": "As Octavian, defeated Cleopatra and Antony and annexed Egypt in 30 BC."
     },
     {
-      "name": "Caesarion",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Caesarion",
-      "connection": "Cleopatra’s son became her co-ruler as Ptolemy XV and was killed after Octavian conquered Egypt.",
-      "importance": "high",
-      "qid": "Q39589"
+      "qid": "Q39589",
+      "reason": "Cleopatra’s son became her co-ruler as Ptolemy XV and was killed after Octavian conquered Egypt."
     },
     {
-      "name": "Ptolemy XIII",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Ptolemy_XIII_Theos_Philopator",
-      "connection": "Cleopatra’s brother and co-ruler fought her for control of Egypt before his defeat in 47 BC.",
-      "importance": "high",
-      "qid": "Q39938"
+      "qid": "Q39938",
+      "reason": "Cleopatra’s brother and co-ruler fought her for control of Egypt before his defeat in 47 BC."
     },
     {
-      "name": "Battle of Actium",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Battle_of_Actium",
-      "connection": "The naval defeat of Cleopatra and Antony in 31 BC opened the way to Octavian’s conquest of Egypt.",
-      "importance": "high",
-      "qid": "Q160387"
+      "qid": "Q160387",
+      "reason": "The naval defeat of Cleopatra and Antony in 31 BC opened the way to Octavian’s conquest of Egypt."
     },
     {
-      "name": "Ptolemy XII",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Ptolemy_XII_Auletes",
-      "connection": "Cleopatra’s father left the throne to Cleopatra and Ptolemy XIII in 51 BC.",
-      "importance": "medium",
-      "qid": "Q39991"
+      "qid": "Q39991",
+      "reason": "Cleopatra’s father left the throne to Cleopatra and Ptolemy XIII in 51 BC."
     },
     {
-      "name": "Cleopatra Selene II",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Cleopatra_Selene_II",
-      "connection": "Cleopatra’s daughter with Antony survived Egypt’s conquest and later ruled Mauretania with Juba II.",
-      "importance": "medium",
-      "qid": "Q40058"
+      "qid": "Q40058",
+      "reason": "Cleopatra’s daughter with Antony survived Egypt’s conquest and later ruled Mauretania with Juba II."
     }
   ],
   "meta": {
-    "generated_at": "2026-11-16T09:11:45.218Z",
-    "prompt_version": "2.2.0",
-    "prompt_hash": "246b7e0afd6f",
-    "schema_version": 3,
-    "model": "gpt-6.1-sol",
-    "reasoning_effort": "medium",
-    "temperature": null,
-    "run_id": "2026-11-16",
+    "qid": "Q635",
     "locale": "en",
-    "source": {
-      "wikidata_qid": "Q635"
-    },
-    "tokens": { "input": 122033, "output": 4182 },
-    "validation": {
-      "schema_valid": true,
-      "connections_returned": 9,
-      "connections_matched_people": 7,
-      "connections_matched_events": 1,
-      "connections_unresolved": 0
-    },
-    "review": {
-      "status": "reviewed",
-      "reviewed_at": "2026-11-16T16:43:19.602Z",
-      "approval": {
-        "policy_version": "2",
-        "profile_hash": "769f6b821a4678f0f3c74ed46d5121e221bed93a1ff493902158b2929055e574",
-        "report_hash": "0f578020269a4e74dd71bc661fb40d93b0206db1a374810b239c1621baec967d",
-        "method": "automatic"
-      }
-    }
+    "subjectDates": "69–30 BC",
+    "approvedAt": "2026-11-16T16:43:19.602Z",
+    "writerModel": "gpt-6.1-sol",
+    "checkerModel": "session-agent (model unreported)"
   }
 }

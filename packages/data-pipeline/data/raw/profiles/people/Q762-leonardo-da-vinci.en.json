@@ -1,164 +1,76 @@
 {
-  "subject": "Leonardo da Vinci",
-  "type": "person",
-  "wikipedia_url": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci",
   "overview": "Leonardo da Vinci was an Italian Renaissance painter and engineer who worked in Florence and Milan and spent his last years in France. He painted the **Mona Lisa** and **The Last Supper**, and filled notebooks with studies of subjects as different as the valves of the heart and the flight of birds.",
-  "key_moments": [
+  "keyMoments": [
     {
       "date": "c. 1470–1475",
       "title": "An angel in The Baptism of Christ",
       "text": "Leonardo trained in the Florence workshop of **Andrea del Verrocchio**. Both artists worked on The Baptism of Christ, a panel with two angels kneeling by the river. The Uffizi identifies one angel as Leonardo’s and suggests that he also painted parts of the river landscape.",
-      "claims": [
-        "Leonardo da Vinci trained in Andrea del Verrocchio’s workshop in Florence.",
-        "Leonardo da Vinci and Andrea del Verrocchio both worked on The Baptism of Christ, dated to about 1470–1475.",
-        "The Baptism of Christ is painted on a panel and depicts two angels kneeling by the river.",
-        "The Uffizi attributes one angel in The Baptism of Christ to Leonardo da Vinci and considers that Leonardo may also have worked on the river landscape."
-      ],
-      "source": "https://www.uffizi.it/en/artworks/verrocchio-leonardo-baptism-of-christ"
+      "sourceUrl": "https://www.uffizi.it/en/artworks/verrocchio-leonardo-baptism-of-christ"
     },
     {
       "date": "c. 1494–1498",
       "title": "The Last Supper in Milan",
       "text": "For **Ludovico Sforza**, Leonardo painted the wall of a dining hall at Santa Maria delle Grazie in Milan. The painted room seems to extend the real one. Working on dry plaster gave Leonardo time to revise the scene, but the same technique contributed to early paint loss.",
-      "claims": [
-        "Leonardo da Vinci painted The Last Supper around 1494–1498 for Ludovico Sforza in the dining hall of Santa Maria delle Grazie in Milan.",
-        "The perspective of The Last Supper makes the painted chamber seem to extend the dining hall.",
-        "Leonardo da Vinci painted The Last Supper on dry plaster to allow changes.",
-        "The dry technique contributed to pigment loss soon after The Last Supper was finished."
-      ],
-      "source": "https://cenacolovinciano.org/en/museum/the-works/the-last-supper-leonardo-da-vinci-1452-1519/"
+      "sourceUrl": "https://cenacolovinciano.org/en/museum/the-works/the-last-supper-leonardo-da-vinci-1452-1519/"
     },
     {
       "date": "By October 1503",
       "title": "The Mona Lisa takes shape",
       "text": "The Louvre cites an October 1503 note as evidence that Leonardo had already begun the portrait of **Lisa Gherardini**, the wife of a Florentine silk merchant. He painted her turning toward the viewer and used glazes to soften the edges of her features. He kept the portrait for years, continuing to work on it.",
-      "claims": [
-        "The Louvre cites an October 1503 note that says Leonardo da Vinci had already started the Mona Lisa.",
-        "The Mona Lisa depicts Lisa Gherardini, the wife of the Florentine silk merchant Francesco del Giocondo.",
-        "Leonardo da Vinci depicted Lisa Gherardini turning toward the viewer and used glazes to soften edges in the Mona Lisa.",
-        "Leonardo da Vinci kept the Mona Lisa for years and continued to work on it."
-      ],
-      "source": "https://collections.louvre.fr/en/ark%3A/53355/cl010062370"
+      "sourceUrl": "https://collections.louvre.fr/en/ark%3A/53355/cl010062370"
     },
     {
       "date": "1516",
       "title": "A new patron in France",
       "text": "At the invitation of **Francis I**, Leonardo moved to France in 1516. He settled at the Clos Lucé in Amboise and served the king as a painter, architect and engineer. Leonardo studied the region’s waterways and envisioned a royal palace and drew up plans for a town at Romorantin.",
-      "claims": [
-        "Leonardo da Vinci moved to France in 1516 at the invitation of Francis I and settled at the Clos Lucé in Amboise.",
-        "Leonardo da Vinci served Francis I as painter, architect and engineer.",
-        "Leonardo da Vinci studied local waterways, envisioned a royal palace and drew up plans for a town at Romorantin."
-      ],
-      "source": "https://www.vinci-closluce.com/en/leonardo-da-vinci/"
+      "sourceUrl": "https://www.vinci-closluce.com/en/leonardo-da-vinci/"
     }
   ],
-  "deep_facts": [
+  "deepFacts": [
     {
       "text": "While surveying strongholds for Cesare Borgia in 1502, Leonardo drew **a map of Imola** that set the town’s streets inside a circle. Around the rim he wrote the names of winds at the eight points of the compass.",
-      "type": "unique_detail",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Leonardo da Vinci drew a plan of Imola in 1502 while surveying strongholds for Cesare Borgia.",
-        "Leonardo da Vinci drew Imola’s street plan inside a circle and wrote wind names at the eight compass points."
-      ],
-      "source": "https://artsandculture.google.com/asset/plan-of-imola-leonardo-da-vinci/hgEpMgZ5mn6R4A"
+      "isLegend": false,
+      "sourceUrl": "https://artsandculture.google.com/asset/plan-of-imola-leonardo-da-vinci/hgEpMgZ5mn6R4A"
     },
     {
       "text": "Leonardo studied the hearts of oxen. In his notes, he linked the closing of the aortic valve to eddies in the blood. The Royal Collection identifies a sketch in those notes as a design for a mould for a **glass model** of a heart valve. The collection describes him using the model. A 2002 study cited laboratory flow images as evidence that he may have built it, leaving the question open.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Leonardo da Vinci studied the heart valves of oxen. The Royal Collection identifies a sketch as a design for a mould for a glass model of a heart valve.",
-        "The Royal Collection identifies a sketch by Leonardo da Vinci as a drawing of a mould for a glass model to study the aortic valve.",
-        "The Royal Collection describes Leonardo da Vinci using the glass model.",
-        "A 2002 study cited laboratory flow images as evidence that Leonardo da Vinci may have built the glass model."
-      ],
-      "source": "https://artsandculture.google.com/asset/the-aortic-valve-leonardo-da-vinci/KgGIZu6kH0C1rg?hl=en"
+      "isLegend": false,
+      "sourceUrl": "https://artsandculture.google.com/asset/the-aortic-valve-leonardo-da-vinci/KgGIZu6kH0C1rg?hl=en"
     },
     {
       "text": "Leonardo’s **Codex on the Flight of Birds** puts notes on birds and flying machines into his right-to-left mirror script. The codex was assembled from partly used sheets, some of them already marked with reddish sketches of plants.",
-      "type": "unique_detail",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Leonardo da Vinci’s Codex on the Flight of Birds contains mirror writing and studies of bird flight and flying machines.",
-        "The Codex on the Flight of Birds was assembled from partly used sheets, some already marked with reddish plant sketches."
-      ],
-      "source": "https://artsandculture.google.com/story/inside-the-codex-on-the-flight-of-birds-musei-reali-di-torino/eQWxnDCLPR-qLg?hl=en"
+      "isLegend": false,
+      "sourceUrl": "https://artsandculture.google.com/story/inside-the-codex-on-the-flight-of-birds-musei-reali-di-torino/eQWxnDCLPR-qLg?hl=en"
     }
   ],
   "connections": [
     {
-      "name": "Andrea del Verrocchio",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Andrea_del_Verrocchio",
-      "connection": "Trained Leonardo in Florence and shares credit with him for The Baptism of Christ.",
-      "importance": "high",
-      "qid": "Q183458"
+      "qid": "Q183458",
+      "reason": "Trained Leonardo in Florence and shares credit with him for The Baptism of Christ."
     },
     {
-      "name": "Francis I of France",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Francis_I_of_France",
-      "connection": "At his invitation, Leonardo moved to France in 1516 and served him as painter, architect and engineer.",
-      "importance": "high",
-      "qid": "Q129857"
+      "qid": "Q129857",
+      "reason": "At his invitation, Leonardo moved to France in 1516 and served him as painter, architect and engineer."
     },
     {
-      "name": "Cesare Borgia",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Cesare_Borgia",
-      "connection": "Employed Leonardo as an architect and engineer while Leonardo was surveying strongholds and mapping Imola.",
-      "importance": "high",
-      "qid": "Q187998"
+      "qid": "Q187998",
+      "reason": "Employed Leonardo as an architect and engineer while Leonardo was surveying strongholds and mapping Imola."
     },
     {
-      "name": "Raphael",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Raphael",
-      "connection": "The Uffizi notes a close resemblance between his portraits of Agnolo and Maddalena Doni and the Mona Lisa.",
-      "importance": "medium",
-      "qid": "Q5597"
+      "qid": "Q5597",
+      "reason": "The Uffizi notes a close resemblance between his portraits of Agnolo and Maddalena Doni and the Mona Lisa."
     },
     {
-      "name": "Vitruvius",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Vitruvius",
-      "connection": "Leonardo cited Vitruvius’s writing on human proportions in the notes to Vitruvian Man.",
-      "importance": "medium",
-      "qid": "Q47163"
+      "qid": "Q47163",
+      "reason": "Leonardo cited Vitruvius’s writing on human proportions in the notes to Vitruvian Man."
     }
   ],
   "meta": {
-    "generated_at": "2026-11-23T10:51:45.170Z",
-    "prompt_version": "2.2.0",
-    "prompt_hash": "246b7e0afd6f",
-    "schema_version": 3,
-    "model": "gpt-6.2-sol",
-    "reasoning_effort": "medium",
-    "temperature": null,
-    "run_id": "leonardo-trial-2026-11-23",
+    "qid": "Q762",
     "locale": "en",
-    "source": {
-      "wikidata_qid": "Q762"
-    },
-    "tokens": {
-      "input": 2538445,
-      "output": 14843
-    },
-    "validation": {
-      "schema_valid": true,
-      "connections_returned": 6,
-      "connections_matched_people": 5,
-      "connections_matched_events": 0,
-      "connections_unresolved": 0
-    },
-    "review": {
-      "status": "edited",
-      "reviewed_at": "2026-11-23T11:07:32.575Z",
-      "approval": {
-        "policy_version": "3",
-        "profile_hash": "b06dc222476942231d8b198c93bb5cc007f688ec468ae06a3b0d854c1d54398b",
-        "report_hash": "e1ce6c60e7e68aecbb4f8cb5d39bbf0d8764ced124789363b4ede52dda67a0dc",
-        "method": "automatic"
-      }
-    }
+    "subjectDates": "1452–1519",
+    "approvedAt": "2026-11-23T11:07:32.575Z",
+    "writerModel": "gpt-6.2-sol",
+    "checkerModel": "gpt-6.2-sol"
   }
 }

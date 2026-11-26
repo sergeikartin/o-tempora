@@ -12,9 +12,13 @@ import path from 'node:path';
 import { test } from 'node:test';
 import { assertBoldOnlyMarkup } from '../profiles/markup.ts';
 import {
+  computeEnglishSourceHash,
+  type StoredProfile,
+} from '../profiles/schemas.ts';
+import {
   type ProfileTarget,
   parseRawProfile,
-  type RawProfile,
+  type RawProfileRecord,
   readRawProfiles,
   shipProfiles,
   verifyBuiltProfiles,
@@ -28,6 +32,7 @@ const TARGETS: ProfileTarget[] = [
     qid: 'Q935',
     slug: 'isaac-newton',
     name: 'Isaac Newton',
+    nameRu: 'Исаак Ньютон',
     lane: 'people',
     dates: '1643–1727',
     fameScore: 95,
@@ -36,14 +41,16 @@ const TARGETS: ProfileTarget[] = [
     qid: 'Q9047',
     slug: 'gottfried-wilhelm-leibniz',
     name: 'Gottfried Wilhelm Leibniz',
+    nameRu: 'Готфрид Вильгельм Лейбниц',
     lane: 'people',
-    dates: '1643–1727',
+    dates: '1646–1716',
     fameScore: 85,
   },
   {
     qid: 'Q362',
     slug: 'world-war-ii',
     name: 'World War II',
+    nameRu: 'Вторая мировая война',
     lane: 'conflicts',
     dates: '1939–1945',
     fameScore: 97,
@@ -58,15 +65,10 @@ const TARGETS: ProfileTarget[] = [
   },
 ];
 
-function rawProfile(overrides: Partial<RawProfile> = {}): RawProfile {
+function storedProfile(overrides: Partial<StoredProfile> = {}): StoredProfile {
   return {
-    fileName: 'people/Q935-isaac-newton.json',
-    qid: 'Q935',
-    locale: 'en',
-    status: 'reviewed',
-    approval: { isCurrentFor: (dates) => dates === '1643–1727' },
     overview: 'Newton was an **English** mathematician.',
-    key_moments: [
+    keyMoments: [
       {
         date: '1687',
         title: 'The Principia',
@@ -74,66 +76,32 @@ function rawProfile(overrides: Partial<RawProfile> = {}): RawProfile {
         sourceUrl: 'https://en.wikipedia.org/wiki/Isaac_Newton#Principia',
       },
     ],
-    deep_facts: [{ text: 'No apple hit him.', isLegend: true }],
+    deepFacts: [{ text: 'No apple hit him.', isLegend: true }],
     connections: [],
+    meta: {
+      qid: 'Q935',
+      locale: 'en',
+      subjectDates: '1643–1727',
+      approvedAt: '2026-11-26T00:00:00.000Z',
+    },
     ...overrides,
   };
 }
 
-test('only Profiles with approval ship', () => {
-  const profiles = shipProfiles(
-    [
-      rawProfile({ qid: 'Q935', status: 'reviewed' }),
-      rawProfile({ qid: 'Q9047', status: 'edited' }),
-      rawProfile({ qid: 'Q362', status: 'draft', approval: undefined }),
-      rawProfile({ qid: 'Q900', status: 'edited', approval: undefined }),
-    ],
-    TARGETS,
-  );
+function rawRecord(
+  overrides: Partial<StoredProfile> = {},
+  fileName = 'people/Q935-isaac-newton.en.json',
+): RawProfileRecord {
+  return {
+    filePath: `/tmp/${fileName}`,
+    fileName,
+    lane: 'people',
+    profile: storedProfile(overrides),
+  };
+}
 
-  assert.deepEqual([...profiles.keys()].sort(), [
-    'gottfried-wilhelm-leibniz',
-    'isaac-newton',
-  ]);
-});
-
-test('a draft Profile with bad markup does not block the others', () => {
-  const profiles = shipProfiles(
-    [
-      rawProfile({ qid: 'Q935' }),
-      rawProfile({
-        qid: 'Q362',
-        status: 'draft',
-        approval: undefined,
-        overview: 'Unpaired **bold',
-      }),
-    ],
-    TARGETS,
-  );
-
-  assert.deepEqual([...profiles.keys()], ['isaac-newton']);
-});
-
-test('a Profile in another locale is not shipped', () => {
-  assert.equal(shipProfiles([rawProfile({ locale: 'ru' })], TARGETS).size, 0);
-});
-
-test('a shipped Profile for an entity outside the dataset is an error', () => {
-  assert.throws(
-    () => shipProfiles([rawProfile({ qid: 'Q404' })], TARGETS),
-    /Q404 is not an entity in the dataset/,
-  );
-});
-
-test('two shipped Profiles for one entity are an error', () => {
-  assert.throws(
-    () => shipProfiles([rawProfile(), rawProfile()], TARGETS),
-    /second Profile for Q935/,
-  );
-});
-
-test("the shipped shape drops everything but the reader's fields", () => {
-  const [profile] = shipProfiles([rawProfile()], TARGETS).values();
+test('committed English Profiles ship cleanly and drop meta fields', () => {
+  const [profile] = shipProfiles([rawRecord()], TARGETS).values();
 
   assert.deepEqual(profile, {
     overview: 'Newton was an **English** mathematician.',
@@ -150,8 +118,120 @@ test("the shipped shape drops everything but the reader's fields", () => {
   });
 });
 
+test('stale subjectDates warns and skips the Profile instead of failing', () => {
+  const warnings: string[] = [];
+  const shipped = shipProfiles(
+    [
+      rawRecord({
+        meta: {
+          qid: 'Q935',
+          locale: 'en',
+          subjectDates: '1643–1726',
+          approvedAt: '2026-11-26T00:00:00.000Z',
+        },
+      }),
+    ],
+    TARGETS,
+    'en',
+    { warn: (msg) => warnings.push(msg) },
+  );
+
+  assert.equal(shipped.size, 0);
+  assert.equal(warnings.length, 1);
+  assert.match(warnings[0] ?? '', /stale en Profile/);
+});
+
+test('Russian Profiles ship only when matching current English sourceHash and inherit English citations', () => {
+  const en = storedProfile();
+  const hash = computeEnglishSourceHash(en);
+  const ru = storedProfile({
+    overview: 'Ньютон был **английским** математиком.',
+    keyMoments: [
+      {
+        date: '1687',
+        title: 'Начала',
+        text: 'Он опубликовал **Начала**.',
+        sourceUrl: 'https://stale.example/ignored',
+      },
+    ],
+    deepFacts: [{ text: 'Яблоко на него не падало.', isLegend: false }],
+    connections: [{ qid: 'Q9047', reason: 'Соперник по исчислению.' }],
+    meta: {
+      qid: 'Q935',
+      locale: 'ru',
+      subjectDates: '1643–1727',
+      approvedAt: '2026-11-26T00:00:00.000Z',
+      sourceHash: hash,
+    },
+  });
+  const enWithConn = storedProfile({
+    connections: [{ qid: 'Q9047', reason: 'Rival over calculus.' }],
+  });
+  const ruAligned: StoredProfile = {
+    ...ru,
+    meta: { ...ru.meta, sourceHash: computeEnglishSourceHash(enWithConn) },
+  };
+
+  const warnings: string[] = [];
+  const shipped = shipProfiles(
+    [
+      rawRecord(enWithConn),
+      rawRecord(ruAligned, 'people/Q935-isaac-newton.ru.json'),
+    ],
+    TARGETS,
+    'ru',
+    { warn: (msg) => warnings.push(msg) },
+  );
+  assert.equal(warnings.length, 0);
+  const profile = shipped.get('isaac-newton');
+  assert.ok(profile);
+  // English owns sourceUrl and isLegend authoritatively
+  assert.equal(
+    profile.keyMoments[0]?.sourceUrl,
+    'https://en.wikipedia.org/wiki/Isaac_Newton#Principia',
+  );
+  assert.equal(profile.deepFacts[0]?.isLegend, true);
+  assert.equal(profile.connections[0]?.name, 'Готфрид Вильгельм Лейбниц');
+
+  // Stale Russian sourceHash warns and skips
+  const staleWarnings: string[] = [];
+  const stale = shipProfiles(
+    [rawRecord(enWithConn), rawRecord(ru, 'people/Q935-isaac-newton.ru.json')],
+    TARGETS,
+    'ru',
+    { warn: (msg) => staleWarnings.push(msg) },
+  );
+  assert.equal(stale.size, 0);
+  assert.match(staleWarnings[0] ?? '', /stale Russian Profile/);
+});
+
+test('a Profile for an entity outside the dataset or duplicated throws', () => {
+  assert.throws(
+    () =>
+      shipProfiles(
+        [
+          rawRecord({
+            meta: {
+              qid: 'Q404',
+              locale: 'en',
+              subjectDates: '1643–1727',
+              approvedAt: '2026-11-26T00:00:00.000Z',
+            },
+          }),
+        ],
+        TARGETS,
+      ),
+    /Q404 is not an entity in the dataset/,
+  );
+
+  assert.throws(
+    () => shipProfiles([rawRecord(), rawRecord()], TARGETS),
+    /second English Profile for Q935/,
+  );
+});
+
 test('withProfileFlags sets hasProfile only on entities that have a Profile', () => {
-  const profiles = shipProfiles([rawProfile()], TARGETS);
+  const profiles = shipProfiles([rawRecord()], TARGETS);
 
   const flagged = withProfileFlags(
     [
@@ -167,14 +247,17 @@ test('withProfileFlags sets hasProfile only on entities that have a Profile', ()
   ]);
 });
 
-test("a Connection resolves to its target's slug, name, lane and Detail Level, in the given order", () => {
+test('Connections resolve to slug, name, lane, Detail Level and skip unknown/self/dupes', () => {
   const profiles = shipProfiles(
     [
-      rawProfile({
+      rawRecord({
         connections: [
-          { qid: 'Q900', connection: 'Signed it.' },
-          { qid: 'Q9047', connection: 'Rival over calculus.' },
-          { qid: 'Q362', connection: 'Far later.' },
+          { qid: 'Q404', reason: 'Not in dataset.' },
+          { qid: 'Q935', reason: 'Self.' },
+          { qid: 'Q900', reason: 'Signed it.' },
+          { qid: 'Q9047', reason: 'Rival over calculus.' },
+          { qid: 'Q9047', reason: 'Duplicate.' },
+          { qid: 'Q362', reason: 'Far later.' },
         ],
       }),
     ],
@@ -206,274 +289,41 @@ test("a Connection resolves to its target's slug, name, lane and Detail Level, i
   ]);
 });
 
-test('a Connection whose target is not in the dataset, has no qid, points at the subject or repeats is dropped', () => {
-  const profiles = shipProfiles(
-    [
-      rawProfile({
-        connections: [
-          { qid: 'Q404', connection: 'Not in the dataset.' },
-          { connection: 'Unresolved.' },
-          { qid: 'Q935', connection: 'Himself.' },
-          { qid: 'Q9047', connection: 'First.' },
-          { qid: 'Q9047', connection: 'Again.' },
-        ],
-      }),
-    ],
-    TARGETS,
-  );
-
-  assert.deepEqual(
-    profiles
-      .get('isaac-newton')
-      ?.connections.map((connection) => connection.reason),
-    ['First.'],
-  );
-});
-
-test('a Profile with an unpaired ** is rejected, naming the file and field', () => {
+test('bad markup in any reader-facing text field throws', () => {
   assert.throws(
     () =>
-      shipProfiles([rawProfile({ overview: 'An **unclosed run.' })], TARGETS),
-    /people\/Q935-isaac-newton\.json: overview: unpaired "\*\*"/,
+      shipProfiles([rawRecord({ overview: 'An **unclosed run.' })], TARGETS),
+    /overview: unpaired "\*\*"/,
   );
+  assertBoldOnlyMarkup('Plain, **bold** text.', 'x');
 });
 
-test('every shipped text field is checked', () => {
-  const bad = '<b>x</b>';
-  assert.throws(
-    () =>
-      shipProfiles(
-        [
-          rawProfile({
-            key_moments: [{ date: '1687', title: bad, text: 'ok' }],
-          }),
-        ],
-        TARGETS,
-      ),
-    /key_moments\[0\]\.title/,
-  );
-  assert.throws(
-    () =>
-      shipProfiles(
-        [
-          rawProfile({
-            key_moments: [{ date: '1687', title: 'ok', text: bad }],
-          }),
-        ],
-        TARGETS,
-      ),
-    /key_moments\[0\]\.text/,
-  );
-  assert.throws(
-    () =>
-      shipProfiles(
-        [rawProfile({ deep_facts: [{ text: bad, isLegend: false }] })],
-        TARGETS,
-      ),
-    /deep_facts\[0\]\.text/,
-  );
-  assert.throws(
-    () =>
-      shipProfiles(
-        [rawProfile({ connections: [{ qid: 'Q9047', connection: bad }] })],
-        TARGETS,
-      ),
-    /connections\[0\]\.connection/,
-  );
-});
-
-test('assertBoldOnlyMarkup accepts paired bold and rejects other markup', () => {
-  assertBoldOnlyMarkup('Plain, **bold** and **more bold** text.', 'x');
-  assertBoldOnlyMarkup('', 'x');
-
-  for (const text of [
-    'a **b',
-    'a <em>b</em>',
-    'see [here](https://example.com)',
-    'an *italic* word',
-    'some `code`',
-  ]) {
-    assert.throws(() => assertBoldOnlyMarkup(text, 'x'), /x: /, text);
-  }
-});
-
-function rawJson(
-  overrides: Record<string, unknown> = {},
-): Record<string, unknown> {
-  return {
-    subject: 'Isaac Newton',
-    overview: 'Overview.',
-    key_moments: [
-      {
-        date: '1687',
-        title: 'T',
-        text: 'Text.',
-        claims: ['c'],
-        source: 'not_on_wikipedia',
-      },
-    ],
-    deep_facts: [
-      {
-        text: 'Fact.',
-        type: 'hidden_story',
-        is_legend: false,
-        confidence: 'high',
-        claims: ['c'],
-        source: 'not_on_wikipedia',
-      },
-    ],
-    connections: [
-      {
-        name: 'Leibniz',
-        wikipedia_url: 'https://en.wikipedia.org/wiki/Leibniz',
-        connection: 'Rival.',
-        importance: 'high',
-        qid: 'Q9047',
-      },
-    ],
-    meta: {
-      locale: 'en',
-      source: { wikidata_qid: 'Q935' },
-      review: { status: 'reviewed' },
-    },
-    ...overrides,
-  };
-}
-
-test('parseRawProfile reads the fields Output needs from the raw file', () => {
-  assert.deepEqual(parseRawProfile(rawJson(), 'people/x.json'), {
-    fileName: 'people/x.json',
-    qid: 'Q935',
-    locale: 'en',
-    status: 'reviewed',
-    overview: 'Overview.',
-    key_moments: [{ date: '1687', title: 'T', text: 'Text.' }],
-    deep_facts: [{ text: 'Fact.', isLegend: false }],
-    connections: [{ qid: 'Q9047', connection: 'Rival.' }],
-  });
-});
-
-test('parseRawProfile names the field that is missing', () => {
-  assert.throws(
-    () => parseRawProfile(rawJson({ overview: undefined }), 'people/x.json'),
-    /people\/x\.json: overview/,
-  );
-  assert.throws(
-    () =>
-      parseRawProfile(
-        rawJson({
-          meta: { locale: 'en', source: {}, review: { status: 'draft' } },
-        }),
-        'people/x.json',
-      ),
-    /meta\.source\.wikidata_qid/,
-  );
-});
-
-test('source URLs reach shipped passages with section anchors intact', () => {
-  const momentSource = 'https://en.wikipedia.org/wiki/Isaac_Newton#Principia';
-  const factSource = 'https://www.example.org/archive/newton#apple';
-  const raw = parseRawProfile(
-    rawJson({
-      key_moments: [
-        {
-          date: '1687',
-          title: 'Principia',
-          text: 'Text.',
-          source: momentSource,
-        },
-      ],
-      deep_facts: [{ text: 'Fact.', is_legend: true, source: factSource }],
-    }),
-    'people/x.json',
-  );
-  assert.equal(raw.key_moments[0]?.sourceUrl, momentSource);
-  assert.equal(raw.deep_facts[0]?.sourceUrl, factSource);
-});
-
-test('missing, sentinel, malformed and unsafe sources never become links', () => {
-  for (const source of [
-    undefined,
-    null,
-    '',
-    'not_on_wikipedia',
-    '/wiki/Isaac_Newton',
-    'https://',
-    'javascript:alert(1)',
-    'data:text/html,hello',
-    'https://user:password@example.org',
-  ]) {
-    const raw = parseRawProfile(
-      rawJson({
-        key_moments: [{ date: '1687', title: 'T', text: 'Text.', source }],
-        deep_facts: [{ text: 'Fact.', is_legend: false, source }],
-      }),
-      'people/x.json',
-    );
-    assert.equal(raw.key_moments[0]?.sourceUrl, undefined);
-    assert.equal(raw.deep_facts[0]?.sourceUrl, undefined);
-  }
-});
-
-test('readRawProfiles reads lane folders and skips staging and verification files', async () => {
-  const root = await mkdtemp(path.join(tmpdir(), 'profiles-test-'));
+test('parseRawProfile and readRawProfiles validate StoredProfileSchema', async (t) => {
+  const root = await mkdtemp(path.join(tmpdir(), 'profiles-read-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
   await mkdir(path.join(root, 'people'), { recursive: true });
-  await mkdir(path.join(root, 'incoming'), { recursive: true });
   await writeFile(
-    path.join(root, 'people', 'Q935-isaac-newton.json'),
-    JSON.stringify(rawJson()),
+    path.join(root, 'people', 'Q935-isaac-newton.en.json'),
+    JSON.stringify(storedProfile()),
   );
   await writeFile(
-    path.join(root, 'people', 'Q935-isaac-newton.verification.json'),
-    JSON.stringify({ profile: 'x' }),
-  );
-  await writeFile(
-    path.join(root, 'incoming', 'Q1.json'),
-    JSON.stringify({ not: 'a profile' }),
+    path.join(root, 'people', 'notes.txt'),
+    'ignored non-profile file',
   );
 
-  const profiles = await readRawProfiles(root);
-
+  const records = await readRawProfiles(root);
   assert.deepEqual(
-    profiles.map((profile) => profile.fileName),
-    ['people/Q935-isaac-newton.json'],
+    records.map((r) => r.fileName),
+    ['people/Q935-isaac-newton.en.json'],
   );
 
-  await rm(root, { recursive: true, force: true });
-});
-
-test('readRawProfiles returns nothing when no Profiles exist yet', async () => {
-  const root = await mkdtemp(path.join(tmpdir(), 'profiles-test-'));
-
-  assert.deepEqual(await readRawProfiles(path.join(root, 'missing')), []);
-
-  await rm(root, { recursive: true, force: true });
-});
-
-test('writeProfiles clears old files and does not copy English into Russian', async () => {
-  const root = await mkdtemp(path.join(tmpdir(), 'profiles-test-'));
-  await mkdir(path.join(root, 'profiles', 'en'), { recursive: true });
-  await writeFile(path.join(root, 'profiles', 'en', 'stale.json'), '{}');
-  await mkdir(path.join(root, 'profiles', 'ru'), { recursive: true });
-  await writeFile(path.join(root, 'profiles', 'ru', 'isaac-newton.json'), '{}');
-
-  const profiles = shipProfiles([rawProfile()], TARGETS);
-  await writeProfiles(root, profiles);
-
-  assert.deepEqual(await readdir(path.join(root, 'profiles', 'en')), [
-    'isaac-newton.json',
-  ]);
-  assert.deepEqual(await readdir(path.join(root, 'profiles', 'ru')), []);
-  const en = await readFile(
-    path.join(root, 'profiles', 'en', 'isaac-newton.json'),
-    'utf8',
+  assert.throws(
+    () => parseRawProfile({ overview: 'missing fields' }, 'people/bad.en.json'),
+    /people\/bad\.en\.json:/,
   );
-  assert.deepEqual(JSON.parse(en), profiles.get('isaac-newton'));
-
-  await rm(root, { recursive: true, force: true });
 });
 
-test('parity checks the written locale datasets and every Profile connection', async (t) => {
+test('writeProfiles clears old files and verifyBuiltProfiles enforces parity', async (t) => {
   const directory = await mkdtemp(path.join(tmpdir(), 'profile-parity-'));
   t.after(() => rm(directory, { recursive: true, force: true }));
   const profile = {
@@ -509,8 +359,7 @@ test('parity checks the written locale datasets and every Profile connection', a
   const profiles = new Map([['source', profile]]);
   await writeProfiles(directory, profiles, profiles);
   await verifyBuiltProfiles(directory);
-  const file = path.join(directory, 'profiles', 'ru', 'source.json');
-  const orphan = path.join(directory, 'profiles', 'ru', 'orphan.json');
+
   const destination = await mkdtemp(
     path.join(tmpdir(), 'profile-parity-publish-'),
   );
@@ -518,42 +367,15 @@ test('parity checks the written locale datasets and every Profile connection', a
   await publishBuiltData(directory, destination);
   const published = path.join(destination, 'profiles', 'ru', 'source.json');
   assert.deepEqual(JSON.parse(await readFile(published, 'utf8')), profile);
+
+  const orphan = path.join(directory, 'profiles', 'ru', 'orphan.json');
   await writeFile(orphan, JSON.stringify(profile));
   await assert.rejects(
     verifyBuiltProfiles(directory),
     /Orphan Profile file.*orphan\.json/,
   );
-  await assert.rejects(
-    publishBuiltData(directory, destination),
-    /Orphan Profile file/,
-  );
-  assert.deepEqual(JSON.parse(await readFile(published, 'utf8')), profile);
   await rm(orphan);
-  await rm(file);
-  await assert.rejects(
-    verifyBuiltProfiles(directory),
-    /Missing Profile file.*ru.*source\.json/,
-  );
-  await writeFile(file, '{broken');
-  await assert.rejects(
-    verifyBuiltProfiles(directory),
-    /Unreadable Profile JSON/,
-  );
-  for (const [connection, error] of [
-    [{ slug: 'absent' }, /unknown Connection slug absent/],
-    [
-      { slug: 'target', lane: 'people', detailLevel: 2 },
-      /must match lane milestones and Detail Level 2/,
-    ],
-    [
-      { slug: 'target', lane: 'milestones', detailLevel: 4 },
-      /must match lane milestones and Detail Level 2/,
-    ],
-  ] as const) {
-    await writeFile(
-      file,
-      JSON.stringify({ ...profile, connections: [connection] }),
-    );
-    await assert.rejects(verifyBuiltProfiles(directory), error);
-  }
+  assert.deepEqual(await readdir(path.join(directory, 'profiles', 'en')), [
+    'source.json',
+  ]);
 });

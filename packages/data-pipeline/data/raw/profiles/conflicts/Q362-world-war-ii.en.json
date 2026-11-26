@@ -1,233 +1,116 @@
 {
-  "subject": "World War II",
-  "type": "conflict",
-  "wikipedia_url": "https://en.wikipedia.org/wiki/World_War_II",
   "overview": "World War II was a global war fought from 1939 to 1945 between the Allies, which included Britain, the Soviet Union, the United States and China, and the Axis powers of Germany, Japan and Italy. The fighting spread across Europe, North Africa and the Pacific. During the war, Nazi Germany and its collaborators carried out the mass murder of European Jews. About six million European Jews were murdered in the Holocaust. The war in Europe ended with Germany's surrender in May 1945. Japan formally surrendered in September 1945. The war killed tens of millions of people.",
-  "key_moments": [
+  "keyMoments": [
     {
       "date": "1 September 1939",
       "title": "Germany invades Poland",
       "text": "German troops crossed into **Poland** on 1 September 1939, days after Nazi Germany and the Soviet Union concluded the **Molotov–Ribbentrop Pact**. Two days later **Britain and France declared war on Germany**, turning a regional invasion into a European war. On 17 September the **Soviet Union invaded eastern Poland**. Germany and the Soviet Union divided the country after agreeing on spheres of influence in a secret protocol to the pact.",
-      "claims": [
-        "Germany invaded Poland on 1 September 1939 after concluding the Molotov–Ribbentrop Pact with the Soviet Union.",
-        "Britain and France declared war on Germany two days later.",
-        "The Soviet Union invaded eastern Poland on 17 September.",
-        "The pact's secret protocol set out German and Soviet spheres of influence."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Invasion_of_Poland"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Invasion_of_Poland"
     },
     {
       "date": "1941–1943",
       "title": "Barbarossa and Stalingrad",
       "text": "On 22 June 1941 Germany broke its pact with the Soviet Union and launched **Operation Barbarossa**. German forces advanced toward Moscow, where a Soviet counteroffensive pushed them back in December. Fighting reached **Stalingrad** on the Volga in 1942, and Soviet forces encircled the German **Sixth Army**. Its commander, Friedrich Paulus, entered Soviet captivity before the remaining German forces in the city surrendered on 2 February 1943.",
-      "claims": [
-        "Germany invaded the Soviet Union on 22 June 1941.",
-        "A Soviet counteroffensive pushed German forces back from Moscow in December 1941.",
-        "Soviet forces encircled the German Sixth Army at Stalingrad.",
-        "Friedrich Paulus entered Soviet captivity before the remaining German forces in the city surrendered on 2 February 1943."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad"
     },
     {
       "date": "7 December 1941",
       "title": "Pearl Harbor brings in the United States",
       "text": "Japan, already at war with China since 1937, sent carrier aircraft against the **US Pacific Fleet at Pearl Harbor** in Hawaii on the morning of 7 December 1941, sinking or damaging battleships and killing more than 2,400 Americans. The **United States declared war on Japan** the next day, and on 11 December **Germany and Italy declared war on the United States**, bringing the United States into the war against Germany and Italy as well. The US aircraft carriers escaped the attack. Six months later, US carrier aircraft fatally damaged four Japanese carriers at the **Battle of Midway**.",
-      "claims": [
-        "Japan had been at war with China since 1937.",
-        "Japanese aircraft attacked the US Pacific Fleet at Pearl Harbor on 7 December 1941, killing more than 2,400 Americans.",
-        "The United States declared war on Japan the next day.",
-        "Germany and Italy declared war on the United States on 11 December.",
-        "US carriers escaped the Pearl Harbor attack.",
-        "US carrier aircraft fatally damaged four Japanese carriers at Midway in June 1942."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor"
     },
     {
       "date": "May–September 1945",
       "title": "Surrender in Europe, atomic bombs in Asia",
       "text": "With Soviet troops in Berlin and Hitler dead by suicide, **Germany surrendered unconditionally**. Britain marked **Victory in Europe Day** on 8 May 1945. In August, the United States dropped atomic bombs on **Hiroshima** and **Nagasaki**, and the Soviet Union declared war on Japan and invaded Manchuria. Emperor Hirohito announced Japan's surrender in a radio broadcast on 15 August. Japan signed the formal surrender aboard **USS Missouri** in Tokyo Bay on 2 September 1945.",
-      "claims": [
-        "Germany surrendered unconditionally in May 1945.",
-        "Britain marked Victory in Europe Day on 8 May 1945.",
-        "In August 1945 the United States dropped atomic bombs on Hiroshima and Nagasaki, and the Soviet Union declared war on Japan and invaded Manchuria.",
-        "Hirohito announced Japan's surrender by radio on 15 August 1945.",
-        "Japan signed its formal surrender aboard USS Missouri in Tokyo Bay on 2 September 1945."
-      ],
-      "source": "https://en.wikipedia.org/wiki/Surrender_of_Japan"
+      "sourceUrl": "https://en.wikipedia.org/wiki/Surrender_of_Japan"
     }
   ],
-  "deep_facts": [
+  "deepFacts": [
     {
       "text": "Before the war, Polish codebreakers including **Marian Rejewski** broke the German Enigma cipher. In July 1939, the Polish team shared its work with British and French counterparts near Warsaw. The disclosure gave British codebreakers a head start.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Polish codebreakers including Marian Rejewski broke the German Enigma cipher before the war.",
-        "In July 1939 the Polish team shared its Enigma work with British and French counterparts near Warsaw.",
-        "The information helped the British codebreakers."
-      ],
-      "source": "https://history.blog.gov.uk/2019/07/26/whats-the-context-polish-cryptologists-reveal-they-have-cracked-the-enigma-code-26-july-1939/"
+      "isLegend": false,
+      "sourceUrl": "https://history.blog.gov.uk/2019/07/26/whats-the-context-polish-cryptologists-reveal-they-have-cracked-the-enigma-code-26-july-1939/"
     },
     {
       "text": "Japanese army lieutenant **Hiroo Onoda** continued to fight on Lubang Island in the Philippines after Japan surrendered, harming local residents. He laid down his arms in 1974 after a Japanese officer came to the island and gave him the order to stand down.",
-      "type": "unique_detail",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "Hiroo Onoda continued to fight on Lubang after Japan surrendered, harming local residents.",
-        "Onoda laid down his arms in 1974 after receiving an order to stand down from a Japanese officer who came to the island."
-      ],
-      "source": "https://text-message.blogs.archives.gov/2023/05/25/onoda-of-the-jungle/"
+      "isLegend": false,
+      "sourceUrl": "https://text-message.blogs.archives.gov/2023/05/25/onoda-of-the-jungle/"
     },
     {
       "text": "The **1956 Soviet–Japanese Joint Declaration** provided for an end to the state of war between the Soviet Union and Japan and for the restoration of diplomatic relations. It also committed both governments to further negotiations for a peace treaty.",
-      "type": "hidden_story",
-      "is_legend": false,
-      "confidence": "high",
-      "claims": [
-        "The 1956 joint declaration provided for an end to the state of war and the restoration of diplomatic relations.",
-        "The declaration committed the two governments to continue negotiating a peace treaty."
-      ],
-      "source": "https://worldjpn.net/documents/texts/docs/19561019.D1E.html"
+      "isLegend": false,
+      "sourceUrl": "https://worldjpn.net/documents/texts/docs/19561019.D1E.html"
     }
   ],
   "connections": [
     {
-      "name": "Adolf Hitler",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Adolf_Hitler",
-      "connection": "Nazi Germany invaded Poland under his leadership, starting the war in Europe.",
-      "importance": "high",
-      "qid": "Q352"
+      "qid": "Q352",
+      "reason": "Nazi Germany invaded Poland under his leadership, starting the war in Europe."
     },
     {
-      "name": "Winston Churchill",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Winston_Churchill",
-      "connection": "Became British prime minister in 1940 and led Britain to victory in Europe.",
-      "importance": "high",
-      "qid": "Q8016"
+      "qid": "Q8016",
+      "reason": "Became British prime minister in 1940 and led Britain to victory in Europe."
     },
     {
-      "name": "Franklin D. Roosevelt",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt",
-      "connection": "US president who signed Lend-Lease to authorize aid to the Allies and asked Congress to declare war on Japan after Pearl Harbor. He died in April 1945.",
-      "importance": "high",
-      "qid": "Q8007"
+      "qid": "Q8007",
+      "reason": "US president who signed Lend-Lease to authorize aid to the Allies and asked Congress to declare war on Japan after Pearl Harbor. He died in April 1945."
     },
     {
-      "name": "Joseph Stalin",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Joseph_Stalin",
-      "connection": "Soviet leader whose government concluded the 1939 pact with Nazi Germany. He led the Soviet Union during the war against Germany after its invasion in 1941.",
-      "importance": "high",
-      "qid": "Q855"
+      "qid": "Q855",
+      "reason": "Soviet leader whose government concluded the 1939 pact with Nazi Germany. He led the Soviet Union during the war against Germany after its invasion in 1941."
     },
     {
-      "name": "The Holocaust",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/The_Holocaust",
-      "connection": "Nazi Germany and its collaborators murdered about six million European Jews during the Holocaust.",
-      "importance": "high",
-      "qid": "Q2763"
+      "qid": "Q2763",
+      "reason": "Nazi Germany and its collaborators murdered about six million European Jews during the Holocaust."
     },
     {
-      "name": "Invasion of Poland",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Invasion_of_Poland",
-      "connection": "The German attack on 1 September 1939 that began the war in Europe.",
-      "importance": "high",
-      "qid": "Q150812"
+      "qid": "Q150812",
+      "reason": "The German attack on 1 September 1939 that began the war in Europe."
     },
     {
-      "name": "Operation Barbarossa",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Operation_Barbarossa",
-      "connection": "Germany's June 1941 invasion of the Soviet Union opened the Eastern Front.",
-      "importance": "high",
-      "qid": "Q83055"
+      "qid": "Q83055",
+      "reason": "Germany's June 1941 invasion of the Soviet Union opened the Eastern Front."
     },
     {
-      "name": "Battle of Stalingrad",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad",
-      "connection": "The defeat of the German Sixth Army in early 1943 was a turning point on the Eastern Front.",
-      "importance": "high",
-      "qid": "Q38789"
+      "qid": "Q38789",
+      "reason": "The defeat of the German Sixth Army in early 1943 was a turning point on the Eastern Front."
     },
     {
-      "name": "Attack on Pearl Harbor",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Attack_on_Pearl_Harbor",
-      "connection": "Japan's December 1941 strike on Hawaii brought the United States into the war.",
-      "importance": "high",
-      "qid": "Q52418"
+      "qid": "Q52418",
+      "reason": "Japan's December 1941 strike on Hawaii brought the United States into the war."
     },
     {
-      "name": "Normandy landings",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Normandy_landings",
-      "connection": "The Allied landings on 6 June 1944 opened a front in northern France.",
-      "importance": "high",
-      "qid": "Q16470"
+      "qid": "Q16470",
+      "reason": "The Allied landings on 6 June 1944 opened a front in northern France."
     },
     {
-      "name": "Atomic bombings of Hiroshima and Nagasaki",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Atomic_bombings_of_Hiroshima_and_Nagasaki",
-      "connection": "The United States bombed Hiroshima and Nagasaki in August 1945. Japan announced its surrender that month and signed it formally on 2 September.",
-      "importance": "high",
-      "qid": "Q488"
+      "qid": "Q488",
+      "reason": "The United States bombed Hiroshima and Nagasaki in August 1945. Japan announced its surrender that month and signed it formally on 2 September."
     },
     {
-      "name": "Cold War",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Cold_War",
-      "connection": "Wartime allies became rivals after 1945, including over the political future of Europe.",
-      "importance": "high",
-      "qid": "Q8683"
+      "qid": "Q8683",
+      "reason": "Wartime allies became rivals after 1945, including over the political future of Europe."
     },
     {
-      "name": "World War I",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/World_War_I",
-      "connection": "Resentment over the Treaty of Versailles helped the Nazi Party gain support in Germany.",
-      "importance": "medium",
-      "qid": "Q361"
+      "qid": "Q361",
+      "reason": "Resentment over the Treaty of Versailles helped the Nazi Party gain support in Germany."
     },
     {
-      "name": "Second Sino-Japanese War",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Second_Sino-Japanese_War",
-      "connection": "Full-scale war between Japan and China began in 1937 and continued during the wider war in the Pacific.",
-      "importance": "medium",
-      "qid": "Q170314"
+      "qid": "Q170314",
+      "reason": "Full-scale war between Japan and China began in 1937 and continued during the wider war in the Pacific."
     },
     {
-      "name": "Hirohito",
-      "wikipedia_url": "https://en.wikipedia.org/wiki/Hirohito",
-      "connection": "Japan's emperor announced the country's surrender by radio on 15 August 1945.",
-      "importance": "medium",
-      "qid": "Q34479"
+      "qid": "Q34479",
+      "reason": "Japan's emperor announced the country's surrender by radio on 15 August 1945."
     }
   ],
   "meta": {
-    "generated_at": "2026-10-25T13:05:08.317Z",
-    "prompt_version": "2.1.0",
-    "prompt_hash": "49a617acf74e",
-    "schema_version": 3,
-    "model": "opus",
-    "temperature": null,
-    "run_id": "2026-10-25",
+    "qid": "Q362",
     "locale": "en",
-    "source": {
-      "wikidata_qid": "Q362"
-    },
-    "tokens": null,
-    "validation": {
-      "schema_valid": true,
-      "connections_returned": 15,
-      "connections_matched_people": 5,
-      "connections_matched_events": 10,
-      "connections_unresolved": 0
-    },
-    "review": {
-      "status": "reviewed",
-      "reviewed_at": "2026-11-19T08:33:36.864Z",
-      "approval": {
-        "policy_version": "2",
-        "profile_hash": "371ee030d066a86fa111e6b1a9982004dd38932bc95e896719c3b33a24a493d1",
-        "report_hash": "605778d5031e20ed53c3b4ac30cf21f117743ae99df943e8174cf9aeef41c1a2",
-        "method": "automatic"
-      }
-    }
+    "subjectDates": "1939–1945",
+    "approvedAt": "2026-11-19T08:33:36.864Z",
+    "writerModel": "opus",
+    "checkerModel": "gpt-6.2-sol"
   }
 }

@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@o-tempora/shared-types": "^0.1.0",
-    "htmlparser2": "^10.1.0",
+    "node-html-markdown": "^2.0.0",
     "seek-bzip": "^2.0.0",
-    "tldts": "7.4.10"
+    "zod": "^4.6.7"
   }
 }
