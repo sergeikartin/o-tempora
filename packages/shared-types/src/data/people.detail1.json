@@ -45,7 +45,8 @@
     "imageAttribution": "พระมหาเทวประภาส วชิรญาณเมธี (ผู้ถ่าย-ปล่อยสัญญาอนุญาตภาพให้นำไปใช้ได้เพื่อการศึกษาโดยอยู่ภา่ยใต้ cc-by-sa-3.0)  ผู้สร้างสรรค์ผลงาน/ส่งข้อมูลเก็บในคลังข้อมูลเสรีวิกิมีเดียคอมมอนส์ - เทวประภาส มากคล้าย, via Wikimedia Commons",
     "description": "Siddhartha Gautama, most commonly referred to as the Buddha, was a wandering ascetic and religious teacher who lived in the eastern Indo-Gangetic Plains during the 6th or 5th century BCE and founded Buddhism. According to Buddhist legends, he was born in Lumbini, in what is now Nepal, to royal parents of the Shakya clan, but renounced his home life to live as a wandering ascetic. After leading a life of mendicancy, asceticism, and meditation, he attained nirvana at Bodh Gaya in what is now Bihar, India. The Buddha then wandered through the lower Indo-Gangetic Plain, teaching and building a monastic order (sangha). Buddhist tradition holds he died in Kushinagar and reached parinirvana.",
     "slug": "the-buddha",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "14627",
@@ -92,7 +93,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Official%20Presidential%20Portrait%20of%20President%20Donald%20J.%20Trump%20%282025%29%20%28cropped%29%282%29.jpg",
     "description": "Donald John Trump is an American politician, media personality, and businessman who is the 47th president of the United States. A member of the Republican Party, he served as the 45th president from 2017 to 2021.",
     "slug": "donald-trump",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "17414699",
@@ -117,7 +119,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/YuanEmperorAlbumGenghisPortrait.jpg",
     "description": "Genghis Khan, also known as Chinggis Khan, was the founder and first khan of the Mongol Empire. After spending most of his life uniting the Mongol tribes, he launched a series of military campaigns, conquering large parts of China and Central Asia.",
     "slug": "genghis-khan",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "60827",
@@ -168,7 +171,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mahatma-Gandhi%2C%20studio%2C%201931.jpg",
     "description": "Mohandas Karamchand Gandhi was an Indian lawyer, anti-colonial nationalist and political ethicist who employed nonviolent resistance to lead the successful campaign for India's independence from British rule, and to later inspire movements for civil rights and freedom across the world. The honorific Mahātmā, first applied to him in 1914 in South Africa, is now used throughout the world.",
     "slug": "mahatma-gandhi",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "1687680",

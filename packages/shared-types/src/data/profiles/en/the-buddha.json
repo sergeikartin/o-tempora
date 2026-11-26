@@ -1,0 +1,64 @@
+{
+  "overview": "Siddhartha Gautama taught in the Ganges plain of northern India, where he founded a monastic community that helped carry his teachings from place to place. Known as the **Buddha**, or Awakened One, he taught that suffering could end through a practice that brought together ethical conduct, meditation, and insight. The dates of his life are uncertain, and many of its best-known episodes come from Buddhist tradition.",
+  "keyMoments": [
+    {
+      "date": "6th–5th centuries BC",
+      "title": "Awakening at Bodh Gaya",
+      "text": "In an early Buddhist discourse, Gautama recalls eating so little that his bones began to show. He remembered meditating under a tree as a child while his father worked, and returned to meditation once he had eaten enough to regain his strength. Buddhist tradition places his **awakening** beneath a sacred fig tree at Bodh Gaya.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Gautama_Buddha"
+    },
+    {
+      "date": "6th–5th centuries BC",
+      "title": "The first sermon",
+      "text": "Buddhist tradition has Gautama address five former companions at a deer park near Varanasi. He sets out the **Four Noble Truths**, identifying craving as a cause of suffering and describing a path to its end that includes such everyday choices as how to speak and earn a living.",
+      "sourceUrl": "https://accesstoinsight.org/tipitaka/sn/sn56/sn56.011.than.html"
+    },
+    {
+      "date": "6th–5th centuries BC",
+      "title": "An order of nuns",
+      "text": "An early Buddhist discourse tells how **Mahāpajāpati Gotamī**, Gautama’s foster mother, asked him to admit women to monastic life. When he refused, she cut her hair and followed him with other women, arriving dusty and footsore. Gautama agreed to admit her under a set of rules after his disciple Ānanda pleaded her case.",
+      "sourceUrl": "https://www.dhammatalks.org/suttas/AN/AN8_51.html"
+    },
+    {
+      "date": "5th–early 4th century BC",
+      "title": "The last days at Kushinagar",
+      "text": "The traditional account of the Buddha’s death has his attendant Ānanda make him a bed between two trees near **Kushinagar**. There the Buddha tells him that after his death the community should take its teachings and rules of conduct as its guide.",
+      "sourceUrl": "https://accesstoinsight.org/tipitaka/dn/dn.16.1-6.vaji.html"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Some of the oldest surviving Buddhist manuscripts are fragments of **birch-bark scrolls** from around the first century AD. The British Library’s fragments were buried in a clay pot whose inscription dedicates it to the teachers of an early Buddhist school.",
+      "isLegend": false,
+      "sourceUrl": "https://asian.washington.edu/british-library-kharosthi-fragments"
+    },
+    {
+      "text": "On a medieval Cambodian bronze, the Buddha reaches down to touch the earth. Under his seat, the **earth goddess** wrings water from her hair to sweep away the demon Mara’s army, a scene from the legend of Gautama’s awakening.",
+      "isLegend": true,
+      "sourceUrl": "https://www.clevelandart.org/art/1964.93.a"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "ananda",
+      "reason": "The Buddha’s disciple and attendant appears at his side in the early account of his final journey to Kushinagar.",
+      "name": "Ānanda",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "bimbisara",
+      "reason": "Early Buddhist texts describe the king of Magadha giving a bamboo grove to the Buddha’s monastic community.",
+      "name": "Bimbisara",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "ashoka",
+      "reason": "The Mauryan emperor visited Lumbini long after Gautama’s death and left a pillar inscription identifying it as the Buddha’s birthplace.",
+      "name": "Ashoka",
+      "lane": "people",
+      "detailLevel": 3
+    }
+  ]
+}
