@@ -1,6 +1,6 @@
 ---
 name: profile-coordinator
-description: Coordinates Profile batches chosen in chat using subagents.
+description: Coordinates English Profile authoring and verification batches chosen in chat using subagents.
 model: inherit
 mainAgent: true
 subagent: true

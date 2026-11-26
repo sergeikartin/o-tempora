@@ -8,11 +8,6 @@ import {
 } from './pending-state.ts';
 import { readStoredProfiles, type StoredProfile } from './store.ts';
 import { formatDates, type ProfileSubject } from './subjects.ts';
-import {
-  approvedTranslation,
-  readTranslation,
-  translationFeedback,
-} from './translation.ts';
 import { asRecord } from './values.ts';
 import { profileHash, readProfileApproval } from './verification/approval.ts';
 import { parseAssessment } from './verification/assessment.ts';
@@ -23,9 +18,7 @@ const COMMANDS = {
   staged: ['validate', 'finalize'],
   'draft-pending-audit': ['english-audit'],
   'english-held': ['english-repair'],
-  'english-approved': ['russian-translation'],
-  'russian-held': ['russian-translation'],
-  'bilingual-approved': ['done'],
+  'english-approved': ['done'],
 } as const;
 
 export type ProfileStage = keyof typeof COMMANDS;
@@ -72,7 +65,7 @@ export type StatusItem = {
       : unknown);
 }[ProfileStage];
 
-async function readOptionalJson(file: string): Promise<unknown> {
+export async function readOptionalJson(file: string): Promise<unknown> {
   try {
     return JSON.parse(await readFile(file, 'utf8'));
   } catch (error) {
@@ -146,22 +139,7 @@ async function inspectSubject(
   const approval = readProfileApproval(record, report);
   const pending = await readPendingAssessmentState(profilesDir, qid, record);
   if (!pending && approval?.isCurrentFor(dates)) {
-    const translation = await readTranslation(filePath);
-    if (approvedTranslation(translation, record))
-      return { qid, stage: 'bilingual-approved', next_command: 'done' };
-    const reason =
-      translation === undefined
-        ? undefined
-        : 'Saved Russian translation does not approve the current English Profile';
-    const stage = (await translationFeedback(filePath, record))
-      ? 'russian-held'
-      : 'english-approved';
-    return {
-      qid,
-      stage,
-      next_command: 'russian-translation',
-      ...(reason ? { reason } : {}),
-    };
+    return { qid, stage: 'english-approved', next_command: 'done' };
   }
 
   const currentReport =
@@ -219,30 +197,26 @@ async function inspectSubject(
   };
 }
 
-export async function inspectProfileStatus({
+export function selectStatusSubjects({
   qids,
   scope,
-  stages,
+  defaultScope,
   limit,
   subjects,
-  profilesDir,
-  incomingDir,
 }: {
   qids?: ReadonlySet<string>;
   scope?: ProfileScope;
-  stages?: ReadonlySet<ProfileStage>;
+  defaultScope: ProfileScope;
   limit?: number;
   subjects: readonly ProfileSubject[];
-  profilesDir: string;
-  incomingDir: string;
-}): Promise<{ summary: Record<ProfileStage, number>; items: StatusItem[] }> {
+}): ProfileSubject[] {
   if (qids && scope)
     throw new Error('--qids and --scope are mutually exclusive');
   if (limit !== undefined && (!Number.isSafeInteger(limit) || limit < 1))
     throw new Error('--limit must be a positive integer');
-  const selectedScope = parseProfileScope(scope) ?? 'mainstream';
+  const selectedScope = parseProfileScope(scope) ?? defaultScope;
   const byQid = new Map(subjects.map((subject) => [subject.qid, subject]));
-  const selected = qids
+  return qids
     ? [...qids].map((qid) => {
         const subject = byQid.get(qid);
         if (!subject) throw new Error(`${qid}: no dataset entity`);
@@ -260,6 +234,32 @@ export async function inspectProfileStatus({
             fameScore >= DETAIL_LEVEL_FAME_SCORE_FLOORS[lane][level]
           );
         });
+}
+
+export async function inspectProfileStatus({
+  qids,
+  scope,
+  stages,
+  limit,
+  subjects,
+  profilesDir,
+  incomingDir,
+}: {
+  qids?: ReadonlySet<string>;
+  scope?: ProfileScope;
+  stages?: ReadonlySet<ProfileStage>;
+  limit?: number;
+  subjects: readonly ProfileSubject[];
+  profilesDir: string;
+  incomingDir: string;
+}): Promise<{ summary: Record<ProfileStage, number>; items: StatusItem[] }> {
+  const selected = selectStatusSubjects({
+    qids,
+    scope,
+    defaultScope: 'mainstream',
+    limit,
+    subjects,
+  });
 
   const stored = await readStoredProfiles(profilesDir);
   const items: StatusItem[] = [];

@@ -61,6 +61,10 @@ test('all harness agent stubs point to existing canonical Profile role docs', as
       doc: 'packages/data-pipeline/docs/profile-coordinator.md',
     },
     {
+      name: 'profile-translation-coordinator',
+      doc: 'packages/data-pipeline/docs/profile-translation-coordinator.md',
+    },
+    {
       name: 'profile-scout',
       doc: 'packages/data-pipeline/docs/profile-roles/profile-scout.md',
     },

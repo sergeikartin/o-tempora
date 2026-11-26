@@ -1,6 +1,6 @@
 # Profile verification
 
-The [Profile coordinator](profile-coordinator.md#english) runs `english-audit` and `english-repair` for the selected QID. Each command prepares a task or applies a reply bound to that task’s inputs. Use `--out=<file>` to save a prepared task in gitignored `data/raw/profiles/tasks/<QID>/` for a fresh subagent. Apply replies with `--result=<file>`. The auditor receives the complete Profile and assessment from `tasks/<QID>/pending.json` or the current verification report.
+The [Profile coordinator](profile-coordinator.md) runs `english-audit` and `english-repair` for the selected QID. Each command prepares a task or applies a reply bound to that task’s inputs. Use `--out=<file>` to save a prepared task in gitignored `data/raw/profiles/tasks/<QID>/` for a fresh subagent. Apply replies with `--result=<file>`. The auditor receives the complete Profile and assessment from `tasks/<QID>/pending.json` or the current verification report.
 
 ## Approval policy
 
@@ -23,4 +23,4 @@ Each `<profile>.verification.json` records the claims, evidence, corrections, bl
 
 Humans handle essential factual/framing disagreements and protected `edited` prose updates. Initially audit a small selection of approvals across all three lanes, including repaired Profiles and corroborated claims; expand audits when a failure appears. Automatic approval is fallible, so use audit failures to improve fixtures and policy. Held Profiles keep the existing Description fallback.
 
-Continue to [Russian translation and fidelity audit](profile-translation.md) after English approval.
+Once English is approved, Russian translation can run independently via [Russian translation and fidelity audit](profile-translation.md).

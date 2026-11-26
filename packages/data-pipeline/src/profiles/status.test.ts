@@ -9,7 +9,6 @@ import { writePendingState } from './pending-state.ts';
 import { inspectProfileStatus } from './status.ts';
 import { writeJson } from './store.ts';
 import type { loadSubjects, ProfileSubject } from './subjects.ts';
-import { applyRussianAudit } from './translation.ts';
 import { profileHash } from './verification/approval.ts';
 import { type Assessment, hash } from './verification/assessment.ts';
 import { applyEnglishAudit } from './verification/runner.ts';
@@ -22,7 +21,6 @@ const subject: ProfileSubject = {
   dateSpan: { startYear: 1643, endYear: 1727 },
   wikipediaUrl,
 };
-const dates = '1643–1727';
 const cleanAudit = { uncovered: [], issues: [], coherent: true };
 const text =
   'Newton was an English mathematician. He published the Principia in 1687.';
@@ -199,7 +197,7 @@ test('status reports the next command throughout the workflow and detects stale 
   for (const [args, expected] of [
     [['--stage=draft-pending-audit'], ['Q1', 'Q935']],
     [['--stage=draft-pending-audit', '--limit=1'], ['Q1']],
-    [['--stage=bilingual-approved'], []],
+    [['--stage=english-approved'], []],
   ] as const) {
     await runCoordinatorCommand('status', ['--qids=Q1,Q935', ...args], {
       profilesDir,
@@ -261,30 +259,7 @@ test('status reports the next command throughout the workflow and detects stale 
     (await applyEnglishAudit({ ...english, audit: cleanAudit })).status,
     'approved',
   );
-  await assertStage('english-approved', 'russian-translation');
-  const russianFields = {
-    overview: 'Ньютон был английским математиком.',
-    'key_moments.0.date': '1687',
-    'key_moments.0.title': 'Начала',
-    'key_moments.0.text': 'В 1687 году он опубликовал «Начала».',
-  };
-  const russianAudit = { ...cleanAudit, covered: Object.keys(russianFields) };
-  const russian = {
-    filePath,
-    dates,
-    fields: russianFields,
-    models: [
-      { model: 'translator', tokens: null },
-      { model: 'auditor', tokens: null },
-    ],
-  };
-  await applyRussianAudit({
-    ...russian,
-    audit: { ...russianAudit, issues: ['overview: revise'] },
-  });
-  await assertStage('russian-held', 'russian-translation');
-  await applyRussianAudit({ ...russian, audit: russianAudit });
-  await assertStage('bilingual-approved', 'done');
+  await assertStage('english-approved', 'done');
 
   const staleDates = await current({
     ...subject,
@@ -297,15 +272,14 @@ test('status reports the next command throughout the workflow and detects stale 
     ...record,
     overview: 'Newton was a mathematician.',
   });
+  const editedDraft = await assertStage('draft-pending-audit', 'english-audit');
+  assert.match(editedDraft.reason ?? '', /different English content/);
+
   assert.equal(
     (await applyEnglishAudit({ ...english, audit: cleanAudit })).status,
     'approved',
   );
-  const staleRussian = await assertStage(
-    'english-approved',
-    'russian-translation',
-  );
-  assert.match(staleRussian.reason ?? '', /current English Profile/);
+  await assertStage('english-approved', 'done');
 
   assert.equal(
     (

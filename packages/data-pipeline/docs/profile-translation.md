@@ -1,6 +1,6 @@
 # Russian Profile translation
 
-The [Profile coordinator](profile-coordinator.md#russian) uses `russian-translation` to prepare a candidate from current approved English. A fresh subagent audits every field through `russian-audit`. A held translation leaves the English approval available for publication.
+The [Profile translation coordinator](profile-translation-coordinator.md) uses `translation-status` to find approved English Profiles needing translation and `russian-translation` to prepare a candidate from current approved English. A fresh subagent audits every field through `russian-audit`. Translation runs independently of English authoring; a held translation leaves the English approval available for publication.
 
 The translator receives every reader-facing English field: overview, Key Moment dates, titles and prose, Deep Facts and Connection explanations. Each field preserves its numeric values, including repetitions. Russian clauses can reorder those values, and a Roman-numeral century (XIX век for 19th century) counts as its number. A field with bold emphasis keeps some bold, though a span can split or merge to fit Russian word order; the fidelity audit judges what is emphasized. The pipeline retains the English structure, source URLs, legend flags and QIDs. Connection display names come from the Russian dataset.
 

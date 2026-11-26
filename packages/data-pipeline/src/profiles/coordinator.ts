@@ -501,6 +501,7 @@ export async function runCoordinatorCommand(
       'urls',
     ],
     status: ['qids', 'scope', 'stage', 'limit'],
+    'translation-status': ['qids', 'scope', 'stage', 'limit'],
     'english-audit': ['qid', 'result', 'out'],
     'english-repair': ['qid', 'result', 'out'],
     'russian-translation': ['qid', 'out'],
@@ -680,7 +681,7 @@ export async function runCoordinatorCommand(
       concurrency,
     });
     for (const result of results) options.emit(result);
-  } else if (command === 'status') {
+  } else if (command === 'status' || command === 'translation-status') {
     const [
       { parseQidsFlag },
       { inspectProfileStatus, parseProfileScope, parseProfileStages },
@@ -692,23 +693,40 @@ export async function runCoordinatorCommand(
     ]);
     const qids = parseQidsFlag(argv);
     const scope = parseProfileScope(flags.get('scope'));
-    const stages = parseProfileStages(flags.get('stage'));
     const limit = flags.get('limit');
     if (limit !== undefined && !/^\d+$/.test(limit))
       throw new Error('--limit must be a positive integer');
     if (qids && scope)
       throw new Error('--qids and --scope are mutually exclusive');
-    options.emit(
-      await inspectProfileStatus({
-        qids,
-        scope,
-        stages,
-        limit: limit === undefined ? undefined : Number(limit),
-        profilesDir: options.profilesDir,
-        incomingDir: path.join(options.profilesDir, 'incoming'),
-        subjects: loadSubjectsFn({ readOnly: true }),
-      }),
-    );
+    if (command === 'status') {
+      const stages = parseProfileStages(flags.get('stage'));
+      options.emit(
+        await inspectProfileStatus({
+          qids,
+          scope,
+          stages,
+          limit: limit === undefined ? undefined : Number(limit),
+          profilesDir: options.profilesDir,
+          incomingDir: path.join(options.profilesDir, 'incoming'),
+          subjects: loadSubjectsFn({ readOnly: true }),
+        }),
+      );
+    } else {
+      const { inspectTranslationStatus, parseTranslationStages } = await import(
+        './translation-status.ts'
+      );
+      const stages = parseTranslationStages(flags.get('stage'));
+      options.emit(
+        await inspectTranslationStatus({
+          qids,
+          scope,
+          stages,
+          limit: limit === undefined ? undefined : Number(limit),
+          profilesDir: options.profilesDir,
+          subjects: loadSubjectsFn({ readOnly: true }),
+        }),
+      );
+    }
   } else {
     const qid = required('qid');
     const result = flags.get('result');

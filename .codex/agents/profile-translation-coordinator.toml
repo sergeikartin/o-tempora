@@ -1,0 +1,5 @@
+name = "profile-translation-coordinator"
+description = "Coordinates Russian Profile translation and fidelity audit batches for approved English Profiles using subagents."
+model = "gpt-6.2-sol"
+model_reasoning_effort = "medium"
+developer_instructions = "Read and follow `packages/data-pipeline/docs/profile-translation-coordinator.md`."
