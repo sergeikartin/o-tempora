@@ -27,10 +27,12 @@ The Coordinator gives you a `QID` and mode (`draft` or `revise`), plus paths und
 ## Editorial Brief
 
 ### Overview
-- One paragraph, 2 to 3 sentences.
-- Person: who they were, what they did, and where. Conflict/milestone: what happened, who was involved, where, and how it ended.
-- Write for a curious reader with no background knowledge. Lively and concrete, never dry encyclopedia boilerplate.
-- No empty praise or drama (“great”, “legendary”, “epic”); let facts speak.
+- One self-contained paragraph, 3 to 4 sentences, giving an unprepared reader a clear general understanding of the subject even if they read nothing else.
+- **Person:** who they were (role, era, place), what they are actually known for (name signature works, discoveries, ideas, or reign plainly), and their lasting impact.
+- **Conflict:** what triggered it or was at stake, who fought whom and where, the defining character or scale of the fighting, how it ended, and what changed afterward.
+- **Milestone:** what came before it, what happened or changed (and who drove it), and its lasting effect.
+- Put the headline picture here instead of saving it for Key Moments (which zoom into specific turning points with scenes and concrete details). Name key works, figures, or events directly rather than using cryptic placeholders (e.g., “a rival queen”, “an invasion fleet”).
+- Write for a curious reader with no background knowledge. Lively and concrete, never dry encyclopedia boilerplate. No empty praise or drama (“great”, “legendary”, “epic”); let facts speak.
 
 ### Key Moments (2 to 4 items; 3–4 usually, 2 for a short single event)
 - Turning points of the life, work, conflict, or milestone.
