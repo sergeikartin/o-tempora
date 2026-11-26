@@ -158,12 +158,7 @@ export async function checkpointEnglishRepair(options: {
     throw new Error('English draft repair limit reached');
   if (!changed && hash(assessment) === hash(currentAssessment))
     throw new Error('Repair did not change the draft or assessment');
-  const {
-    pending_assessment: _pending,
-    pending_adversarial: _adversarial,
-    coordinator_repair: _repair,
-    ...meta
-  } = asRecord(record.meta, 'meta');
+  const meta = asRecord(record.meta, 'meta');
   const review = asRecord(meta.review, 'review');
   if (changed && review.status === 'edited')
     throw new Error(
@@ -273,14 +268,8 @@ export async function applyEnglishAudit(
   const review = asRecord(meta.review, 'review');
   const approved = report.blockers.length === 0;
   const { approval: _oldApproval, ...reviewFields } = review;
-  const {
-    pending_assessment: _pending,
-    pending_adversarial: _adversarial,
-    coordinator_repair: _repair,
-    ...savedMeta
-  } = asRecord(record.meta, 'meta');
   const nextMeta = {
-    ...savedMeta,
+    ...meta,
     review: {
       ...reviewFields,
       status: protectedEdit ? 'edited' : approved ? 'reviewed' : 'draft',

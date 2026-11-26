@@ -166,10 +166,6 @@
         "report_hash": "c601c614efe241e008ead6edfd4e70ab494775d375a622c801e2995d3645fa4f",
         "method": "automatic"
       }
-    },
-    "coordinator_repair": {
-      "profile_hash": "a18e522725dd1f285cba7a392e687ebf50136a262e3e12387522940566e77fc2",
-      "count": 1
     }
   }
 }

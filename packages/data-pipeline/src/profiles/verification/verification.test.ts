@@ -12,7 +12,11 @@ import { runCoordinatorCommand } from '../coordinator.ts';
 import { evidenceStore } from '../evidence-cache.ts';
 import { type ModelProfile, parseModelProfile } from '../model-profile.ts';
 import { passages } from '../passages.ts';
-import { readCompletedRepairs } from '../pending-state.ts';
+import {
+  clearPendingState,
+  readCompletedRepairs,
+  writePendingState,
+} from '../pending-state.ts';
 import type { ProfileSubject } from '../subjects.ts';
 import { approvedTranslation, readTranslation } from '../translation.ts';
 import { validateProfile } from '../validate.ts';
@@ -752,15 +756,12 @@ test('local validate reports schema, identity, prose, citation and assessment de
     record: ModelProfile & { meta: ReturnType<typeof raw>['meta'] },
     findings: Assessment,
   ) {
-    const meta = {
-      ...record.meta,
-      pending_assessment: {
-        profile_hash: profileHash(record),
-        assessment: findings,
-        model: 'writer',
-      },
-    };
-    await writeFile(options.filePath, JSON.stringify({ ...record, meta }));
+    await writeFile(options.filePath, JSON.stringify(record));
+    await writePendingState(root, SUBJECT.qid, {
+      profile_hash: profileHash(record),
+      assessment: findings,
+      model: 'writer',
+    });
   }
 
   const valid = raw();
@@ -768,6 +769,7 @@ test('local validate reports schema, identity, prose, citation and assessment de
   await pending(valid, supported);
   assert.equal((await validation()).ok, true);
 
+  await clearPendingState(root, SUBJECT.qid);
   await writeFile(options.filePath, JSON.stringify(valid));
   await writeFile(
     reportPathFor(options.filePath),
@@ -1014,20 +1016,12 @@ test('coordinator commands reuse evidence, checkpoint repair and approve both Lo
     /overview: no factual claims/,
   );
 
-  await writeFile(
-    options.filePath,
-    JSON.stringify({
-      ...initial,
-      meta: {
-        ...initial.meta,
-        pending_assessment: {
-          profile_hash: profileHash(initial),
-          assessment: evidenceFor(initial),
-          model: 'researcher-writer',
-        },
-      },
-    }),
-  );
+  await writeFile(options.filePath, JSON.stringify(initial));
+  await writePendingState(root, SUBJECT.qid, {
+    profile_hash: profileHash(initial),
+    assessment: evidenceFor(initial),
+    model: 'researcher-writer',
+  });
   const audit = await prepare('english-audit');
   function checkCounterevidence(prompt: string) {
     const payload = JSON.parse(prompt.slice(prompt.lastIndexOf('\n') + 1));
@@ -1591,20 +1585,12 @@ test('local validate flags misclassified Wikipedia, primary-text, low-trust and 
     origin: 'SPQR',
   });
 
-  await writeFile(
-    options.filePath,
-    JSON.stringify({
-      ...valid,
-      meta: {
-        ...valid.meta,
-        pending_assessment: {
-          profile_hash: profileHash(valid),
-          assessment: checked,
-          model: 'writer',
-        },
-      },
-    }),
-  );
+  await writeFile(options.filePath, JSON.stringify(valid));
+  await writePendingState(root, SUBJECT.qid, {
+    profile_hash: profileHash(valid),
+    assessment: checked,
+    model: 'writer',
+  });
   const result = await validateProfile({
     qid: SUBJECT.qid,
     subject: SUBJECT,
@@ -1695,20 +1681,12 @@ test('local validate accepts cached pre-redirect citations and warns about Conne
       },
     ],
   };
-  await writeFile(
-    options.filePath,
-    JSON.stringify({
-      ...valid,
-      meta: {
-        ...valid.meta,
-        pending_assessment: {
-          profile_hash: profileHash(valid),
-          assessment: assessment(parseModelProfile(valid, 'fixture')),
-          model: 'writer',
-        },
-      },
-    }),
-  );
+  await writeFile(options.filePath, JSON.stringify(valid));
+  await writePendingState(root, SUBJECT.qid, {
+    profile_hash: profileHash(valid),
+    assessment: assessment(parseModelProfile(valid, 'fixture')),
+    model: 'writer',
+  });
   const result = await validateProfile({
     qid: SUBJECT.qid,
     subject: SUBJECT,

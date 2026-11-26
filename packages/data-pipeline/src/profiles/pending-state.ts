@@ -1,6 +1,5 @@
 import { readFile, rm } from 'node:fs/promises';
 import path from 'node:path';
-import { readPendingAssessment } from './assessed-profile.ts';
 import { writeJson } from './store.ts';
 import { asRecord, asString } from './values.ts';
 import { profileHash } from './verification/approval.ts';
@@ -72,7 +71,7 @@ export async function readPendingAssessmentState(
         : {}),
     };
   }
-  return readPendingAssessment(record);
+  return undefined;
 }
 
 export async function readCompletedRepairs(
@@ -85,12 +84,7 @@ export async function readCompletedRepairs(
   if (file && file.profile_hash === expectedHash) {
     return file.repairs === 1 || file.repairs === 2 ? file.repairs : 0;
   }
-  const checkpoint = asRecord(record.meta, 'meta').coordinator_repair;
-  if (checkpoint === undefined) return 0;
-  const { profile_hash, count } = asRecord(checkpoint, 'repair checkpoint');
-  return profile_hash === expectedHash && (count === 1 || count === 2)
-    ? count
-    : 0;
+  return 0;
 }
 
 export async function writePendingState(

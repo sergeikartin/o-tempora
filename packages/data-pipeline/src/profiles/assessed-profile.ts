@@ -1,12 +1,10 @@
 import { type ModelProfile, parseModelProfile } from './model-profile.ts';
 import { passages } from './passages.ts';
 import { asArray, asRecord, asString } from './values.ts';
-import { profileHash } from './verification/approval.ts';
 import {
   type Assessment,
   hash,
   parseAssessment,
-  strings,
 } from './verification/assessment.ts';
 
 export function extractAssessedProfile(value: unknown) {
@@ -340,23 +338,6 @@ export function flaggedRepairPaths(
     global = true;
   }
   return { paths: [...paths].sort(), global };
-}
-
-export function readPendingAssessment(record: Record<string, unknown>) {
-  const pending = asRecord(record.meta, 'meta').pending_assessment;
-  if (pending === undefined) return;
-  const fields = asRecord(pending, 'pending assessment');
-  if (fields.profile_hash !== profileHash(record)) return;
-  return {
-    assessment: parseAssessment(fields.assessment),
-    model: asString(fields.model, 'pending assessment model'),
-    ...(fields.repaired_paths !== undefined
-      ? { repairedPaths: strings(fields.repaired_paths, 'repaired_paths') }
-      : {}),
-    ...(fields.prior_blockers !== undefined
-      ? { priorBlockers: strings(fields.prior_blockers, 'prior_blockers') }
-      : {}),
-  };
 }
 
 export function finalizedAssessment(

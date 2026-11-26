@@ -129,10 +129,6 @@
         "report_hash": "e95e57f38f77021a086fdd676335c879d849ed231dbb6dbe83d9af246561fe2e",
         "method": "automatic"
       }
-    },
-    "coordinator_repair": {
-      "profile_hash": "e98b40404e08fd845110ca9443fae00c1cae553ec45d28cab4a7410ba1f3f071",
-      "count": 1
     }
   }
 }
