@@ -1,0 +1,81 @@
+{
+  "overview": "Launched on February 4, 2004 from a Harvard University dorm room by Mark Zuckerberg and four fellow students—Eduardo Saverin, Andrew McCollum, Dustin Moskovitz, and Chris Hughes—Facebook began as a campus directory modeled on printed college \"face books.\" Expanding from North American universities into a global social network now owned by Meta Platforms, it surpassed three billion monthly active users by late 2023 and made personal profiles, algorithmic feeds, and targeted advertising defining features of the modern internet. Its global reach also placed the service at the center of recurring disputes over user privacy, political manipulation, and content moderation.",
+  "keyMoments": [
+    {
+      "date": "2004–2005",
+      "title": "Campus Takeoff and a New Name",
+      "text": "In February 2004, **Mark Zuckerberg** launched **Thefacebook** for Harvard students, borrowing its name from the printed sheets distributed to freshmen with student and staff profiles. Within a month, more than half of the undergraduate body had joined, fueling a swift rollout to Boston-area schools, the Ivy League, and campuses across the United States. In August 2005, the company dropped the \"The\" by paying **$200,000** for the **Facebook.com** domain, and a month later opened registration to U.S. high schools.",
+      "sourceUrl": "https://www.theguardian.com/technology/2007/jul/25/media.newmedia"
+    },
+    {
+      "date": "September 2006",
+      "title": "News Feed and Global Access",
+      "text": "Two product shifts in a single month reshaped the service from an academic directory into a mass social platform. First, Facebook unveiled the **News Feed**, placing an automated stream of friends' profile changes, events, and relationship updates on every user's homepage; backlash from members alarmed at how easily others could track their activity forced **Mark Zuckerberg** to apologize and add privacy filters. Later that month, Facebook dropped its school-and-workplace barrier and opened registration to anyone aged 13 or older with a valid email address, setting off rapid global growth.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Facebook"
+    },
+    {
+      "date": "2012",
+      "title": "Public Debut and One Billion Users",
+      "text": "Wall Street initially doubted that a desktop-era social network could survive the shift to smartphones. After **Facebook** went public in May 2012 at $38 a share, its stock tumbled to $21 by early October amid fears that mobile devices would undercut advertising revenue. That same month, **Mark Zuckerberg** confirmed the platform had crossed **one billion monthly active users**—roughly one in seven people on Earth—with 219 billion shared photos and 1.13 trillion Likes logged to date. Even as investors fretted over mobile, roughly 600 million of those users were already connecting via mobile devices, and one in ten reportedly used Facebook exclusively on mobile.",
+      "sourceUrl": "https://www.theguardian.com/technology/2012/oct/04/facebook-hits-billion-users-a-month"
+    },
+    {
+      "date": "2018–2019",
+      "title": "Cambridge Analytica and a Record Fine",
+      "text": "Years of permissive rules for outside app developers collided with global politics in 2018. Investigations revealed that third-party apps—most notoriously one supplying political consultancy **Cambridge Analytica**—had harvested personal data not only from people who used the apps, but from tens of millions of their unwitting friends. Concluding that **Facebook** had repeatedly subverted user privacy settings in violation of a 2011 settlement, the U.S. **Federal Trade Commission** imposed a record **$5 billion** civil penalty in July 2019 alongside 20 years of outside oversight. Yet two dissenting commissioners noted that the deal spared **Mark Zuckerberg** personal liability and left the company's behavioral-advertising model intact.",
+      "sourceUrl": "https://arstechnica.com/tech-policy/2019/07/ftc-fines-facebook-5-billion-imposes-new-privacy-oversight/"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Three months before launching Facebook, Mark Zuckerberg was summoned before Harvard's Administrative Board over a controversial precursor called Facemash. In late October 2003, he hacked into the online directories of nine Harvard residential Houses without permission to pull student ID photos, placing two side by side so visitors could vote on who was \"hotter.\" Four hundred and fifty visitors cast at least 22,000 votes in a single day before campus groups protested and university officials charged him with breaching security, copyright, and individual privacy; taking the site down, Zuckerberg wrote to The Harvard Crimson that \"issues about violating people's privacy don't seem to be surmountable.\"",
+      "isLegend": false,
+      "sourceUrl": "https://www.thecrimson.com/article/2003/11/19/facemash-creator-survives-ad-board-the/"
+    },
+    {
+      "text": "Facebook's signature blue palette stems from its founder's eyesight rather than a branding study. Mark Zuckerberg is red-green colorblind, a condition he realized after taking an online test; even his rented Palo Alto house was painted largely in shades of blue and beige. As he explained to The New Yorker in 2010, \"blue is the richest color for me—I can see all of blue.\"",
+      "isLegend": false,
+      "sourceUrl": "https://www.newyorker.com/magazine/2010/09/20/the-face-of-facebook"
+    },
+    {
+      "text": "In the early 2010s, Facebook updated one of the world's busiest websites using a tool better known for peer-to-peer file sharing: BitTorrent. Because its codebase was written largely in PHP, engineers built a transpiler called HipHop to convert the site into C++ and compile the entire application into a single 1.5-gigabyte binary executable. To roll out daily code updates across its server fleet without scheduled downtime, Facebook ran a custom BitTorrent tracker so servers on the same rack could trade slices of the file—building and deploying a new version of the whole website in roughly 30 minutes.",
+      "isLegend": false,
+      "sourceUrl": "https://arstechnica.com/information-technology/2012/04/exclusive-a-behind-the-scenes-look-at-facebook-release-engineering/"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q466",
+      "reason": "Built atop the open World Wide Web, Facebook steered everyday online life into identity-based social feeds and became one of the world's most visited websites."
+    },
+    {
+      "qid": "Q621427",
+      "reason": "The smartphone shift ignited by the iPhone initially rattled Facebook's 2012 IPO before driving its mobile pivot, making Facebook the most downloaded mobile app of the 2010s."
+    },
+    {
+      "qid": "Q33761",
+      "reason": "Organizers during the Arab Spring used Facebook pages such as \"We Are All Khaled Said\" to coordinate protests, prompting Egypt's government to block the service in 2011."
+    },
+    {
+      "qid": "Q22686",
+      "reason": "His 2016 presidential campaign spent heavily on targeted Facebook ads alongside political consultancy Cambridge Analytica, whose harvesting of millions of Facebook profiles triggered the platform's defining privacy crisis."
+    },
+    {
+      "qid": "Q76",
+      "reason": "His 2008 and 2012 presidential campaigns pioneered large-scale political organizing and friend-network data apps on Facebook, aided by co-founder Chris Hughes in 2008."
+    }
+  ],
+  "meta": {
+    "qid": "Q355",
+    "locale": "en",
+    "subjectDates": "2004",
+    "approvedAt": "2026-11-26T17:23:15.246Z",
+    "writerModel": "gemini-4-neon",
+    "checkerModel": "gemini-4-neon",
+    "harness": "agy",
+    "promptVersion": 2,
+    "promptHash": "8e354b94bf94d919",
+    "approval": "checker",
+    "revised": true
+  }
+}

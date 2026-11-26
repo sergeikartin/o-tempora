@@ -14,7 +14,8 @@
       "month": 2
     },
     "slug": "facebook",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "Q1065",
