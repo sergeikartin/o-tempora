@@ -1,0 +1,51 @@
+{
+  "overview": "A household icebox kept food cold for as long as its block of ice lasted. In 1913, Chicago engineer Fred W. Wolf Jr. invented the DOMELRE, an electric cooling unit that could turn the icebox a family already owned into a refrigerator. It was among the earliest electric refrigerators sold for home use and helped show how households could keep food cool between meals without waiting for an ice delivery.",
+  "keyMoments": [
+    {
+      "date": "1913",
+      "title": "A new job for the icebox",
+      "text": "Fred W. Wolf Jr. designed a **plug-in cooling unit** that sat on top of an ordinary icebox. A thermostat controlled the temperature automatically, and the condenser released heat to the surrounding air, so the machine needed no water connection. Wolf took parts of the words “domestic electric refrigerator” to give the machine its name, **DOMELRE**.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/DOMELRE"
+    },
+    {
+      "date": "1914",
+      "title": "From workshop to market",
+      "text": "Wolf’s **Mechanical Refrigerator Company** began producing the appliance in Chicago. An early model cost **900 dollars**, a substantial investment for a household accustomed to buying its ice a block at a time. Even at a time when several inventors were trying to bring mechanical cooling into the home, Wolf found buyers for hundreds of units.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/DOMELRE"
+    },
+    {
+      "date": "1916",
+      "title": "An automaker buys the rights",
+      "text": "**Henry Joy**, president of the Packard Motor Car Company, bought the rights to Wolf’s invention. An improved version went on sale under the name **ISKO**. The machine that had started out in Chicago thus reached more customers under a different name, though the company that sold the new model eventually went bankrupt.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/DOMELRE"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "One of the accessories supplied with the DOMELRE was an **ice-cube tray**. The old icebox consumed a large block of ice to keep its contents cold. With Wolf’s machine fitted, the same cabinet could keep the food cool and make small pieces of ice for the table.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/DOMELRE"
+    },
+    {
+      "text": "Some early refrigerators could leak poisonous refrigerant through a failed seal. The danger drew **Albert Einstein and Leó Szilárd** into appliance design. In 1930 they received a US patent for a refrigerator that ran on heat and had **no moving parts**, dispensing with the moving compressor shaft that otherwise needed a seal.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Einstein_refrigerator"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "albert-einstein",
+      "reason": "Einstein worked with Szilárd on a household refrigerator designed to reduce the risk of refrigerant leaks.",
+      "name": "Albert Einstein",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "leo-szilard",
+      "reason": "Szilárd and Einstein patented a heat-driven refrigerator in 1930 that needed no mechanical compressor.",
+      "name": "Leó Szilárd",
+      "lane": "people",
+      "detailLevel": 4
+    }
+  ]
+}

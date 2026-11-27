@@ -6134,7 +6134,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portret%20van%20Antonie%20van%20Leeuwenhoek%2C%20RP-P-1903-A-23563.jpg",
     "description": "Antonie Philips van Leeuwenhoek was a Dutch microbiologist and microscopist in the Golden Age of Dutch art, science and technology. A largely self-taught man in science, he is commonly known as \"the Father of Microbiology\", and one of the first microscopists and microbiologists. Van Leeuwenhoek is best known for his pioneering work in microscopy and for his contributions toward the establishment of microbiology as a scientific discipline.",
     "slug": "antonie-van-leeuwenhoek",
-    "row": 37
+    "row": 37,
+    "hasProfile": true
   },
   {
     "id": "11955",
@@ -25021,7 +25022,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Richard%20Rothwell%20%281800-1868%29%20-%20Mary%20Wollstonecraft%20Shelley%20-%20NPG%201235%20-%20National%20Portrait%20Gallery.jpg",
     "description": "Mary Wollstonecraft Shelley was an English novelist who wrote the Gothic novel Frankenstein; or, The Modern Prometheus (1818), which is considered an early example of science fiction. She also edited and promoted the works of her husband, the Romantic poet and philosopher Percy Bysshe Shelley. Her father was the political philosopher William Godwin and her mother was the philosopher and women's rights advocate Mary Wollstonecraft.",
     "slug": "mary-shelley",
-    "row": 146
+    "row": 146,
+    "hasProfile": true
   },
   {
     "id": "27640",
@@ -36914,7 +36916,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Leo%20Szilard.jpg",
     "description": "Leo Szilard was a Hungarian-born American physicist, biologist and inventor who made numerous important discoveries in nuclear physics and the biological sciences. He conceived the nuclear chain reaction in 1933, and patented the idea in 1936. In late 1939 he wrote the Einstein–Szilard letter for Albert Einstein's signature that resulted in the Manhattan Project that built the atomic bomb, and then in 1945 wrote the Szilard petition asking president Harry S. Truman to demonstrate the bomb without dropping it on civilians. According to György Marx, he was one of the Hungarian scientists known as The Martians.",
     "slug": "leo-szilard",
-    "row": 546
+    "row": 546,
+    "hasProfile": true
   },
   {
     "id": "290553",

@@ -1,0 +1,85 @@
+{
+  "overview": "In 1816, severe climate disruption cooled global average temperatures by 0.4–0.7 °C and gave Europe its coldest summer on record between 1766 and 2000. The primary cause was the massive April 1815 eruption of Mount Tambora in the Dutch East Indies (modern-day Indonesia), which lofted a sunlight-blocking veil of volcanic ash and gases into the stratosphere near the end of the Little Ice Age. Summer frosts, June snowfalls, and relentless rains ruined harvests across Europe and North America while disrupting Asian monsoons, leaving famine, typhus epidemics, and Europe's most violent food riots since the French Revolution in their wake. Beyond its human toll, the anomalous year contributed to westward migration in the United States and trapped Mary Shelley, Lord Byron, and their companions indoors at Villa Diodati in Switzerland, where Shelley conceived Frankenstein.",
+  "keyMoments": [
+    {
+      "date": "April 1815",
+      "title": "A colossal blast on Sumbawa",
+      "text": "On April 10, 1815, **Mount Tambora** erupted on the Indonesian island of Sumbawa. Sulfur gas rose into the stratosphere, where it formed a haze of tiny droplets. Winds carried this **sulfate veil** around the globe. It scattered incoming sunlight, and average temperatures over land fell by about one degree Celsius for a time.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Year_Without_a_Summer#Description"
+    },
+    {
+      "date": "May–August 1816",
+      "title": "Summer frosts ruin North American harvests",
+      "text": "A persistent **dry fog** hung over the eastern United States, dimming the sun until naked-eye sunspots appeared. **June snow** fell in Albany, New York, and Dennysville, Maine, while frosts struck every month and lake and river ice appeared as far south as northwestern Pennsylvania in July and August. At most a quarter of New England's corn proved edible, and oat prices jumped from 12 cents a bushel in 1815 to 92 cents in 1816. Struggling families abandoned the Northeast by the thousands, fueling **westward migration** toward western New York and the Northwest Territory.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Year_Without_a_Summer#North_America"
+    },
+    {
+      "date": "June–July 1816",
+      "title": "Stormy skies spark a gothic literary contest",
+      "text": "Confined inside Villa Diodati by incessant Swiss rain, **Mary Shelley**, Percy Bysshe Shelley, **Lord Byron**, and John William Polidori read German ghost stories until Byron proposed a contest to write the scariest tale. From those stormy nights grew Shelley's **Frankenstein** and a Byron fragment that Polidori later developed into The Vampyre, a forerunner of Dracula. One midday so dark that fowls went to roost and candles burned as at midnight also moved Byron to write his apocalyptic poem Darkness.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Year_Without_a_Summer#Societal_effects"
+    },
+    {
+      "date": "1816–1819",
+      "title": "Hunger and riots convulse post-war Europe",
+      "text": "Still recovering from the **Napoleonic Wars**, western Europe endured severe **famine** under cold, relentless rains as wheat, oat, and potato harvests failed across Britain and Ireland. Soaring prices drove desperate crowds to bakeries and grain markets in Europe's most violent unrest since the French Revolution, while a flooded Rhine impeded grain shipments. From 1816 to 1819, deprivation also precipitated **typhus epidemics** across Ireland, Italy, Switzerland, and Scotland, claiming more than 65,000 lives as disease spread out of Ireland.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Year_Without_a_Summer#Europe"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Snow itself took on unexpected colors during the strange weather of 1816. Reports from Hungary described **brown snow**, while observers in northern Italy recorded red snowfall. Across the Atlantic, accounts from Maryland described brown, bluish, and yellow snow falling in the same season.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Year_Without_a_Summer"
+    },
+    {
+      "text": "An Indonesian volcano helped reshape American religious history half a world away. Vermont's population dropped by an estimated **10,000 to 15,000 people** in 1816 and 1817, erasing seven years of growth. Among the families leaving Norwich for Palmyra, New York, was that of young **Joseph Smith**, a move that set in motion the events leading him to found the Church of Jesus Christ of Latter-day Saints.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Year_Without_a_Summer#Societal_effects"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "mary-shelley",
+      "reason": "Trapped indoors at Villa Diodati by the incessant June 1816 rain, she conceived Frankenstein during Lord Byron's ghost-story contest.",
+      "name": "Mary Shelley",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "lord-byron",
+      "reason": "He hosted the stormy Villa Diodati gathering, proposed its ghost-story challenge, and wrote the apocalyptic poem Darkness in response to the eerie summer gloom.",
+      "name": "Lord Byron",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "napoleonic-wars",
+      "reason": "Having just ended in 1815, the wars left Europe economically strained and far more vulnerable to the 1816–1817 harvest failures and food riots.",
+      "name": "Napoleonic Wars",
+      "lane": "conflicts",
+      "detailLevel": 3
+    },
+    {
+      "slug": "first-bicycle",
+      "reason": "Severe oat shortages for horses during the crisis may have prompted German inventor Karl Drais to create the two-wheeled draisine, a forerunner of the bicycle.",
+      "name": "First bicycle",
+      "lane": "milestones",
+      "detailLevel": 1
+    },
+    {
+      "slug": "joseph-smith",
+      "reason": "The 1816 crop failures helped drive his family from Vermont to Palmyra, New York, setting in motion the founding of the Church of Jesus Christ of Latter-day Saints.",
+      "name": "Joseph Smith",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "justus-von-liebig",
+      "reason": "Having lived through the 1816–1817 famine as a child in Darmstadt, he later pioneered plant nutrition research and introduced mineral fertilizers.",
+      "name": "Justus von Liebig",
+      "lane": "people",
+      "detailLevel": 4
+    }
+  ]
+}

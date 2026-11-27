@@ -1,0 +1,51 @@
+{
+  "overview": "Antonie van Leeuwenhoek was a Dutch cloth merchant who made microscopes in Delft. Peering through a single tiny lens, he saw bacteria and other organisms too small for the unaided eye. His letters to the Royal Society in London helped establish the study of microscopic life.",
+  "keyMoments": [
+    {
+      "date": "1673",
+      "title": "A letter from Delft",
+      "text": "The physician **Reinier de Graaf** urged his friend to share what he could see through his homemade microscopes. London’s **Royal Society** published Leeuwenhoek’s observations of mould, bees and lice in its journal. It was the beginning of a correspondence that lasted half a century, with Leeuwenhoek writing to London in his everyday Dutch.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek"
+    },
+    {
+      "date": "1676–1677",
+      "title": "Witnesses at the lens",
+      "text": "In a letter to London, Leeuwenhoek described **tiny creatures moving in water**. The account strained even his readers’ growing trust in his lenses. **Witnesses in Delft** looked for themselves and attested to what they saw, giving the Royal Society testimony from people who had put their own eyes to the instrument.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek"
+    },
+    {
+      "date": "1680",
+      "title": "A fellow across the water",
+      "text": "The London physician **William Croone** nominated the Delft merchant for membership in the Royal Society. In February the society elected him **a fellow**, an honour Leeuwenhoek welcomed from home. He never attended a meeting in London, and his letters continued to carry his observations across the North Sea.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "A Delft court record links the microscope maker to the painter **Johannes Vermeer**. On 30 September 1676 the city magistrates appointed Leeuwenhoek to administer the estate and assets of Vermeer’s widow, **Catharina Bolnes**. Among the tasks that fell to the man studying life in a drop of water was settling the household’s debts.",
+      "isLegend": false,
+      "sourceUrl": "https://www.leeuwenhoek.net/content/appointed-curator-estate-catherine-bolnes-vermeers-widow"
+    },
+    {
+      "text": "When **Peter the Great** visited the Netherlands in 1697, Leeuwenhoek went aboard the tsar’s boat with an unusual gift. His **eel viewer** let Peter examine blood flowing through a living eel, a sight the tsar could now reproduce with an instrument of his own.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "johannes-vermeer",
+      "reason": "Delft magistrates appointed Leeuwenhoek to administer the Vermeer household’s insolvent estate after the painter died.",
+      "name": "Johannes Vermeer",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "peter-the-great",
+      "reason": "Leeuwenhoek gave the visiting tsar an instrument for viewing blood circulation in a living eel.",
+      "name": "Peter the Great",
+      "lane": "people",
+      "detailLevel": 3
+    }
+  ]
+}

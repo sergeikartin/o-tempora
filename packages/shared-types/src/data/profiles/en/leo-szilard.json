@@ -1,0 +1,64 @@
+{
+  "overview": "Leó Szilárd was a physicist and inventor born in Budapest who conceived the idea of a nuclear chain reaction. After he fled Nazi Germany, his work took him from London to Chicago, where he helped Enrico Fermi’s team achieve that reaction in a reactor. He spent much of the rest of his life trying to influence what governments did with the power he had helped put in their hands.",
+  "keyMoments": [
+    {
+      "date": "1933",
+      "title": "An idea in London",
+      "text": "Shortly after moving to England, Szilárd read a newspaper report dismissing the prospect of harnessing energy from atoms. He began to think about a **chain reaction** in which one atomic event could set off others, releasing energy as the process continued. Years before anyone demonstrated such a reaction, he sought **patent protection** for the idea.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leo_Szilard"
+    },
+    {
+      "date": "1939",
+      "title": "A letter for Roosevelt",
+      "text": "Working in the United States, Szilárd feared that uranium research in Germany could lead to an atomic bomb. He drafted a warning for **Franklin D. Roosevelt** and enlisted his old collaborator **Albert Einstein** to sign it. The letter helped persuade the president to bring scientists and government officials together to investigate uranium.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leo_Szilard"
+    },
+    {
+      "date": "1942",
+      "title": "Proof beneath the stands",
+      "text": "Under the stands of a University of Chicago athletic field, Szilárd watched an experiment that he and **Enrico Fermi** had spent years working toward. On December 2, the reactor known as **Chicago Pile-1** sustained a controlled nuclear chain reaction. The idea Szilárd had conceived in London was now something his colleagues could observe and measure.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leo_Szilard"
+    },
+    {
+      "date": "1945",
+      "title": "A petition to the president",
+      "text": "As the war with Japan continued, Szilárd asked other Manhattan Project scientists to sign a **petition to President Truman**. They urged him to make the **terms of surrender** public and give Japan an opportunity to accept them before using the atomic bomb. The physicist who had once pressed a president to take the prospect of a bomb seriously was now asking another to set limits on its use.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leo_Szilard"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "A U.S. patent granted in 1930 lists Szilárd and Einstein as the inventors of a **refrigerator**. Their drawings show pipes and vessels through which fluids circulate without a mechanical compressor. The appliance exploits a seeming contradiction familiar to anyone who has felt water evaporating from wet skin: with heat supplied to one part of the apparatus, evaporation cools another.",
+      "isLegend": false,
+      "sourceUrl": "https://patents.google.com/patent/US1781541A/en"
+    },
+    {
+      "text": "Szilárd once put **himself on trial** in a short story. In “My Trial as a War Criminal,” published in 1949, he imagined that the Soviet Union had defeated the United States and that he had to answer for his own wartime work. He gave the accused scientist his own name.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leo_Szilard"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "albert-einstein",
+      "reason": "Einstein collaborated with Szilárd on refrigeration and signed the 1939 letter Szilárd drafted for Roosevelt.",
+      "name": "Albert Einstein",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "enrico-fermi",
+      "reason": "Fermi and Szilárd worked together on the nuclear chain reaction demonstrated in Chicago in 1942.",
+      "name": "Enrico Fermi",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "first-household-refrigerator",
+      "reason": "After electric refrigerators entered the home, Szilárd and Einstein patented a design that cooled without a mechanical compressor.",
+      "name": "First household refrigerator",
+      "lane": "milestones",
+      "detailLevel": 2
+    }
+  ]
+}

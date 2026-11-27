@@ -6134,7 +6134,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Portret%20van%20Antonie%20van%20Leeuwenhoek%2C%20RP-P-1903-A-23563.jpg",
     "description": "Антони ван Ле́венгук — нидерландский натуралист, конструктор микроскопов, основоположник научной микроскопии, исследовавший с помощью своих микроскопов структуру различных форм живой материи.",
     "slug": "antonie-van-leeuwenhoek",
-    "row": 37
+    "row": 37,
+    "hasProfile": true
   },
   {
     "id": "11955",
@@ -25024,7 +25025,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Richard%20Rothwell%20%281800-1868%29%20-%20Mary%20Wollstonecraft%20Shelley%20-%20NPG%201235%20-%20National%20Portrait%20Gallery.jpg",
     "description": "Мэ́ри Ше́лли — английская писательница, автор готического романа «Франкенштейн, или Современный Прометей» (1818), который считается ранним примером научной фантастики. Она также редактировала и продвигала произведения своего мужа, поэта-романтика и философа Перси Биши Шелли. Ее отцом был политический философ Уильям Годвин, а матерью — философ и активистка-феминистка Мэри Уолстонкрафт.",
     "slug": "mary-shelley",
-    "row": 146
+    "row": 146,
+    "hasProfile": true
   },
   {
     "id": "27640",
@@ -36919,7 +36921,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Leo%20Szilard.jpg",
     "description": "Ле́о Си́лард — американский учёный, физик-ядерщик венгерско-еврейского происхождения.",
     "slug": "leo-szilard",
-    "row": 546
+    "row": 546,
+    "hasProfile": true
   },
   {
     "id": "290553",
