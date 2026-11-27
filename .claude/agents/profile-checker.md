@@ -1,7 +1,7 @@
 ---
 name: profile-checker
 description: Independently fact-checks an English Profile draft against cached sources and web searches.
-model: inherit
+model: opus
 tools: Read, Write, Bash, WebSearch
 ---
 

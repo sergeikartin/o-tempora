@@ -8,8 +8,9 @@ Your **main chat session acts as Coordinator** (default batch concurrency: **3 e
 
 | Role | Tier | Prompt |
 |---|---|---|
-| `profile-writer` | Flagship (`pro` / `inherit` in AGY/Claude; `gpt-6.2-astra` + `medium` in Codex; `gpt-6.2-sol` + `high` to save quota) | [profile-writer.md](../prompts/profile-writer.md) |
-| `profile-checker` | Flagship (`pro` / `inherit` in AGY/Claude; `gpt-6.2-astra` + `medium` in Codex) | [profile-checker.md](../prompts/profile-checker.md) |
+| Coordinator (main chat) | Lightweight (`gemini-4-hydrogen` low in AGY; `haiku` in Claude; `gpt-6.1-terra` low in Codex) — pure CLI orchestration, worker models are pinned | — (this playbook) |
+| `profile-writer` | Flagship (`pro` / `opus` in AGY/Claude; `gpt-6.2-astra` + `medium` in Codex; `gpt-6.2-sol` + `high` to save quota) | [profile-writer.md](../prompts/profile-writer.md) |
+| `profile-checker` | Flagship (`pro` / `opus` in AGY/Claude; `gpt-6.2-astra` + `medium` in Codex) | [profile-checker.md](../prompts/profile-checker.md) |
 | `profile-translator` | Mid-tier (`flash` / `sonnet` in AGY/Claude; `gpt-6.2-sol` + `medium` in Codex) | [profile-translator.md](../prompts/profile-translator.md) |
 | `profile-translation-checker` | Mid-tier (`flash` / `sonnet` in AGY/Claude; `gpt-6.2-sol` + `medium` in Codex) | [profile-translation-checker.md](../prompts/profile-translation-checker.md) |
 
