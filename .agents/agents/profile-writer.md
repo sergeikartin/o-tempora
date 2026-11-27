@@ -1,7 +1,7 @@
 ---
 name: profile-writer
 description: Researches and drafts or patches an English Profile in .work/<QID>/.
-model: inherit
+model: pro
 mainAgent: false
 subagent: true
 tools:

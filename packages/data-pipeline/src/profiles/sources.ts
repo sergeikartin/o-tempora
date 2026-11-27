@@ -71,6 +71,13 @@ const WIKIPEDIA_NOISE_CLASSES = new Set([
   'mw-footer',
   'mw-footer-container',
   'mw-navigation',
+  'infobox',
+  'infobox_v3',
+  'sidebar',
+  'thumb',
+  'thumbinner',
+  'gallery',
+  'metadata',
 ]);
 
 const WIKIPEDIA_NOISE_IDS = new Set([
@@ -106,6 +113,27 @@ const markdownConverter = new NodeHtmlMarkdown({
   maxConsecutiveNewlines: 2,
 });
 
+function isInternalWikipediaHref(href: string): boolean {
+  if (
+    !href ||
+    href.startsWith('/wiki/') ||
+    href.startsWith('/w/') ||
+    href.startsWith('#')
+  ) {
+    return true;
+  }
+  try {
+    const parsed = new URL(href.startsWith('//') ? `https:${href}` : href);
+    return (
+      /(^|\.)wikipedia\.org$/i.test(parsed.hostname) &&
+      (parsed.pathname.startsWith('/wiki/') ||
+        parsed.pathname.startsWith('/w/'))
+    );
+  } catch {
+    return false;
+  }
+}
+
 function createWikipediaMarkdownConverter(): NodeHtmlMarkdown {
   const converter = new NodeHtmlMarkdown({
     ignore: [...BASE_IGNORE_TAGS, 'img'],
@@ -117,7 +145,16 @@ function createWikipediaMarkdownConverter(): NodeHtmlMarkdown {
     ctx: Parameters<Extract<typeof orig, (...args: never[]) => unknown>>[0],
   ) => (typeof orig === 'function' ? orig(ctx) : (orig ?? {}));
 
-  for (const tag of ['div', 'table', 'ul', 'ol', 'span', 'p', 'section']) {
+  for (const tag of [
+    'div',
+    'table',
+    'ul',
+    'ol',
+    'span',
+    'p',
+    'section',
+    'figure',
+  ]) {
     const orig = converter.translators.get(tag);
     converter.translators.set(tag, (ctx) =>
       hasWikipediaNoiseMarker(ctx.node)
@@ -138,12 +175,7 @@ function createWikipediaMarkdownConverter(): NodeHtmlMarkdown {
   const origA = converter.translators.get('a');
   converter.translators.set('a', (ctx) => {
     const href = (ctx.node.getAttribute('href') ?? '').trim();
-    if (
-      !href ||
-      href.startsWith('/wiki/') ||
-      href.startsWith('/w/') ||
-      href.startsWith('#')
-    ) {
+    if (isInternalWikipediaHref(href)) {
       return { recurse: true };
     }
     return delegate(origA, ctx);
@@ -214,10 +246,18 @@ export function extractHtmlTitle(html: string): string {
 export function htmlToCleanMarkdown(html: string, url?: string): string {
   const isWiki = isWikipediaUrl(url);
   // Strip noisy edit links / embedded scripts and styles before conversion.
-  const withoutNoise = html
+  let withoutNoise = html
     .replace(/<span class="mw-editsection">[\s\S]*?<\/span>/gi, '')
     .replace(/<style[\s\S]*?<\/style>/gi, '')
     .replace(/<script[\s\S]*?<\/script>/gi, '');
+  if (isWiki) {
+    withoutNoise = withoutNoise
+      .replace(
+        /<sup[^>]*class="[^"]*\b(?:reference|noprint|Inline-Template)\b[^"]*"[^>]*>[\s\S]*?<\/sup>/gi,
+        '',
+      )
+      .replace(/<img\b[^>]*>/gi, '');
+  }
   const converter = isWiki ? wikipediaMarkdownConverter : markdownConverter;
   let markdown = converter
     .translate(withoutNoise)
@@ -226,12 +266,41 @@ export function htmlToCleanMarkdown(html: string, url?: string): string {
     .trim();
 
   if (isWiki) {
+    markdown = markdown.replace(/^\|[^\n]*$/gm, (line) =>
+      line.replace(/ {2,}/g, ' '),
+    );
     const tailMatch = WIKIPEDIA_TAIL_HEADING_RE.exec(markdown);
     if (tailMatch && tailMatch.index > 0) {
       markdown = markdown.slice(0, tailMatch.index).trim();
     }
   }
   return markdown;
+}
+
+export function resolveDraftSourcePaths(
+  raw: unknown,
+  sourceIndex: SourceIndex,
+  sourcesDir = SOURCES_DIR,
+): Record<string, string | null> {
+  const result: Record<string, string | null> = {};
+  if (!raw || typeof raw !== 'object') return result;
+  const obj = raw as { keyMoments?: unknown; deepFacts?: unknown };
+  const items = [
+    ...(Array.isArray(obj.keyMoments) ? obj.keyMoments : []),
+    ...(Array.isArray(obj.deepFacts) ? obj.deepFacts : []),
+  ];
+  for (const item of items) {
+    if (!item || typeof item !== 'object') continue;
+    const url = (item as { sourceUrl?: unknown }).sourceUrl;
+    if (typeof url !== 'string' || !url.trim() || url in result) continue;
+    try {
+      const entry = sourceIndex[canonicalSourceKey(url)];
+      result[url] = entry ? path.join(sourcesDir, entry.file) : null;
+    } catch {
+      result[url] = null;
+    }
+  }
+  return result;
 }
 
 export function extractMarkdownHeadings(markdown: string): SourceHeading[] {

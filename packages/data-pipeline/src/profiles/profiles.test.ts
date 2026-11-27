@@ -21,6 +21,7 @@ import {
   fetchSource,
   htmlToCleanMarkdown,
   readSourceIndex,
+  resolveDraftSourcePaths,
 } from './sources.ts';
 import { writeJsonFile } from './store.ts';
 import { findEntities, formatDates, type ProfileSubject } from './subjects.ts';
@@ -232,6 +233,54 @@ test('htmlToCleanMarkdown strips scripts/nav and preserves headings for line ind
       { level: 2, heading: 'Early life' },
     ],
   );
+});
+
+test('htmlToCleanMarkdown strips Wikipedia absolute wiki links, infoboxes, citations, images, and table padding', () => {
+  const html = `
+    <html><head><title>Mary Shelley - Wikipedia</title></head>
+    <body>
+      <table class="infobox biography vcard">
+        <tr><td><img src="https://upload.wikimedia.org/portrait.jpg" alt="Portrait" /></td></tr>
+      </table>
+      <p>She married <a href="https://en.wikipedia.org/wiki/Percy_Bysshe_Shelley">Percy Shelley</a><sup class="reference"><a href="#cite_note-1">[1]</a></sup> and visited <a href="/wiki/Geneva">Geneva</a>.</p>
+      <table><tr><th>Year</th><th>Work</th></tr><tr><td>1818</td><td>Frankenstein       </td></tr></table>
+    </body></html>
+  `;
+  const md = htmlToCleanMarkdown(
+    html,
+    'https://en.wikipedia.org/wiki/Mary_Shelley',
+  );
+  assert.ok(!md.includes('upload.wikimedia.org'));
+  assert.ok(!md.includes('en.wikipedia.org/wiki/Percy_Bysshe_Shelley'));
+  assert.ok(!md.includes('/wiki/Geneva'));
+  assert.ok(!md.includes('[1]'));
+  assert.ok(md.includes('She married Percy Shelley and visited Geneva.'));
+  assert.ok(!/ {3,}/.test(md));
+});
+
+test('resolveDraftSourcePaths maps draft sourceUrls to cached markdown file paths', () => {
+  const index = {
+    'https://en.wikipedia.org/wiki/Albert_Einstein': {
+      hash: 'abc123',
+      file: 'abc123.md',
+      requestedUrl: 'https://en.wikipedia.org/wiki/Albert_Einstein',
+      finalUrl: 'https://en.wikipedia.org/wiki/Albert_Einstein',
+      title: 'Albert Einstein',
+      fetchedAt: '2026-11-27T00:00:00.000Z',
+      lineCount: 100,
+    },
+  };
+  const resolved = resolveDraftSourcePaths(
+    sampleEnDraft(),
+    index,
+    '/tmp/sources',
+  );
+  assert.deepEqual(resolved, {
+    'https://en.wikipedia.org/wiki/Albert_Einstein#1905':
+      '/tmp/sources/abc123.md',
+    'https://example.org/eclipse': null,
+    'https://example.org/fridge': null,
+  });
 });
 
 test('fetchSource caches clean markdown, indexes redirects, and rejects bot walls / PDFs', async (t) => {

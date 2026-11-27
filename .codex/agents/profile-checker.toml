@@ -1,5 +1,5 @@
 name = "profile-checker"
 description = "Independently fact-checks an English Profile draft against cached sources and web searches."
 model = "gpt-6.2-astra"
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 developer_instructions = "Read and follow `packages/data-pipeline/prompts/profile-checker.md`."

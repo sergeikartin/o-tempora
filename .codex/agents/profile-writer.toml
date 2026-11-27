@@ -1,5 +1,5 @@
 name = "profile-writer"
 description = "Researches and drafts or patches an English Profile in .work/<QID>/."
 model = "gpt-6.2-astra"
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 developer_instructions = "Read and follow `packages/data-pipeline/prompts/profile-writer.md`."

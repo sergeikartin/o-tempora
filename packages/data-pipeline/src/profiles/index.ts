@@ -9,7 +9,11 @@ import {
   type ProfileLocale,
   ProfileLocaleSchema,
 } from './schemas.ts';
-import { fetchSource, readSourceIndex } from './sources.ts';
+import {
+  fetchSource,
+  readSourceIndex,
+  resolveDraftSourcePaths,
+} from './sources.ts';
 import {
   findCommittedProfile,
   readJsonIfExists,
@@ -275,6 +279,9 @@ async function main(argv: string[]): Promise<void> {
         sourceIndex,
         englishProfile,
       });
+      const sources = sourceIndex
+        ? resolveDraftSourcePaths(raw, sourceIndex, SOURCES_DIR)
+        : undefined;
       console.log(
         JSON.stringify(
           {
@@ -283,6 +290,7 @@ async function main(argv: string[]): Promise<void> {
             qid: subject.qid,
             locale,
             filePath,
+            ...(sources ? { sources } : {}),
             issues: result.issues,
           },
           null,

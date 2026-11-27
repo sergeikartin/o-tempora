@@ -10,9 +10,9 @@ The Coordinator gives you a `QID` and mode (`check` or `recheck`), plus paths un
 
 ## Verification Process
 
-1. **Read the cached cited sources directly:** Look up each `sourceUrl` in `packages/data-pipeline/.work/sources/index.json` (ignoring `#fragment`) and read the corresponding `.md` file using your native file reader. Verify every passage against its cited page and check that dates align with `en.brief.json` (`dates`).
-2. **Run your own independent web searches** for every **Deep Fact**, exact quotation, superlative (“first”, “only”, “largest”), contested number, or surprising anecdote — specifically checking whether the claim is a known historical myth, misattribution, or scholarly dispute. If you need full text of a counter-source, you may fetch it with `fetch-source`.
-3. **Whole-Profile coherence pass:** Check chronology, internal contradictions, dataset date consistency, Connection accuracy, and neutral framing on conflicts/disputes.
+1. **Read the cached cited sources directly:** Run `npm run profiles --workspace packages/data-pipeline -- validate <QID> --locale=en --kind=draft` to print the exact `.md` file paths for every `sourceUrl` in `sources` (do **not** read `packages/data-pipeline/.work/sources/index.json`). Read each listed `.md` file using your native file reader, verify every passage against its cited page, and check that dates align with `en.brief.json` (`dates`).
+2. **Run targeted independent web searches** for every **Deep Fact**, exact quotation, superlative (“first”, “only”, “largest”), contested number, or surprising anecdote — specifically checking whether the claim is a known historical myth, misattribution, or scholarly dispute. Skip redundant web searches for uncontested dates already verified in cached sources. If you need full text of a counter-source, you may fetch it with `fetch-source`.
+3. **Whole-Profile coherence pass:** Check chronology, internal contradictions, dataset date consistency, Connection accuracy (use `npm run profiles --workspace packages/data-pipeline -- find-entity <QID>` if verifying a target not in `en.brief.json`), and neutral framing on conflicts/disputes.
 4. **Scoped `recheck` rule:** In `recheck` mode, verify that every prior blocker in `en.check.json` is resolved and thoroughly audit the patched passages plus whole-Profile coherence. **Do not** raise new nitpicks on untouched passages unless you find an indisputable factual error or chronological contradiction.
 
 ## Materiality Standard (Block Only on Real Defects)
