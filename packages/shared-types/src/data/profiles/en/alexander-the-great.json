@@ -1,0 +1,71 @@
+{
+  "overview": "Alexander III became king of Macedon at twenty and spent much of his reign on campaign. He conquered the Persian Empire of Darius III, founded Alexandria on Egypt’s Mediterranean coast, and led his army as far as the Punjab in South Asia. After his death, his generals fought over his territories. In the kingdoms that emerged, Greek became a common language across much of the eastern Mediterranean and Near East, a hallmark of the Hellenistic age.",
+  "keyMoments": [
+    {
+      "date": "336 BC",
+      "title": "A wedding and a succession",
+      "text": "The Macedonian court had gathered at Aigai for the wedding of Alexander’s sister Cleopatra when one of the royal bodyguards assassinated their father, **Philip II**. The nobles and the army proclaimed the twenty-year-old prince **king of Macedon**. Along with the throne he inherited an army his father had built up and a campaign Philip had already set in motion against Persia.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+    },
+    {
+      "date": "331 BC",
+      "title": "The road to Babylon",
+      "text": "Marching east from Egypt, Alexander met the army of **Darius III** at Gaugamela in what is now northern Iraq. The Persian king escaped the battlefield, but the two would never face each other in battle again. While Darius retreated into the Iranian highlands, Alexander entered **Babylon**, one of the great cities of the Persian Empire.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+    },
+    {
+      "date": "326 BC",
+      "title": "The soldiers choose the limit",
+      "text": "After defeating King Porus in the Punjab, Alexander wanted to push farther east. At the **Beas River**, his soldiers refused to cross. They had spent years on campaign, and their commander **Coenus** spoke for the men who wanted to see their families again. Alexander yielded and turned back, making the river the eastern limit of his conquests.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+    },
+    {
+      "date": "323 BC",
+      "title": "Two kings for one empire",
+      "text": "Alexander died in **Babylon** while his wife Roxane was pregnant. Some Macedonian troops backed his half-brother for the throne, while other leaders wanted to wait for the birth. Roxane’s son **Alexander IV** and the boy’s uncle eventually shared the title of king, but the generals who governed the provinces acquired armies and territories of their own.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "On some coins struck after his death, a **ram’s horn** curls beside Alexander’s ear. The detail recalls his visit to an oracle at the Siwa Oasis in Egypt, where tradition held that he was greeted as the son of Amun. The horn was an attribute of that god, whom Greeks identified with Zeus.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+    },
+    {
+      "text": "Even Alexander’s funeral procession changed course in the struggle over his empire. **Ptolemy**, the Macedonian commander who took control of Egypt, intercepted the cortege and brought the body to Memphis. It was later moved to **Alexandria**, where Roman rulers, including Augustus, came to visit the conqueror’s tomb.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Alexander_the_Great"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "philip-ii-of-macedon",
+      "reason": "His father Philip II built the Macedonian army Alexander took into Asia.",
+      "name": "Philip II of Macedon",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "darius-iii",
+      "reason": "The Persian king Darius III faced Alexander at both Issus and Gaugamela.",
+      "name": "Darius III",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "ptolemy-i-soter",
+      "reason": "Ptolemy campaigned with Alexander and founded a dynasty in Egypt after his death.",
+      "name": "Ptolemy I Soter",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "aristotle",
+      "reason": "Aristotle tutored the young Alexander at Mieza before he became king.",
+      "name": "Aristotle",
+      "lane": "people",
+      "detailLevel": 1
+    }
+  ]
+}

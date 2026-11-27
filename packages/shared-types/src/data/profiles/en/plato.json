@@ -1,0 +1,51 @@
+{
+  "overview": "Plato was an Athenian philosopher who wrote dialogues in which his teacher Socrates questions people about the things they think they know. In the Republic, a dispute over whether it pays to be just leads the speakers to imagine a city ruled by philosophers. Plato’s theory of Forms proposed that changing things share in unchanging realities, such as beauty itself. At the Academy he founded in Athens, his student Aristotle began a lifelong argument with that idea.",
+  "keyMoments": [
+    {
+      "date": "399 BC",
+      "title": "Athens condemns his teacher",
+      "text": "An Athenian jury convicted **Socrates** on charges of impiety and corrupting the young and sentenced him to death. Plato returned to the trial in the **Apology**, his account of his teacher’s defense. The speech turns the examination back on the jurors, asking why they take such care over their wealth and reputation yet give so little thought to the condition of their souls.",
+      "sourceUrl": "https://classics.mit.edu/Plato/apology.html"
+    },
+    {
+      "date": "380s BC",
+      "title": "A school beside an olive grove",
+      "text": "Near a sacred olive grove outside Athens, Plato brought students together to study philosophy and mathematics. The school became known as the **Academy**. Its early premises included a house and garden, and much of the teaching probably took place outdoors. Among those who came to study there was a young man from Stagira named **Aristotle**.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Plato"
+    },
+    {
+      "date": "c. 366 BC",
+      "title": "A pupil on the throne",
+      "text": "When a new ruler took power in the Sicilian city of Syracuse, Plato’s friend **Dion** invited him to court to teach the young man philosophy. Plato accepted, but his pupil **Dionysius II** grew suspicious of Dion, his own uncle, and sent him into exile. Plato tried to reconcile the two before returning to Athens.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Plato"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Plato gives the job of narrating the **Symposium**, his dialogue about love, to a man who missed the party. Apollodorus explains that he was a boy when the guests gathered at the poet Agathon’s house. He heard the speeches secondhand from a guest and checked parts of the story with **Socrates** himself.",
+      "isLegend": false,
+      "sourceUrl": "https://classics.mit.edu/Plato/symposium.html"
+    },
+    {
+      "text": "A page number from **1578** can still help two readers find the same passage in different translations of Plato. That year the printer Henri Estienne published a Greek and Latin edition whose numbered pages and lettered subdivisions became a shared reference system. Modern editions often print these **Stephanus numbers** in the margins.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Plato"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "socrates",
+      "reason": "Plato studied with Socrates in Athens and made his teacher the central speaker in many of his dialogues.",
+      "name": "Socrates",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "aristotle",
+      "reason": "Aristotle studied at Plato’s Academy and later challenged his teacher’s theory of Forms.",
+      "name": "Aristotle",
+      "lane": "people",
+      "detailLevel": 1
+    }
+  ]
+}

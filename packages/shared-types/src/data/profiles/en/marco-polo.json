@@ -1,0 +1,64 @@
+{
+  "overview": "Marco Polo was a Venetian merchant who travelled across Asia with his father and uncle in the late thirteenth century and spent years in the lands of the Mongol ruler Kublai Khan. Back in Italy, he worked with the writer Rustichello of Pisa on the book now known as The Travels of Marco Polo. Its descriptions of Chinese cities, markets and life at the khan’s court shaped how Europeans imagined Asia for generations.",
+  "keyMoments": [
+    {
+      "date": "1271",
+      "title": "A merchant family heads east",
+      "text": "At about seventeen, Polo left Venice with his father Niccolò and uncle Maffeo. Both men had already met **Kublai Khan** on an earlier trading journey. This time they carried letters from the newly elected **Pope Gregory X** to the Mongol ruler. At the Persian port of Hormuz, they judged the ships too frail for the crossing and continued towards China overland.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Marco_Polo"
+    },
+    {
+      "date": "c. 1275",
+      "title": "At the khan’s summer court",
+      "text": "After more than three years on the road, the Polos reached **Shangdu**, Kublai Khan’s summer residence. In Polo’s account, the ruler sent him on missions and welcomed news of the people and customs he encountered. The young merchant spent some **seventeen years in the khan’s lands**, gathering material for the book he would later dictate in Italy.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Marco_Polo"
+    },
+    {
+      "date": "c. 1291–1295",
+      "title": "A passage home by sea",
+      "text": "The opportunity to leave China came with a marriage mission. In Polo’s account, his family joined the party accompanying **Princess Kököchin** by sea to Persia, where she was to marry the ruler Arghun. By the time they arrived, Arghun had died, and the princess married his son instead. The Polos continued west and reached **Venice** twenty-four years after setting out.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Marco_Polo"
+    },
+    {
+      "date": "c. 1298",
+      "title": "A book takes shape in prison",
+      "text": "Venice went to war with Genoa, and Polo fell into Genoese hands. Among his fellow prisoners was **Rustichello of Pisa**, a writer of chivalric romances. Polo recounted his journeys to him, and their collaboration became **The Travels of Marco Polo**. Readers across Europe encountered the book in handwritten copies that differed as scribes and translators reworked the text.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Marco_Polo"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Polo recorded the denominations and seals on **Chinese paper money** and noted where other currencies circulated, down to the cowrie shells used in Yunnan. Centuries later, historians debating how far he had actually travelled could test those observations against Chinese records. Some of the best evidence for his journey lay in the small change.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Marco_Polo"
+    },
+    {
+      "text": "Polo’s will names his wife Donata and their daughters as executors. Alongside instructions about property, debts and burial, he made a provision for **Peter, an enslaved man in his household**. Polo directed that Peter receive his freedom and left him a hundred lire in Venetian money.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Marco_Polo"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "kublai-khan",
+      "reason": "Kublai Khan received the Polos at his summer court and, in Marco’s account, employed him as an envoy.",
+      "name": "Kublai Khan",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "gregory-x",
+      "reason": "Gregory X gave the Polos letters to carry to Kublai Khan on their journey east.",
+      "name": "Gregory X",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "christopher-columbus",
+      "reason": "Columbus owned and annotated a Latin edition of Polo’s account of Asia.",
+      "name": "Christopher Columbus",
+      "lane": "people",
+      "detailLevel": 1
+    }
+  ]
+}

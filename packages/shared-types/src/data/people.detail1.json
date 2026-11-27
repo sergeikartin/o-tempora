@@ -303,7 +303,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Marco%20Polo%20Mosaic%20from%20Palazzo%20Tursi.jpg",
     "description": "Marco Polo was a Venetian merchant, explorer, and writer who travelled through Asia along the Silk Road between 1271 and 1295. His travels are recorded in The Travels of Marco Polo, a book that described the then-mysterious culture and inner workings of the Eastern world, including the wealth and great size of the Mongol Empire and China under the Yuan dynasty, giving Europeans their first comprehensive look into China, Persia, India, Japan, and other Asian societies.",
     "slug": "marco-polo",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "10128",
@@ -354,7 +355,8 @@
     "imageAttribution": "Marie-Lan Nguyen, via Wikimedia Commons",
     "description": "Plato was an ancient Greek philosopher of Classical Athens who is most commonly considered the foundational thinker of the Western philosophical tradition. An innovator of the literary dialogue and dialectic forms, Plato influenced all the major areas of theoretical philosophy and practical philosophy, and was the founder of the Academy, a philosophical school in Athens where Plato taught the collection of philosophical theories that would later become known as Platonism.",
     "slug": "plato",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "783",
@@ -380,7 +382,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Alexander%20the%20Great%20mosaic%20%28cropped%29.jpg",
     "description": "Alexander III of Macedon, most commonly known as Alexander the Great, was king of the ancient Greek kingdom of Macedon. He succeeded his father Philip II to the throne in 336 BC at the age of 20, and spent most of his reign conducting a lengthy military campaign throughout Asia and Egypt. By the age of 30, he had created one of the largest empires in history, stretching from Greece to northwestern India. He was undefeated in battle and is widely considered to be one of history's greatest and most successful military commanders.",
     "slug": "alexander-the-great",
-    "row": 2
+    "row": 2,
+    "hasProfile": true
   },
   {
     "id": "31665644",
