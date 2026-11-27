@@ -8,10 +8,10 @@ Your **main chat session acts as Coordinator** (default batch concurrency: **3 e
 
 | Role | Tier | Prompt |
 |---|---|---|
-| `profile-writer` | Flagship (`inherit` in Claude/AGY; `gpt-6.2-astra` + `high` in Codex) | [profile-writer.md](../prompts/profile-writer.md) |
-| `profile-checker` | Flagship (`inherit` in Claude/AGY; `gpt-6.2-astra` + `high` in Codex) | [profile-checker.md](../prompts/profile-checker.md) |
-| `profile-translator` | Mid-tier (`sonnet` / `flash` / `gpt-6.2-sol` + `low` in Codex) | [profile-translator.md](../prompts/profile-translator.md) |
-| `profile-translation-checker` | Mid-tier (`sonnet` / `flash` / `gpt-6.2-sol` + `low` in Codex) | [profile-translation-checker.md](../prompts/profile-translation-checker.md) |
+| `profile-writer` | Flagship (`pro` / `inherit` in AGY/Claude; `gpt-6.2-astra` + `medium` in Codex; `gpt-6.2-sol` + `high` to save quota) | [profile-writer.md](../prompts/profile-writer.md) |
+| `profile-checker` | Flagship (`pro` / `inherit` in AGY/Claude; `gpt-6.2-astra` + `medium` in Codex) | [profile-checker.md](../prompts/profile-checker.md) |
+| `profile-translator` | Mid-tier (`flash` / `sonnet` in AGY/Claude; `gpt-6.2-sol` + `medium` in Codex) | [profile-translator.md](../prompts/profile-translator.md) |
+| `profile-translation-checker` | Mid-tier (`flash` / `sonnet` in AGY/Claude; `gpt-6.2-sol` + `medium` in Codex) | [profile-translation-checker.md](../prompts/profile-translation-checker.md) |
 
 ### English Workflow (Coordinator Steps)
 1. **Pick a batch:** Run `status --locale=en --stage=missing --limit=10` (or use QIDs chosen in chat).

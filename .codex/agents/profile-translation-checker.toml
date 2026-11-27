@@ -1,5 +1,5 @@
 name = "profile-translation-checker"
 description = "Independently audits Russian Profile translation fidelity against its English source."
 model = "gpt-6.2-sol"
-model_reasoning_effort = "low"
+model_reasoning_effort = "medium"
 developer_instructions = "Read and follow `packages/data-pipeline/prompts/profile-translation-checker.md`."
