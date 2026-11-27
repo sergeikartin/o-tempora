@@ -1,5 +1,7 @@
 # Spec: Profiles
 
+Status: resolved
+
 Terms are in `CONTEXT.md`: **Profile**, **Key Moment**, **Deep Facts**, **Connection**, **Detail Level**, **Selection**, **Entity Link**, **Description**. Decisions are in `map.md` and the resolved tickets under `issues/`.
 
 ## Problem

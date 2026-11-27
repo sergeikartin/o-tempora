@@ -1,5 +1,7 @@
 # Profiles Pipeline v2 — Redesign Plan
 
+Status: resolved
+
 ## Context & Problem
 
 The current Profiles pipeline grew organically across 19 ADRs (`0021`–`0024`, `0026`–`0040`) from memory-only drafts → provider APIs → stateless automated verification → session polling → subagent coordinators → adversarial verification → upfront scout/prefetch → policy 9 guardrails. The result is ~11,150 LOC in `packages/data-pipeline/src/profiles/`, 7 subagent roles mirrored across 3 harnesses, 600–900 line committed `*.verification.json` receipts, and complex state-machine plumbing (`pending.json`, `policy_version`, `profile-scout`, `assessment` JSON, verbatim substring quote matching, live Wikipedia URL→QID resolution).

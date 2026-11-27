@@ -1,5 +1,7 @@
 # Overlap, chrome and navigation
 
+Status: resolved
+
 Terms are defined in `CONTEXT.md`: **Selection**, **Span Band**, **Overlap Band**, **Entity Link**, **Top Bar**, **Filters Panel**, **Scrubber**.
 
 ## Goal

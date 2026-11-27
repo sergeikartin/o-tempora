@@ -1,5 +1,7 @@
 # Map: Alternative data sources for the history-timeline pipeline
 
+Status: resolved
+
 **Status:** closed — destination reached. All three lanes' Fetch-stage decisions were made and implemented (tickets 17–25, see `docs/active-context.md`'s Completed log); nothing remains open on this map.
 
 ## Destination

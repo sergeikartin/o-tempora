@@ -1,5 +1,7 @@
 # Timeline Rendering Foundation: vis-timeline vs. D3
 
+Status: resolved
+
 Labels: wayfinder:map
 
 ## Destination

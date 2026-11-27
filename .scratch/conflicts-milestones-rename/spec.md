@@ -1,3 +1,5 @@
+Status: resolved
+
 Labels: done
 
 # Rename lanes to People, Conflicts, Milestones

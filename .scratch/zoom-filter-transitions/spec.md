@@ -1,3 +1,5 @@
+Status: resolved
+
 Labels: ready-for-agent
 
 # Zoom + Filter Transitions

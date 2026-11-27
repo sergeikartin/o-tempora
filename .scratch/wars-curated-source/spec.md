@@ -1,3 +1,5 @@
+Status: resolved
+
 Labels: ready-for-agent
 
 # Wars & Conflicts: switch to a curated source, add Container nesting

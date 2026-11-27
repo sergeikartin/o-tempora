@@ -1,7 +1,7 @@
 # Generate and review the 30
 
 Type: task (human-in-the-loop)
-Status: open
+Status: superseded by [landing-curiosities-plan.md](../../landing-curiosities-plan.md)
 Blocked by: 11
 
 ## What to build
@@ -37,3 +37,5 @@ Acceptance evidence: [plan output](../reviews/2026-11-15-plan.txt) lists exactly
 2026-11-19: Completed World War II (Q362). Applied the [manual audit](../reviews/2026-11-15-world-war-ii.md), fixed additional chronology and attribution issues, and obtained independent corroboration for the Enigma and Onoda Deep Facts. Verification and independent review passed for 76 claims across 31 passages with 24 fetched sources. The Russian translation passed a separate 31-field audit. Both locale outputs contain four Key Moments, three Deep Facts and fifteen Connections. All five manually audited Profiles are now published in both locales. The other 25 remain in the batch.
 
 2026-11-24: Galileo Galilei (Q307) shipped in both Locales in `176d1de`. Van Gogh shipped in the same commit outside this sample. The [November 15 plan output](../reviews/2026-11-15-plan.txt) records the retired CLI command. Select [sample entities](06-sample-selection.md) by QID in the coordinator now.
+
+2026-11-27: Closed as superseded by [landing-curiosities-plan.md](../../landing-curiosities-plan.md).

@@ -1,3 +1,5 @@
+Status: superseded by ../profiles-pipeline-v2/spec.md
+
 Labels: ready-for-agent
 
 # Subagent-Only Profile Pipeline, Remaining Correctness Fixes, and Safe Concurrency

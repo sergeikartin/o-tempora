@@ -1,5 +1,7 @@
 # Detail Level: 4-tier redesign
 
+Status: resolved
+
 Source of truth for the domain model: `CONTEXT.md`'s **Detail Level** entry and `docs/adr/0006-detail-level-merges-data-depth-and-payload-tier.md`. This spec exists to break that decision into implementable slices — it doesn't restate the reasoning, only the shape of the work.
 
 ## Summary

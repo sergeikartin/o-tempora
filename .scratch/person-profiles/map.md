@@ -1,5 +1,7 @@
 # Map: Profiles
 
+Status: resolved
+
 ## Destination
 
 A spec at `.scratch/person-profiles/spec.md` for **Profiles**: LLM-generated, memory-oriented pieces (overview, **Key Moments**, **Deep Facts**, **Connections**) that replace the date-overlap comparison. Visitors remember who an entity was and wander to related entities.

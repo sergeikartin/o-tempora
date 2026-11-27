@@ -1,5 +1,7 @@
 # Wars & Conflicts taxonomy restructure
 
+Status: resolved
+
 Label: wayfinder:map
 
 ## Destination

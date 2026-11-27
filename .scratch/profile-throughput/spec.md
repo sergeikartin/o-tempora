@@ -1,3 +1,5 @@
+Status: superseded by ../profiles-pipeline-v2/spec.md
+
 Labels: ready-for-agent
 
 # Profile Pipeline Throughput: Prefetch, Preflight, Russian Glossary, and Subject-Index Caching

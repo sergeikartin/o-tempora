@@ -1,3 +1,5 @@
+Status: resolved
+
 Labels: ready-for-agent
 
 # Wars & Discoveries: blend sitelinks and pageviews into fameScore

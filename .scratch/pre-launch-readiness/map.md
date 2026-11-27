@@ -1,3 +1,5 @@
+Status: resolved
+
 Labels: wayfinder:map
 
 # Pre-launch readiness

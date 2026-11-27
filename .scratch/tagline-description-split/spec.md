@@ -1,3 +1,5 @@
+Status: resolved
+
 Labels: ready-for-agent
 
 # Split `description` into `Tagline` + `Description` (Wikipedia extract)

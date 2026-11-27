@@ -1,3 +1,5 @@
+Status: superseded
+
 Labels: ready-for-agent
 
 # Sidebar filters: clickable Occupation Domain, Region, and a Data Depth switch

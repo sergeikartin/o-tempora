@@ -1,3 +1,5 @@
+Status: resolved
+
 Labels: superseded
 
 # Rename Events & Inventions' curated file names from "events" to "discoveries"

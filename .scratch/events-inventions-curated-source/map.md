@@ -1,5 +1,7 @@
 # Map: Events & Inventions lane — switch to curated source
 
+Status: resolved
+
 Labels: wayfinder:map
 
 ## Destination

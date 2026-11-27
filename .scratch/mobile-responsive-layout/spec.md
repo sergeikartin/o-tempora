@@ -1,3 +1,5 @@
+Status: resolved
+
 Labels: ready-for-agent
 
 # Mobile-friendly layout: collapsible sidebar, bottom-sheet detail panel, touch pinch-to-zoom

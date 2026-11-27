@@ -1,3 +1,5 @@
+Status: superseded by ../profiles-pipeline-v2/spec.md
+
 Labels: ready-for-agent
 
 # Multi-Model Profile Generation: Role Subagents (Codex) and Manual Cross-Family Wave Handoff (Codex + Gemini Neon)

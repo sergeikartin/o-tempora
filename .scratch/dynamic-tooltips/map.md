@@ -1,5 +1,7 @@
 # Dynamic tooltips
 
+Status: resolved
+
 ## Destination
 
 A spec — covering both `packages/web` and `packages/data-pipeline` — for rich, on-demand tooltips on People/Wars & Conflicts/Events & Inventions entries: resolving the interaction model (hover vs. click), image sourcing and delivery strategy, and content layout. Ready to hand to `/implement` afterward; this map does not execute the build itself.

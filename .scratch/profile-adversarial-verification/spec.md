@@ -1,3 +1,5 @@
+Status: superseded by ../profiles-pipeline-v2/spec.md
+
 Labels: ready-for-agent
 
 # Adversarial Verification and Heading-Aware Source Excerpts for Profiles

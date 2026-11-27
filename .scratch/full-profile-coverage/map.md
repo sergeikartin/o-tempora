@@ -1,5 +1,7 @@
 # Full Profile coverage on the current plan
 
+Status: superseded by ../landing-curiosities-plan.md
+
 Label: wayfinder:map
 
 ## Destination

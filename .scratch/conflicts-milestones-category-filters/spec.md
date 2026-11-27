@@ -1,3 +1,5 @@
+Status: resolved
+
 Labels: ready-for-agent
 
 # Sidebar filters: Milestone Category Group pills and a Conflicts visibility toggle

@@ -1,5 +1,7 @@
 # Map: Sidebar with Legend + Fame Filters
 
+Status: superseded
+
 Labels: wayfinder:map
 
 ## Destination
