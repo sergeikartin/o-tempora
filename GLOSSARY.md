@@ -129,8 +129,8 @@ A dated episode in a **Profile**, presented with a short title and paragraph.
 _Avoid_: milestone (bare — a lane), highlight, chapter
 
 **Deep Fact**:
-A little-known, documented detail in a **Profile** that helps a newcomer understand or remember the subject. Legends carry a label.
-_Avoid_: fun fact, trivia, Curiosity (a different thing — a Landing Page overlap)
+A little-known, documented, memorable detail (including verifiable quiz-worthy trivia) in a **Profile** that helps visitors remember the subject. Legends carry a label.
+_Avoid_: fun fact, trivia (as a term for this section), Curiosity (a different thing — a Landing Page overlap)
 
 **Connection**:
 A reference from a **Profile** to another entity, with a one-sentence reason it matters. Following it opens the target and lets the visitor retrace the path with Back.

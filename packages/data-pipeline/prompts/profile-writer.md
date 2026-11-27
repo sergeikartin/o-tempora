@@ -43,9 +43,9 @@ The Coordinator gives you a `QID` and mode (`draft` or `revise`), plus paths und
 - Bold **2 to 3** key events, outcomes, or crucial figures inline with `**...**` (plain text + paired `**...**` only — no italics, HTML, links, or backticks; don’t bold every proper noun, the subject’s own name, or repeat a bolded term in the same paragraph).
 - `sourceUrl`: cached public HTTPS URL supporting the passage’s central claim (include `#section` anchor only if confirmed).
 
-### Deep Facts (0 to 3 items — never pad)
-- Little-known, documented details that help a newcomer understand or remember the subject. “Deep” means uncommon and illuminating, not hidden in an archive or dry trivia.
-- **Land the payoff:** Every fact must make clear *why* the detail is surprising, ironic, or revealing about the subject — never stop at a bare statement or drift onto a tangential artifact.
+### Deep Facts (aim for 2 to 3; 0 to 3 allowed — never pad)
+- Little-known, documented, quiz-worthy details — sharp, verifiable trivia that makes a subject stick (unexpected links to another person, work, or field; eponyms and word origins; nicknames; paradoxical episodes; odd habits or fates; surprising records or cultural references). “Deep” means uncommon and memorable, not dull archival minutiae or unverified internet myths.
+- **Land the payoff:** Make clear *why* the detail is surprising, ironic, or revealing, with enough context for a newcomer to appreciate it — never stop at a bare date, name, or number, or drift onto a tangential artifact.
 - **One focused paragraph, 2 to 4 sentences (~45–80 words):** One central hook per fact. Vary how facts open and where the hook lands; cut anything (stacked sub-stories, unnecessary jargon) that doesn’t serve the hook.
 - Choose complementary facts with concrete images, objects, phrases, or scenes, and do not repeat the overview or Key Moments.
 - Bold 1 to 2 key phrases or hooks inline with `**...**` (plain text + paired `**...**` only — same markup rules as Key Moments).
