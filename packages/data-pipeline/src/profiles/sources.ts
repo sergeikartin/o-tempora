@@ -20,23 +20,148 @@ const BOT_WALL_PATTERNS = [
   /pardon our interruption/i,
 ];
 
+const BASE_IGNORE_TAGS = [
+  'script',
+  'style',
+  'noscript',
+  'template',
+  'nav',
+  'footer',
+  'aside',
+  'header',
+  'form',
+  'iframe',
+  'svg',
+  'button',
+];
+
+const WIKIPEDIA_NOISE_CLASSES = new Set([
+  'navbox',
+  'navbox-styles',
+  'vertical-navbox',
+  'sistersitebox',
+  'mw-authority-control',
+  'reflist',
+  'refbegin',
+  'mw-references-wrap',
+  'references',
+  'mw-cite-backlink',
+  'mw-editsection',
+  'mw-jump-link',
+  'mw-indicators',
+  'shortdescription',
+  'hatnote',
+  'catlinks',
+  'printfooter',
+  'noprint',
+  'mw-empty-elt',
+  'ambox',
+  'tmbox',
+  'ombox',
+  'cmbox',
+  'fmbox',
+  'mbox-small',
+  'toc',
+  'vector-header',
+  'vector-header-container',
+  'vector-page-toolbar',
+  'vector-column-start',
+  'vector-column-end',
+  'vector-pinnable-element',
+  'mw-footer',
+  'mw-footer-container',
+  'mw-navigation',
+]);
+
+const WIKIPEDIA_NOISE_IDS = new Set([
+  'mw-navigation',
+  'mw-head',
+  'mw-panel',
+  'footer',
+  'catlinks',
+  'siteNotice',
+  'toc',
+  'p-lang-btn',
+  'vector-toc',
+]);
+
+const WIKIPEDIA_TAIL_HEADING_RE =
+  /^##\s+(?:See also|References|External links|Further reading|Bibliography|Citations|Footnotes|Примечания|Ссылки|Литература|См\.\s*также)\s*$/im;
+
+function hasWikipediaNoiseMarker(node: {
+  getAttribute(name: string): string | null | undefined;
+}): boolean {
+  const id = node.getAttribute('id');
+  if (id && WIKIPEDIA_NOISE_IDS.has(id)) return true;
+  const classAttr = node.getAttribute('class');
+  if (!classAttr) return false;
+  for (const token of classAttr.split(/\s+/)) {
+    if (WIKIPEDIA_NOISE_CLASSES.has(token)) return true;
+  }
+  return false;
+}
+
 const markdownConverter = new NodeHtmlMarkdown({
-  ignore: [
-    'script',
-    'style',
-    'noscript',
-    'template',
-    'nav',
-    'footer',
-    'aside',
-    'header',
-    'form',
-    'iframe',
-    'svg',
-    'button',
-  ],
+  ignore: BASE_IGNORE_TAGS,
   maxConsecutiveNewlines: 2,
 });
+
+function createWikipediaMarkdownConverter(): NodeHtmlMarkdown {
+  const converter = new NodeHtmlMarkdown({
+    ignore: [...BASE_IGNORE_TAGS, 'img'],
+    maxConsecutiveNewlines: 2,
+  });
+
+  const delegate = (
+    orig: ReturnType<typeof converter.translators.get>,
+    ctx: Parameters<Extract<typeof orig, (...args: never[]) => unknown>>[0],
+  ) => (typeof orig === 'function' ? orig(ctx) : (orig ?? {}));
+
+  for (const tag of ['div', 'table', 'ul', 'ol', 'span', 'p', 'section']) {
+    const orig = converter.translators.get(tag);
+    converter.translators.set(tag, (ctx) =>
+      hasWikipediaNoiseMarker(ctx.node)
+        ? { ignore: true }
+        : delegate(orig, ctx),
+    );
+  }
+
+  const origSup = converter.translators.get('sup');
+  converter.translators.set('sup', (ctx) => {
+    const cls = ctx.node.getAttribute('class') ?? '';
+    if (/\b(reference|noprint|Inline-Template)\b/.test(cls)) {
+      return { ignore: true };
+    }
+    return delegate(origSup, ctx);
+  });
+
+  const origA = converter.translators.get('a');
+  converter.translators.set('a', (ctx) => {
+    const href = (ctx.node.getAttribute('href') ?? '').trim();
+    if (
+      !href ||
+      href.startsWith('/wiki/') ||
+      href.startsWith('/w/') ||
+      href.startsWith('#')
+    ) {
+      return { recurse: true };
+    }
+    return delegate(origA, ctx);
+  });
+
+  return converter;
+}
+
+const wikipediaMarkdownConverter = createWikipediaMarkdownConverter();
+
+export function isWikipediaUrl(rawUrl?: string): boolean {
+  if (!rawUrl) return false;
+  try {
+    return /(^|\.)wikipedia\.org$/i.test(new URL(rawUrl).hostname);
+  } catch {
+    return false;
+  }
+}
 
 export interface SourceHeading {
   level: number;
@@ -86,17 +211,27 @@ export function extractHtmlTitle(html: string): string {
     .trim();
 }
 
-export function htmlToCleanMarkdown(html: string): string {
-  // Strip Wikipedia's noisy table-of-contents / edit links before conversion.
+export function htmlToCleanMarkdown(html: string, url?: string): string {
+  const isWiki = isWikipediaUrl(url);
+  // Strip noisy edit links / embedded scripts and styles before conversion.
   const withoutNoise = html
     .replace(/<span class="mw-editsection">[\s\S]*?<\/span>/gi, '')
     .replace(/<style[\s\S]*?<\/style>/gi, '')
     .replace(/<script[\s\S]*?<\/script>/gi, '');
-  return markdownConverter
+  const converter = isWiki ? wikipediaMarkdownConverter : markdownConverter;
+  let markdown = converter
     .translate(withoutNoise)
     .replace(/\r\n/g, '\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
+
+  if (isWiki) {
+    const tailMatch = WIKIPEDIA_TAIL_HEADING_RE.exec(markdown);
+    if (tailMatch && tailMatch.index > 0) {
+      markdown = markdown.slice(0, tailMatch.index).trim();
+    }
+  }
+  return markdown;
 }
 
 export function extractMarkdownHeadings(markdown: string): SourceHeading[] {
@@ -228,7 +363,7 @@ export async function fetchSource(
     !contentType.includes('text/plain') &&
     (contentType.includes('html') || /<html|<body|<p[\s>]/i.test(rawBody));
   const title = isHtml ? extractHtmlTitle(rawBody) : '';
-  const body = isHtml ? htmlToCleanMarkdown(rawBody) : rawBody.trim();
+  const body = isHtml ? htmlToCleanMarkdown(rawBody, finalKey) : rawBody.trim();
 
   if (isBotWall(title, body)) {
     throw new Error(

@@ -130,3 +130,69 @@ export function applyProfilePatch(
 
   return { draft: next, patchedPaths: touchedPaths.sort() };
 }
+
+// Applies a Russian language/calque polish patch directly without a prior `revise` verdict.
+// Rejects `null` drops so Russian array lengths stay aligned with English; callers must
+// still run full `validateDraft` before saving.
+export function applyProfilePolishPatch(
+  draft: ProfileDraft,
+  patch: ProfilePatch,
+): ApplyPatchResult {
+  const touchedPaths: string[] = [];
+
+  if (patch.overview !== undefined) {
+    touchedPaths.push('overview');
+  }
+
+  const next: ProfileDraft = {
+    ...draft,
+    ...(patch.overview !== undefined ? { overview: patch.overview } : {}),
+    keyMoments: [...draft.keyMoments],
+    deepFacts: [...draft.deepFacts],
+    connections: [...draft.connections],
+  };
+
+  function applyPolishSection<T>(
+    section: 'keyMoments' | 'deepFacts' | 'connections',
+    entries: Record<string, T | null> | undefined,
+    items: T[],
+  ): T[] {
+    if (!entries) return items;
+    const updated = [...items];
+
+    for (const [key, value] of Object.entries(entries)) {
+      const index = Number(key);
+      const target = `${section}.${index}`;
+      touchedPaths.push(target);
+      if (!Number.isInteger(index) || index < 0 || index >= updated.length) {
+        throw new Error(
+          `Patch index out of range: ${target} (draft has ${updated.length} items)`,
+        );
+      }
+      if (value === null) {
+        throw new Error(`Polish patch cannot drop array item: ${target}`);
+      }
+      updated[index] = value;
+    }
+
+    return updated;
+  }
+
+  next.keyMoments = applyPolishSection(
+    'keyMoments',
+    patch.keyMoments,
+    next.keyMoments,
+  );
+  next.deepFacts = applyPolishSection(
+    'deepFacts',
+    patch.deepFacts,
+    next.deepFacts,
+  );
+  next.connections = applyPolishSection(
+    'connections',
+    patch.connections,
+    next.connections,
+  );
+
+  return { draft: next, patchedPaths: touchedPaths.sort() };
+}

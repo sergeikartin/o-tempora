@@ -12,6 +12,7 @@ The Coordinator gives you a `QID` and mode (`draft` or `revise`), plus paths und
 
 1. **Use established Russian historical terminology:** If `ru.brief.json` includes `russianWikipedia.path`, skim relevant sections with your native file reader to match conventional Russian spellings of names, works, treaties, places, and concepts. Match `nameRu` and `connectionNamesRu` from `ru.brief.json`.
 2. **Faithful to meaning, natural in Russian:** Preserve every fact, date, number, attribution, uncertainty, and causal boundary exactly — never strengthen a hedge (“may have”, “according to”) into flat certainty, and never add facts not in the English Profile. Write lively, idiomatic Russian, not word-for-word English calques.
+   - **Watch recurring calque traps:** Recast English *whose* clauses instead of stacking genitive nouns before `которой`/`которого`; never coordinate a gerund (`деепричастие`) with a passive participle (`причастие`); check verb agreement with quantifiers (`больше половины студентов присоединились`); cut tautologies (`при рождении получивший имя …, родился`; `много лет спустя после смерти`) and literal English metaphors.
 3. **Preserve structure and metadata verbatim:**
    - Exact same array lengths for `keyMoments`, `deepFacts`, and `connections`.
    - Exact same `sourceUrl` values on every Key Moment and Deep Fact.

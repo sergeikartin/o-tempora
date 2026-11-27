@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'node:url';
-import { applyProfilePatch } from './patch.ts';
+import { applyProfilePatch, applyProfilePolishPatch } from './patch.ts';
 import { RAW_PROFILES_DIR, SOURCES_DIR, WORK_DIR, workFile } from './paths.ts';
 import {
   formatZodIssues,
@@ -95,7 +95,7 @@ Commands:
   fetch-source <url> [--refresh]
   find-entity <query...> [--limit=N]
   validate <qid> [--locale=en|ru] [--kind=draft|patch|check|recheck] [--file=<path>]
-  apply-patch <qid> [--locale=en|ru]
+  apply-patch <qid> [--locale=en|ru] [--polish]
   promote <qid> [--locale=en|ru] [--writer-model=<id>] [--checker-model=<id>] [--harness=codex|claude|agy] [--force] [--human-approved]`;
 
 async function main(argv: string[]): Promise<void> {
@@ -297,28 +297,26 @@ async function main(argv: string[]): Promise<void> {
       const qid = positional[0] ?? flagString(flags, 'qid');
       if (!qid) throw new Error('apply-patch requires <qid>');
       const locale = parseLocale(flags);
+      const polish = flags.polish === true;
+      if (polish && locale !== 'ru') {
+        throw new Error('--polish is only supported for --locale=ru');
+      }
       const draftPath = workFile(qid, `${locale}.draft.json`, WORK_DIR);
       const checkPath = workFile(qid, `${locale}.check.json`, WORK_DIR);
       const patchPath = workFile(qid, `${locale}.patch.json`, WORK_DIR);
 
       const [draftRaw, checkRaw, patchRaw] = await Promise.all([
         readJsonIfExists(draftPath),
-        readJsonIfExists(checkPath),
+        polish ? Promise.resolve(undefined) : readJsonIfExists(checkPath),
         readJsonIfExists(patchPath),
       ]);
       if (draftRaw === undefined)
         throw new Error(`Missing draft: ${draftPath}`);
-      if (checkRaw === undefined)
+      if (!polish && checkRaw === undefined)
         throw new Error(`Missing check: ${checkPath}`);
       if (patchRaw === undefined)
         throw new Error(`Missing patch: ${patchPath}`);
 
-      const checkResult = validateCheck(checkRaw, { qid, locale });
-      if (!checkResult.ok || !checkResult.data) {
-        throw new Error(
-          `Invalid check verdict: ${checkResult.issues.join('; ')}`,
-        );
-      }
       const patchResult = validatePatch(patchRaw);
       if (!patchResult.ok || !patchResult.data) {
         throw new Error(`Invalid patch: ${patchResult.issues.join('; ')}`);
@@ -336,11 +334,26 @@ async function main(argv: string[]): Promise<void> {
         );
       }
 
-      const { draft: merged, patchedPaths } = applyProfilePatch(
-        initialDraft.data,
-        checkResult.data,
-        patchResult.data,
-      );
+      let merged: ReturnType<typeof applyProfilePatch>['draft'];
+      let patchedPaths: string[];
+      if (polish) {
+        ({ draft: merged, patchedPaths } = applyProfilePolishPatch(
+          initialDraft.data,
+          patchResult.data,
+        ));
+      } else {
+        const checkResult = validateCheck(checkRaw, { qid, locale });
+        if (!checkResult.ok || !checkResult.data) {
+          throw new Error(
+            `Invalid check verdict: ${checkResult.issues.join('; ')}`,
+          );
+        }
+        ({ draft: merged, patchedPaths } = applyProfilePatch(
+          initialDraft.data,
+          checkResult.data,
+          patchResult.data,
+        ));
+      }
 
       const sourceIndex =
         locale === 'en' ? await readSourceIndex(SOURCES_DIR) : undefined;

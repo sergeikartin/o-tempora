@@ -29,7 +29,7 @@ Run independently over current approved English Profiles:
 1. Run `status --locale=ru --stage=missing,stale --limit=10` (or explicit `--qids=...`).
 2. Run `prepare --locale=ru --qids=Q1,Q2,Q3` — writes `.work/<QID>/ru.brief.json` with the committed `.en.json`, `sourceHash`, dataset Russian names (`nameRu`, `connectionNamesRu`), and cached Russian Wikipedia Markdown (when available).
 3. Dispatch `profile-translator` (`mode: draft`) → `validate <QID> --locale=ru` → fresh `profile-translation-checker` (`mode: check`).
-4. Apply the same verdict rule: `pass` → `promote <QID> --locale=ru --writer-model=<id> --checker-model=<id> --harness=<codex|claude|agy>`; `revise` → max 1 patch (`apply-patch`) + 1 scoped `recheck`; still blocked or `escalate` → `needs-review`.
+4. Apply the verdict rule: for pure Russian phrasing/calque fixes (no factual defects), `profile-translation-checker` applies `ru.patch.json` directly via `apply-patch <QID> --locale=ru --polish` and writes a passing `ru.check.json` so `promote` succeeds without an extra round (`revised: true`). Otherwise: `pass` → `promote <QID> --locale=ru --writer-model=<id> --checker-model=<id> --harness=<codex|claude|agy>`; `revise` → max 1 patch (`apply-patch`) + 1 scoped `recheck`; still blocked or `escalate` → `needs-review`.
 
 ## CLI Commands
 
@@ -39,10 +39,10 @@ Run from repo root: `npm run profiles --workspace packages/data-pipeline -- <com
 |---|---|
 | `status [--locale=en\|ru] [--scope=legendary\|mainstream\|all] [--stage=...] [--qids=...] [--limit=N]` | Reports each entity’s stage (`missing`, `approved`, `stale`, `needs-review`, or `awaiting-english` for `ru`). Default scope is `mainstream` sorted by Detail Level and Fame Score. |
 | `prepare --qids=Q1,Q2 [--locale=en\|ru] [--refresh]` | Sequentially fetches Wikipedia (EN or RU via Wikidata sitelink) into `.work/sources/` and writes `.work/<QID>/<locale>.brief.json`. |
-| `fetch-source <url> [--refresh]` | Fetches a public HTTPS HTML/text page, converts HTML → clean Markdown in `.work/sources/<hash>.md`, indexes requested & post-redirect URLs, and prints `{ finalUrl, title, path, lineCount, headings }`. Fails fast on 403/bot-wall/PDF/tiny pages. |
+| `fetch-source <url> [--refresh]` | Fetches a public HTTPS HTML/text page, converts HTML → clean Markdown in `.work/sources/<hash>.md` (stripping Wikipedia navboxes, citation superscripts, internal `/wiki/` link URLs, and References/External links tails), indexes requested & post-redirect URLs, and prints `{ finalUrl, title, path, lineCount, headings }`. Fails fast on 403/bot-wall/PDF/tiny pages. |
 | `find-entity <query...> [--limit=N]` | Offline lookup across all 4,611 dataset entities (`qid`, `slug`, `name`, `lane`, `dates`, `tagline`) for picking Connection QIDs. |
 | `validate <qid> [--locale=en\|ru] [--kind=draft\|patch\|check\|recheck] [--file=<path>]` | Validates Zod handoffs and deterministic invariants (bold-only markup, `subjectDates`, valid/unique/non-self Connection QIDs, cached `sourceUrl`s for `en`; `sourceHash`, exact alignment, bold, preserved digits/Roman numerals, Cyrillic for `ru`). |
-| `apply-patch <qid> [--locale=en\|ru]` | Validates `<locale>.patch.json`, mechanically rejects edits outside `check.json`’s `blockers[].path`, merges verbatim, and re-runs `validate`. |
+| `apply-patch <qid> [--locale=en\|ru] [--polish]` | Validates `<locale>.patch.json`, merges verbatim, and re-runs `validate`. Default mode mechanically enforces `check.json`’s `blockers[].path`; `--polish` (`ru` only) lets `profile-translation-checker` apply pure language polish directly (rejecting `null` drops) before writing a passing `ru.check.json`. |
 | `promote <qid> [--locale=en\|ru] [--writer-model=<id>] [--checker-model=<id>] [--harness=codex\|claude\|agy] [--force] [--human-approved]` | Verifies `validate`, passing `check`/`recheck` (unless `--human-approved`), and required `writerModel`/`checkerModel` provenance; refuses overwrite without `--force`; stamps `promptVersion`, `promptHash`, `approval`, and `revised`; and writes `<QID>-<slug>.<locale>.json` to `data/raw/profiles/<lane>/`. |
 
 ## Storage & Publication

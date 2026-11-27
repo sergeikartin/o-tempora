@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { test } from 'node:test';
-import { applyProfilePatch } from './patch.ts';
+import { applyProfilePatch, applyProfilePolishPatch } from './patch.ts';
 import { workFile } from './paths.ts';
 import {
   type CheckVerdict,
@@ -745,4 +745,205 @@ test('promoteProfile requires model provenance and records revised/human approva
   assert.equal(storedHuman.meta.approval, 'human');
   assert.equal(storedHuman.meta.checkerModel, undefined);
   assert.equal(storedHuman.meta.revised, true);
+});
+
+test('htmlToCleanMarkdown strips Wikipedia boilerplate, internal links, and reference tails', () => {
+  const html = `
+    <html><head><title>Albert Einstein - Wikipedia</title></head>
+    <body>
+      <div class="vector-header">Header chrome</div>
+      <div class="hatnote">For other uses, see Einstein.</div>
+      <h1>Albert Einstein</h1>
+      <p>Born in <a href="/wiki/Germany">Germany</a>, a <a href="https://example.org/bio">physicist</a><sup class="reference"><a href="#cite_note-1">[1]</a></sup>.</p>
+      <ul><li>Annus Mirabilis papers</li><li>General relativity</li></ul>
+      <img src="//upload.wikimedia.org/einstein.jpg" alt="Portrait" />
+      <h2>Career<span class="mw-editsection">[edit]</span></h2>
+      <p>Developed <a href="/wiki/Relativity">relativity</a>.</p>
+      <div class="navbox">Huge navbox table</div>
+      <h2>References</h2>
+      <div class="reflist"><ol><li>Footnote 1</li></ol></div>
+      <h2>External links</h2>
+      <p>External list</p>
+    </body></html>
+  `;
+
+  const wikiMd = htmlToCleanMarkdown(
+    html,
+    'https://en.wikipedia.org/wiki/Albert_Einstein',
+  );
+  assert.ok(!wikiMd.includes('Header chrome'));
+  assert.ok(!wikiMd.includes('For other uses'));
+  assert.ok(!wikiMd.includes('/wiki/Germany'));
+  assert.ok(!wikiMd.includes('/wiki/Relativity'));
+  assert.ok(!wikiMd.includes('[1]'));
+  assert.ok(!wikiMd.includes('upload.wikimedia.org'));
+  assert.ok(!wikiMd.includes('Huge navbox table'));
+  assert.ok(!wikiMd.includes('## References'));
+  assert.ok(!wikiMd.includes('Footnote 1'));
+  assert.ok(!wikiMd.includes('External list'));
+  assert.ok(
+    wikiMd.includes('Born in Germany, a [physicist](https://example.org/bio).'),
+  );
+  assert.ok(wikiMd.includes('* Annus Mirabilis papers'));
+  assert.ok(wikiMd.includes('Developed relativity.'));
+
+  // Non-Wikipedia pages preserve links and sections verbatim.
+  const otherMd = htmlToCleanMarkdown(html, 'https://example.org/article');
+  assert.ok(otherMd.includes('[Germany](/wiki/Germany)'));
+  assert.ok(otherMd.includes('## References'));
+});
+
+test('applyProfilePolishPatch applies Russian polish without check verdict and forbids drops', () => {
+  const draft = sampleEnDraft();
+  const patch = ProfilePatchSchema.parse({
+    overview: 'Polished **overview**.',
+    connections: { '0': { qid: 'Q9021', reason: 'Polished reason.' } },
+  });
+  const { draft: merged, patchedPaths } = applyProfilePolishPatch(draft, patch);
+  assert.deepEqual(patchedPaths, ['connections.0', 'overview']);
+  assert.equal(merged.overview, 'Polished **overview**.');
+  assert.equal(merged.connections[0]?.reason, 'Polished reason.');
+  assert.deepEqual(merged.keyMoments, draft.keyMoments);
+  assert.deepEqual(merged.deepFacts, draft.deepFacts);
+
+  const dropPatch = ProfilePatchSchema.parse({ deepFacts: { '0': null } });
+  assert.throws(
+    () => applyProfilePolishPatch(draft, dropPatch),
+    /cannot drop array item: deepFacts\.0/,
+  );
+});
+
+test('promoteProfile allows Russian direct polish pass without recheck while enforcing English recheck', async (t) => {
+  const root = await mkdtemp(path.join(tmpdir(), 'profiles-ru-polish-'));
+  t.after(() => rm(root, { recursive: true, force: true }));
+  const rawProfilesDir = path.join(root, 'raw');
+  const workDir = path.join(root, '.work');
+  const sourcesDir = path.join(workDir, 'sources');
+
+  const en = sampleStoredEn();
+  const sourceHash = computeEnglishSourceHash(en);
+  await writeJsonFile(
+    path.join(rawProfilesDir, 'people', 'Q937-albert-einstein.en.json'),
+    en,
+  );
+
+  // Russian draft + polish patch + passing ru.check.json (no ru.recheck.json) -> promotes with revised: true
+  const ruDraft: ProfileDraft = {
+    qid: 'Q937',
+    subjectDates: '1879–1955',
+    sourceHash,
+    writerModel: 'test-translator',
+    overview: 'Альберт Эйнштейн изменил **современную физику**.',
+    keyMoments: [
+      {
+        date: '1905',
+        title: 'Год чудес',
+        text: 'Он опубликовал **специальную теорию относительности** в Берне.',
+        sourceUrl: en.keyMoments[0]?.sourceUrl,
+      },
+      {
+        date: '1915–1919',
+        title: 'Подтверждение затмением',
+        text: 'Общая теория прошла проверку во время **затмения 1919 года**.',
+        sourceUrl: en.keyMoments[1]?.sourceUrl,
+      },
+    ],
+    deepFacts: [
+      {
+        text: 'В **1930** году он запатентовал холодильник с Лео Силардом.',
+        isLegend: false,
+        sourceUrl: en.deepFacts[0]?.sourceUrl,
+      },
+    ],
+    connections: [
+      { qid: 'Q9021', reason: 'Планк убедил Эйнштейна переехать в Берлин.' },
+    ],
+  };
+  await writeJsonFile(workFile('Q937', 'ru.draft.json', workDir), ruDraft);
+  await writeJsonFile(workFile('Q937', 'ru.patch.json', workDir), {
+    overview: 'Альберт Эйнштейн преобразил **современную физику**.',
+  });
+
+  // If ru.check.json is `revise` (factual blocker), promote still requires ru.recheck.json
+  await writeJsonFile(
+    workFile('Q937', 'ru.check.json', workDir),
+    sampleCheck({
+      locale: 'ru',
+      verdict: 'revise',
+      blockers: [{ path: 'overview', issue: 'Wrong fact', fix: 'Fix fact' }],
+    }),
+  );
+  await assert.rejects(
+    promoteProfile({
+      qid: 'Q937',
+      locale: 'ru',
+      subjects: SUBJECTS,
+      rawProfilesDir,
+      workDir,
+      sourcesDir,
+    }),
+    /Missing checker verdict: ru\.recheck\.json/,
+  );
+
+  // Passing ru.check.json after direct --polish promotes without ru.recheck.json
+  await writeJsonFile(
+    workFile('Q937', 'ru.check.json', workDir),
+    sampleCheck({ locale: 'ru', verdict: 'pass', checkerModel: 'ru-checker' }),
+  );
+  const promotedRu = await promoteProfile({
+    qid: 'Q937',
+    locale: 'ru',
+    subjects: SUBJECTS,
+    rawProfilesDir,
+    workDir,
+    sourcesDir,
+  });
+  const storedRu = StoredProfileSchema.parse(
+    JSON.parse(await readFile(promotedRu.filePath, 'utf8')),
+  );
+  assert.equal(storedRu.meta.revised, true);
+  assert.equal(storedRu.meta.checkerModel, 'ru-checker');
+
+  // English with patch + passing en.check.json (no en.recheck.json) MUST still be rejected
+  const longPage = 'Einstein historical text paragraph. '.repeat(15);
+  const mockFetch = (async () =>
+    new Response(
+      `<html><head><title>Page</title></head><body><h1>Section</h1><p>${longPage}</p></body></html>`,
+      { status: 200, headers: { 'content-type': 'text/html' } },
+    )) as unknown as typeof fetch;
+  await fetchSource('https://en.wikipedia.org/wiki/Albert_Einstein', {
+    sourcesDir,
+    fetchImpl: mockFetch,
+  });
+  await fetchSource('https://example.org/eclipse', {
+    sourcesDir,
+    fetchImpl: mockFetch,
+  });
+  await fetchSource('https://example.org/fridge', {
+    sourcesDir,
+    fetchImpl: mockFetch,
+  });
+  await writeJsonFile(
+    workFile('Q937', 'en.draft.json', workDir),
+    sampleEnDraft(),
+  );
+  await writeJsonFile(workFile('Q937', 'en.patch.json', workDir), {
+    overview: 'Updated **overview**.',
+  });
+  await writeJsonFile(
+    workFile('Q937', 'en.check.json', workDir),
+    sampleCheck({ locale: 'en', verdict: 'pass' }),
+  );
+  await assert.rejects(
+    promoteProfile({
+      qid: 'Q937',
+      locale: 'en',
+      subjects: SUBJECTS,
+      force: true,
+      rawProfilesDir,
+      workDir,
+      sourcesDir,
+    }),
+    /Missing checker verdict: en\.recheck\.json/,
+  );
 });

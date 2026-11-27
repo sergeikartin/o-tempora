@@ -135,7 +135,7 @@ export const CheckVerdictSchema = z
   });
 export type CheckVerdict = z.infer<typeof CheckVerdictSchema>;
 
-export const CURRENT_PROMPT_VERSION = 2;
+export const CURRENT_PROMPT_VERSION = 3;
 
 export const ProfileHarnessSchema = z.enum(['codex', 'claude', 'agy']);
 export type ProfileHarness = z.infer<typeof ProfileHarnessSchema>;

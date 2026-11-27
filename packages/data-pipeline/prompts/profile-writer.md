@@ -11,7 +11,7 @@ The Coordinator gives you a `QID` and mode (`draft` or `revise`), plus paths und
 ## Research & Sourcing Rules
 
 1. **Read cached sources with your native file reader** using the heading line numbers from `en.brief.json` or `fetch-source`.
-2. **Any reputable open source — including Wikipedia — is valid** for both **Key Moments** and **Deep Facts**. Prefer a focused non-Wikipedia source (museum, archive, university, Britannica — often linked from Wikipedia’s references) when cleanly available, without banning Wikipedia when it is the clearest open source.
+2. **Default to cached English Wikipedia when it clearly supports a passage:** Cached Wikipedia is the fast path for overview facts and standard **Key Moments** — don’t hunt separate external URLs for every card just to avoid citing Wikipedia. Fetch a focused non-Wikipedia source (museum, archive, university, Britannica, primary text) via `fetch-source` when it adds real value: especially for **Deep Facts**, exact quotes, contested claims, or gaps in Wikipedia.
 3. **Cache every URL you cite** with:
    ```bash
    npm run profiles --workspace packages/data-pipeline -- fetch-source "<https-url>"
@@ -61,6 +61,11 @@ The Coordinator gives you a `QID` and mode (`draft` or `revise`), plus paths und
 ### Neutrality & Numbers
 - Neutral, factual tone on all sides of conflicts and disputes; attribute contested causes, responsibility, or figures instead of picking a side.
 - Give commonly cited ranges for contested casualties and mark them as estimates; omit unreliable numbers. Never make light of killing or atrocities.
+
+### Pre-Submit Precision Check (before writing `en.draft.json`)
+- **Keep source boundaries intact when tightening prose:** Never drop qualifiers (“likely”, “about”, “in part”, “one interpretation”), upgrade correlation into direct causation, or collapse separate timelines/features into one span (e.g., attributing a later feature’s count to an earlier launch year).
+- **Reconcile boundary dates with `en.brief.json` (`dates`):** Check every stated birth, death, or event year against `dates`. If historians differ from the dataset’s boundary year (e.g., `322 BC` vs `321 BC`), don’t silently contradict `dates` — either frame around the range/uncertainty or omit the clashing boundary year where unnecessary.
+- **Cross-check press stats against cached Wikipedia:** Before citing headline counts or launch timelines from a retrospective news piece, verify them against the cached Wikipedia article.
 
 ## Output Contracts (Zod-validated)
 

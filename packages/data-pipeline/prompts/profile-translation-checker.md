@@ -11,14 +11,22 @@ The Coordinator gives you a `QID` and mode (`check` or `recheck`), plus paths un
 ## Audit Rules
 
 Compare English and Russian passage by passage (`overview`, `keyMoments.0..N`, `deepFacts.0..N`, `connections.0..N`):
-1. **Factual fidelity (block on defects):**
+1. **Factual fidelity (`verdict: "revise"` on defects):**
    - Changed or omitted dates, numbers, names, places, or causal claims
-   - Lost attribution, dropped caveats, or shifted certainty (“according to X” / “may have” turned into flat fact)
+   - Lost attribution, dropped caveats, or shifted certainty/neutrality (“according to X” / “may have” turned into flat fact, or neutral wording made partisan)
    - Added claims not present in the English Profile
    - Mismatched proper names vs. `nameRu`, `connectionNamesRu`, or standard Russian usage (check cached `russianWikipedia.path` when uncertain)
-2. **Language quality (block only on real defects):**
-   - Block on awkward calques, grammatical errors, broken Russian idioms, or misleading bold placement.
-   - Put minor stylistic preferences in `suggestions` rather than `blockers`.
+2. **Pure language polish (fix directly in `check` mode — no extra agent round):**
+   - If factual fidelity is sound and the **only** issues are Russian phrasing, awkward calques, grammatical agreement, or misleading bold placement, polish those passages directly instead of returning `verdict: "revise"`:
+     1. Write `packages/data-pipeline/.work/<QID>/ru.patch.json` containing **only** the polished fields (`overview`, `keyMoments.<i...>`, `deepFacts.<i...>`, `connections.<i...>`) using the exact same `sourceUrl`, `isLegend`, `connections[].qid`, and numeric values (never use `null` in Russian).
+     2. Run:
+        ```bash
+        npm run profiles --workspace packages/data-pipeline -- apply-patch <QID> --locale=ru --polish
+        ```
+        Fix any validation issue until exit `0`.
+     3. Write `ru.check.json` with `verdict: "pass"`, `blockers: []`, and note the polished paths in `checks[].note`.
+   - Leave optional minor stylistic preferences in `suggestions` without patching.
+   - If there **are** factual/meaning defects, do **not** run `--polish` — return `verdict: "revise"` with all blockers (including any language issues on those passages) so the Translator revises and a fresh Checker rechecks.
 3. **Scoped `recheck` rule:** In `recheck` mode, verify all prior blockers are resolved and check touched passages + overall consistency without inventing fresh nitpicks on untouched passages.
 
 ## Output Contract (Zod-validated)

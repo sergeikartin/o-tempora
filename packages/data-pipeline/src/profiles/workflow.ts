@@ -489,21 +489,54 @@ export async function promoteProfile({
     undefined;
 
   let verdictCheckerModel: string | undefined;
+  let verdictFileName = `${locale}.check.json`;
   if (!humanApproved) {
-    const checkFileName = patchExists
-      ? `${locale}.recheck.json`
-      : `${locale}.check.json`;
-    const checkPath = workFile(qid, checkFileName, workDir);
-    const checkRaw = await readJsonIfExists(checkPath);
-    if (checkRaw === undefined) {
+    const recheckFileName = `${locale}.recheck.json`;
+    const checkFileName = `${locale}.check.json`;
+    const recheckRaw = await readJsonIfExists(
+      workFile(qid, recheckFileName, workDir),
+    );
+    const checkRaw = await readJsonIfExists(
+      workFile(qid, checkFileName, workDir),
+    );
+
+    let chosenRaw: unknown;
+    if (recheckRaw !== undefined) {
+      verdictFileName = recheckFileName;
+      chosenRaw = recheckRaw;
+    } else if (patchExists) {
+      // Russian supports direct language-polish patches (`apply-patch --locale=ru --polish`)
+      // followed by a passing `ru.check.json` from the translation checker. Any English patch
+      // or a Russian `revise` verdict still requires an independent `recheck.json`.
+      const ruDirectPolish =
+        locale === 'ru' &&
+        checkRaw !== undefined &&
+        (() => {
+          const parsed = validateCheck(checkRaw, { qid, locale });
+          return parsed.ok && parsed.data?.verdict === 'pass';
+        })();
+      if (ruDirectPolish) {
+        verdictFileName = checkFileName;
+        chosenRaw = checkRaw;
+      } else {
+        throw new Error(
+          `Missing checker verdict: ${recheckFileName} (or pass --human-approved after manual review)`,
+        );
+      }
+    } else {
+      verdictFileName = checkFileName;
+      chosenRaw = checkRaw;
+    }
+
+    if (chosenRaw === undefined) {
       throw new Error(
-        `Missing checker verdict: ${path.basename(checkPath)} (or pass --human-approved after manual review)`,
+        `Missing checker verdict: ${verdictFileName} (or pass --human-approved after manual review)`,
       );
     }
-    const checkValidation = validateCheck(checkRaw, { qid, locale });
+    const checkValidation = validateCheck(chosenRaw, { qid, locale });
     if (!checkValidation.ok || !checkValidation.data) {
       throw new Error(
-        `Invalid checker verdict (${checkFileName}): ${checkValidation.issues.join('; ')}`,
+        `Invalid checker verdict (${verdictFileName}): ${checkValidation.issues.join('; ')}`,
       );
     }
     const verdict: CheckVerdict = checkValidation.data;
@@ -525,11 +558,8 @@ export async function promoteProfile({
   const resolvedCheckerModel =
     checkerModelOverride?.trim() || verdictCheckerModel;
   if (!humanApproved && !resolvedCheckerModel) {
-    const checkFileName = patchExists
-      ? `${locale}.recheck.json`
-      : `${locale}.check.json`;
     throw new Error(
-      `Missing checkerModel for ${qid} (${locale}): pass --checker-model=<model> (or set checkerModel in ${checkFileName})`,
+      `Missing checkerModel for ${qid} (${locale}): pass --checker-model=<model> (or set checkerModel in ${verdictFileName})`,
     );
   }
 
