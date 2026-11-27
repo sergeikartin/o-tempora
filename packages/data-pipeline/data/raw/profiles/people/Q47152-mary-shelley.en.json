@@ -1,0 +1,77 @@
+{
+  "overview": "Mary Shelley (1797–1851) was an English novelist, biographer, and editor whose Gothic novel Frankenstein; or, The Modern Prometheus (1818) is widely regarded as one of the earliest works of science fiction. Born Mary Wollstonecraft Godwin to the feminist philosopher Mary Wollstonecraft and the political thinker William Godwin, she eloped at sixteen with the Romantic poet Percy Bysshe Shelley and conceived Frankenstein at eighteen during a stormy Swiss summer with Lord Byron. After her husband drowned in Italy in 1822, she returned to England to support her surviving son by writing novels such as the apocalyptic The Last Man (1826) and the historical novel The Fortunes of Perkin Warbeck (1830), along with short stories, biographies, and travel writing, while editing the collected editions that secured Percy Shelley's literary reputation. Long overshadowed by her husband's fame and remembered chiefly for Frankenstein, she is now recognized as a major Romantic writer whose works questioned unchecked ambition and argued that sympathy and cooperation sustain civil society.",
+  "keyMoments": [
+    {
+      "date": "1814",
+      "title": "Eloping to continental Europe",
+      "text": "At sixteen, Mary Godwin fell in love with the married radical poet **Percy Bysshe Shelley**, meeting him secretly beside her mother's London grave. In July, defying her father **William Godwin**, she fled with Percy and her stepsister Claire Clairmont across war-ravaged France by donkey, mule, and foot until empty pockets turned them back at Lucerne. Ostracism, debt, and a bitter family rift awaited in England, yet the journey produced their joint travelogue **History of a Six Weeks' Tour**.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mary_Shelley"
+    },
+    {
+      "date": "1816",
+      "title": "A waking dream in Switzerland",
+      "text": "During the bleak **Year Without a Summer**, incessant rain confined eighteen-year-old Mary, Percy Shelley, Claire Clairmont, and physician John Polidori indoors with **Lord Byron** at Villa Diodati by Lake Geneva. Reading German ghost stories around a log fire prompted Byron to propose that each guest write a supernatural tale. After late-night talk turned to galvanism and reanimating corpses, Mary pictured a pale student kneeling beside his stirring creation—a vision she expanded with Percy's encouragement into **Frankenstein; or, The Modern Prometheus** (1818).",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mary_Shelley"
+    },
+    {
+      "date": "1822",
+      "title": "Widowed on the Italian coast",
+      "text": "Already grieving two young children who had died abroad, Mary lost her husband on 8 July when his sailing boat sank in a storm between Livorno and Lerici. Ten days later his body washed ashore near **Viareggio**, where Lord Byron and friends cremated him on the beach. Left at twenty-four with one surviving child, **Percy Florence**, she returned to England in 1823 and built an independent career as a professional author, writing short stories, biographies, and novels including the apocalyptic **The Last Man** (1826).",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mary_Shelley"
+    },
+    {
+      "date": "1839",
+      "title": "Canonizing Percy Shelley in print",
+      "text": "Forbidden to write her husband's biography by her father-in-law **Sir Timothy Shelley**, who threatened to cut off her allowance, Mary outmaneuvered him while editing Percy's collected verse. Deciphering his messy notebooks, she filled **The Poetical Works of Percy Bysshe Shelley** with biographical notes that rescued his reputation from obscurity. When she restored the atheistic passages of Queen Mab in the second edition, her publisher Edward Moxon was convicted of **blasphemous libel** in a principled test case brought by the Chartist Henry Hetherington, who sought no punishment.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mary_Shelley"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "The gloomy Swiss summer that drove Mary Shelley indoors in June 1816 began half a world away, when Indonesia's **Mount Tambora** erupted in April 1815 and shrouded the atmosphere in sunlight-blocking ash. Trapped by the resulting volcanic winter, the Villa Diodati gathering yielded two icons of Gothic fiction at once: alongside Frankenstein, Lord Byron's unfinished story fragment inspired John William Polidori's **The Vampyre**, a precursor to Dracula.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Year_Without_a_Summer"
+    },
+    {
+      "text": "A year after Mary Shelley's death, her son and daughter-in-law unlocked her box-desk and found a Gothic keepsake. Beside locks of her dead children's hair and a shared notebook lay Percy's poem **Adonaïs**, one page folded around a silk parcel of his ashes and what she believed were the **remains of his heart**. Kept nearly three decades after his Italian cremation, the unburned relic may instead have been his liver or another calcified organ, later biographers and doctors argue.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mary_Shelley"
+    },
+    {
+      "text": "Quietly putting her mother's feminist principles into practice, Mary Shelley helped orchestrate a daring 1827 escape for her friend Isabel Robinson and the writer **Mary Diana Dods**, who published under a male pen name. Keeping an unwitting American actor friend in the dark, she obtained **false passports** enabling Dods to adopt the identity of Walter Sholto Douglas so the two women could live together in France as husband and wife.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Mary_Shelley"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q101638",
+      "reason": "Her mother, the pioneering feminist philosopher who died eleven days after Mary's birth and whose writings shaped Mary's lifelong reformist ideals."
+    },
+    {
+      "qid": "Q5679",
+      "reason": "The Romantic poet who hosted Mary and Percy Shelley at Villa Diodati in 1816, proposing the ghost-story contest that sparked Frankenstein and later inspiring a central character in The Last Man."
+    },
+    {
+      "qid": "Q209625",
+      "reason": "The 1816 volcanic winter brought incessant cold rain to Switzerland, trapping Mary Shelley, Percy Shelley, Lord Byron, and John Polidori indoors at Villa Diodati where she conceived Frankenstein."
+    },
+    {
+      "qid": "Q1589",
+      "reason": "His electrical research gave its name to galvanism, the scientific discussions of reanimating corpses at Villa Diodati that helped spark Mary Shelley's vision for Frankenstein."
+    }
+  ],
+  "meta": {
+    "qid": "Q47152",
+    "locale": "en",
+    "subjectDates": "1797–1851",
+    "approvedAt": "2026-11-27T09:43:39.210Z",
+    "writerModel": "gemini-4-neon",
+    "checkerModel": "gemini-4-neon",
+    "harness": "agy",
+    "promptVersion": 3,
+    "promptHash": "17a76b7a240ef292",
+    "approval": "checker",
+    "revised": true
+  }
+}
