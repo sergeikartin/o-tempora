@@ -36,6 +36,11 @@
       "text": "In Florence, Michelangelo designed a chapel to hold the Medici family’s tombs. He also served the Florentine republic after the Medici lost power. The hand that sketched a figure for one of the tombs drew plans for the city’s defenses.",
       "isLegend": false,
       "sourceUrl": "https://www.casabuonarroti.it/en/museum/collections/michelangelos-drawings/study-of-fortification-for-the-porta-al-prato-of-ognissanti/"
+    },
+    {
+      "text": "In 1503 Florence commissioned **Leonardo da Vinci** to paint the Battle of Anghiari in its council hall. A year later it asked Michelangelo to paint the **Battle of Cascina** in the same room. Both artists made full-scale drawings for their murals, and neither finished the painting.",
+      "isLegend": false,
+      "sourceUrl": "https://www.getty.edu/art/exhibitions/michelangelo_drawings/explore.html"
     }
   ],
   "connections": [
@@ -53,7 +58,7 @@
     },
     {
       "qid": "Q762",
-      "reason": "Florence commissioned Leonardo and Michelangelo to paint battle scenes on opposite walls of its council chamber."
+      "reason": "Florence commissioned Leonardo and Michelangelo to paint battle scenes in the same council hall."
     },
     {
       "qid": "Q191423",

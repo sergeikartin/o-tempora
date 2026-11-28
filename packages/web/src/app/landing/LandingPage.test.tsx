@@ -135,11 +135,11 @@ test('keeps the picked curiosity in the hash and carries it to the sibling landi
 });
 
 test('opens on the curiosity named in the hash', () => {
-  window.history.replaceState(null, '', '/#october-calendar');
+  window.history.replaceState(null, '', '/#leonardo-michelangelo');
   render(<LandingPage />);
   expect(
     screen
-      .getByRole('button', { name: 'October in November' })
+      .getByRole('button', { name: 'Florence’s murals' })
       .getAttribute('aria-pressed'),
   ).toBe('true');
 });
@@ -173,7 +173,7 @@ test('tracks the picked curiosity with the control that picked it', () => {
 });
 
 test('does not track the curiosity opened from the hash', () => {
-  window.history.replaceState(null, '', '/#october-calendar');
+  window.history.replaceState(null, '', '/#leonardo-michelangelo');
   render(<LandingPage />);
   expect(trackEvent).not.toHaveBeenCalled();
 });

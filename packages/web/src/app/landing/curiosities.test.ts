@@ -35,7 +35,7 @@ const EXPECTED_ANCHOR_TARGETS: Record<string, Record<'en' | 'ru', string>> = {
   'shelley-summer': { en: 'Villa Diodati', ru: 'вилле Диодати' },
   'vermeer-leeuwenhoek': { en: 'Catharina Bolnes', ru: 'Катарины Болнес' },
   'einstein-szilard': { en: 'refrigerator', ru: 'холодильника' },
-  'october-calendar': { en: 'October Revolution', ru: 'Октябрьская революция' },
+  'leonardo-michelangelo': { en: 'Battle of Cascina', ru: 'битвы при Кашине' },
   'tolstoy-gandhi': { en: 'Tolstoy Farm', ru: 'ферме Толстого' },
   'charlemagne-elephant': { en: 'Abul-Abbas', ru: 'Абуль-Аббас' },
   'curie-x-rays': { en: 'dynamo', ru: 'динамо-машины' },

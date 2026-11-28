@@ -5,11 +5,11 @@ import { LandingPage } from './LandingPage';
 afterEach(cleanup);
 
 test('ends the call-to-action in the anchor fragment of a Curiosity that has one', () => {
-  window.history.replaceState(null, '', '/#october-calendar');
+  window.history.replaceState(null, '', '/#leonardo-michelangelo');
   render(<LandingPage />);
   expect(
     screen
       .getByRole('link', { name: 'See them on the timeline' })
       .getAttribute('href'),
-  ).toBe('/timeline/?e=gregorian-calendar#moment-4');
+  ).toBe('/timeline/?e=michelangelo#fact-3');
 });
