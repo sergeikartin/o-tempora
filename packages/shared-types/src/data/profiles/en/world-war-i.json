@@ -1,0 +1,92 @@
+{
+  "overview": "World War I began in 1914 when Austria-Hungary declared war on Serbia after the assassination of Archduke Franz Ferdinand. Britain, France and Russia were among the Allies fighting Germany, Austria-Hungary, the Ottoman Empire and Bulgaria, and the United States entered on the Allied side in 1917. Millions of soldiers and civilians died in a war remembered for its trenches in France and Belgium, with fighting that extended across Eastern Europe, the Middle East, Africa and Asia. Germany’s armistice in November 1918 ended fighting on the Western Front, and the collapse of four empires reshaped borders in Europe and the Middle East.",
+  "keyMoments": [
+    {
+      "date": "July–August 1914",
+      "title": "A crisis spreads across Europe",
+      "text": "After Archduke Franz Ferdinand and his wife Sophie were killed in Sarajevo, Austria-Hungary sent Serbia an **ultimatum with ten demands**. Serbia accepted most of them and resisted letting Austro-Hungarian officials take part in the investigation on Serbian soil. **Austria-Hungary declared war** on July 28, and within a week Russia, Germany, France and Britain were also at war.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/World_War_I"
+    },
+    {
+      "date": "September 1914",
+      "title": "Reinforcements from Paris",
+      "text": "German troops were closing in on the French capital when French and British forces counterattacked at the **First Battle of the Marne**. The battle halted the German advance and ended Germany’s hopes of a quick victory in France. Most troops reached the front by train, and some French reinforcements rode in **requisitioned taxis**, four or five soldiers to a car.",
+      "sourceUrl": "https://www.museedelagrandeguerre.com/en/collections/renault-taxi/"
+    },
+    {
+      "date": "April 6, 1917",
+      "title": "The United States enters the war",
+      "text": "Germany resumed unrestricted submarine warfare, putting American ships and lives at risk. The **Zimmermann Telegram** revealed that Germany had offered to help Mexico recover Texas, New Mexico and Arizona in exchange for Mexico joining a war against the United States. President **Woodrow Wilson** asked Congress for a declaration of war, and Congress voted to go to war with Germany.",
+      "sourceUrl": "https://www.archives.gov/publications/prologue/2017/spring/wwi-america-enters"
+    },
+    {
+      "date": "November 11, 1918",
+      "title": "A ceasefire in a railway carriage",
+      "text": "After months of Allied advances, Germany agreed to an **armistice**. German and Allied representatives signed it in a **railway carriage near Compiègne** in France. The ceasefire took effect at 11 a.m. By then, Canadian troops had retaken the Belgian city of Mons and advanced beyond it.",
+      "sourceUrl": "https://www.veterans.gc.ca/en/remembrance/military-history/first-world-war/last-hundred-days"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Chinese workers reached the Western Front under a recruitment agreement Britain made with China while China was still neutral. In the **Chinese Labour Corps**, they unloaded ships and trains and helped keep supplies moving. Some stayed after the armistice to do the dangerous work of **clearing wartime munitions**.",
+      "isLegend": false,
+      "sourceUrl": "https://collection.nam.ac.uk/detail.php?acc=1978-11-157-24-34"
+    },
+    {
+      "text": "In Britain, women working in munitions factories formed football teams of their own. Blyth Spartans Munitionettes won the inaugural **Munitionettes’ Cup** with a 5–0 victory. One Preston factory team, **Dick, Kerr Ladies**, took its game across the country, turning matches into fundraisers for wounded servicemen.",
+      "isLegend": false,
+      "sourceUrl": "https://www.thefa.com/womens-girls-football/heritage/kicking-down-barriers"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "assassination-of-archduke-franz-ferdinand",
+      "reason": "The killing of the Austro-Hungarian heir and his wife in Sarajevo set off the July Crisis that led to war.",
+      "name": "assassination of Archduke Franz Ferdinand",
+      "lane": "milestones",
+      "detailLevel": 3
+    },
+    {
+      "slug": "treaty-of-versailles",
+      "reason": "The peace treaty required Germany to give up territory, limit its armed forces and pay reparations.",
+      "name": "Treaty of Versailles",
+      "lane": "milestones",
+      "detailLevel": 2
+    },
+    {
+      "slug": "october-revolution",
+      "reason": "After taking power in Russia, the Bolsheviks made a separate peace with the Central Powers.",
+      "name": "October Revolution",
+      "lane": "conflicts",
+      "detailLevel": 2
+    },
+    {
+      "slug": "battle-of-verdun",
+      "reason": "Germany’s attack on the French fortress city in 1916 turned into a battle that lasted nearly ten months.",
+      "name": "Battle of Verdun",
+      "lane": "conflicts",
+      "detailLevel": 4
+    },
+    {
+      "slug": "gallipoli-campaign",
+      "reason": "The Allies failed to seize control of the Dardanelles from the Ottoman Empire and evacuated their troops.",
+      "name": "Gallipoli Campaign",
+      "lane": "conflicts",
+      "detailLevel": 4
+    },
+    {
+      "slug": "woodrow-wilson",
+      "reason": "As U.S. president, he asked Congress to declare war on Germany and later proposed the League of Nations.",
+      "name": "Woodrow Wilson",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "marie-curie",
+      "reason": "She organized mobile X-ray units to help doctors locate shrapnel in wounded soldiers.",
+      "name": "Marie Curie",
+      "lane": "people",
+      "detailLevel": 1
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "overview": "Johannes Vermeer was a Dutch Golden Age painter and art dealer based in Delft. In The Milkmaid and Girl with a Pearl Earring, he used light and color to draw attention to a small gesture or a turn of the head, and in View of Delft he caught morning sunlight on his hometown’s skyline. Only a few dozen of his paintings survive, and his reputation spread internationally after nineteenth-century critics brought his work back into view.",
+  "keyMoments": [
+    {
+      "date": "1653",
+      "title": "Master painter in Delft",
+      "text": "Vermeer grew up around paintings sold by his father, a Delft innkeeper and art dealer. In 1653 he married **Catharina Bolnes** in a village church near Delft and joined the **Guild of Saint Luke**, the city’s professional association for painters. His earliest surviving canvases as a master were large paintings on biblical and mythological subjects.",
+      "sourceUrl": "https://www.rijksmuseum.nl/en/whats-on/exhibitions/past/vermeer/vermeer-exhibition-text"
+    },
+    {
+      "date": "1656–1658",
+      "title": "A turn to everyday life",
+      "text": "His early canvases depicted saints and figures from mythology. In 1656 **The Procuress**, a scene in a brothel, marked a change in subject. By the time he painted **The Milkmaid** around 1658, a woman pouring milk could carry an entire picture. He painted over a rack of jugs behind her head, leaving a bare wall to set off her figure.",
+      "sourceUrl": "https://www.rijksmuseum.nl/en/whats-on/exhibitions/past/vermeer/vermeer-exhibition-text"
+    },
+    {
+      "date": "1672–1675",
+      "title": "The art market falters",
+      "text": "French troops invaded the Dutch Republic in 1672, the **Year of Disaster**, worsening an already weak market for paintings. Vermeer struggled to sell his own work and was left with unsold paintings by other artists. After his sudden death in 1675, his widow **Catharina Bolnes** asked the States of Holland and West Friesland for access to a family trust, saying that his losses and the strain of supporting their children had overwhelmed him.",
+      "sourceUrl": "https://www.garyschwartzarthistorian.nl/1-vermeers-frenzy/"
+    },
+    {
+      "date": "1866",
+      "title": "A catalogue revives his reputation",
+      "text": "For generations, few collectors knew Vermeer’s name, and some of his paintings bore false signatures of better-known artists. The French critic **Théophile Thoré-Bürger** tracked down pictures in museums and private collections and published a **catalogue of Vermeer’s work** in 1866. He listed more than seventy possible works, including some he still hoped to find, and brought the Delft painter to an international audience.",
+      "sourceUrl": "https://artsandculture.google.com/story/rediscovering-vermeer-mauritshuis/CwWBo-zBwKmiLw?hl=en"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "On 30 September 1676, Delft’s magistrates put the affairs of Vermeer’s widow, **Catharina Bolnes**, in the hands of a fellow townsman. Their appointee was **Antonie van Leeuwenhoek**, whose task was to administer the estate for its creditors. Nine days later, the man sorting out the painter’s finances wrote to London about tiny creatures he had seen through his microscopes.",
+      "isLegend": false,
+      "sourceUrl": "https://www.leeuwenhoek.net/content/appointed-curator-estate-catherine-bolnes-vermeers-widow"
+    },
+    {
+      "text": "When Girl with a Pearl Earring came up for auction in The Hague in 1881, some of its paint had already flaked away. The collector Andries des Tombe bought it for **two guilders plus a thirty-cent fee**. He later left the painting to the Mauritshuis, where it became the museum’s best-known work.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Girl_with_a_Pearl_Earring"
+    },
+    {
+      "text": "In the late 1930s, a Rotterdam museum beat its Amsterdam rival to a painting it believed was an exceptional Vermeer. The picture was **The Supper at Emmaus**, a biblical scene showing Christ at a table with two disciples. After the Second World War, the Dutch painter **Han van Meegeren** confessed that he had painted it himself.",
+      "isLegend": false,
+      "sourceUrl": "https://www.boijmans.nl/en/collection/artworks/101464/the-men-at-emmaus"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "antonie-van-leeuwenhoek",
+      "reason": "Delft magistrates appointed the microscopist to administer the insolvent estate of Vermeer’s widow in 1676.",
+      "name": "Antonie van Leeuwenhoek",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "louis-xiv-of-france",
+      "reason": "His invasion of the Dutch Republic in 1672 helped bring on the economic crisis that damaged Vermeer’s art business.",
+      "name": "Louis XIV of France",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "marcel-proust",
+      "reason": "In In Search of Lost Time, he has the novelist Bergotte die while looking at Vermeer’s View of Delft.",
+      "name": "Marcel Proust",
+      "lane": "people",
+      "detailLevel": 3
+    }
+  ]
+}

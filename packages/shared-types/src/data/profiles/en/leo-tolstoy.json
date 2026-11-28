@@ -1,0 +1,71 @@
+{
+  "overview": "Leo Tolstoy was a Russian writer born into a family of landowners in the nineteenth century. In War and Peace he followed Russian families through Napoleon's invasion, and in Anna Karenina he traced the cost of a married woman's affair. After a spiritual crisis, he began writing about a form of Christianity centered on refusing to answer violence with violence. His religious writings helped shape Mahatma Gandhi's ideas about nonviolent resistance.",
+  "keyMoments": [
+    {
+      "date": "1854–1855",
+      "title": "An officer writes from Sevastopol",
+      "text": "Tolstoy served in the Russian artillery during the **Crimean War**. He drew on the siege for his **Sevastopol Sketches**, which helped establish his reputation as a writer. In the first sketch, he puts the reader in the shoes of a visitor touring the besieged city. In a makeshift hospital, there are so many wounded men that most of them are lying on the floor.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Sevastopol_Sketches"
+    },
+    {
+      "date": "1869",
+      "title": "An epic appears in full",
+      "text": "Tolstoy followed fictional Russian families through the **Napoleonic Wars**, moving from St. Petersburg drawing rooms to the battlefield at Borodino. He set their stories alongside essays questioning how much power a commander like Napoleon really had over events. As the complete **War and Peace** took shape, his wife Sophia made clean copies by hand of passages he kept revising.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/War_and_Peace"
+    },
+    {
+      "date": "1894",
+      "title": "A faith without force",
+      "text": "Tolstoy took Jesus' instruction to turn the other cheek in the **Sermon on the Mount** as a rule for public life as well as private conduct. In **The Kingdom of God Is Within You**, he argued that Christians should refuse to use violence even to resist evil. That rule called into question the authority of governments that depended on armies and laws enforced by force.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Leo_Tolstoy"
+    },
+    {
+      "date": "1909–1910",
+      "title": "Letters to Gandhi",
+      "text": "A copy of **A Letter to a Hindu** prompted Gandhi to write to Tolstoy in 1909 for permission to publish it. Tolstoy agreed and encouraged Gandhi's campaign against discriminatory laws in the Transvaal, in southern Africa. In 1910 Gandhi wrote with news of **Tolstoy Farm**, which his friend Hermann Kallenbach had named in the writer's honor and made available to people in the campaign.",
+      "sourceUrl": "https://opinionmagazine.co.uk/mahatma-gandhi-and-leo-tolstoy-correspondence/"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Tolstoy used royalties from **Resurrection** to help Doukhobors, a persecuted Christian community from the Russian Empire, emigrate to Canada. His eldest son, **Sergei**, helped in person. In 1899 he sailed with nearly 2,000 Doukhobors aboard a steamship that carried them from the Black Sea to Halifax.",
+      "isLegend": false,
+      "sourceUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1459892/"
+    },
+    {
+      "text": "In 1908, a **phonograph** arrived at Tolstoy's estate bearing an inscription that named Thomas Edison as the giver. Tolstoy used the machine to dictate letters and record stories. Through the noise of the surviving **wax-cylinder recordings**, listeners can still hear the rise and fall of his voice.",
+      "isLegend": false,
+      "sourceUrl": "https://ypmuseum.ru/event/421?lang=en"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "mahatma-gandhi",
+      "reason": "Gandhi sought Tolstoy's advice on nonviolent resistance while organizing Indians against discriminatory laws in the Transvaal.",
+      "name": "Mahatma Gandhi",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "crimean-war",
+      "reason": "Tolstoy served as an artillery officer at Sevastopol and turned his experience of the siege into three stories.",
+      "name": "Crimean War",
+      "lane": "conflicts",
+      "detailLevel": 3
+    },
+    {
+      "slug": "french-invasion-of-russia",
+      "reason": "The 1812 invasion of Russia and its aftermath shaped the fortunes of the families Tolstoy followed in War and Peace.",
+      "name": "French invasion of Russia",
+      "lane": "conflicts",
+      "detailLevel": 3
+    },
+    {
+      "slug": "thomas-edison",
+      "reason": "Edison gave Tolstoy a phonograph that he used to dictate letters and record stories.",
+      "name": "Thomas Edison",
+      "lane": "people",
+      "detailLevel": 1
+    }
+  ]
+}

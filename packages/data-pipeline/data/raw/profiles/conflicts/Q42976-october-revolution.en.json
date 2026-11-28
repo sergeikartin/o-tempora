@@ -1,0 +1,74 @@
+{
+  "overview": "The February Revolution forced Tsar Nicholas II to abdicate, and Russia’s new Provisional Government kept the country in World War I as food shortages worsened. By the autumn of 1917, Vladimir Lenin’s Bolsheviks had gained support among workers and soldiers who wanted peace and a transfer of power to the soviets, or elected councils. In Petrograd, then Russia’s capital, Bolshevik-led soldiers, sailors and armed workers seized key institutions and overthrew Alexander Kerensky’s government. Lenin headed the new government, and the Bolsheviks’ victory in the civil war that followed paved the way for the creation of the Soviet Union.",
+  "keyMoments": [
+    {
+      "date": "23 October 1917",
+      "title": "The vote for an uprising",
+      "text": "Vladimir Lenin urged the Bolsheviks’ **Central Committee** to act while the party had growing support in the councils of Petrograd and Moscow. Two committee members, Lev Kamenev and Grigory Zinoviev, voted against his proposal. The **10 to 2** vote committed the party leadership to preparing an armed uprising.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/October_Revolution#Planning"
+    },
+    {
+      "date": "7–8 November 1917",
+      "title": "The fall of the Winter Palace",
+      "text": "By the evening of 7 November, Bolshevik-led forces controlled much of Petrograd, while ministers of the **Provisional Government** held out inside the palace. Prime Minister **Alexander Kerensky** had left the capital to seek loyal troops, and some palace defenders withdrew as the night wore on. The insurgents arrested the remaining ministers early on 8 November and took them to the Peter and Paul Fortress.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/October_Revolution#Revolution"
+    },
+    {
+      "date": "8–9 November 1917",
+      "title": "From uprising to government",
+      "text": "At its second sitting, the **Second Congress of Soviets** approved an all-Bolshevik cabinet headed by Lenin. The congress had already backed the transfer of power to the councils after many Menshevik and Socialist Revolutionary delegates walked out in protest. The decree creating the **Council of People’s Commissars** gave it a temporary mandate to govern until the Constituent Assembly met.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Second_All-Russian_Congress_of_Soviets_of_Workers%27_and_Soldiers%27_Deputies#Chronicle_of_the_Congress"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "The Petrograd uprising began on **25 October 1917** by the Old Style Julian calendar still in use in Russia. That same day was **7 November 1917** by the New Style Gregorian calendar. When the Bolshevik government switched Russia’s civil calendar the next year, 31 January was followed by 14 February. The revolution kept its October name and its anniversary fell in November.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar#Russia"
+    },
+    {
+      "text": "On the revolution’s third anniversary in 1920, theater director Nikolai Evreinov staged a **mass reenactment** outside the Winter Palace, turning the arrests into a spectacle with thousands of performers. A photograph from the production went on to appear in newspapers and schoolbooks as if it showed **the actual events of 1917**.",
+      "isLegend": false,
+      "sourceUrl": "https://msl.org.pl/en/storming-winter-palace-forensics-image"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q1394",
+      "reason": "Persuaded the Bolshevik leadership to back an uprising and headed the government it brought to power."
+    },
+    {
+      "qid": "Q101534",
+      "reason": "Forced Nicholas II to abdicate and brought to power the Provisional Government that the Bolsheviks overthrew."
+    },
+    {
+      "qid": "Q33391",
+      "reason": "Chaired the Petrograd Soviet and helped organize the uprising through its Military Revolutionary Committee."
+    },
+    {
+      "qid": "Q79911",
+      "reason": "Armed resistance to Bolshevik rule spread after the takeover, widening the fight for control of Russia into a civil war."
+    },
+    {
+      "qid": "Q361",
+      "reason": "The Provisional Government’s decision to continue fighting helped the Bolsheviks gain support among soldiers who wanted peace."
+    },
+    {
+      "qid": "Q12138",
+      "reason": "The Bolshevik government adopted the Gregorian calendar in 1918, placing the October Revolution’s anniversary on 7 November."
+    }
+  ],
+  "meta": {
+    "qid": "Q42976",
+    "locale": "en",
+    "subjectDates": "1917",
+    "approvedAt": "2026-11-28T03:20:17.183Z",
+    "writerModel": "gpt-6.2-sol",
+    "checkerModel": "gpt-6.2-sol",
+    "harness": "codex",
+    "promptVersion": 3,
+    "promptHash": "7f016c0cfe73a044",
+    "approval": "checker",
+    "revised": true
+  }
+}

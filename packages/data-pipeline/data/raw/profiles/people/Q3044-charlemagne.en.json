@@ -1,0 +1,72 @@
+{
+  "overview": "Charlemagne became king of the Franks in 768 and built an empire across much of western and central Europe. He conquered the Lombard kingdom in Italy and brought Saxony under Frankish rule after decades of war and forced conversion. Pope Leo III crowned him emperor in Rome in 800, reviving the imperial title in the West. His court brought together scholars such as Alcuin of York, and his support for schools and manuscript copying helped sustain Latin learning through the Middle Ages.",
+  "keyMoments": [
+    {
+      "date": "771",
+      "title": "The end of joint rule",
+      "text": "When Pepin the Short died in 768, his sons inherited separate territories and held their coronations in different towns. Relations soured when **Carloman** withdrew from a campaign in Aquitaine and his older brother carried on alone. After Carloman's sudden death in 771, Charlemagne took control of his brother's lands and became **sole king of the Franks**. Carloman's widow fled with her children to the Lombard court.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Charlemagne"
+    },
+    {
+      "date": "773–774",
+      "title": "The Lombard crown changes hands",
+      "text": "Pope Adrian I asked for help recovering towns taken by the Lombard king Desiderius. The Frankish army crossed the Alps and laid siege to **Pavia**, Desiderius's capital. When the city surrendered in 774, Charlemagne seized the royal treasury and made himself **king of the Lombards**. Desiderius was sent to a monastery.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Charlemagne"
+    },
+    {
+      "date": "785",
+      "title": "Widukind accepts baptism",
+      "text": "Years of war in Saxony had brought raids, mass executions at **Verden** and the enslavement of captives. In 785 the Saxon leader **Widukind** agreed to end his resistance and convert to Christianity. His submission ended that phase of the war. At the baptism, the Frankish king himself stood as godfather to the man who had led the resistance.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Charlemagne"
+    },
+    {
+      "date": "25 December 800",
+      "title": "An emperor in Rome",
+      "text": "After enemies attacked **Pope Leo III**, the pope turned to the Frankish king for help. Charlemagne went to Rome, where Leo swore an oath denying the charges against him. At Christmas Mass in **St. Peter's Basilica**, Leo placed a crown on Charlemagne's head, bringing back an imperial title that had been absent in the West for more than three centuries.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Charlemagne"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "On 20 July 802, an envoy named Isaac arrived at the imperial court in Aachen with **a live elephant named Abul-Abbas**. The animal was a diplomatic gift from **Harun al-Rashid**, the Abbasid caliph. The Royal Frankish Annals mention other gifts in the same entry and single out the elephant by name, recording it as Abul Abaz.",
+      "isLegend": false,
+      "sourceUrl": "https://saraceni.uni-koeln.de/wiki/Annales_regni_Francorum_0010"
+    },
+    {
+      "text": "According to his biographer Einhard, Charlemagne spoke Latin and studied astronomy with Alcuin of York. He took up handwriting late in life, keeping **writing tablets under his pillow** so he could practice forming letters when he had a spare moment. In Einhard's account, the practice had little success.",
+      "isLegend": false,
+      "sourceUrl": "https://sourcebooks.fordham.edu/basis/einhard.asp"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q132086",
+      "reason": "Pope Leo III sought Charlemagne's help after an attack in Rome and crowned him emperor at Christmas Mass in 800."
+    },
+    {
+      "qid": "Q81212",
+      "reason": "Pepin the Short was Charlemagne's father and divided the Frankish kingdom between Charlemagne and his brother Carloman."
+    },
+    {
+      "qid": "Q43974",
+      "reason": "Charlemagne made his son Louis the Pious co-emperor in 813."
+    },
+    {
+      "qid": "Q131002",
+      "reason": "The Abbasid caliph Harun al-Rashid sent Charlemagne a live elephant named Abul-Abbas, which reached Aachen in 802."
+    }
+  ],
+  "meta": {
+    "qid": "Q3044",
+    "locale": "en",
+    "subjectDates": "AD 748–814",
+    "approvedAt": "2026-11-28T05:23:43.511Z",
+    "writerModel": "gpt-6.2-sol",
+    "checkerModel": "gpt-6.2-sol",
+    "harness": "codex",
+    "promptVersion": 3,
+    "promptHash": "7f016c0cfe73a044",
+    "approval": "checker",
+    "revised": true
+  }
+}

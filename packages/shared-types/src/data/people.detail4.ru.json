@@ -7360,7 +7360,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Harun%20Al-Rashid%20and%20the%20World%20of%20the%20Thousand%20and%20One%20Nights.jpg",
     "description": "Абу́ Джафа́р Хару́н ибн Муха́ммад, более известный как Хару́н ар-Раши́д — арабский халиф из династии Аббасидов с 17 сентября 786 по 24 марта 809 года. Прозвище ар-Рашид («Праведный») получил не от потомков, а от своего отца, халифа аль-Махди.",
     "slug": "harun-al-rashid",
-    "row": 7
+    "row": 7,
+    "hasProfile": true
   },
   {
     "id": "156068",

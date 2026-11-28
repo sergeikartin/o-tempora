@@ -1035,7 +1035,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Cropped%20version%20of%20Jan%20Vermeer%20van%20Delft%20002.jpg",
     "description": "Johannes Vermeer was a Dutch painter who specialized in domestic interior scenes of middle-class life. He is considered one of the greatest painters of the Dutch Golden Age. During his lifetime, he was a moderately successful provincial genre painter, recognized in Delft and The Hague. He produced relatively few paintings, primarily earning his living as an art dealer. He was not wealthy; at his death, his wife was left in debt.",
     "slug": "johannes-vermeer",
-    "row": 11
+    "row": 11,
+    "hasProfile": true
   },
   {
     "id": "90050",

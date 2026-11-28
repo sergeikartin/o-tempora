@@ -15,7 +15,7 @@ Replace the Landing Page’s date-overlap Curiosities with **7 unexpected, docum
 | 3 | **Einstein, Szilárd & the Refrigerator** | `albert-einstein` (L1, shipped) · `leo-szilard` (`Q153238`, L4) · `first-household-refrigerator` (`Q11692568`, L2, 1913) | `albert-einstein` → `#fact-1` (already shipped) | Need 2 (`leo-szilard`, `first-household-refrigerator`) |
 | 4 | **Gregorian Calendar & October Revolution** | `gregorian-calendar` (L1, 1582, shipped) · `october-revolution` (`Q42976`, L2, Nov 1917) | `gregorian-calendar` → `#moment-4` (already shipped) | Need 1 (`october-revolution`) |
 | 5 | **Gandhi & Tolstoy** | `mahatma-gandhi` (L1, shipped) · `leo-tolstoy` (`Q7243`, L2) | `leo-tolstoy` → Gandhi correspondence / Tolstoy Farm passage | Need 1 (`leo-tolstoy`) |
-| 6 | **Charlemagne & Harun al-Rashid** | `charlemagne` (`Q3044`, L2) · `harun-al-rashid` (`Q131002`, L4) | `charlemagne` → Abul-Abbas white elephant Deep Fact | Need both |
+| 6 | **Charlemagne & Harun al-Rashid** | `charlemagne` (`Q3044`, L2) · `harun-al-rashid` (`Q131002`, L4) | `charlemagne` → Abul-Abbas elephant Deep Fact | Need both |
 | 7 | **Marie Curie, X-rays & World War I** | `marie-curie` (L1, shipped) · `discovery-of-x-rays` (`Q34777`, L2, Nov 1895) · `world-war-i` (`Q361`, L1) | `marie-curie` → `#fact-1` (already shipped) | Need 2 (`world-war-i`, `discovery-of-x-rays`) |
 
 ---

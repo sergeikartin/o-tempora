@@ -1,0 +1,64 @@
+{
+  "overview": "Harun al-Rashid ruled the Abbasid Caliphate from 786 to 809, when its territories stretched from North Africa into Central Asia. His court patronized poets and musicians, and he sent gifts to Charlemagne while fighting the Byzantine Empire on his northern frontier. After his death, his sons al-Amin and al-Ma'mun fought a civil war over the succession. The splendor associated with his reign lived on in One Thousand and One Nights, where Harun appears as a character in tales set in Baghdad.",
+  "keyMoments": [
+    {
+      "date": "786",
+      "title": "A disputed succession",
+      "text": "Harun's brother, Caliph al-Hadi, had tried to place his own son ahead of Harun in the line of succession. When al-Hadi died, their mother **al-Khayzuran** and Harun's longtime adviser **Yahya ibn Khalid** helped secure allegiance for Harun. Al-Khayzuran remained influential at court, and Yahya became Harun's chief minister, giving his family, the Barmakids, a central role in running the caliphate.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Harun_al-Rashid"
+    },
+    {
+      "date": "796",
+      "title": "The court moves to Raqqa",
+      "text": "Harun left Baghdad for a new seat on the **Euphrates** in what is now Syria. From **Raqqa**, his court was closer to the Byzantine frontier, with a river route back to Baghdad. The city remained his base for about twelve years, a period that took up most of his reign.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Harun_al-Rashid"
+    },
+    {
+      "date": "802",
+      "title": "An agreement between heirs",
+      "text": "At Mecca, Harun formalized the terms on which his sons would inherit power. **Al-Amin** would become caliph first, while his half-brother **al-Ma'mun** would govern the eastern province of Khorasan and inherit the throne after him. After Harun's death, the brothers went to war over the throne, and the fighting devastated Baghdad.",
+      "sourceUrl": "https://www.cambridge.org/core/journals/international-journal-of-middle-east-studies/article/abs/harun-alrashid-and-the-mecca-protocol-of-802-a-plan-for-division-or-succession/28A8B1C883E2DC1F53D388C9C5E13DB4"
+    },
+    {
+      "date": "803",
+      "title": "The fall of the Barmakids",
+      "text": "For much of Harun's reign, his chief minister Yahya ibn Khalid and Yahya's sons had helped run the empire. Then Harun ordered the **execution of Ja'far**, one of Yahya's sons, and had **Yahya imprisoned**. He confiscated much of the family's property. Historians disagree on what prompted the downfall of a family Harun had relied on since taking the throne.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Harun_al-Rashid"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Harun sent Charlemagne a living elephant named **Abul-Abbas**. The animal traveled with Isaac, one of the Frankish ruler's envoys, and spent the winter in northern Italy before crossing the Alps. The Royal Frankish Annals record the date Isaac finally handed over Harun's gifts at **Aachen**, 20 July 802.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Abul-Abbas"
+    },
+    {
+      "text": "In the One Thousand and One Nights tale **The Mock Caliph**, Harun dresses as a merchant and slips out into Baghdad with his minister Ja'far. At the Tigris they ask a boatman to take them out on the water. The boatman warns the disguised ruler to stay ashore because a man aboard the caliph's barge is threatening anyone caught on the river at night.",
+      "isLegend": true,
+      "sourceUrl": "https://en.wikisource.org/wiki/Page:The_Book_of_the_Thousand_Nights_and_a_Night_-_Volume_4.djvu/152"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "al-ma-mun",
+      "reason": "Harun named his son al-Ma'mun second in line to the throne, and al-Ma'mun became caliph after defeating his half-brother al-Amin in civil war.",
+      "name": "al-Maʾmun",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "nikephoros-i",
+      "reason": "The Byzantine emperor Nikephoros I fought Harun and agreed to pay tribute after an Abbasid invasion in 806.",
+      "name": "Nikephoros I",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "charlemagne",
+      "reason": "Charlemagne exchanged envoys with Harun and received his elephant Abul-Abbas at Aachen in 802.",
+      "name": "Charlemagne",
+      "lane": "people",
+      "detailLevel": 2
+    }
+  ]
+}
