@@ -511,7 +511,8 @@
     "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
     "description": "Адо́льф Ги́тлер — немецкий политик австрийского происхождения, с 1933 года до своей смерти диктатор Германского рейха. С 1921 года был председателем Национал-социалистической немецкой рабочей партии (НСДАП), в 1933—1945 годах — рейхсканцлером Германии, с 1934 года также главой государства, а с 1938 года — верховным главнокомандующим Вермахта. Развязал Вторую мировую войну, в ходе которой погибли более 70 млн человек, и сыграл центральную роль в Холокосте, жертвами которого стали около 6 млн европейских евреев.",
     "slug": "adolf-hitler",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "5635",
@@ -535,7 +536,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ridolfo%20del%20Ghirlandaio%20-%20Ritratto%20di%20Cristoforo%20Colombo%20%281520%29.jpg",
     "description": "Христофо́р Колу́мб — испанский мореплаватель генуэзского происхождения, в 1492 году открывший для европейцев Новый Свет (Америку).",
     "slug": "christopher-columbus",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "25664190",
@@ -559,7 +561,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Socrates%20Louvre.jpg",
     "description": "Сокра́т — древнегреческий философ.",
     "slug": "socrates",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "736",

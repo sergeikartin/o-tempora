@@ -34,7 +34,8 @@
       "month": 10
     },
     "slug": "united-nations",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "Q432",
@@ -51,7 +52,8 @@
       "year": 631
     },
     "slug": "islam",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "Q10693",

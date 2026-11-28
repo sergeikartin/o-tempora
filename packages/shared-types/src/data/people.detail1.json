@@ -511,7 +511,8 @@
     "imageAttribution": "Unknown authorUnknown author, via Wikimedia Commons",
     "description": "Adolf Hitler was an Austrian-born German politician who was dictator of Germany in the Nazi era from 1933 until his suicide in 1945. He rose to power as the leader of the Nazi Party, becoming the chancellor of Germany in 1933 and then taking the title of Führer und Reichskanzler in 1934. Germany's invasion of Poland on 1 September 1939 under his leadership marked the outbreak of the Second World War. Throughout the ensuing conflict, Hitler was closely involved in the direction of German military operations and was central to the perpetration of the genocide of about six million Jews in the Holocaust as well as the deaths of millions of other victims.",
     "slug": "adolf-hitler",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "5635",
@@ -535,7 +536,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Ridolfo%20del%20Ghirlandaio%20-%20Ritratto%20di%20Cristoforo%20Colombo%20%281520%29.jpg",
     "description": "Christopher Columbus was an Italian explorer and navigator from the Republic of Genoa who completed four Spanish transatlantic voyages in the name of the Catholic Monarchs, opening the way for the widespread European exploration and colonization of the Americas. His expeditions were the first known European contact with the Caribbean and Central and South America.",
     "slug": "christopher-columbus",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "25664190",
@@ -559,7 +561,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Socrates%20Louvre.jpg",
     "description": "Socrates was an ancient Greek philosopher from Classical Athens, perhaps the first Western moral philosopher, and a major inspiration on his student Plato, who largely founded the tradition of Western philosophy. An enigmatic figure, Socrates authored no texts and is known mainly through the posthumous accounts of classical writers, particularly his students Plato and Xenophon. These accounts are written as dialogues, in which Socrates and his interlocutors examine a subject in the style of question and answer; they gave rise to the Socratic dialogue literary genre. Contradictory accounts of Socrates make a reconstruction of his philosophy nearly impossible, a situation known as the Socratic problem. Socrates was a polarizing figure in Athenian society. In 399 BC, he was accused of impiety and corrupting the youth. After a trial that lasted a day, he was sentenced to death. As related by Plato, he was put to death by administration of poison after refusing offers from allies to help him escape.",
     "slug": "socrates",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "736",

@@ -1,0 +1,78 @@
+{
+  "overview": "The League of Nations had failed to prevent World War II, and the wartime Allies began planning a new international organization before the fighting ended. In 1945, 51 countries founded the United Nations to maintain peace and give governments a permanent forum for cooperation. The Charter gave every member a vote in the General Assembly and gave the five permanent members of the Security Council the power to veto its decisions on substantive matters. The UN went on to send peacekeepers into conflict zones, set international human rights standards, and coordinate humanitarian aid.",
+  "keyMoments": [
+    {
+      "date": "January 1942",
+      "title": "A name for the Allies",
+      "text": "Representatives of the United States, Britain, the Soviet Union, and China signed the **Declaration by United Nations** in Washington. Twenty-two more countries signed the next day, committing themselves to the principles of the **Atlantic Charter** and pledging to make no separate peace with the Axis powers. A name that brought those governments together in wartime would outlast their alliance.",
+      "sourceUrl": "https://www.un.org/en/model-united-nations/history-united-nations"
+    },
+    {
+      "date": "June–October 1945",
+      "title": "The Charter takes effect",
+      "text": "Delegates from 50 countries signed the **UN Charter** in San Francisco on 26 June, while the war against Japan was still underway. They agreed that the organization would begin once the five permanent members of the **Security Council** and a majority of the other signatories ratified the Charter. That threshold was reached on 24 October, the date now marked as United Nations Day.",
+      "sourceUrl": "https://www.un.org/en/about-us/history-of-the-un/san-francisco-conference"
+    },
+    {
+      "date": "December 1948",
+      "title": "A standard for human rights",
+      "text": "In Paris, the General Assembly voted on a declaration developed with the help of a drafting committee chaired by **Eleanor Roosevelt**. The **Universal Declaration of Human Rights** spelled out rights and freedoms that belong to everyone, from a fair hearing in court to an education. The Assembly adopted it with eight countries abstaining and none voting against.",
+      "sourceUrl": "https://www.un.org/en/about-us/udhr/history-of-the-declaration"
+    },
+    {
+      "date": "November 1956",
+      "title": "Peacekeepers at Suez",
+      "text": "After Israel, Britain, and France attacked Egypt during the **Suez Crisis**, the General Assembly called for an international force to supervise the ceasefire. The **UN Emergency Force** oversaw the withdrawal of the invading troops and then stood between Egyptian and Israeli forces. Earlier UN missions had sent unarmed observers, but at Suez the organization deployed its first armed peacekeeping force.",
+      "sourceUrl": "https://www.un.org/en/node/217682"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "The globe on the UN flag first appeared on a **lapel pin** for participants at the San Francisco conference. The badge included the name of the meeting, which was dropped when the design became the official emblem. Two years after delegates wore the map on their jackets, a version of it flew over the UN's temporary headquarters at Lake Success, New York.",
+      "isLegend": false,
+      "sourceUrl": "https://www.un.org/en/node/133942"
+    },
+    {
+      "text": "The UN's Manhattan headquarters rose on a stretch of East River waterfront once occupied by **slaughterhouses and tenements**. A developer had plans for a complex there to rival Rockefeller Center, but the Rockefeller family was looking for a way to bring the UN to New York. The family put up **$8.5 million** to buy the site for the organization.",
+      "isLegend": false,
+      "sourceUrl": "https://www.un.org/en/exhibits/exhibit/un-headquarters-workshop-peace"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "world-war-ii",
+      "reason": "The Allies began designing the United Nations while World War II was still being fought.",
+      "name": "World War II",
+      "lane": "conflicts",
+      "detailLevel": 1
+    },
+    {
+      "slug": "league-of-nations",
+      "reason": "When the League of Nations dissolved in 1946, the UN inherited its headquarters in Geneva and opened a European office there.",
+      "name": "League of Nations",
+      "lane": "milestones",
+      "detailLevel": 2
+    },
+    {
+      "slug": "franklin-delano-roosevelt",
+      "reason": "Franklin D. Roosevelt suggested the name United Nations for the wartime Allied coalition.",
+      "name": "Franklin Delano Roosevelt",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "universal-declaration-of-human-rights",
+      "reason": "The General Assembly adopted the Universal Declaration of Human Rights in Paris in 1948.",
+      "name": "Universal Declaration of Human Rights",
+      "lane": "milestones",
+      "detailLevel": 1
+    },
+    {
+      "slug": "suez-crisis",
+      "reason": "The Suez Crisis prompted the General Assembly to establish the first armed UN peacekeeping force.",
+      "name": "Suez Crisis",
+      "lane": "conflicts",
+      "detailLevel": 3
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "overview": "Adolf Hitler was the Austrian-born leader of the Nazi Party and dictator of Germany from 1933 to 1945. Appointed chancellor after the Nazis became the largest party in parliament, he dismantled Germany’s democracy and built a dictatorship around racist persecution and territorial expansion. His invasion of Poland began World War II in Europe, and under his leadership Nazi Germany and its collaborators murdered about six million Jews in the Holocaust. The regime also persecuted and killed millions of other people, and Hitler died by suicide in Berlin as Allied forces closed in on Germany in 1945.",
+  "keyMoments": [
+    {
+      "date": "1923–1924",
+      "title": "A failed coup in Munich",
+      "text": "Hitler and former general Erich Ludendorff tried to overthrow the Bavarian government in the **Beer Hall Putsch**. Police stopped them, and Hitler was convicted of treason and sentenced to five years in prison. He spent just over a year in custody, working at Landsberg Prison on the first volume of **Mein Kampf**, which set out his antisemitism and plans for territorial expansion.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adolf_Hitler#Beer_Hall_Putsch_and_Landsberg_Prison"
+    },
+    {
+      "date": "March 1933",
+      "title": "The cabinet gains sweeping powers",
+      "text": "Less than two months after Hitler became chancellor, German lawmakers met in Berlin’s **Kroll Opera House** to vote on a bill giving his cabinet the power to make laws without them. The Nazis barred Communist deputies and some Social Democrats from taking their seats and stationed uniformed men in the chamber to intimidate those present. The **Enabling Act** passed on March 23, with only Social Democrats casting votes against it.",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/the-enabling-act"
+    },
+    {
+      "date": "September 1939",
+      "title": "The invasion of Poland",
+      "text": "In August 1939, Hitler secured a **nonaggression pact with the Soviet Union**. It included a secret agreement to divide Poland between the two powers. Germany's attack on Poland on September 1 began **World War II in Europe**. Britain and France declared war on Germany two days later, and Soviet forces invaded eastern Poland later that month.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adolf_Hitler#Start_of_World_War_II"
+    },
+    {
+      "date": "January 1942",
+      "title": "The machinery of genocide",
+      "text": "Mass killings of Jews were already underway when **Reinhard Heydrich** gathered senior Nazi officials at a villa outside central Berlin. At the **Wannsee Conference**, he told them that Hitler had put him and his office in charge of coordinating the murder of Europe’s Jews. The scope outlined at the meeting reached beyond occupied territory, counting Jews in Britain and neutral countries as intended targets.",
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/wannsee-conference-and-the-final-solution"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "The leader of the Nazi Party spent nearly seven years **without a nationality** after giving up his Austrian citizenship in 1925. In February 1932, the state government of Brunswick appointed him to a civil service post that made him a German citizen. That appointment cleared the way for him to challenge the sitting president, Paul von Hindenburg, in the election the following month.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Adolf_Hitler#Br%C3%BCning_administration"
+    },
+    {
+      "text": "When Hitler ordered modern works removed from the official art exhibition in Munich in 1937, his regime set up a rival show to ridicule art of that kind. Organizers crowded works together and hung some beside mocking slogans. The **‘Degenerate Art’ exhibition** still drew an estimated two million visitors in Munich, several times the turnout for the show celebrating art the regime approved of.",
+      "isLegend": false,
+      "sourceUrl": "https://encyclopedia.ushmm.org/content/en/article/degenerate-art-1"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "the-holocaust",
+      "reason": "Hitler authorized the systematic murder of Europe’s Jews, which Nazi Germany and its collaborators carried out during the war.",
+      "name": "The Holocaust",
+      "lane": "milestones",
+      "detailLevel": 1
+    },
+    {
+      "slug": "world-war-ii",
+      "reason": "Hitler’s invasion of Poland in September 1939 brought Britain and France into the war against Germany.",
+      "name": "World War II",
+      "lane": "conflicts",
+      "detailLevel": 1
+    },
+    {
+      "slug": "paul-von-hindenburg",
+      "reason": "As Germany’s president, Hindenburg appointed Hitler chancellor in January 1933.",
+      "name": "Paul von Hindenburg",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "joseph-stalin",
+      "reason": "Stalin agreed to a secret plan with Hitler’s Germany to partition Poland, then led the Soviet Union against Germany after Hitler invaded it in 1941.",
+      "name": "Joseph Stalin",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "heinrich-himmler",
+      "reason": "As head of the SS, Himmler led the organization that carried out much of the Nazi regime’s mass murder.",
+      "name": "Heinrich Himmler",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "benito-mussolini",
+      "reason": "Mussolini’s March on Rome inspired Hitler’s attempted coup in Munich, and the two dictators later became wartime allies.",
+      "name": "Benito Mussolini",
+      "lane": "people",
+      "detailLevel": 2
+    }
+  ]
+}

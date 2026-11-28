@@ -1,0 +1,85 @@
+{
+  "overview": "Islam took shape in seventh-century Arabia, where Muhammad preached devotion to one God in Mecca and built a community of followers in Medina. Muslims regard him as the final prophet and the Quran as God's revelation to him. The Five Pillars of Islam are the declaration of faith, daily prayer, almsgiving, fasting during Ramadan, and pilgrimage to Mecca for those able to make it. Islam spread far beyond Arabia, and its two largest branches are Sunni and Shia Islam.",
+  "keyMoments": [
+    {
+      "date": "c. AD 610",
+      "title": "Revelation near Mecca",
+      "text": "According to Islamic tradition, Muhammad withdrew to the **Cave of Hira** to reflect. There, the angel Gabriel brought him the first verses of what became the **Quran**. Muhammad went on to preach the worship of one God in Mecca, where pilgrims then came to a shrine filled with idols.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Islam"
+    },
+    {
+      "date": "AD 622",
+      "title": "A new home in Medina",
+      "text": "Facing opposition in Mecca, Muhammad and his followers migrated north to **Yathrib**, an oasis town later known as Medina. There, the newcomers and local converts formed a community with Muhammad as its leader. The move, known as the **Hijra**, became the starting point of the calendar by which Muslims date Ramadan and the pilgrimage to Mecca.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Islam"
+    },
+    {
+      "date": "AD 630–631",
+      "title": "Delegations arrive in Medina",
+      "text": "After Muhammad took Mecca, more communities across Arabia recognized his authority. The early biographer Ibn Hisham describes the **Year of Delegations** as a time when Arab tribes sent representatives to Medina. One account tells how envoys of **Abd al-Qays** received instruction in prayer, almsgiving, fasting, and reciting the Quran.",
+      "sourceUrl": "https://www.islam.museum/en/event/year-of-delegations/"
+    },
+    {
+      "date": "AD 632",
+      "title": "The first caliph",
+      "text": "When Muhammad died, some of his companions chose **Abu Bakr** to lead the community as its first caliph. Shia Muslims regard **Ali ibn Abi Talib**, Muhammad's cousin and son-in-law, as his rightful successor. Disagreements over who was entitled to lead the community became one of the roots of the Sunni and Shia traditions.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Islam"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Two parchment leaves in Birmingham preserve parts of three chapters of the Quran in early Arabic handwriting. **Radiocarbon testing** placed the death of the animal whose skin made the parchment in a period overlapping Muhammad's lifetime. That leaves the date of the writing itself open, but the pages are among the earliest surviving Quran fragments.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Birmingham_Quran_manuscript"
+    },
+    {
+      "text": "Muslims face Mecca in prayer, so the direction they face changes with their location. A North African **astrolabe** made in 1733 or 1734 carries tables of these bearings, known as the **qibla**, for various towns. A traveler could find the right direction for daily prayer on the same kind of instrument used to read the sky.",
+      "isLegend": false,
+      "sourceUrl": "https://www.mhs.ox.ac.uk/scienceislam/objects54b9.html?invnum=51459"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "muhammad",
+      "reason": "His preaching and leadership brought together the first Muslim community, and Muslims regard him as God's final prophet.",
+      "name": "Muhammad",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "conquest-of-mecca",
+      "reason": "Muhammad's return to Mecca brought the Kaaba under Muslim control and the shrine was rededicated to the worship of one God.",
+      "name": "Conquest of Mecca",
+      "lane": "conflicts",
+      "detailLevel": 4
+    },
+    {
+      "slug": "abu-bakr",
+      "reason": "He became the first caliph after Muhammad's death and led the Muslim community through revolts in Arabia.",
+      "name": "Abu Bakr",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "ali-ibn-abi-talib",
+      "reason": "Muhammad's cousin and son-in-law became the fourth caliph and is recognized by Shia Muslims as the first imam.",
+      "name": "Alī ibn Abī Ṭālib",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "khadija-bint-khuwaylid",
+      "reason": "Muhammad's first wife supported him at the start of his preaching and is traditionally regarded as his first follower.",
+      "name": "Khadija bint Khuwaylid",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "battle-of-karbala",
+      "reason": "The death of Muhammad's grandson Husayn at Karbala became a central event of remembrance for Shia Muslims.",
+      "name": "Battle of Karbala",
+      "lane": "conflicts",
+      "detailLevel": 4
+    }
+  ]
+}

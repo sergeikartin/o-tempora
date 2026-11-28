@@ -1,0 +1,85 @@
+{
+  "overview": "Christopher Columbus was a navigator from Genoa who sought a westward sea route to Asia. Backed by Queen Isabella of Castile and King Ferdinand of Aragon, he made the first of four Atlantic voyages in 1492 and reached the Caribbean, where he encountered Taíno communities. His voyages opened the way for European conquest and colonization, and his own administration on Hispaniola enslaved Indigenous people. The movement of crops, animals, people and diseases across the Atlantic that followed became known as the Columbian exchange.",
+  "keyMoments": [
+    {
+      "date": "April 1492",
+      "title": "A bargain at Santa Fe",
+      "text": "After years of lobbying, Columbus secured the support of Isabella of Castile and Ferdinand of Aragon for his plan to sail west to Asia. Under the **Capitulations of Santa Fe**, he would become **Admiral of the Ocean Sea** and govern the lands he claimed for the monarchs. Before he had even sailed, the agreement promised him a tenth of the proceeds from trade within his new jurisdiction.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Christopher_Columbus"
+    },
+    {
+      "date": "12 October 1492",
+      "title": "Landfall in the Bahamas",
+      "text": "A lookout aboard the **Pinta** sighted land in the early hours, five weeks after the fleet left the Canary Islands. The crew had reached **Guanahani**, an inhabited island in the Bahamas. Columbus went ashore to claim it for the monarchs who had sent him looking for Asia and gave it a Spanish name, San Salvador, meaning Holy Savior.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Christopher_Columbus"
+    },
+    {
+      "date": "1493–1494",
+      "title": "A colony on Hispaniola",
+      "text": "Columbus crossed the Atlantic a second time with **seventeen ships** carrying settlers and supplies, from horses and cattle to seeds for planting. On the north coast of Hispaniola, he founded **La Isabela** as a base for Spanish rule in the Caribbean. The settlers built a walled town with a waterfront plaza and a fortified storehouse, but food shortages and disease set in early.",
+      "sourceUrl": "https://www.floridamuseum.ufl.edu/histarch/research/dominican-republic/la-isabela/"
+    },
+    {
+      "date": "1500",
+      "title": "Arrest on Hispaniola",
+      "text": "The Spanish monarchs sent **Francisco de Bobadilla** to Hispaniola after complaints about Columbus’s rule reached their court. Bobadilla took over as governor, seized Columbus’s property and sent him **back to Spain in chains**. The monarchs released Columbus and eventually backed a fourth voyage, while leaving the government of Hispaniola in other hands.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Christopher_Columbus"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "A 1493 Basel edition of Columbus’s letter used **woodcuts** to depict his arrival in the Caribbean. A 1494 edition reused most of the illustrations. The detailed image later taken for Columbus’s own ship was copied from a book about **a voyage to the Holy Land**, published six years before his Atlantic crossing.",
+      "isLegend": false,
+      "sourceUrl": "https://oshermaps.org/special-map-exhibits/columbus-letter/iv-diffusion-columbuss-letter-through-europe-1493-1497/"
+    },
+    {
+      "text": "Excavators at La Isabela found lead ore in a storehouse and heaps of waste left over from heating metal nearby. Under a microscope, the waste held **tiny specks of silver**, a sign that settlers had tried to extract it. The chemical signature of the lead revealed that the ore the colonists worked so hard to process **had come from Spain on their own ships**.",
+      "isLegend": false,
+      "sourceUrl": "https://www.floridamuseum.ufl.edu/science/early-columbus-settlement-was-desperate-to-find-metals/"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "first-arrival-of-christopher-columbus-to-america",
+      "reason": "The 1492 landing at Guanahani began sustained contact between Europe and the Americas.",
+      "name": "first arrival of Christopher Columbus to America",
+      "lane": "milestones",
+      "detailLevel": 4
+    },
+    {
+      "slug": "isabella-i-of-castile",
+      "reason": "Isabella of Castile backed the first voyage and promised Columbus a share of its commercial gains.",
+      "name": "Isabella I of Castile",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "ferdinand-ii-of-aragon",
+      "reason": "Ferdinand of Aragon joined Isabella in promising Columbus the offices of admiral and governor under the Santa Fe agreement.",
+      "name": "Ferdinand II of Aragon",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "treaty-of-tordesillas",
+      "reason": "The 1494 treaty drew a line dividing Spanish and Portuguese claims after Columbus’s first voyage.",
+      "name": "Treaty of Tordesillas",
+      "lane": "milestones",
+      "detailLevel": 4
+    },
+    {
+      "slug": "john-ii-of-portugal",
+      "reason": "John II of Portugal turned down Columbus’s proposal and later argued that the voyage violated an existing treaty between the crowns.",
+      "name": "John II of Portugal",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "marco-polo",
+      "reason": "Marco Polo’s account of Japan helped shape Columbus’s expectations of what he would find by sailing west.",
+      "name": "Marco Polo",
+      "lane": "people",
+      "detailLevel": 1
+    }
+  ]
+}

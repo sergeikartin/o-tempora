@@ -1,0 +1,78 @@
+{
+  "overview": "Socrates was an Athenian philosopher who spent much of his life asking people to explain what they meant by ideas such as justice and courage. He left no writings, and the portraits that survive, especially those by Plato and Xenophon, sometimes disagree. In Plato’s dialogues, he tests a person’s beliefs with questions until the answers expose a contradiction, a practice that helped shape Western philosophy and became known as the Socratic method. An Athenian jury convicted him of impiety and corrupting the young in 399 BC, and he was put to death.",
+  "keyMoments": [
+    {
+      "date": "432–429 BC",
+      "title": "On campaign at Potidaea",
+      "text": "Athens sent Socrates out as a **foot soldier** when the city of Potidaea revolted. His unit stayed on campaign for nearly three years, into the opening years of Athens’s war with Sparta. In Plato’s Symposium, the future general **Alcibiades** recalls being wounded during the expedition and credits his fellow soldier with saving both his life and his armor.",
+      "sourceUrl": "https://plato.stanford.edu/entries/socrates/"
+    },
+    {
+      "date": "423 BC",
+      "title": "A philosopher on the comic stage",
+      "text": "At an Athenian festival, **Aristophanes** presented a comedy in which a character named Socrates teaches people how to wriggle out of paying their debts. In the surviving version of **Clouds**, the philosopher hangs in a basket to study the heavens. Plato’s Apology has Socrates bring up the play at his trial a quarter of a century later as an example of how Athenians had been misled about him.",
+      "sourceUrl": "https://plato.stanford.edu/entries/socrates/"
+    },
+    {
+      "date": "404–403 BC",
+      "title": "An order refused",
+      "text": "After Athens lost its war with Sparta, a small group known as the **Thirty** took power in the city. In Plato’s Apology, Socrates recalls how the new rulers summoned him and four others to bring back **Leon of Salamis** for execution. The other four went and fetched Leon. Socrates walked home and later said he might have been killed for it had the regime lasted longer.",
+      "sourceUrl": "https://classics.mit.edu/Plato/apology.html"
+    },
+    {
+      "date": "399 BC",
+      "title": "The jury’s verdict",
+      "text": "An Athenian jury found the philosopher guilty of **impiety and corrupting the young**. In Plato’s Apology, when asked to propose a penalty, he suggests the city owes him free meals at its public dining hall, an honor given to Olympic victors. He eventually offers to pay a fine guaranteed by his friends, but the jury **sentences him to death**.",
+      "sourceUrl": "https://classics.mit.edu/Plato/apology.html"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "Xenophon’s Symposium puts the philosopher in a **beauty contest** against a handsome young man named Critobulus. Socrates argues that his own bulging eyes are finer because they can see to the sides, and that his wide nostrils can catch smells from all around. The judges vote unanimously for Critobulus.",
+      "isLegend": false,
+      "sourceUrl": "https://beta.perseus.tufts.edu/urn%3Acts%3AgreekLit%3Atlg0032.tlg004.perseus-eng2%3A5/"
+    },
+    {
+      "text": "In Plato’s Phaedo, a **garland tied to the stern of a ship** keeps Socrates alive after his conviction. An Athenian priest had placed it there the day before the trial to mark the start of an annual voyage in honor of Apollo. The city suspended public executions until the ship returned from the island of Delos.",
+      "isLegend": false,
+      "sourceUrl": "https://chs.harvard.edu/primary-source/plato-phaedo-sb/"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "plato",
+      "reason": "Plato studied with Socrates and made him a central speaker in dialogues such as the Republic.",
+      "name": "Plato",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "xenophon",
+      "reason": "Xenophon was a follower who defended Socrates against the charges that led to his death in the Memorabilia.",
+      "name": "Xenophon",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "aristophanes",
+      "reason": "Aristophanes lampooned Socrates in Clouds, and Plato’s Apology shows him answering the caricature years later.",
+      "name": "Aristophanes",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "peloponnesian-war",
+      "reason": "Socrates served on the Athenian side in the Peloponnesian War, fighting at Delium and Amphipolis.",
+      "name": "Peloponnesian War",
+      "lane": "conflicts",
+      "detailLevel": 3
+    },
+    {
+      "slug": "alcibiades",
+      "reason": "In Plato’s Symposium, the Athenian general Alcibiades recalls serving alongside Socrates and admits that the philosopher made him ashamed of how he lived.",
+      "name": "Alcibiades",
+      "lane": "people",
+      "detailLevel": 4
+    }
+  ]
+}
