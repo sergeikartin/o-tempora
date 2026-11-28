@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-23T07:50:51.060Z",
+  "generatedAt": "2026-11-28T08:19:42.399+00:00",
   "title": "Design System: O Tempora",
   "extensions": {
     "colorMeta": {
@@ -358,9 +358,9 @@
       }
     },
     "typographyMeta": {
-      "viewport-range": {
-        "displayName": "Viewport Range",
-        "purpose": "The window of years as the screen heading."
+      "focus-range": {
+        "displayName": "Focus Range",
+        "purpose": "The selected years or the visible window as the screen heading."
       },
       "panel-heading": {
         "displayName": "Panel Heading",
@@ -407,7 +407,7 @@
       {
         "name": "card",
         "value": "0 4px 16px rgba(36, 26, 16, 0.12)",
-        "purpose": "Floating sidebar and minimap card."
+        "purpose": "Minimap card."
       },
       {
         "name": "tooltip",
@@ -422,7 +422,12 @@
       {
         "name": "drawer",
         "value": "8px 0 32px rgba(0, 0, 0, 0.15)",
-        "purpose": "Mobile drawer and detail side panel."
+        "purpose": "The detail side panel (x offset flipped for the right edge)."
+      },
+      {
+        "name": "popover",
+        "value": "0 8px 24px rgba(36, 26, 16, 0.18)",
+        "purpose": "Filters Panel on desktop."
       },
       {
         "name": "modal",
@@ -444,13 +449,26 @@
       {
         "name": "easing",
         "value": "cubic-bezier(0.4, 0, 0.2, 1)",
-        "purpose": "All transitions."
+        "purpose": "Shared easing for hover feedback and panel transitions."
+      },
+      {
+        "name": "detail-level-loading",
+        "value": "900ms ease-in-out",
+        "purpose": "Opacity pulse while Detail Level data loads, when reduced motion is off."
       }
     ],
     "breakpoints": [
       {
         "name": "mobile",
         "value": "960px"
+      },
+      {
+        "name": "landing-stepper",
+        "value": "640px"
+      },
+      {
+        "name": "compact-detail-level",
+        "value": "420px"
       }
     ]
   },
@@ -474,10 +492,10 @@
     {
       "name": "Detail Level Switch",
       "kind": "custom",
-      "refersTo": "switch-dot",
-      "description": "Four-stop segmented track; oxblood fills up to the selected level and a pin marks it.",
-      "html": "<div class=\"ds-switch\"><div class=\"ds-labels\"><span class=\"ds-l1 ds-reached\">Legendary</span><span class=\"ds-l2 ds-reached\">Mainstream</span><span class=\"ds-l3\">Specialized</span><span class=\"ds-l4\">Deep Cut</span></div><div class=\"ds-track\"><div class=\"ds-fill\"></div><button class=\"ds-dot ds-dot-on\" aria-label=\"Legendary\"></button><button class=\"ds-dot ds-dot-on ds-dot-sel\" aria-label=\"Mainstream\"></button><button class=\"ds-dot\" aria-label=\"Specialized\"></button><button class=\"ds-dot\" aria-label=\"Deep Cut\"></button></div><p class=\"ds-desc\">Well-known figures and events.</p></div>",
-      "css": ".ds-switch{width:260px;font-family:'Archivo', sans-serif}.ds-labels{position:relative;height:16px;margin-bottom:4px;font-size:12px;color:var(--color-text-primary, #241a10)}.ds-labels span{position:absolute;top:0;white-space:nowrap}.ds-l1{left:0}.ds-l2{left:calc(7px + (100% - 14px)/3);transform:translateX(-50%)}.ds-l3{left:calc(7px + (100% - 14px)*2/3);transform:translateX(-50%)}.ds-l4{right:0}.ds-reached{color:var(--color-accent-selected, #8a2a1a);font-weight:700}.ds-track{position:relative;display:flex;justify-content:space-between;align-items:center;height:24px}.ds-fill{position:absolute;top:50%;left:7px;right:7px;height:4px;border-radius:9999px;transform:translateY(-50%);background:linear-gradient(to right,var(--color-accent-selected, #8a2a1a) 0%,var(--color-accent-selected, #8a2a1a) 33%,var(--color-border-subtle, #e0d3ac) 33%,var(--color-border-subtle, #e0d3ac) 100%)}.ds-dot{position:relative;z-index:1;flex:none;width:14px;height:14px;padding:0;border:2px solid var(--color-border-control, #837757);border-radius:9999px;background:var(--color-bg-surface-raised, #fff);cursor:pointer}.ds-dot:hover{border-color:var(--color-text-secondary, #6b6046)}.ds-dot:focus-visible{outline:2px solid var(--color-focus-ring, #6e2013);outline-offset:2px}.ds-dot-on{border-color:var(--color-accent-selected, #8a2a1a);background:var(--color-accent-selected, #8a2a1a)}.ds-dot-sel::after{content:\"\";position:absolute;left:50%;top:50%;z-index:-1;width:18px;height:18px;background:var(--color-accent-selected, #8a2a1a);border-radius:50% 50% 50% 0;transform:translate(-50%,-68%) rotate(-45deg)}.ds-desc{margin:6px 0 0;color:var(--color-text-secondary, #6b6046);font-size:11px;line-height:1.4}"
+      "refersTo": "switch-trigger",
+      "description": "The current Detail Level and four progress pips in a pill that opens the level list.",
+      "html": "<details class=\"ds-switch\"><summary class=\"ds-trigger\"><span class=\"ds-prefix\">Detail Level</span><strong class=\"ds-value\">Mainstream</strong><span class=\"ds-pips\" aria-hidden=\"true\"><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip\"></span><span class=\"ds-pip\"></span></span><span class=\"ds-chevron\" aria-hidden=\"true\">▾</span></summary><ul class=\"ds-levels\"><li class=\"ds-level\"><span>Legendary</span><span class=\"ds-description\">The most famous entries</span><span class=\"ds-pips\" aria-hidden=\"true\"><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip\"></span><span class=\"ds-pip\"></span><span class=\"ds-pip\"></span></span></li><li class=\"ds-level\" aria-current=\"true\"><span>Mainstream</span><span class=\"ds-description\">Widely known entries</span><span class=\"ds-pips\" aria-hidden=\"true\"><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip\"></span><span class=\"ds-pip\"></span></span></li><li class=\"ds-level\"><span>Specialized</span><span class=\"ds-description\">Less widely known entries</span><span class=\"ds-pips\" aria-hidden=\"true\"><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip\"></span></span></li><li class=\"ds-level\"><span>Deep Cut</span><span class=\"ds-description\">The most detailed view</span><span class=\"ds-pips\" aria-hidden=\"true\"><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip ds-reached\"></span><span class=\"ds-pip ds-reached\"></span></span></li></ul></details>",
+      "css": ".ds-switch{position:relative;width:280px;max-width:100%;font:12px/1.4 Archivo,sans-serif;color:var(--color-text-primary,#241a10)} .ds-trigger{display:flex;align-items:center;gap:8px;height:32px;padding:0 12px;list-style:none;cursor:pointer;border:1px solid var(--color-border-control,#837757);border-radius:9999px;background:var(--color-bg-surface-raised,#fff);transition:border-color 120ms cubic-bezier(.4,0,.2,1),background-color 120ms cubic-bezier(.4,0,.2,1)} .ds-trigger::-webkit-details-marker{display:none} .ds-trigger:hover{border-color:var(--color-text-secondary,#6b6046);background:var(--color-bg-surface,#fbf6e9)} .ds-trigger:focus-visible{outline:2px solid var(--color-focus-ring,#6e2013);outline-offset:1px} .ds-switch[open] .ds-trigger{border-color:var(--color-accent-selected,#8a2a1a);box-shadow:inset 0 0 0 1px var(--color-accent-selected,#8a2a1a);background:var(--color-bg-surface,#fbf6e9)} .ds-prefix,.ds-description{color:var(--color-text-secondary,#6b6046);font-size:11px} .ds-value{flex:1;min-width:0;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap} .ds-chevron{color:var(--color-text-secondary,#6b6046);font-size:10px} .ds-switch[open] .ds-chevron{transform:rotate(180deg)} .ds-pips{display:inline-flex;gap:3px} .ds-pip{width:10px;height:4px;border-radius:9999px;background:var(--color-border-subtle,#e0d3ac)} .ds-pip.ds-reached{background:var(--color-accent-selected,#8a2a1a)} .ds-levels{display:grid;gap:2px;margin:6px 0 0;padding:4px;list-style:none;border:1px solid var(--color-border-subtle,#e0d3ac);border-radius:12px;background:var(--color-bg-surface-raised,#fff);box-shadow:0 4px 12px rgba(0,0,0,.15)} .ds-level{display:grid;grid-template-columns:minmax(0,1fr) auto;align-content:center;align-items:center;gap:2px 12px;min-height:44px;padding:0 10px;border-radius:6px} .ds-level .ds-pips{grid-area:1 / 2 / span 2 / 3} .ds-level[aria-current]{background:var(--color-bg-surface,#fbf6e9);box-shadow:inset 0 0 0 1px var(--color-accent-selected,#8a2a1a)} .ds-level[aria-current]>span:first-child{font-weight:600} @media(max-width:420px){.ds-trigger .ds-pips{display:none}}"
     },
     {
       "name": "Primary Button",
@@ -514,82 +532,13 @@
     {
       "name": "Entity Heading",
       "kind": "custom",
-      "refersTo": "panel-heading",
       "description": "Detail-panel header: Fraunces name, dated line and italic tagline in Faded Ink.",
       "html": "<div class=\"ds-entity\"><h3 class=\"ds-name\">Leonardo da Vinci</h3><p class=\"ds-date\">1452 &ndash; 1519</p><p class=\"ds-tagline\">Italian polymath of the Renaissance</p></div>",
       "css": ".ds-entity{width:300px;font-family:'Archivo', sans-serif;color:var(--color-text-primary, #241a10)}.ds-name{margin:0;font-family:'Fraunces',serif;font-size:20px;font-weight:600;line-height:1.2}.ds-date{margin:4px 0 10px;font-size:13px;color:var(--color-text-secondary, #6b6046);font-variant-numeric:tabular-nums}.ds-tagline{margin:0;font-size:13px;font-style:italic;color:var(--color-text-secondary, #6b6046)}"
     }
   ],
   "narrative": {
-    "northStar": "The Scribe's Chronicle",
-    "overview": "**Creative North Star: \"The Scribe's Chronicle\"**\n\nO Tempora reads as a chronicle kept by one careful hand: aged parchment for the page, iron-gall ink for every word, and a single oxblood accent standing in for a wax seal. The data is the ornament. Colour, line and dot do the encoding, so chrome stays small, warm and quiet, and nothing competes with the marks on the timeline.\n\nThe system is dense but unhurried. Controls are small, pill-shaped and exact; labels are short sentence-case nouns; years are set in tabular figures in the same face as the text around them. Fraunces appears only where a chronicle would letter a heading: the Viewport Range, an entity's name, the wordmark. There is one theme, light, and the system does not ask for a second.",
-    "keyCharacteristics": [
-      "Warm parchment ground with ink text. No pure black, no pure-white page.",
-      "One sharp accent (oxblood) reserved for state: selected, reached, primary action.",
-      "Colour encodes category within a lane; shape encodes duration (rounded-cap line for a period, dot for a moment), identically in all three lanes.",
-      "Tonal layering for depth. Shadows only on cards that float over the canvas.",
-      "Quiet and exact controls: hairline borders, 12px type, 28px targets."
-    ],
-    "rules": [
-      {
-        "name": "The One Seal Rule",
-        "body": "Oxblood marks state and nothing else. It is never decoration and never a lane colour.",
-        "section": "colors"
-      },
-      {
-        "name": "The Ink Label Rule",
-        "body": "Entry labels are always Ink, never the mark's colour; the bar or dot alone carries the category.",
-        "section": "colors"
-      },
-      {
-        "name": "The Fixed Legend Rule",
-        "body": "The eight People domains render in the order listed above. Reordering re-opens the colour-blind adjacency checks.",
-        "section": "colors"
-      },
-      {
-        "name": "The Border Ladder Rule",
-        "body": "An interactive control's border is Control Border. Hairline and Strong Rule never border a control.",
-        "section": "colors"
-      },
-      {
-        "name": "The Same Face Rule",
-        "body": "Years and dates use Archivo with tabular figures, never a separate monospace.",
-        "section": "typography"
-      },
-      {
-        "name": "The Three Headings Rule",
-        "body": "Fraunces is for the Viewport Range, the entity name and the wordmark. Chrome stays in Archivo.",
-        "section": "typography"
-      },
-      {
-        "name": "The Floaters-Only Rule",
-        "body": "A surface gets a shadow only if it sits over the canvas. Everything inline is separated by tone and hairlines.",
-        "section": "elevation"
-      },
-      {
-        "name": "The Halo Rule",
-        "body": "A selected or search-jumped mark gets a duplicate shape in Selection Halo, 8px wider than the grown mark, drawn behind it. The mark itself is never recoloured.",
-        "section": "elevation"
-      }
-    ],
-    "dos": [
-      "**Do** use Ink for text and every entry label, and Faded Ink for secondary text; both pass 4.5:1 on every surface they sit on.",
-      "**Do** border interactive controls with Control Border (#837757) and step hover to Faded Ink.",
-      "**Do** give every interactive control a 2px Deep Oxblood focus outline with a 1–2px offset (negative inside joined groups).",
-      "**Do** keep chrome type at 12px or larger where it is not data; 10–11px is for ticks, badges and lane labels only.",
-      "**Do** use tabular figures for every year and date.",
-      "**Do** keep marks at least 3:1 against parchment at resting opacity; check any new mark colour against the existing set, not just its neighbour.",
-      "**Do** use text glyphs (`×`, `+`, `−`, `«`) for tight controls."
-    ],
-    "donts": [
-      "**Don't** use oxblood as a lane colour, a decoration, or a hover tint.",
-      "**Don't** recolour a selected mark; add the halo.",
-      "**Don't** colour entry labels with their mark's colour.",
-      "**Don't** add a dark theme or a second accent.",
-      "**Don't** use gradients, imagery or emoji in chrome, or exclamation marks and marketing voice in copy.",
-      "**Don't** add a shadow to an inline surface or a border to a control in Hairline or Strong Rule.",
-      "**Don't** introduce an icon set or a monospace face.",
-      "**Don't** reorder the People domain legend."
-    ]
+    "northStar": "The Scribe’s Chronicle",
+    "overview": "“The Scribe’s Chronicle” uses the Ledger & Ink palette of parchment, iron-gall text and oxblood for interactive state. Keep the controls compact and the marks prominent. Labels use short, sentence-case nouns. The site uses a single light theme."
   }
 }
