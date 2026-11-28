@@ -1241,7 +1241,8 @@
       "month": 11
     },
     "slug": "discovery-of-x-rays",
-    "row": 6
+    "row": 6,
+    "hasProfile": true
   },
   {
     "id": "Q79897",

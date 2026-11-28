@@ -1,0 +1,71 @@
+{
+  "overview": "By the 1890s, physicists were studying what happened when they sent electricity through glass tubes with most of the air pumped out. In 1895, Wilhelm Conrad Röntgen found in Würzburg that these tubes could give off an invisible form of radiation that passed through materials that block ordinary light. He called it X-rays and showed that it could record the bones of a living hand on a photographic plate. Doctors soon used the rays to examine injuries without surgery, and X-rays later gave scientists a way to study how atoms are arranged in crystals.",
+  "keyMoments": [
+    {
+      "date": "8 November 1895",
+      "title": "A glow in the dark",
+      "text": "In his Würzburg laboratory, Röntgen wrapped a glass discharge tube in **black cardboard** to block its visible light. When he switched on the tube, a **coated screen** nearby lit up in the darkened room. Something coming from the tube could pass through the wrapping. In later tests, the screen still lit up behind a book a thousand pages thick.",
+      "sourceUrl": "https://webserver.lemoyne.edu/~giunta/Roentgen.html"
+    },
+    {
+      "date": "22 December 1895",
+      "title": "The hand with a ring",
+      "text": "Röntgen used a **photographic plate** to capture what the new rays could reveal beneath the skin. His wife, Anna Bertha Röntgen, placed her hand between the tube and the plate. The rays passed more easily through flesh than through **bone and metal**, leaving the finger bones and a dark band where she wore a ring.",
+      "sourceUrl": "https://www.intermediatheque.jp/en/press/view/id/PR056/year/2020"
+    },
+    {
+      "date": "28 December 1895",
+      "title": "The unknown gets a name",
+      "text": "Röntgen submitted his findings to Würzburg’s Physical and Medical Society in a report now known in English as **On a New Kind of Rays**. He used the letter **X** to stand for the unknown nature of the radiation and sent printed copies of the report to other scientists. An English translation appeared in Nature less than a month later.",
+      "sourceUrl": "https://blogs.loc.gov/inside_adams/2013/08/no-opera-no-x-rays/"
+    },
+    {
+      "date": "3 February 1896",
+      "title": "A fracture on a plate",
+      "text": "At Dartmouth College in New Hampshire, physician Gilman Frost brought a boy named Eddie McCarthy into the physics laboratory, where his brother Edwin had been testing the new rays. Eddie had **broken a bone in his forearm** two weeks earlier. The brothers’ experiment produced an **image of the break**, giving doctors a way to see an injury through intact skin.",
+      "sourceUrl": "https://archive.dartmouthalumnimagazine.com/article/1930/4/1/the-first-x-ray-experiment-in-america"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "When photographer William Jennings developed some plates after a laboratory session in Philadelphia in 1890, he noticed **a mysterious round shadow** on one of them. The plate was forgotten until news of Röntgen’s discovery reached Philadelphia six years later. A repeat experiment supported physicist Arthur Goodspeed’s explanation that rays from a nearby discharge tube had accidentally cast **a coin’s shadow** onto the plate.",
+      "isLegend": false,
+      "sourceUrl": "https://historische-kommission.drg.de/zeitzeugnisse/geschichten/erster-strahlenunfall-der-geschichte/"
+    },
+    {
+      "text": "By 1897 the new rays had made it into a silent comedy. In George Albert Smith’s **The X Rays**, a courting couple finds itself in front of an X-ray camera. A sudden cut turns the lovers into skeletons and another restores them, turning the power to see through flesh into a sight gag.",
+      "isLegend": false,
+      "sourceUrl": "https://replay.bfi.org.uk/video/187/e9e59c95-a9e8-5d03-acdf-d02c19f9a122"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "wilhelm-rontgen",
+      "reason": "Röntgen discovered the rays in Würzburg and received the first Nobel Prize in Physics for the discovery.",
+      "name": "Wilhelm Röntgen",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "antoine-henri-becquerel",
+      "reason": "The discovery prompted Becquerel to test glowing materials for similar rays, leading him to discover that uranium salts gave off radiation even without exposure to light.",
+      "name": "Antoine Henri Becquerel",
+      "lane": "people",
+      "detailLevel": 3
+    },
+    {
+      "slug": "max-von-laue",
+      "reason": "Von Laue proposed the experiment that showed crystals diffract X-rays, laying the groundwork for using them to study atomic arrangements.",
+      "name": "Max von Laue",
+      "lane": "people",
+      "detailLevel": 4
+    },
+    {
+      "slug": "marie-curie",
+      "reason": "Curie organized mobile X-ray units during World War I so doctors could locate bullets and bone fractures in wounded soldiers.",
+      "name": "Marie Curie",
+      "lane": "people",
+      "detailLevel": 1
+    }
+  ]
+}
