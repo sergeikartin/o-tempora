@@ -146,6 +146,22 @@ export const DETAIL_LEVEL_FAME_SCORE_FLOORS = {
   milestones: [87, 82, 76, 55],
 } as const;
 
+// Featured on the Landing Page and eligible at Deep Cut with her Pantheon score.
+const DEEP_CUT_PEOPLE = new Set(['mary-shelley']);
+
+export function meetsFameScoreFloor(
+  entry: { fameScore: number; slug: string },
+  lane: keyof typeof DETAIL_LEVEL_FAME_SCORE_FLOORS,
+  floor: number,
+): boolean {
+  return (
+    entry.fameScore >= floor ||
+    (lane === 'people' &&
+      floor <= DETAIL_LEVEL_FAME_SCORE_FLOORS.people[3] &&
+      DEEP_CUT_PEOPLE.has(entry.slug))
+  );
+}
+
 type SearchEntry = Pick<
   Person,
   'id' | 'slug' | 'name' | 'tagline' | 'fameScore' | 'regionTags'

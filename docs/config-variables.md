@@ -10,8 +10,8 @@ Paraglide uses `['url', 'baseLocale']` in `packages/web/vite.config.ts`. Paths u
 
 - `locale-datasets.ts` loads levels 1 and 2 before the timeline’s first paint. It prefetches level 3 at idle except on Save-Data or `slow-2g`/`2g` connections. A request for level 4 also starts level 3.
 - The Detail Level switch requests its selected level. An unresolved Entity Link requests deeper levels in order. Search requests the required level when a result is picked. Opening an entity with a Profile requests both deeper levels for its Connections.
-- `use-detail-level-datasets.ts` merges loaded deltas and keeps them in memory for the session. The active Fame Score floor controls which loaded entries render.
-- The first non-empty Search query requests `search-index.json` or `search-index.ru.json` for the active Locale. The index covers all three lanes at the Deep Cut floors and is cached for the visit.
+- `use-detail-level-datasets.ts` merges loaded deltas and keeps them in memory for the session. The active Fame Score floor controls which loaded entries render. Deep Cut also includes curated People such as Mary Shelley. [Deep Cut exceptions](adr/0010-deep-cut-includes-curated-people.md)
+- The first non-empty Search query requests `search-index.json` or `search-index.ru.json` for the active Locale. The index covers all entries eligible at Deep Cut and is cached for the visit.
 
 ## Web debug controls
 

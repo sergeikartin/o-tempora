@@ -5,6 +5,7 @@ import {
   type ConflictEntry,
   DETAIL_LEVEL_FAME_SCORE_FLOORS,
   type Milestone,
+  meetsFameScoreFloor,
   type Person,
   type ProfileLane,
   type SearchIndex,
@@ -92,16 +93,20 @@ function buildSearchIndex(
   const floors = DETAIL_LEVEL_FAME_SCORE_FLOORS;
   return {
     people: people
-      .filter(({ fameScore }) => fameScore >= floors.people[3])
+      .filter((entry) => meetsFameScoreFloor(entry, 'people', floors.people[3]))
       .map((entry) => ({
         ...searchFields(entry),
         occupationDomain: entry.occupationDomain,
       })),
     conflicts: conflicts
-      .filter(({ fameScore }) => fameScore >= floors.conflicts[3])
+      .filter((entry) =>
+        meetsFameScoreFloor(entry, 'conflicts', floors.conflicts[3]),
+      )
       .map(searchFields),
     milestones: milestones
-      .filter(({ fameScore }) => fameScore >= floors.milestones[3])
+      .filter((entry) =>
+        meetsFameScoreFloor(entry, 'milestones', floors.milestones[3]),
+      )
       .map((entry) => ({ ...searchFields(entry), category: entry.category })),
   };
 }

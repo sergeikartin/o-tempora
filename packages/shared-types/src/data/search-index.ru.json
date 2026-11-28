@@ -15043,6 +15043,17 @@
         "southern-europe"
       ],
       "occupationDomain": "exploration"
+    },
+    {
+      "id": "27885687",
+      "slug": "mary-shelley",
+      "name": "Мэри Шелли",
+      "tagline": "английская писательница",
+      "fameScore": 79.460514,
+      "regionTags": [
+        "northern-europe"
+      ],
+      "occupationDomain": "humanities"
     }
   ],
   "conflicts": [

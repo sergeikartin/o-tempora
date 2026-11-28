@@ -1,3 +1,4 @@
+import { meetsFameScoreFloor } from '@o-tempora/shared-types';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useFameScoreFilters } from '../features/filter-by-fame-score';
 import type { SearchResult } from '../features/search-timeline-entities';
@@ -123,7 +124,8 @@ export function useSelectionNavigation(base: LocaleDatasets) {
     }
     const lane = LANE_BY_ENTITY_TYPE[target.entityType];
     const needed = DETAIL_LEVELS.slice(DETAIL_LEVELS.indexOf(level)).find(
-      (candidate) => candidate.values[lane] <= target.entity.fameScore,
+      (candidate) =>
+        meetsFameScoreFloor(target.entity, lane, candidate.values[lane]),
     );
     if (needed && needed !== level) selectDetailLevel(needed);
 

@@ -1,3 +1,8 @@
+import {
+  DETAIL_LEVEL_FAME_SCORE_FLOORS,
+  meetsFameScoreFloor,
+  type SearchIndex,
+} from '@o-tempora/shared-types';
 import { expect, test } from 'vitest';
 import { CURIOSITIES, type CuriosityMark } from './curiosities';
 
@@ -17,6 +22,11 @@ const dataset = new Map<string, DatasetEntry>(
   Object.values(modules)
     .flat()
     .map((entry) => [entry.slug, entry]),
+);
+
+const searchIndexes = import.meta.glob<SearchIndex>(
+  '../../../../shared-types/src/data/search-index*.json',
+  { import: 'default' },
 );
 
 interface ShippedProfile {
@@ -84,6 +94,33 @@ test('each lead is one of its curiosity’s marks', () => {
     ).toContain(curiosity.lead);
   }
 });
+
+test.each(['search-index.json', 'search-index.ru.json'])(
+  'each lead is eligible at Deep Cut and listed in %s',
+  async (indexFile) => {
+    const load =
+      searchIndexes[`../../../../shared-types/src/data/${indexFile}`];
+    if (!load) throw new Error(`Missing ${indexFile}`);
+    const index = await load();
+    const lanes = ['people', 'conflicts', 'milestones'] as const;
+    for (const { lead } of CURIOSITIES) {
+      expect(
+        lanes.some((lane) =>
+          index[lane].some(
+            (entry) =>
+              entry.slug === lead &&
+              meetsFameScoreFloor(
+                entry,
+                lane,
+                DETAIL_LEVEL_FAME_SCORE_FLOORS[lane][3],
+              ),
+          ),
+        ),
+        lead,
+      ).toBe(true);
+    }
+  },
+);
 
 test.each(['en', 'ru'] as const)(
   '%s ships every mark and links the lead passage to a companion',

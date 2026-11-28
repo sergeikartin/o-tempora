@@ -1,3 +1,4 @@
+import { meetsFameScoreFloor } from '@o-tempora/shared-types';
 import { useMemo } from 'react';
 import {
   type ConflictsMilestonesFilterValue,
@@ -49,8 +50,8 @@ function matchLane(
     .filter((entry) => matchesQuery(entry, query))
     .map((entry) => {
       const { id, slug, name, tagline, fameScore } = entry;
-      const level = DETAIL_LEVELS.find(
-        (candidate) => fameScore >= candidate.values[lane],
+      const level = DETAIL_LEVELS.find((candidate) =>
+        meetsFameScoreFloor(entry, lane, candidate.values[lane]),
       );
       return {
         id,

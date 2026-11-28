@@ -50,7 +50,14 @@ const base: LocaleDatasets = {
   ...empty,
 };
 const level3: LocaleDatasets = { people: [person('level3', 86)], ...empty };
-const level4: LocaleDatasets = { people: [person('level4', 81)], ...empty };
+const maryShelley = {
+  ...person('shelley', 79.460514, 'Mary Shelley'),
+  slug: 'mary-shelley',
+};
+const level4: LocaleDatasets = {
+  people: [person('level4', 81), maryShelley],
+  ...empty,
+};
 
 // Fresh module graph per test: the real module's level 3/4 promises resolve
 // once and stay resolved, which would leak progressive-loading state between
@@ -203,6 +210,38 @@ test('loads level 4 after level 3 for a slug only found there, raising the level
     requestLevel3Load.mock.invocationCallOrder[0] ?? Infinity,
   ).toBeLessThan(requestLevel4Load.mock.invocationCallOrder[0] ?? -Infinity);
   expect(isLevelSelected(container, 'Deep Cut')).toBe(true);
+});
+
+test('the landing link raises Detail Level and shows Mary Shelley’s mark', async () => {
+  window.history.replaceState(null, '', '/timeline/?e=mary-shelley#moment-2');
+  const { container } = await renderApp();
+
+  await waitFor(() => expect(panelText(container)).toContain('Mary Shelley'));
+
+  expect(isLevelSelected(container, 'Deep Cut')).toBe(true);
+  expect(panelText(container)).not.toContain('Hidden by filters');
+  expect(markOf(container, maryShelley.id)).toBeTruthy();
+});
+
+test('Search finds Mary Shelley and opens her at Deep Cut', async () => {
+  vi.stubGlobal(
+    'fetch',
+    vi.fn().mockResolvedValue({ ok: true, json: async () => level4 }),
+  );
+  const { container, rtl } = await renderApp();
+  const view = rtl.within(container);
+  const search = view.getByRole('combobox');
+  rtl.fireEvent.change(search, { target: { value: 'Mary Shelley' } });
+  const option = await view.findByRole('option', { name: /Mary Shelley/i });
+  expect(option.textContent).toContain('Appears at Deep Cut');
+
+  rtl.fireEvent.keyDown(search, { key: 'ArrowDown' });
+  rtl.fireEvent.keyDown(search, { key: 'Enter' });
+
+  await waitFor(() => expect(panelText(container)).toContain('Mary Shelley'));
+  expect(isLevelSelected(container, 'Deep Cut')).toBe(true);
+  expect(panelText(container)).not.toContain('Hidden by filters');
+  expect(markOf(container, maryShelley.id)).toBeTruthy();
 });
 
 test('an unknown slug opens the timeline with no panel and drops the slug from the URL', async () => {

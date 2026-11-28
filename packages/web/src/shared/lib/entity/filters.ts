@@ -1,3 +1,4 @@
+import { meetsFameScoreFloor } from '@o-tempora/shared-types';
 import type { ConflictsMilestonesFilterValue } from '../../config';
 import type { MilestoneCategory, OccupationDomain, Region } from '../../types';
 import { MILESTONE_CATEGORY_TO_GROUP } from '../../types';
@@ -74,13 +75,16 @@ export interface ActiveFilters {
 export function visiblePeople<
   T extends {
     fameScore: number;
+    slug: string;
     occupationDomain: OccupationDomain;
     regionTags: Region[];
   },
 >(people: T[], filters: ActiveFilters): T[] {
   return filterByRegion(
     filterByOccupationDomain(
-      filterByFameScore(people, filters.fameScoreValues.people),
+      people.filter((person) =>
+        meetsFameScoreFloor(person, 'people', filters.fameScoreValues.people),
+      ),
       filters.selectedDomains,
     ),
     filters.selectedRegions,
