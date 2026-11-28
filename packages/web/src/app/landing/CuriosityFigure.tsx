@@ -21,11 +21,9 @@ function percentOf(curiosity: Curiosity, at: YearMonth): number {
 function MarkRow({
   curiosity,
   mark,
-  index,
 }: {
   curiosity: Curiosity;
   mark: CuriosityMark;
-  index: number;
 }) {
   const [windowStart, windowEnd] = curiosity.window;
   const start = percentOf(curiosity, mark.start);
@@ -40,7 +38,6 @@ function MarkRow({
     '--start': `${start}%`,
     '--span': `${end - start}%`,
     '--mark': mark.color,
-    '--i': index,
   } as CSSProperties;
   const markClass = [
     isPoint ? styles.dot : styles.bar,
@@ -52,7 +49,7 @@ function MarkRow({
   return (
     <div className={styles.row} style={style}>
       <span className={styles.label}>
-        {mark.label()}{' '}
+        <strong>{mark.label()}</strong>{' '}
         <span className={styles.years}>
           {mark.end && !isPoint
             ? formatYearRange(mark.start.year, mark.end.year)
@@ -69,40 +66,33 @@ function MarkRow({
 export function CuriosityFigure({ curiosity }: { curiosity: Curiosity }) {
   const people = curiosity.marks.filter((mark) => mark.kind === 'person');
   const events = curiosity.marks.filter((mark) => mark.kind !== 'person');
+  const ticks = curiosity.ticks.map((year) => ({
+    year,
+    style: { left: `${axisPercent(curiosity, year)}%` },
+  }));
   return (
     <figure className={styles.figure}>
       <div className={styles.chart} key={curiosity.id}>
-        {people.map((mark, i) => (
-          <MarkRow
-            key={mark.slug}
-            curiosity={curiosity}
-            mark={mark}
-            index={i}
-          />
+        <div className={styles.guides} aria-hidden="true">
+          {ticks.map(({ year, style }) => (
+            <span key={year} className={styles.guide} style={style} />
+          ))}
+        </div>
+        {people.map((mark) => (
+          <MarkRow key={mark.slug} curiosity={curiosity} mark={mark} />
         ))}
         <div className={styles.axis} aria-hidden="true">
-          {curiosity.ticks.map((year) => (
-            <span
-              key={year}
-              className={styles.tick}
-              style={{ left: `${axisPercent(curiosity, year)}%` }}
-            >
+          {ticks.map(({ year, style }) => (
+            <span key={year} className={styles.tick} style={style}>
               {formatYear(year)}
             </span>
           ))}
         </div>
-        {events.map((mark, i) => (
-          <MarkRow
-            key={mark.slug}
-            curiosity={curiosity}
-            mark={mark}
-            index={people.length + i}
-          />
+        {events.map((mark) => (
+          <MarkRow key={mark.slug} curiosity={curiosity} mark={mark} />
         ))}
       </div>
-      <figcaption className={styles.caption}>
-        <span className={styles.captionText}>{curiosity.caption()}</span>
-      </figcaption>
+      <figcaption className={styles.caption}>{curiosity.caption()}</figcaption>
     </figure>
   );
 }

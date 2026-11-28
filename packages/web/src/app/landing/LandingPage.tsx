@@ -104,32 +104,10 @@ export function LandingPage() {
         </a>
       </header>
       <main className={styles.main}>
-        <div className={styles.copy}>
+        <div className={styles.intro}>
           <h1 className={styles.headline}>{m.landingHeadline()}</h1>
           <p className={styles.pitch}>{m.landingPitch()}</p>
-          <div className={styles.ledeStack} aria-live="polite">
-            {CURIOSITIES.map((curiosity) => (
-              <p
-                key={curiosity.id}
-                className={`${styles.lede} ${curiosity.id === active.id ? styles.ledeActive : ''}`}
-              >
-                {curiosity.lede()}
-              </p>
-            ))}
-          </div>
         </div>
-        <a
-          className={styles.cta}
-          href={`${TIMELINE_HREF}${entityLinkSearch(active.lead)}${entityLinkHash(active.anchor)}`}
-          onPointerEnter={prefetchTimeline}
-          onFocus={prefetchTimeline}
-          onTouchStart={prefetchTimeline}
-          onClick={() =>
-            trackEvent('landing_cta_click', { curiosity: active.id })
-          }
-        >
-          {m.landingCta()}
-        </a>
         <div className={styles.picker}>
           <p className={styles.legend} id="landing-cases-label">
             {m.landingCasesLabel()}
@@ -157,7 +135,10 @@ export function LandingPage() {
               </button>
             ))}
           </div>
-          <div className={styles.stepper}>
+          <fieldset
+            className={styles.stepper}
+            aria-labelledby="landing-cases-label"
+          >
             <button
               type="button"
               className={styles.stepButton}
@@ -180,7 +161,37 @@ export function LandingPage() {
             >
               <Chevron direction="right" />
             </button>
-          </div>
+          </fieldset>
+        </div>
+        <div className={styles.story}>
+          <p className={styles.lede} aria-live="polite">
+            {active.lede()}
+          </p>
+          <a
+            className={styles.cta}
+            href={`${TIMELINE_HREF}${entityLinkSearch(active.lead)}${entityLinkHash(active.anchor)}`}
+            onPointerEnter={prefetchTimeline}
+            onFocus={prefetchTimeline}
+            onTouchStart={prefetchTimeline}
+            onClick={() =>
+              trackEvent('landing_cta_click', { curiosity: active.id })
+            }
+          >
+            {m.landingCta()}
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M4 10h11m-4.5-4.5L15 10l-4.5 4.5" />
+            </svg>
+          </a>
         </div>
         <CuriosityFigure curiosity={active} />
       </main>

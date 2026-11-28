@@ -15,7 +15,7 @@ A Fraunces sentence introduces one of seven Curiosities. The figure places the p
 
 The page uses Ledger & Ink parchment, ink text and one oxblood call to action. People appear above the ruler and events below. Dates use tabular figures. Periods use round-capped bars in the timeline palette, cut square where the window clips them. A single date appears as a dot.
 
-On desktop the left column holds the headline, pitch, story, action and choice of stories. The story reserves room for the longest sentence in the active language. The figure and caption sit beside it. On phones below 640px and short landscape phones, previous and next buttons replace the chips above the figure. The action stays above the fold at 360×640. The selected story travels in the URL hash and across the language switch.
+The headline and pitch introduce the picker, which stays in place as stories change. At 760px and wider the story and its action sit beside the figure. The figure uses a ledger-paper surface and faint guides aligned to the ruler ticks. Below 640px and in short viewports, previous and next buttons replace the chips. Short landscape phones keep the figure beside the story. The action stays above the fold at 360×640. The selected story travels in the URL hash and across the language switch.
 
 FORM: Quiet Folio with a case switcher; user-chosen over a scroll of curiosities and an auto-rotating hero (seed:d12fb562934fb476, reroll 3, assigned form kept).
 
