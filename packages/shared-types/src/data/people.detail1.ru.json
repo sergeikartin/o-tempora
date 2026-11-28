@@ -407,7 +407,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pope-peter%20pprubens.jpg",
     "description": "Апо́стол Пётр в христианстве — один из двенадцати апостолов Иисуса Христа. Вместе с апостолом Павлом называется «первоверховным апостолом». Святой Православной и Католической церквей; память — 12 июля (православие), 29 июня. В Католической церкви — первый папа римский.",
     "slug": "saint-peter",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "13633",
@@ -431,7 +432,8 @@
     "imageAttribution": "NikonZ7II, via Wikimedia Commons",
     "description": "Гоме́р — легендарный древнегреческий поэт-сказитель, создатель эпических поэм «Илиада» и «Одиссея». Жизнь датируется VIII—VII вв. до н. э., однако историчность всё же не бесспорна.Предположительно, был аэдом.",
     "slug": "homer",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "69880",
@@ -456,7 +458,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jacques-Louis%20David%20-%20The%20Emperor%20Napoleon%20in%20His%20Study%20at%20the%20Tuileries%20-%20Google%20Art%20Project.jpg",
     "description": "Наполео́н I Бонапа́рт — император французов в 1804—1814 и 1815 годах, полководец и государственный деятель, заложивший основы современного французского государства, один из наиболее выдающихся деятелей в истории Запада.",
     "slug": "napoleon",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "29688374",

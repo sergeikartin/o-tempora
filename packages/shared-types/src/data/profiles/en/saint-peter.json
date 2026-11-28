@@ -1,0 +1,71 @@
+{
+  "overview": "Simon Peter was a Jewish fisherman from Galilee who became one of Jesus’ twelve apostles. After the crucifixion he helped lead the community of Jesus’ followers in Jerusalem, where Paul counted him among its pillars. As non-Jews joined the movement, Peter and Paul clashed over whether Jewish and non-Jewish believers could share a meal. Christian tradition places Peter’s death in Rome, and the Catholic Church regards him as Rome’s first bishop and the predecessor of its popes.",
+  "keyMoments": [
+    {
+      "date": "c. AD 30",
+      "title": "The night of the arrest",
+      "text": "In the Gospel of Matthew, Peter follows Jesus after his arrest as far as the high priest’s courtyard. A servant girl recognizes him, and bystanders later say his **Galilean accent** gives him away. Peter **denies knowing Jesus three times**. The rooster’s crow reminds him that Jesus had predicted those denials, and Peter leaves the courtyard in tears.",
+      "sourceUrl": "https://bible.usccb.org/bible/matthew/26"
+    },
+    {
+      "date": "c. AD 30",
+      "title": "A crowd gathers at Pentecost",
+      "text": "The Acts of the Apostles describes a morning in Jerusalem when people from many lands heard Galileans speaking their own languages. Peter stood up with the other apostles and told the crowd that God had **raised Jesus from the dead**. When listeners asked what they should do, he urged them to be baptized. Acts puts the number who **joined the community** that day at about three thousand.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Acts_2"
+    },
+    {
+      "date": "c. AD 50",
+      "title": "A divided table in Antioch",
+      "text": "In his letter to the Galatians, **Paul** recalls that Peter used to eat with non-Jewish believers in Antioch. When visitors came from James, a leader of the Jerusalem church, Peter withdrew from those meals, and other Jewish believers followed his example. Paul challenged him **in front of everyone** over the pressure this put on non-Jews to adopt Jewish customs. The letter preserves Paul’s protest and leaves Peter’s answer unrecorded.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Incident_at_Antioch"
+    },
+    {
+      "date": "AD 60s",
+      "title": "Rome remembers a martyr",
+      "text": "Christian tradition holds that Peter was **crucified in Rome** under the emperor Nero. Christians there came to venerate a spot on Vatican Hill as his grave. In the fourth century the emperor Constantine had part of the hillside cut away to build a **basilica over the shrine**. The high altar of the present St. Peter’s Basilica still stands above the place identified as his burial site.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Saint_Peter"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "A reader of Paul’s letters can meet Peter under another name, **Cephas**. Both names preserve a nickname given to Simon. Cephas comes from the Aramaic word for rock or stone, and Peter comes from its Greek equivalent, Petros. Matthew’s Gospel makes a play on the name when Jesus speaks of building his church on **rock**.",
+      "isLegend": false,
+      "sourceUrl": "https://en.wikipedia.org/wiki/Saint_Peter"
+    },
+    {
+      "text": "Popes once sealed decrees with the image of a man at work on the water. The **Fisherman’s Ring** traditionally shows Peter casting his net, with the pope’s name above him. A press of the ring into wax turned a scene from Peter’s old trade into a mark of papal authority.",
+      "isLegend": false,
+      "sourceUrl": "https://www.usccb.org/offices/general-secretariat/pope-francis-ring-and-pallium"
+    }
+  ],
+  "connections": [
+    {
+      "slug": "jesus-christ",
+      "reason": "The Gospels count Peter among the twelve apostles Jesus chose and often show him speaking for the group.",
+      "name": "Jesus Christ",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "paul-the-apostle",
+      "reason": "Paul visited Peter in Jerusalem and later challenged him in Antioch over eating with non-Jewish believers.",
+      "name": "Paul the Apostle",
+      "lane": "people",
+      "detailLevel": 1
+    },
+    {
+      "slug": "andrew-the-apostle",
+      "reason": "In the Gospel of John, Andrew brings his brother Simon Peter to meet Jesus.",
+      "name": "Andrew the Apostle",
+      "lane": "people",
+      "detailLevel": 2
+    },
+    {
+      "slug": "constantine-the-great",
+      "reason": "Constantine built the original St. Peter’s Basilica over the site Christians in Rome venerated as Peter’s grave.",
+      "name": "Constantine the Great",
+      "lane": "people",
+      "detailLevel": 2
+    }
+  ]
+}

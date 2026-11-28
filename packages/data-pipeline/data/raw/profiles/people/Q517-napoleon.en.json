@@ -1,0 +1,84 @@
+{
+  "overview": "Napoleon Bonaparte was a Corsican-born general who rose to prominence during the French Revolution and seized power in 1799. As First Consul, he censored the press and restored slavery in several French colonies before becoming emperor in 1804. Victories such as Austerlitz made his empire dominant across much of continental Europe, but the invasion of Russia crippled his army and defeat at Waterloo ended his brief return from exile in 1815. His empire fell, but the Napoleonic Code survived and became a model for civil law far beyond France.",
+  "keyMoments": [
+    {
+      "date": "November 1799",
+      "title": "A general takes power",
+      "text": "The government that ran France, the Directory, was deeply unpopular when Napoleon returned from his expedition to Egypt. He joined politicians who wanted to replace it, and soldiers cleared resisting legislators from their meeting hall during the **coup of 18 Brumaire**. The new constitution gave France three consuls, but the office of **First Consul** put real power in Napoleon’s hands.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Napoleon"
+    },
+    {
+      "date": "March 1804",
+      "title": "One civil code for France",
+      "text": "The laws governing an inheritance could once depend on where in France a family lived. A commission of jurists drafted national rules under Napoleon, who took part in the debates that shaped the **Civil Code of 1804**. It secured property rights and gave legitimate children equal rights to inherit, while tightening restrictions on divorce and placing **married women under their husbands’ authority**.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Napoleon"
+    },
+    {
+      "date": "1812",
+      "title": "The retreat from Moscow",
+      "text": "Napoleon marched a multinational army into Russia and occupied **Moscow** after the bloody Battle of Borodino. Much of the city burned, and Tsar Alexander I refused to negotiate. After weeks of waiting, Napoleon withdrew, losing men to combat, hunger, disease and cold. The **destruction of much of his army** gave his opponents a chance to unite against him.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Napoleon"
+    },
+    {
+      "date": "June 1815",
+      "title": "The last defeat",
+      "text": "After escaping exile on Elba and retaking power in Paris, Napoleon marched into what is now Belgium to face a new coalition. At **Waterloo**, the Duke of Wellington’s army held its ground until Prussian forces under Gebhard von Blücher arrived in strength. Four days later Napoleon abdicated, and the British sent him to **Saint Helena**, deep in the South Atlantic, where he spent the rest of his life.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Napoleon"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "In the monumental coronation painting Napoleon commissioned from Jacques-Louis David, he holds a crown above the kneeling Joséphine in Notre-Dame. One of the most prominent spectators in the gallery is his own mother, **Letizia Bonaparte**. She never attended the ceremony, but in the official image she has a clear view of the crown.",
+      "isLegend": false,
+      "sourceUrl": "https://www.napoleon.org/en/history-of-the-two-empires/paintings/5-the-sacre-or-coronation/"
+    },
+    {
+      "text": "Napoleon has a place among the **23 marble portraits of lawgivers** above the gallery doors of the U.S. House of Representatives. The reliefs were installed during the chamber’s midcentury remodeling. The French emperor is represented there because of the reach of his civil code, which influenced legal systems in the Americas as well as in Europe.",
+      "isLegend": false,
+      "sourceUrl": "https://www.aoc.gov/explore-capitol-campus/art/napoleon-i-relief-portrait"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q6534",
+      "reason": "Napoleon rose to prominence as a general during the Revolution and helped bring the Directory down in the coup of 1799."
+    },
+    {
+      "qid": "Q78994",
+      "reason": "The wars France fought against successive European coalitions shaped the rise and fall of his empire."
+    },
+    {
+      "qid": "Q151060",
+      "reason": "Napoleon took part in deliberations on the code that gave France a common set of civil laws."
+    },
+    {
+      "qid": "Q48314",
+      "reason": "Defeat at Waterloo brought Napoleon’s final abdication just four days after the battle."
+    },
+    {
+      "qid": "Q15193",
+      "reason": "The Russian emperor refused to make peace after Napoleon occupied Moscow in 1812."
+    },
+    {
+      "qid": "Q689128",
+      "reason": "Napoleon sent an expedition to reassert French control of Saint-Domingue, but the colony won its independence as Haiti."
+    },
+    {
+      "qid": "Q193155",
+      "reason": "Napoleon’s government sold France’s claim to Louisiana to the United States in 1803."
+    }
+  ],
+  "meta": {
+    "qid": "Q517",
+    "locale": "en",
+    "subjectDates": "1769–1821",
+    "approvedAt": "2026-11-28T12:34:14.709Z",
+    "writerModel": "gpt-6.2-sol",
+    "checkerModel": "gpt-6.2-sol",
+    "harness": "codex",
+    "promptVersion": 3,
+    "promptHash": "7f016c0cfe73a044",
+    "approval": "checker",
+    "revised": true
+  }
+}

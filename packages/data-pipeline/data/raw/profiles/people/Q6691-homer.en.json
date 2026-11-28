@@ -1,0 +1,62 @@
+{
+  "overview": "The ancient Greeks credited the Iliad and the Odyssey to Homer, a poet traditionally associated with the eastern Aegean and usually dated to around the eighth century BC. The Iliad follows Achilles through a bitter quarrel in the Greek camp outside Troy, while the Odyssey follows Odysseus on the ten-year journey home to his family on Ithaca. Who composed the poems remains uncertain. They became a mainstay of Greek education and inspired writers from Virgil to James Joyce.",
+  "keyMoments": [
+    {
+      "date": "Late 8th or early 7th century BC",
+      "title": "Troy in the singers’ voices",
+      "text": "Greek singers had been telling stories of the war at Troy for generations when the **Iliad and the Odyssey** took shape. The verses still carry traces of how a singer could compose aloud and keep the rhythm of a line. A goddess could enter as **owl-eyed Athena**, and each new morning brought the singer back to a familiar phrase for the rosy fingers of dawn.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Homer"
+    },
+    {
+      "date": "Late 6th century BC",
+      "title": "A relay in Athens",
+      "text": "At the **Panathenaia**, a festival in Athens, reciters competed to perform Homer before a crowd. The ancient dialogue Hipparchus credits the son of the Athenian ruler Pisistratus with a rule that made those rivals depend on one another. They had to tell the story **in sequence**, so each reciter had to pick up where the last one had stopped.",
+      "sourceUrl": "https://classical-inquiries.chs.harvard.edu/revisiting-platos-rhapsody-a-contribution-to-a-colloquium-about-poetic-misquotations-in-plato/"
+    },
+    {
+      "date": "3rd–2nd centuries BC",
+      "title": "Which words belonged to Homer?",
+      "text": "Copies of the poems disagreed, sometimes even on which lines to include. At the **Library of Alexandria** in Egypt, generations of scholars compared readings and prepared editions of Homer. By about **150 BC**, the surviving scraps of papyrus tell a different story from the earlier ones. Where the earlier copies often differ, the later ones agree much more closely on which verses belong in the poem.",
+      "sourceUrl": "https://en.wikipedia.org/wiki/Homer"
+    }
+  ],
+  "deepFacts": [
+    {
+      "text": "In the Iliad, Odysseus receives a leather helmet with **boars’ tusks** stitched to it. Archaeologists have found helmets of just this kind in Bronze Age graves. They had gone out of use centuries before the poem took shape, yet the verse preserves even the way the tusks were fastened.",
+      "isLegend": false,
+      "sourceUrl": "https://ashmolean.web.ox.ac.uk/article/the-odyssey-the-story-of-odysseus-in-the-ancient-world"
+    },
+    {
+      "text": "Homer once got credit for a parody of his own work. In **The Battle of the Frogs and Mice**, a later Greek poet gave two armies of small animals the kind of grand battle scenes readers knew from the Iliad. Some commentators took the imitation for the work of Homer himself.",
+      "isLegend": false,
+      "sourceUrl": "https://www.classics.ox.ac.uk/article/battle-of-the-frogs-and-mice"
+    }
+  ],
+  "connections": [
+    {
+      "qid": "Q42937",
+      "reason": "The legendary siege of Troy is still under way when the Iliad ends, and the Odyssey follows one of the Greeks trying to get home after the city falls."
+    },
+    {
+      "qid": "Q1398",
+      "reason": "Virgil drew on both Homeric poems in the Aeneid, sending the Trojan survivor Aeneas across the sea and then into a war in Italy."
+    },
+    {
+      "qid": "Q6882",
+      "reason": "In his novel Ulysses, Joyce recast episodes from the Odyssey in a single day in Dublin."
+    }
+  ],
+  "meta": {
+    "qid": "Q6691",
+    "locale": "en",
+    "subjectDates": "800–750 BC",
+    "approvedAt": "2026-11-28T12:31:05.661Z",
+    "writerModel": "gpt-6.2-astra",
+    "checkerModel": "gpt-6.2-sol",
+    "harness": "codex",
+    "promptVersion": 3,
+    "promptHash": "7f016c0cfe73a044",
+    "approval": "checker",
+    "revised": false
+  }
+}

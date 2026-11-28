@@ -407,7 +407,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Pope-peter%20pprubens.jpg",
     "description": "Saint Peter, also known as Peter the Apostle and Simon Peter, or Cephas was one of the Twelve Apostles of Jesus and one of the first leaders of the early Christian Church. He appears repeatedly and prominently in all four New Testament gospels, as well as the Acts of the Apostles. Catholic and Orthodox tradition treats Peter as the first bishop of Rome – or pope – and also as the first bishop of Antioch. According to Christian tradition, Peter was crucified in Rome under Emperor Nero.",
     "slug": "saint-peter",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "13633",
@@ -431,7 +432,8 @@
     "imageAttribution": "NikonZ7II, via Wikimedia Commons",
     "description": "Homer was an ancient Greek poet who is traditionally credited as the author of the Iliad and the Odyssey, two epic poems that are foundational works of ancient Greek literature. Homer was highly revered in ancient Greek society and is considered one of the most influential authors in history. Today, the question of Homer's identity and existence—dubbed the \"Homeric Question\"—continues to be debated, and scholars generally regard the two poems as the works of separate authors.",
     "slug": "homer",
-    "row": 0
+    "row": 0,
+    "hasProfile": true
   },
   {
     "id": "69880",
@@ -456,7 +458,8 @@
     "image": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Jacques-Louis%20David%20-%20The%20Emperor%20Napoleon%20in%20His%20Study%20at%20the%20Tuileries%20-%20Google%20Art%20Project.jpg",
     "description": "Napoleon Bonaparte, later known by his regnal name Napoleon I, was Emperor of the French from 18 May 1804 until his first abdication in 1814, with a brief restoration during the Hundred Days in 1815. He rose to prominence as a general during the French Revolution and led a series of military campaigns across Europe and the Middle East during the French Revolutionary and Napoleonic Wars. As a statesman, he implemented numerous legal and administrative reforms in France and Europe.",
     "slug": "napoleon",
-    "row": 1
+    "row": 1,
+    "hasProfile": true
   },
   {
     "id": "29688374",
