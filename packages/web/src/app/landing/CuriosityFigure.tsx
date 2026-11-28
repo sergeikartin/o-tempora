@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 import {
   formatYear,
+  formatYearMonth,
   formatYearRange,
   yearMonthToFractionalYear,
 } from '../../shared/lib/date';
@@ -28,9 +29,13 @@ function MarkRow({
 }) {
   const [windowStart, windowEnd] = curiosity.window;
   const start = percentOf(curiosity, mark.start);
-  const end = percentOf(curiosity, mark.end);
+  const end = mark.end ? percentOf(curiosity, mark.end) : start;
+  const isPoint =
+    !mark.end ||
+    yearMonthToFractionalYear(mark.end) ===
+      yearMonthToFractionalYear(mark.start);
   const clipsStart = yearMonthToFractionalYear(mark.start) < windowStart;
-  const clipsEnd = yearMonthToFractionalYear(mark.end) > windowEnd;
+  const clipsEnd = mark.end && yearMonthToFractionalYear(mark.end) > windowEnd;
   const style = {
     '--start': `${start}%`,
     '--span': `${end - start}%`,
@@ -38,7 +43,7 @@ function MarkRow({
     '--i': index,
   } as CSSProperties;
   const markClass = [
-    styles.bar,
+    isPoint ? styles.dot : styles.bar,
     clipsStart && styles.clipsStart,
     clipsEnd && styles.clipsEnd,
   ]
@@ -49,7 +54,9 @@ function MarkRow({
       <span className={styles.label}>
         {mark.label()}{' '}
         <span className={styles.years}>
-          {formatYearRange(mark.start.year, mark.end.year)}
+          {mark.end && !isPoint
+            ? formatYearRange(mark.start.year, mark.end.year)
+            : formatYearMonth(mark.start)}
         </span>
       </span>
       <span className={styles.track} aria-hidden="true">
@@ -62,24 +69,9 @@ function MarkRow({
 export function CuriosityFigure({ curiosity }: { curiosity: Curiosity }) {
   const people = curiosity.marks.filter((mark) => mark.kind === 'person');
   const events = curiosity.marks.filter((mark) => mark.kind !== 'person');
-  const band = curiosity.band;
-  const bandStyle = band
-    ? ({
-        '--start': `${percentOf(curiosity, band.from)}%`,
-        '--span': `${percentOf(curiosity, band.to) - percentOf(curiosity, band.from)}%`,
-      } as CSSProperties)
-    : undefined;
-
   return (
     <figure className={styles.figure}>
       <div className={styles.chart} key={curiosity.id}>
-        {band && (
-          <span
-            className={`${styles.band} ${band.kind === 'conflict' ? styles.bandConflict : ''}`}
-            style={bandStyle}
-            aria-hidden="true"
-          />
-        )}
         {people.map((mark, i) => (
           <MarkRow
             key={mark.slug}

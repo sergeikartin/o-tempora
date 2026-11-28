@@ -7,17 +7,15 @@ related_targets: ["src/app/landing/LandingPage.module.css"]
 
 # Landing page (/ and /ru/)
 
-Mode: Persuade. Cold visitor from a shared link; the action is "Explore the timeline" (opens /timeline/). Proof is real dataset dates only (to the month); no usage claims.
+Mode: Persuade. A visitor arriving from a shared link can open the selected story’s passage on the timeline. Dates come from the published dataset and each historical connection is documented in the linked Profile.
 
 ## Direction contract
 
-THESIS: One quiet folio page whose hook is a curious coincidence, not a feature list: a Fraunces sentence states one overlap ("Einstein and Jobs were alive at the same time") and the same overlap is drawn beside it as the product draws it. Nine hand-picked curiosities sit behind a row of pills. Refuses the centred hero over a row of feature cards, and any auto-rotating carousel.
+A Fraunces sentence introduces one of seven Curiosities. The figure places the people and events on a common axis, and a caption explains the connection. Visitors choose which story to read next.
 
-OWN-WORLD: Existing Ledger & Ink: parchment ground, ink text, one oxblood CTA, round-cap ink bars in domain colours, Axis Bar ruler with tabular tick labels, Conflict Red bars, an ink-tint wash for an overlap window, filter-pill chips. Bars that run past the window are cut square at its edge. No cards, no shadows, no gradients.
+The page uses Ledger & Ink parchment, ink text and one oxblood call to action. People appear above the ruler and events below. Dates use tabular figures. Periods use round-capped bars in the timeline palette, cut square where the window clips them. A single date appears as a dot.
 
-STORY: The visitor reads one surprising sentence, sees the marks that prove it on one axis, understands the product, and either presses the button or taps another curiosity and gets the same reaction again.
-
-FIRST VIEWPORT: Left column: headline 32px and a 16px pitch as the intro, then the curiosity sentence at 36px Fraunces leading (block sized to the longest sentence so nothing below it moves), CTA (opens the shown overlap's first mark on the timeline), then a labelled row of pill chips. Right column (480-540px, top-aligned with the copy): figure with its marks, axis and caption plus Entity Links. CTA stays above the fold on a 360x640 phone; below 640px, and on short landscape phones, the chips give way to a prev/next stepper directly above the figure, so it stays put across taps and sits in the first screen. The picked curiosity lives in the URL hash.
+On desktop the left column holds the headline, pitch, story, action and choice of stories. The story reserves room for the longest sentence in the active language. The figure and caption sit beside it. On phones below 640px and short landscape phones, previous and next buttons replace the chips above the figure. The action stays above the fold at 360×640. The selected story travels in the URL hash and across the language switch.
 
 FORM: Quiet Folio with a case switcher; user-chosen over a scroll of curiosities and an auto-rotating hero (seed:d12fb562934fb476, reroll 3, assigned form kept).
 

@@ -20,25 +20,26 @@ const dataset = new Map<string, DatasetEntry>(
 );
 
 interface ShippedProfile {
-  keyMoments: { date: string }[];
+  keyMoments: { text: string }[];
+  connections: { slug: string }[];
   deepFacts: { text: string }[];
 }
 
-const profileModules = import.meta.glob<ShippedProfile>(
-  '../../../../shared-types/src/data/profiles/en/*.json',
-  { eager: true, import: 'default' },
-);
-const shippedProfiles = new Map<string, ShippedProfile>(
-  Object.entries(profileModules).map(([path, profile]) => [
-    path.replace(/^.*\//, '').replace(/\.json$/, ''),
-    profile,
-  ]),
+const profiles = import.meta.glob<ShippedProfile>(
+  '../../../../shared-types/src/data/profiles/{en,ru}/*.json',
+  { import: 'default' },
 );
 
-// What each anchored Curiosity's anchor must still point at: a Key Moment's
-// date, or a phrase of a Deep Fact. A regenerated Profile that moves it fails
-// here instead of silently accenting the wrong item.
-const EXPECTED_ANCHOR_TARGETS: Record<string, string> = {};
+// Pin a distinctive phrase in both editions so a reordered passage fails here.
+const EXPECTED_ANCHOR_TARGETS: Record<string, Record<'en' | 'ru', string>> = {
+  'shelley-summer': { en: 'Villa Diodati', ru: 'вилле Диодати' },
+  'vermeer-leeuwenhoek': { en: 'Catharina Bolnes', ru: 'Катарины Болнес' },
+  'einstein-szilard': { en: 'refrigerator', ru: 'холодильника' },
+  'october-calendar': { en: 'October Revolution', ru: 'Октябрьская революция' },
+  'tolstoy-gandhi': { en: 'Tolstoy Farm', ru: 'ферме Толстого' },
+  'charlemagne-elephant': { en: 'Abul-Abbas', ru: 'Абуль-Аббас' },
+  'curie-x-rays': { en: 'dynamo', ru: 'динамо-машины' },
+};
 
 function publishedDates(mark: CuriosityMark): { start: Month; end?: Month } {
   const entry = dataset.get(mark.slug);
@@ -54,7 +55,7 @@ test('every curiosity mark matches the published dataset to the month', () => {
     for (const mark of curiosity.marks) {
       const published = publishedDates(mark);
       expect(mark.start, `${mark.slug} start`).toEqual(published.start);
-      if (mark.end) expect(mark.end, `${mark.slug} end`).toEqual(published.end);
+      expect(mark.end, `${mark.slug} end`).toEqual(published.end);
     }
   }
 });
@@ -84,24 +85,31 @@ test('each lead is one of its curiosity’s marks', () => {
   }
 });
 
-test('an anchor points at the expected item of its lead’s shipped Profile', () => {
-  for (const curiosity of CURIOSITIES) {
-    if (!curiosity.anchor) continue;
-    const { kind, index } = curiosity.anchor;
-    const profile = shippedProfiles.get(curiosity.lead);
-    expect(
-      profile,
-      `${curiosity.id} anchor needs a shipped Profile`,
-    ).toBeDefined();
-    const expected = EXPECTED_ANCHOR_TARGETS[curiosity.id];
-    expect(
-      expected,
-      `${curiosity.id} anchor needs an expected target`,
-    ).toBeDefined();
-    const actual =
-      kind === 'moment'
-        ? profile?.keyMoments[index - 1]?.date
-        : profile?.deepFacts[index - 1]?.text;
-    expect(actual, curiosity.id).toContain(expected);
-  }
-});
+test.each(['en', 'ru'] as const)(
+  '%s ships every mark and links the lead passage to a companion',
+  async (locale) => {
+    for (const curiosity of CURIOSITIES) {
+      const { kind, index } = curiosity.anchor;
+      for (const mark of curiosity.marks) {
+        const path = `../../../../shared-types/src/data/profiles/${locale}/${mark.slug}.json`;
+        const load = profiles[path];
+        expect(load, path).toBeDefined();
+        if (mark.slug !== curiosity.lead || !load) continue;
+        const profile = await load();
+        const passages =
+          kind === 'moment' ? profile.keyMoments : profile.deepFacts;
+        expect(passages[index - 1]?.text, curiosity.id).toContain(
+          EXPECTED_ANCHOR_TARGETS[curiosity.id]?.[locale],
+        );
+        expect(
+          profile.connections.some((link) =>
+            curiosity.marks.some(
+              (m) => m.slug !== curiosity.lead && m.slug === link.slug,
+            ),
+          ),
+          curiosity.id,
+        ).toBe(true);
+      }
+    }
+  },
+);

@@ -117,7 +117,7 @@ An optional passage reference on an **Entity Link** that takes the visitor to on
 _Avoid_: Entity Link (the whole URL), Curiosity hash (a different landing-page state)
 
 **Curiosity**:
-A hand-picked historical coincidence shown on the **Landing Page** as a sentence and dated marks. One of those marks is the designated lead for opening the timeline.
+A documented historical connection shown on the **Landing Page** as a sentence and dated marks. Its lead mark opens the **Profile** passage that tells the story.
 _Avoid_: starting point, example, demo, tour (curated narrated tours are out of scope), fun fact
 
 **Profile**:
@@ -130,7 +130,7 @@ _Avoid_: milestone (bare — a lane), highlight, chapter
 
 **Deep Fact**:
 A little-known, documented, memorable detail (including verifiable quiz-worthy trivia) in a **Profile** that helps visitors remember the subject. Legends carry a label.
-_Avoid_: fun fact, trivia (as a term for this section), Curiosity (a different thing — a Landing Page overlap)
+_Avoid_: fun fact, trivia (as a term for this section), Curiosity (a different thing — a Landing Page story)
 
 **Connection**:
 A reference from a **Profile** to another entity, with a one-sentence reason it matters. Following it opens the target and lets the visitor retrace the path with Back.

@@ -1,14 +1,22 @@
-import { CONFLICT_COLOR, DOMAIN_COLORS } from '../../shared/config';
+import {
+  CONFLICT_COLOR,
+  DOMAIN_COLORS,
+  MILESTONE_CATEGORY_GROUP_COLORS,
+} from '../../shared/config';
 import type { ProfileAnchor } from '../../shared/lib/entity';
 import { m } from '../../shared/paraglide/messages.js';
-import type { YearMonth } from '../../shared/types';
+import {
+  MILESTONE_CATEGORY_TO_GROUP,
+  type MilestoneCategory,
+  type YearMonth,
+} from '../../shared/types';
 
-// Each Curiosity is a hand-picked overlap drawn the way the timeline draws it.
+// Each Curiosity is a documented connection drawn the way the timeline draws it.
 // Dates mirror the published dataset to the month (curiosities.test.ts
 // checks every mark against it), so the landing never claims more than the
 // data does.
 
-export type MarkKind = 'person' | 'conflict';
+export type MarkKind = 'person' | 'conflict' | 'milestone';
 
 export interface CuriosityMark {
   slug: string;
@@ -16,13 +24,7 @@ export interface CuriosityMark {
   label: () => string;
   color: string;
   start: YearMonth;
-  end: YearMonth;
-}
-
-export interface CuriosityBand {
-  from: YearMonth;
-  to: YearMonth;
-  kind: 'overlap' | 'conflict';
+  end?: YearMonth;
 }
 
 export interface Curiosity {
@@ -33,13 +35,8 @@ export interface Curiosity {
   window: readonly [number, number];
   ticks: readonly number[];
   marks: readonly CuriosityMark[];
-  band?: CuriosityBand;
   lead: string;
-  /**
-   * The lead's Key Moment or Deep Fact the link scrolls to. Set only once the
-   * lead's Profile ships (curiosities.test.ts pins it to the shipped text).
-   */
-  anchor?: ProfileAnchor;
+  anchor: ProfileAnchor;
 }
 
 const person = (
@@ -71,295 +68,207 @@ const conflict = (
   end,
 });
 
+const milestone = (
+  slug: string,
+  category: MilestoneCategory,
+  label: () => string,
+  start: YearMonth,
+): CuriosityMark => ({
+  slug,
+  kind: 'milestone',
+  label,
+  start,
+  color: MILESTONE_CATEGORY_GROUP_COLORS[MILESTONE_CATEGORY_TO_GROUP[category]],
+});
+
 export const CURIOSITIES: readonly [Curiosity, ...Curiosity[]] = [
   {
-    id: 'einstein-jobs',
-    chip: () => m['landingCase.einstein-jobs.chip'](),
-    lede: () => m['landingCase.einstein-jobs.lede'](),
-    caption: () => m['landingCase.einstein-jobs.caption'](),
-    window: [1954.5, 1955.75],
-    ticks: [1955],
+    id: 'shelley-summer',
+    chip: m['landingCase.shelley-summer.chip'],
+    lede: m['landingCase.shelley-summer.lede'],
+    caption: m['landingCase.shelley-summer.caption'],
+    window: [1790, 1860],
+    ticks: [1800, 1820, 1840],
+    lead: 'mary-shelley',
+    anchor: { kind: 'moment', index: 2 },
+    marks: [
+      person(
+        'mary-shelley',
+        'humanities',
+        m['landingMark.mary-shelley'],
+        { year: 1797, month: 8 },
+        { year: 1851, month: 2 },
+      ),
+      milestone(
+        'year-without-a-summer',
+        'environment-geology',
+        m['landingMark.year-without-a-summer'],
+        { year: 1816 },
+      ),
+    ],
+  },
+  {
+    id: 'vermeer-leeuwenhoek',
+    chip: m['landingCase.vermeer-leeuwenhoek.chip'],
+    lede: m['landingCase.vermeer-leeuwenhoek.lede'],
+    caption: m['landingCase.vermeer-leeuwenhoek.caption'],
+    window: [1620, 1735],
+    ticks: [1640, 1680, 1720],
+    lead: 'johannes-vermeer',
+    anchor: { kind: 'fact', index: 1 },
+    marks: [
+      person(
+        'johannes-vermeer',
+        'arts',
+        m['landingMark.johannes-vermeer'],
+        { year: 1632, month: 10 },
+        { year: 1675, month: 12 },
+      ),
+      person(
+        'antonie-van-leeuwenhoek',
+        'science-technology',
+        m['landingMark.antonie-van-leeuwenhoek'],
+        { year: 1632, month: 10 },
+        { year: 1723, month: 8 },
+      ),
+    ],
+  },
+  {
+    id: 'einstein-szilard',
+    chip: m['landingCase.einstein-szilard.chip'],
+    lede: m['landingCase.einstein-szilard.lede'],
+    caption: m['landingCase.einstein-szilard.caption'],
+    window: [1890, 1968],
+    ticks: [1900, 1930, 1960],
     lead: 'albert-einstein',
+    anchor: { kind: 'fact', index: 1 },
     marks: [
       person(
         'albert-einstein',
         'science-technology',
-        () => m['landingMark.albert-einstein'](),
+        m['landingMark.albert-einstein'],
         { year: 1879, month: 3 },
         { year: 1955, month: 4 },
       ),
       person(
-        'steve-jobs',
-        'arts',
-        () => m['landingMark.steve-jobs'](),
-        { year: 1955, month: 2 },
-        { year: 2011, month: 10 },
-      ),
-    ],
-    band: {
-      from: { year: 1955, month: 2 },
-      to: { year: 1955, month: 4 },
-      kind: 'overlap',
-    },
-  },
-  {
-    id: 'monet-monroe',
-    chip: () => m['landingCase.monet-monroe.chip'](),
-    lede: () => m['landingCase.monet-monroe.lede'](),
-    caption: () => m['landingCase.monet-monroe.caption'](),
-    window: [1925.5, 1927.5],
-    ticks: [1926, 1927],
-    lead: 'claude-monet',
-    marks: [
-      person(
-        'claude-monet',
-        'arts',
-        () => m['landingMark.claude-monet'](),
-        { year: 1840, month: 11 },
-        { year: 1926, month: 12 },
-      ),
-      person(
-        'elizabeth-ii',
-        'institutions',
-        () => m['landingMark.elizabeth-ii'](),
-        { year: 1926, month: 4 },
-        { year: 2022, month: 9 },
-      ),
-      person(
-        'marilyn-monroe',
-        'arts',
-        () => m['landingMark.marilyn-monroe'](),
-        { year: 1926, month: 6 },
-        { year: 1962, month: 8 },
-      ),
-    ],
-    band: {
-      from: { year: 1926, month: 4 },
-      to: { year: 1926, month: 12 },
-      kind: 'overlap',
-    },
-  },
-  {
-    id: 'ali-hawking',
-    chip: () => m['landingCase.ali-hawking.chip'](),
-    lede: () => m['landingCase.ali-hawking.lede'](),
-    caption: () => m['landingCase.ali-hawking.caption'](),
-    window: [1941.5, 1943],
-    ticks: [1942],
-    lead: 'muhammad-ali',
-    marks: [
-      person(
-        'muhammad-ali',
-        'sports',
-        () => m['landingMark.muhammad-ali'](),
-        { year: 1942, month: 1 },
-        { year: 2016, month: 6 },
-      ),
-      person(
-        'stephen-hawking',
+        'leo-szilard',
         'science-technology',
-        () => m['landingMark.stephen-hawking'](),
-        { year: 1942, month: 1 },
-        { year: 2018, month: 3 },
+        m['landingMark.leo-szilard'],
+        { year: 1898, month: 2 },
+        { year: 1964, month: 5 },
       ),
-      person(
-        'aretha-franklin',
-        'arts',
-        () => m['landingMark.aretha-franklin'](),
-        { year: 1942, month: 3 },
-        { year: 2018, month: 8 },
-      ),
-      person(
-        'jimi-hendrix',
-        'arts',
-        () => m['landingMark.jimi-hendrix'](),
-        { year: 1942, month: 11 },
-        { year: 1970, month: 9 },
+      milestone(
+        'first-household-refrigerator',
+        'energy-industry',
+        m['landingMark.first-household-refrigerator'],
+        { year: 1913 },
       ),
     ],
   },
   {
-    id: 'class-of-1940',
-    chip: () => m['landingCase.class-of-1940.chip'](),
-    lede: () => m['landingCase.class-of-1940.lede'](),
-    caption: () => m['landingCase.class-of-1940.caption'](),
-    window: [1939.5, 1941.5],
-    ticks: [1940, 1941],
-    lead: 'pele',
+    id: 'october-calendar',
+    chip: m['landingCase.october-calendar.chip'],
+    lede: m['landingCase.october-calendar.lede'],
+    caption: m['landingCase.october-calendar.caption'],
+    window: [1550, 1950],
+    ticks: [1600, 1750, 1900],
+    lead: 'gregorian-calendar',
+    anchor: { kind: 'moment', index: 4 },
     marks: [
-      person(
-        'pele',
-        'sports',
-        () => m['landingMark.pele'](),
-        { year: 1940, month: 10 },
-        { year: 2022, month: 12 },
+      milestone(
+        'gregorian-calendar',
+        'society-administration',
+        m['landingMark.gregorian-calendar'],
+        { year: 1582 },
       ),
-      person(
-        'john-lennon',
-        'arts',
-        () => m['landingMark.john-lennon'](),
-        { year: 1940, month: 10 },
-        { year: 1980, month: 12 },
-      ),
-      person(
-        'bruce-lee',
-        'arts',
-        () => m['landingMark.bruce-lee'](),
-        { year: 1940, month: 11 },
-        { year: 1973, month: 7 },
+      conflict(
+        'october-revolution',
+        m['landingMark.october-revolution'],
+        { year: 1917, month: 11 },
+        { year: 1917, month: 11 },
       ),
     ],
   },
   {
-    id: 'year-1564',
-    chip: () => m['landingCase.year-1564.chip'](),
-    lede: () => m['landingCase.year-1564.lede'](),
-    caption: () => m['landingCase.year-1564.caption'](),
-    window: [1563.5, 1565],
-    ticks: [1564],
-    lead: 'galileo-galilei',
+    id: 'tolstoy-gandhi',
+    chip: m['landingCase.tolstoy-gandhi.chip'],
+    lede: m['landingCase.tolstoy-gandhi.lede'],
+    caption: m['landingCase.tolstoy-gandhi.caption'],
+    window: [1820, 1960],
+    ticks: [1840, 1880, 1920],
+    lead: 'leo-tolstoy',
+    anchor: { kind: 'moment', index: 4 },
     marks: [
       person(
-        'michelangelo',
-        'arts',
-        () => m['landingMark.michelangelo'](),
-        { year: 1475, month: 3 },
-        { year: 1564, month: 2 },
-      ),
-      person(
-        'galileo-galilei',
-        'science-technology',
-        () => m['landingMark.galileo-galilei'](),
-        { year: 1564, month: 2 },
-        { year: 1642, month: 1 },
-      ),
-      person(
-        'william-shakespeare',
+        'leo-tolstoy',
         'humanities',
-        () => m['landingMark.william-shakespeare'](),
-        { year: 1564, month: 4 },
-        { year: 1616, month: 4 },
+        m['landingMark.leo-tolstoy'],
+        { year: 1828, month: 9 },
+        { year: 1910, month: 11 },
+      ),
+      person(
+        'mahatma-gandhi',
+        'public-figure',
+        m['landingMark.mahatma-gandhi'],
+        { year: 1869, month: 10 },
+        { year: 1948, month: 1 },
       ),
     ],
   },
   {
-    id: 'jefferson-adams',
-    chip: () => m['landingCase.jefferson-adams.chip'](),
-    lede: () => m['landingCase.jefferson-adams.lede'](),
-    caption: () => m['landingCase.jefferson-adams.caption'](),
-    window: [1825.5, 1827],
-    ticks: [1826],
-    lead: 'thomas-jefferson',
+    id: 'charlemagne-elephant',
+    chip: m['landingCase.charlemagne-elephant.chip'],
+    lede: m['landingCase.charlemagne-elephant.lede'],
+    caption: m['landingCase.charlemagne-elephant.caption'],
+    window: [740, 825],
+    ticks: [750, 780, 810],
+    lead: 'charlemagne',
+    anchor: { kind: 'fact', index: 1 },
     marks: [
       person(
-        'john-adams',
+        'charlemagne',
         'institutions',
-        () => m['landingMark.john-adams'](),
-        { year: 1735, month: 10 },
-        { year: 1826, month: 7 },
+        m['landingMark.charlemagne'],
+        { year: 748, month: 4 },
+        { year: 814, month: 1 },
       ),
       person(
-        'thomas-jefferson',
+        'harun-al-rashid',
         'institutions',
-        () => m['landingMark.thomas-jefferson'](),
-        { year: 1743, month: 4 },
-        { year: 1826, month: 7 },
+        m['landingMark.harun-al-rashid'],
+        { year: 766, month: 3 },
+        { year: 809, month: 3 },
       ),
     ],
   },
   {
-    id: 'kaiser',
-    chip: () => m['landingCase.kaiser.chip'](),
-    lede: () => m['landingCase.kaiser.lede'](),
-    caption: () => m['landingCase.kaiser.caption'](),
-    window: [1910, 1946],
-    ticks: [1910, 1920, 1930, 1940],
-    lead: 'world-war-i',
+    id: 'curie-x-rays',
+    chip: m['landingCase.curie-x-rays.chip'],
+    lede: m['landingCase.curie-x-rays.lede'],
+    caption: m['landingCase.curie-x-rays.caption'],
+    window: [1860, 1942],
+    ticks: [1870, 1900, 1930],
+    lead: 'marie-curie',
+    anchor: { kind: 'fact', index: 1 },
     marks: [
       person(
-        'wilhelm-ii',
-        'institutions',
-        () => m['landingMark.wilhelm-ii'](),
-        { year: 1859, month: 1 },
-        { year: 1941, month: 6 },
+        'marie-curie',
+        'science-technology',
+        m['landingMark.marie-curie'],
+        { year: 1867, month: 11 },
+        { year: 1934, month: 7 },
+      ),
+      milestone(
+        'discovery-of-x-rays',
+        'science-theory',
+        m['landingMark.discovery-of-x-rays'],
+        { year: 1895, month: 11 },
       ),
       conflict(
         'world-war-i',
-        () => m['landingMark.world-war-i'](),
+        m['landingMark.world-war-i'],
         { year: 1914, month: 7 },
         { year: 1918, month: 11 },
-      ),
-      conflict(
-        'world-war-ii',
-        () => m['landingMark.world-war-ii'](),
-        { year: 1939, month: 9 },
-        { year: 1945, month: 9 },
-      ),
-    ],
-    band: {
-      from: { year: 1939, month: 9 },
-      to: { year: 1941, month: 6 },
-      kind: 'conflict',
-    },
-  },
-  {
-    id: 'victoria-napoleon',
-    chip: () => m['landingCase.victoria-napoleon.chip'](),
-    lede: () => m['landingCase.victoria-napoleon.lede'](),
-    caption: () => m['landingCase.victoria-napoleon.caption'](),
-    window: [1818, 1823],
-    ticks: [1819, 1820, 1821, 1822],
-    lead: 'napoleon',
-    marks: [
-      person(
-        'napoleon',
-        'institutions',
-        () => m['landingMark.napoleon'](),
-        { year: 1769, month: 8 },
-        { year: 1821, month: 5 },
-      ),
-      person(
-        'victoria',
-        'institutions',
-        () => m['landingMark.victoria'](),
-        { year: 1819, month: 5 },
-        { year: 1901, month: 1 },
-      ),
-    ],
-    band: {
-      from: { year: 1819, month: 5 },
-      to: { year: 1821, month: 5 },
-      kind: 'overlap',
-    },
-  },
-  {
-    id: 'joan-vlad',
-    chip: () => m['landingCase.joan-vlad.chip'](),
-    lede: () => m['landingCase.joan-vlad.lede'](),
-    caption: () => m['landingCase.joan-vlad.caption'](),
-    window: [1400, 1460],
-    ticks: [1400, 1420, 1440],
-    lead: 'joan-of-arc',
-    marks: [
-      person(
-        'joan-of-arc',
-        'institutions',
-        () => m['landingMark.joan-of-arc'](),
-        { year: 1412 },
-        { year: 1431, month: 5 },
-      ),
-      person(
-        'vlad-the-impaler',
-        'public-figure',
-        () => m['landingMark.vlad-the-impaler'](),
-        { year: 1431, month: 11 },
-        { year: 1476, month: 1 },
-      ),
-      conflict(
-        'hundred-years-war',
-        () => m['landingMark.hundred-years-war'](),
-        { year: 1337, month: 6 },
-        { year: 1453, month: 10 },
       ),
     ],
   },

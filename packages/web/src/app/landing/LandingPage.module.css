@@ -238,20 +238,6 @@
   position: relative;
 }
 
-.band {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: var(--start);
-  width: var(--span);
-  background: var(--color-selection-halo);
-  animation: fade-in 400ms var(--landing-ease) 450ms both;
-}
-
-.bandConflict {
-  background: color-mix(in srgb, var(--color-conflict) 10%, transparent);
-}
-
 .row {
   min-height: 54px;
   padding-block: 10px;
@@ -276,10 +262,20 @@
   height: 8px;
 }
 
+.dot,
 .bar {
   position: absolute;
   background: var(--mark);
   opacity: var(--mark-opacity-resting);
+}
+
+.dot {
+  left: var(--start);
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-full);
 }
 
 .bar {
@@ -492,7 +488,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .bar,
-  .band,
   .ledeActive {
     animation: none;
   }
